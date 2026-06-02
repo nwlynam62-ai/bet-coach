@@ -1,0 +1,3438 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bet Coach</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--bg:#0a0a0a;--panel:#111111;--card:#1a1a1a;--card2:#222222;--border:#333333;--text:#d4d4d4;--muted:#888888;--faint:#555555;--green:#d4af37;--green-d:#7a6010;--red:#c0392b;--red-d:#6b1f1a;--gold:#d4af37;--blue:#c0c0c0;--orange:#b8960c;--purple:#a89060}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--blue)}
+header{position:sticky;top:0;z-index:20;background:rgba(14,17,22,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.hdr-top{display:flex;align-items:center;gap:16px;padding:12px 22px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:.5px}
+.logo .mark{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--green),var(--blue));color:#0e1116;font-weight:900;font-size:16px}
+.logo small{display:block;font-size:10px;font-weight:600;color:var(--muted);letter-spacing:1.5px}
+.pills{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap}
+.pill{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:6px 12px;min-width:82px;text-align:center}
+.pill .lbl{font-size:9px;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+.pill .val{font-size:15px;font-weight:800;margin-top:1px}
+nav{display:flex;gap:2px;padding:0 16px;overflow-x:auto}
+nav button{background:none;border:none;color:var(--muted);font-size:13px;font-weight:700;padding:11px 15px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;font-family:inherit}
+nav button:hover{color:var(--text)}
+nav button.active{color:var(--text);border-bottom-color:var(--green)}
+main{max-width:1080px;margin:0 auto;padding:22px}
+.tab{display:none}
+.tab.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+h2.sec{font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin:24px 0 12px;font-weight:700;display:flex;align-items:center;gap:8px}
+h2.sec:first-child{margin-top:0}
+.card{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:16px}
+.pos{color:var(--green)}.neg{color:var(--red)}.neu{color:var(--text)}
+.muted{color:var(--muted)}.small{font-size:11px}
+.graphcard{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:16px}
+.graphcard .gc-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:8px}
+.graphcard h3{font-size:12px;letter-spacing:.6px;color:var(--muted);font-weight:700}
+.ministats{display:flex;gap:18px;flex-wrap:wrap}
+.ministat .k{font-size:9px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:700}
+.ministat .v{font-size:18px;font-weight:800;line-height:1.1}
+.chart-wrap{position:relative;height:200px;margin-top:6px}
+.boardbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.chip{background:var(--card);border:1px solid var(--border);color:var(--muted);border-radius:20px;padding:5px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
+.chip:hover{color:var(--text)}
+.chip.active{background:var(--card2);color:var(--text);border-color:var(--faint)}
+.game{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.game-hd{display:flex;align-items:center;gap:13px;padding:13px 15px;cursor:pointer}
+.game-hd:hover{background:rgba(255,255,255,.02)}
+.rank{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--card2);border:1px solid var(--border);font-weight:800;font-size:12px;color:var(--muted)}
+.game.top3 .rank{background:rgba(245,183,64,.16);border-color:#6b5a1f;color:var(--gold)}
+.g-mid{flex:1;min-width:0}
+.g-match{font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.sportbadge{font-size:9px;font-weight:800;letter-spacing:.6px;padding:2px 6px;border-radius:5px;text-transform:uppercase}
+.sb-MLB{background:rgba(79,157,255,.16);color:var(--blue)}
+.sb-NHL{background:rgba(168,128,255,.16);color:var(--purple)}
+.sb-NBA{background:rgba(255,157,79,.16);color:var(--orange)}
+.sb-WNBA{background:rgba(255,140,180,.16);color:#ff8cb4}
+.sb-NFL{background:rgba(107,200,107,.16);color:#6bc86b}
+.g-sub{font-size:11.5px;color:var(--muted);margin-top:2px}
+.g-play{text-align:right;flex-shrink:0}
+.g-play .pl{font-weight:800;font-size:13px}
+.g-play .od{font-size:11px;color:var(--muted)}
+.grade{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;font-weight:900;font-size:15px;flex-shrink:0}
+.g-A{background:rgba(61,220,132,.18);color:var(--green)}
+.g-B{background:rgba(79,157,255,.18);color:var(--blue)}
+.g-C{background:rgba(245,183,64,.18);color:var(--gold)}
+.g-D{background:rgba(255,157,79,.18);color:var(--orange)}
+.g-F{background:rgba(255,107,107,.26);color:var(--red)}
+.g-P{background:var(--card2);color:var(--faint)}
+.caret{color:var(--faint);font-size:12px;transition:transform .2s;flex-shrink:0}
+.game.open .caret{transform:rotate(90deg)}
+.game-body{display:none;padding:0 15px 15px;border-top:1px solid var(--border)}
+.game.open .game-body{display:block;animation:fade .2s ease}
+.bd-line{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0}
+.bd-kv{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:7px 11px;font-size:11.5px}
+.bd-h{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:700;margin:13px 0 6px}
+.bd-stats{list-style:none;display:flex;flex-direction:column;gap:5px}
+.bd-stats li{font-size:12.5px;padding-left:15px;position:relative}
+.bd-stats li:before{content:"\203A";position:absolute;left:2px;color:var(--green);font-weight:800}
+.bd-analysis{font-size:13px;color:#cfd6e2;margin-top:4px}
+.theplay{margin-top:13px;background:rgba(61,220,132,.08);border:1px solid var(--green-d);border-radius:9px;padding:11px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.theplay .tp-l b{font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--green);display:block}
+.theplay .tp-l span{font-size:14px;font-weight:800}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 15px}
+.stat .k{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:700}
+.stat .v{font-size:24px;font-weight:800;margin-top:5px;line-height:1.1}
+.stat .sub{font-size:11px;color:var(--faint);margin-top:3px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:12.5px;min-width:720px}
+th{background:var(--panel);text-align:left;padding:9px 11px;font-size:10px;letter-spacing:.7px;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border)}
+td{padding:9px 11px;border-bottom:1px solid var(--border)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.02)}
+.res-W{color:var(--green);font-weight:800}
+.res-L{color:var(--red);font-weight:800}
+.res-P{color:var(--gold);font-weight:800}
+.res-Pending{color:var(--faint);font-weight:700}
+.gradesm{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;font-weight:900;font-size:12px}
+.alert{border-radius:11px;padding:12px 14px;font-size:13px;display:flex;gap:10px;align-items:flex-start}
+.alert .ic{font-size:16px;line-height:1.2}
+.a-ok{background:rgba(31,122,72,.22);border:1px solid var(--green-d)}
+.a-warn{background:rgba(245,183,64,.13);border:1px solid #6b5a1f}
+.a-bad{background:rgba(122,43,43,.26);border:1px solid var(--red-d)}
+.a-info{background:rgba(79,157,255,.1);border:1px solid #2b4a73}
+.alert-stack{display:flex;flex-direction:column;gap:9px}
+.leak{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.leak h3{font-size:12px;color:var(--muted);margin-bottom:9px;letter-spacing:.5px}
+.lrow{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:12.5px}
+.lrow:last-child{border-bottom:none}
+.lrow .ln{display:flex;align-items:center;gap:7px}
+.bar{height:6px;border-radius:3px;background:var(--card2);width:70px;overflow:hidden}
+.tag{font-size:9px;padding:1px 6px;border-radius:5px;background:var(--card2);color:var(--muted);font-weight:700}
+.empty{color:var(--faint);font-size:13px;text-align:center;padding:28px 12px}
+.insight{display:flex;gap:9px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px}
+.insight:last-child{border-bottom:none}
+.insight .ib{font-size:14px;flex-shrink:0}
+.fld{display:flex;flex-direction:column;gap:5px}
+label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.4px}
+input{background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:9px 11px;font-size:13px;font-family:inherit;width:100%}
+input:focus{outline:none;border-color:var(--blue)}
+.btn{background:var(--green);color:#0c1117;border:none;border-radius:9px;padding:10px 18px;font-weight:800;font-size:13px;cursor:pointer;font-family:inherit}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:var(--card2);color:var(--text);border:1px solid var(--border)}
+.btn-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.hint{font-size:11px;color:var(--faint);margin-top:6px}
+.updated{font-size:11px;color:var(--faint);font-weight:400}
+.leadnote{font-size:12px;color:var(--muted);margin:-4px 0 12px}
+.refreshbtn{margin-left:auto;background:var(--card2);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:6px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:.3px}
+.refreshbtn:hover{border-color:var(--faint)}
+.modal-bg{position:fixed;inset:0;background:rgba(6,8,12,.74);z-index:60;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-bg.show{display:flex;animation:fade .15s ease}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:14px;max-width:460px;width:100%;padding:20px}
+.modal h3{font-size:16px;font-weight:800;margin-bottom:6px}
+.modal .mclose{float:right;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;line-height:.7;font-family:inherit}
+.modal p{font-size:13px;margin-bottom:10px;color:#cfd6e2}
+.mstep{display:flex;gap:10px;background:var(--card2);border:1px solid var(--border);border-radius:9px;padding:10px 12px;margin-bottom:8px}
+.mstep .mn{width:22px;height:22px;border-radius:50%;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;color:var(--green);flex-shrink:0}
+.mstep .mt{font-size:12.5px}
+@media(max-width:720px){.leak,.form-grid{grid-template-columns:1fr}main{padding:16px}.g-sub{display:none}}
+.top-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:14px;margin-bottom:14px}
+.chart-wrap.compact{height:158px}
+.spot{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:16px;display:flex;flex-direction:column}
+.spot-hd{display:flex;align-items:baseline;gap:8px;margin-bottom:2px}
+.spot-title{font-weight:800;font-size:14px;color:var(--gold);letter-spacing:.3px}
+.spot-meta{font-size:11px;font-weight:700;color:var(--muted);margin-left:auto}
+.spot-note{font-size:11px;color:var(--faint);margin-bottom:9px}
+.spot-rows{display:flex;flex-direction:column;gap:6px}.spot-acc{border:1px solid var(--border);border-radius:9px;margin-bottom:7px;overflow:hidden}.spot-acc-hd{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;cursor:pointer;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--faint);background:var(--card2);user-select:none}.spot-acc-hd:hover{background:var(--card3,var(--card2));color:var(--fg)}.spot-acc-arrow{font-size:9px;transition:transform .2s}.spot-acc.acc-open .spot-acc-arrow{transform:rotate(180deg)}.spot-acc-body{display:none;padding:8px 8px 4px}.spot-acc.acc-open .spot-acc-body{display:block}.spot-cat-count{background:var(--accent,#4a9eff);color:#fff;border-radius:8px;font-size:9px;padding:1px 6px;margin-left:6px;font-weight:700}.spot-cat-none{font-size:11px;color:var(--faint);padding:4px 2px 6px}.spot-cat{margin-bottom:10px}.spot-cat-lbl{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);padding:4px 0 5px 2px;display:block}.spot-cat-empty{font-size:11px;color:var(--faint);padding:2px 0 8px 2px}.spot-cat .spot-row{margin-bottom:4px}
+.spot-row{display:flex;align-items:center;gap:9px;background:var(--card2);border:1px solid var(--border);border-radius:9px;padding:8px 10px;cursor:pointer}
+.spot-row:hover{border-color:var(--faint)}
+.spot-row .rank{width:22px;height:22px;font-size:10px}
+.spot-main{flex:1;min-width:0}
+.spot-match{font-weight:700;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.spot-play{font-size:11px;color:var(--muted);margin-top:1px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.spot-play b{color:var(--text);font-weight:800}
+.spot-right{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.spot-stake{font-size:12px;font-weight:800;color:var(--green)}
+.spot-row .grade{width:24px;height:24px;font-size:12px;border-radius:6px}
+.stars{position:relative;display:inline-block;font-size:11px;line-height:1;letter-spacing:1px}
+.stars .base{color:var(--faint)}
+.stars .fill{position:absolute;left:0;top:0;color:var(--gold);overflow:hidden;white-space:nowrap}
+
+.parlay-legs{display:flex;flex-direction:column;gap:7px;margin-bottom:9px}
+.parlay-leg{display:flex;gap:8px;align-items:center}
+.parlay-leg input{flex:1}
+.parlay-leg .rm{background:var(--red-d);color:#ffd9d9;border:none;border-radius:7px;width:32px;height:36px;font-size:16px;cursor:pointer;font-family:inherit;flex-shrink:0}
+.miniadd{background:var(--card2);border:1px dashed var(--faint);color:var(--muted);border-radius:8px;padding:7px 13px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
+.miniadd:hover{color:var(--text)}
+@media(max-width:720px){.top-grid{grid-template-columns:1fr}}
+.todayscard{background:linear-gradient(180deg,rgba(61,220,132,.10),rgba(61,220,132,.03));border:1px solid var(--green-d);border-radius:13px;padding:14px 15px;margin-bottom:14px}
+.tc-hd{display:flex;align-items:baseline;gap:10px}
+.tc-title{font-weight:800;font-size:15px;color:var(--green);letter-spacing:.3px}
+.tc-meta{font-size:12px;font-weight:700;color:var(--muted);margin-left:auto}
+.tc-note{font-size:11.5px;color:var(--muted);margin:4px 0 11px}
+.tc-rows{display:flex;flex-direction:column;gap:6px}
+.tc-row{display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--border);border-radius:9px;padding:8px 11px;cursor:pointer}
+.tc-row:hover{border-color:var(--faint);background:var(--card2)}
+.tc-row .rank{width:24px;height:24px;font-size:11px}
+.tc-match{font-weight:700;font-size:13px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tc-play{font-size:12.5px;font-weight:800;white-space:nowrap;text-align:right}
+.tc-play .muted{font-weight:600;font-size:11px}
+.tc-stake{font-size:12.5px;font-weight:800;color:var(--green);min-width:32px;text-align:right}
+.tc-row .grade{width:26px;height:26px;font-size:12px}
+.cardtag{font-size:8.5px;font-weight:800;letter-spacing:.5px;padding:2px 6px;border-radius:5px;background:rgba(61,220,132,.16);color:var(--green)}
+.proptag{font-size:8.5px;font-weight:800;letter-spacing:.5px;padding:2px 6px;border-radius:5px;background:var(--card2);color:var(--muted);border:1px solid var(--faint)}
+
+/* Line Movement Tab */
+.lm-empty{text-align:center;padding:48px 20px;color:var(--muted);line-height:1.8}
+.lm-empty-icon{font-size:36px;margin-bottom:12px}
+.lm-updated{font-size:10px;letter-spacing:.6px;font-weight:600;color:var(--faint);text-transform:none;margin-left:6px}
+.lmc{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.lmc-hd{display:flex;align-items:center;gap:12px;padding:13px 15px;flex-wrap:wrap}
+.lmc-meta{flex:1;min-width:0}
+.lmc-match{font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.lmc-time{font-size:11px;color:var(--muted);margin-top:2px}
+.lmc-right{display:flex;align-items:center;gap:10px;flex-shrink:0;flex-wrap:wrap}
+.lm-line{display:flex;align-items:center;gap:6px;font-size:13px}
+.lm-open{color:var(--faint)}
+.lm-arrow{color:var(--muted);font-size:11px}
+.lm-cur{font-weight:800}
+.lm-cur.moved-sharp{color:var(--green)}
+.lm-cur.moved-public{color:var(--gold)}
+.lm-cur.moved-steam{color:#a880ff}
+.lm-cur.moved-none{color:var(--text)}
+.sig-badge{font-size:9px;font-weight:800;letter-spacing:.8px;padding:3px 8px;border-radius:6px;text-transform:uppercase;white-space:nowrap}
+.sig-sharp{background:rgba(61,220,132,.16);color:var(--green);border:1px solid rgba(61,220,132,.35)}
+.sig-rlm{background:rgba(61,220,132,.28);color:var(--green);border:1px solid var(--green)}
+.sig-steam{background:rgba(168,128,255,.18);color:#a880ff;border:1px solid rgba(168,128,255,.4)}
+.sig-public{background:rgba(245,183,64,.14);color:var(--gold);border:1px solid rgba(245,183,64,.3)}
+.sig-split{background:var(--card2);color:var(--muted);border:1px solid var(--border)}
+.lmc-body{padding:0 15px 15px;border-top:1px solid var(--border)}
+.lm-bars{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:13px 0}
+.lm-bar-wrap{background:var(--card2);border:1px solid var(--border);border-radius:9px;padding:10px 12px}
+.lm-bar-lbl{font-size:9px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px}
+.lm-bar-track{background:var(--bg);border-radius:4px;height:8px;overflow:hidden;margin-bottom:5px}
+.lm-bar-fill{height:8px;border-radius:4px;background:var(--blue)}
+.lm-bar-fill.majority{background:var(--gold)}
+.lm-bar-val{font-size:13px;font-weight:800}
+.lm-bar-side{font-size:10px;color:var(--muted);margin-left:4px}
+.lm-note{font-size:12.5px;color:var(--muted);line-height:1.6;margin-top:6px;padding-top:10px;border-top:1px solid var(--border)}
+.lm-flags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.lm-flag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:.5px}
+.lm-flag.rlm{background:rgba(61,220,132,.14);color:var(--green);border:1px solid rgba(61,220,132,.35)}
+.lm-flag.steam{background:rgba(168,128,255,.14);color:#a880ff;border:1px solid rgba(168,128,255,.4)}
+.lm-flag.key{background:rgba(245,183,64,.14);color:var(--gold);border:1px solid rgba(245,183,64,.3)}
+
+
+/* Research Hub */
+.res-card{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;padding:14px 16px}
+.res-card.rel-high{border-left:3px solid var(--green)}
+.res-card.rel-medium{border-left:3px solid var(--blue)}
+.res-card.rel-low{border-left:3px solid var(--border)}
+.res-hd{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.res-title{font-weight:700;font-size:14px;flex:1}
+.res-body{font-size:13px;color:#cfd6e2;line-height:1.7}
+.res-foot{display:flex;gap:10px;align-items:center;margin-top:9px;flex-wrap:wrap}
+.res-ts{font-size:10px;color:var(--faint);letter-spacing:.4px}
+.cat-badge{font-size:9px;font-weight:800;letter-spacing:.7px;padding:2px 7px;border-radius:5px;text-transform:uppercase;white-space:nowrap}
+.cat-sharp{background:rgba(61,220,132,.14);color:var(--green);border:1px solid rgba(61,220,132,.3)}
+.cat-injury{background:rgba(255,107,107,.14);color:var(--red);border:1px solid rgba(255,107,107,.3)}
+.cat-weather{background:rgba(79,157,255,.14);color:var(--blue);border:1px solid rgba(79,157,255,.3)}
+.cat-trend{background:rgba(245,183,64,.14);color:var(--gold);border:1px solid rgba(245,183,64,.3)}
+.cat-system{background:rgba(168,128,255,.14);color:#a880ff;border:1px solid rgba(168,128,255,.3)}
+.cat-matchup{background:rgba(255,157,79,.14);color:var(--orange);border:1px solid rgba(255,157,79,.3)}
+.cat-angle{background:var(--card2);color:var(--muted);border:1px solid var(--border)}
+.rel-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.rel-dot.high{background:var(--green)}
+.rel-dot.medium{background:var(--blue)}
+.rel-dot.low{background:var(--faint)}
+
+/* Inline line movement inside game breakdown */
+.bd-lm{background:var(--card2);border:1px solid var(--border);border-radius:9px;padding:10px 12px;margin:4px 0 8px}
+.bd-lm-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px}
+.bd-lm-line{display:flex;align-items:center;gap:5px;font-size:12.5px}
+.bd-lm-note{font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:5px}
+
+/* Inline research inside game breakdown */
+.bd-res-inline{display:flex;flex-direction:column;gap:6px;margin:4px 0 8px}
+.bd-ri{background:var(--card2);border:1px solid var(--border);border-radius:9px;padding:9px 11px}
+.bd-ri.rel-high{border-left:3px solid var(--green)}
+.bd-ri.rel-medium{border-left:3px solid var(--blue)}
+.bd-ri-hd{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:4px}
+.bd-ri-title{font-size:12px;font-weight:700;flex:1;color:var(--text)}
+.bd-ri-body{font-size:11.5px;color:#b0b8c8;line-height:1.6}
+
+/* General research section on Today tab */
+.gen-res-toggle{background:none;border:none;color:var(--muted);font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:.3px;display:flex;align-items:center;gap:6px;padding:0}
+.gen-res-toggle:hover{color:var(--text)}
+#genResPanel{display:none}
+#genResPanel.open{display:block}
+
+
+/* Track Record */
+.rec-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:18px}
+.rec-stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 15px}
+.rec-stat .k{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:700}
+.rec-stat .v{font-size:26px;font-weight:800;margin-top:5px;line-height:1.1}
+.rec-stat .sub{font-size:11px;color:var(--faint);margin-top:3px}
+.rec-charts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:4px}
+@media(max-width:600px){.rec-charts{grid-template-columns:1fr}}
+.rec-chart-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 15px}
+.rec-chart-title{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:10px}
+.hint{font-size:11px;color:var(--faint);margin-top:8px;padding:0 4px}
+.res-W{color:var(--green);font-weight:800}
+.res-L{color:var(--red);font-weight:800}
+.res-P{color:var(--gold);font-weight:800}
+.res-pending{color:var(--faint);font-weight:600}
+
+
+
+
+/* ── Calendar ── */
+.cal-wrap{margin-bottom:22px}
+.cal-nav{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.cal-nav h3{font-size:15px;font-weight:800;flex:1;text-align:center;margin:0}
+.cal-arrow{background:var(--card2);border:1px solid var(--border);color:var(--text);border-radius:8px;width:32px;height:32px;font-size:18px;cursor:pointer;font-family:inherit;line-height:1;display:flex;align-items:center;justify-content:center}
+.cal-arrow:hover{border-color:var(--faint)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-dow{text-align:center;font-size:9px;font-weight:700;letter-spacing:.8px;color:var(--faint);padding:4px 0;text-transform:uppercase}
+.cal-day{border-radius:9px;min-height:62px;padding:6px 7px;background:var(--card);border:1px solid var(--border)}
+.cal-day.other{background:transparent;border-color:transparent}
+.cal-day.has-plays{cursor:pointer}
+.cal-day.has-plays:hover{border-color:var(--green);background:var(--card2)}
+.cal-day.is-today{border-color:#4f9dff66}
+.cal-dn{font-size:11px;font-weight:700;color:var(--muted)}
+.cal-day.is-today .cal-dn{color:var(--blue)}
+.cal-day.other .cal-dn{color:transparent}
+.cal-pl{font-size:13px;font-weight:800;margin-top:3px}
+.cal-pl.pos{color:var(--green)}.cal-pl.neg{color:var(--red)}.cal-pl.neu{color:var(--muted)}
+.cal-ct{font-size:9px;color:var(--muted);margin-top:2px;font-weight:600}
+.cal-dots{display:flex;gap:3px;margin-top:4px;flex-wrap:wrap}
+.cal-dot{width:7px;height:7px;border-radius:50%}
+.cal-dot.W{background:var(--green)}.cal-dot.L{background:var(--red)}.cal-dot.P{background:var(--gold)}.cal-dot.pending{background:var(--faint)}
+.cal-popup-bg{position:fixed;inset:0;z-index:50;display:none}
+.cal-popup-bg.open{display:block}
+.cal-popup{position:fixed;z-index:51;background:var(--card);border:1px solid var(--border);border-radius:13px;padding:15px 16px;width:290px;box-shadow:0 8px 32px rgba(0,0,0,.55);display:none}
+.cal-popup.open{display:block}
+.cal-ph{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.cal-ph h4{font-size:13px;font-weight:800;flex:1;margin:0}
+.cal-px{background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;font-family:inherit;line-height:.7;padding:0}
+.cal-row{display:flex;align-items:center;gap:7px;padding:6px 0;border-bottom:1px solid var(--border);font-size:12px}
+.cal-row:last-child{border-bottom:none}
+.cal-rsport{font-size:8px;font-weight:800;padding:2px 5px;border-radius:4px;text-transform:uppercase;flex-shrink:0}
+.cal-rplay{flex:1;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cal-rres{font-size:10px;font-weight:900;flex-shrink:0}
+.cal-rres.W{color:var(--green)}.cal-rres.L{color:var(--red)}.cal-rres.P{color:var(--gold)}.cal-rres.pending{color:var(--faint)}
+.cal-ptot{margin-top:10px;padding-top:9px;border-top:1px solid var(--border);font-size:13px;font-weight:800;text-align:right}
+
+
+/* ── settle buttons ─────────────────────────────── */
+.settle-btns{display:flex;gap:4px;justify-content:center}
+.sbtn{border:none;border-radius:5px;font-size:11px;font-weight:700;padding:3px 8px;cursor:pointer;letter-spacing:.3px;transition:opacity .15s}
+.sbtn-w{background:#22c55e;color:#000}.sbtn-l{background:#ef4444;color:#fff}.sbtn-p{background:#64748b;color:#fff}
+.sbtn:hover{opacity:.8}
+/* ── unsaved banner ─────────────────────────────── */
+#unsavedBanner{display:none;position:fixed;bottom:22px;right:22px;background:#1e293b;border:1px solid #4ade80;border-radius:12px;padding:12px 18px;z-index:9999;box-shadow:0 4px 24px rgba(0,0,0,.5);align-items:center;gap:14px}
+#unsavedBanner.show{display:flex}
+#unsavedBanner .ub-msg{font-size:13px;color:#e2e8f0}
+#unsavedBanner .ub-msg span{color:#4ade80;font-weight:700}
+.ub-save{background:#4ade80;color:#000;border:none;border-radius:8px;padding:7px 16px;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.3px}
+.ub-save:hover{opacity:.85}
+.ub-dismiss{background:none;border:none;color:#64748b;font-size:18px;cursor:pointer;line-height:1;padding:0 2px}
+/* ── sport breakdown ────────────────────────────── */
+.sport-breakdown{margin:18px 0 24px;overflow-x:auto}
+.sb-table{border-collapse:collapse;width:100%;font-size:12.5px}
+.sb-table th{color:var(--muted);font-weight:600;padding:6px 12px;text-align:center;border-bottom:1px solid var(--border)}
+.sb-table th:first-child{text-align:left}
+.sb-table td{padding:5px 12px;text-align:center;border-bottom:1px solid rgba(255,255,255,.04)}
+.sb-table td:first-child{text-align:left;font-weight:600;color:var(--text)}
+.sb-table tr:last-child td{border-top:1px solid var(--border);font-weight:700;color:var(--text)}
+.sb-pos{color:#4ade80}.sb-neg{color:#f87171}.sb-neu{color:#94a3b8}
+/* ── headlines card ─────────────────────────────── */
+.headlines-card{display:flex;flex-direction:column}
+.headlines-list{flex:1;overflow-y:auto;max-height:210px;display:flex;flex-direction:column;gap:0}
+.hl-item{padding:7px 4px;border-bottom:1px solid var(--border);cursor:default}
+.hl-item:last-child{border-bottom:none}
+.hl-item.hl-link{cursor:pointer;transition:background .15s}
+.hl-item.hl-link:hover{background:var(--card2);border-radius:6px}
+.hl-item.hl-link:hover .hl-text{color:var(--accent,#60a5fa)}
+.hl-chevron{float:right;font-size:10px;color:var(--faint);transition:transform .2s;display:inline-block;margin-left:6px;line-height:1.4}
+.hl-item.hl-open .hl-chevron{transform:rotate(180deg);color:var(--accent,#60a5fa)}
+.hl-story{display:none;font-size:11.5px;line-height:1.6;color:var(--muted);padding:8px 0 4px 0;border-top:1px solid var(--border);margin-top:6px}
+.hl-story a{color:var(--accent,#60a5fa);font-size:10px;text-decoration:none;opacity:.7}
+.hl-story a:hover{opacity:1}
+.hl-item.hl-open .hl-story{display:block;animation:fade .2s ease}
+.hl-sport{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:var(--card2);color:var(--faint);border-radius:4px;padding:1px 5px;margin-right:5px;vertical-align:middle}
+.hl-text{font-size:12px;line-height:1.4;color:var(--fg);transition:color .15s}
+.hl-src{font-size:10px;color:var(--faint);margin-top:2px}
+.headlines-updated{font-size:10px;color:var(--faint);margin-left:auto}
+/* ── bankroll chart ─────────────────────────────── */
+.bankroll-strip{margin:4px 0 0;font-size:11.5px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap}
+.bankroll-strip .bk-v{font-weight:700;font-size:14px}
+.bk-pos{color:#4ade80}.bk-neg{color:#f87171}
+
+</style></head><body>
+<header>
+<div class="hdr-top">
+<div class="logo"><div class="mark">B</div><div>BET COACH<small>YOUR STATS &middot; TODAY'S BOARD</small></div></div>
+<div class="pills" id="hdrPills"></div>
+</div>
+<nav id="nav">
+<button data-tab="today" class="active">Today</button>
+<button data-tab="record">Track Record</button>
+<button data-tab="bets">My Bets</button>
+<button data-tab="coach">Coach</button>
+<button data-tab="settings">Settings</button>
+</nav>
+</header>
+<main>
+<section class="tab active" id="tab-today">
+<div class="top-grid">
+<div class="graphcard headlines-card">
+<div class="gc-top"><h3>&#128240; Today's Headlines</h3><span id="hlClock" style="font-size:10px;color:var(--faint);margin-left:6px;font-variant-numeric:tabular-nums"></span><span class="headlines-updated" id="headlinesUpdated" style="margin-left:8px"></span></div>
+<div id="headlinesList" class="headlines-list"><div class="empty">Loading headlines...</div></div>
+</div>
+<div class="spot" id="spotlight"></div>
+</div>
+<h2 class="sec">Today's Board <span class="updated" id="boardUpdated"></span>
+<button class="refreshbtn" id="refreshBtn">&#8635; Refresh</button></h2>
+<p class="leadnote">Games ranked by how much I like a play in them, on DraftKings lines. Grades are my read on the edge &mdash; A is strong, F is a trap. These are leans, not locks: tap any game for the full breakdown.</p>
+<div id="staleBanner"></div>
+<div class="boardbar" id="boardBar"></div>
+<div id="board"></div>
+<div style="margin-top:28px;border-top:1px solid var(--border);padding-top:18px">
+<button class="gen-res-toggle" id="genResToggle">&#x25B6; General Research &amp; Context <span id="genResCount" class="small muted"></span></button>
+<div id="genResPanel"></div>
+</div>
+</section>
+<section class="tab" id="tab-record">
+<h2 class="sec">My Track Record <span class="lm-updated" id="recUpdated"></span></h2>
+<p class="leadnote">Every play I grade A, B, or C gets logged here as pending. Tell me the result after the game and I'll settle it. Use this to judge whether my reads are worth following before risking real money.</p>
+
+  <div id="calPB"></div>
+  <div class="cal-ptot" id="calPT"></div>
+</div>
+<div class="rec-stats" id="recStats"></div>
+<div class="rec-charts">
+  <div class="rec-chart-card">
+    <div class="rec-chart-title">Bankroll Curve</div>
+    <div id="bankrollStrip" class="bankroll-strip"></div>
+    <div class="chart-wrap" style="height:185px"><canvas id="chartBankrollRec"></canvas></div>
+  </div>
+  <div class="rec-chart-card">
+    <div class="rec-chart-title">Cumulative Record Over Time</div>
+    <div class="chart-wrap" style="height:200px"><canvas id="chartRecord"></canvas></div>
+  </div>
+  <div class="rec-chart-card">
+    <div class="rec-chart-title">Win Rate by Grade</div>
+    <div class="chart-wrap" style="height:200px"><canvas id="chartGrades"></canvas></div>
+  </div>
+</div>
+<h2 class="sec" style="margin-top:20px">Record by Sport &amp; Grade</h2>
+<div class="sport-breakdown" id="sportBreakdown"></div>
+<h2 class="sec" style="margin-top:20px">All Logged Picks</h2>
+<div class="tbl-wrap">
+<table id="recTable">
+<thead><tr>
+  <th>Date</th><th>Sport</th><th>Matchup</th><th>Play</th><th>Odds</th><th>Grade</th><th>Result</th>
+</tr></thead>
+<tbody id="recBody"></tbody>
+</table>
+</div>
+<p class="hint" id="recCount"></p>
+
+<h2 class="sec" style="margin-top:20px">Calendar</h2>
+<div class="cal-wrap">
+  <div class="cal-nav">
+    <button class="cal-arrow" id="calPrev">&#8249;</button>
+    <h3 id="calTitle"></h3>
+    <button class="cal-arrow" id="calNext">&#8250;</button>
+  </div>
+  <div class="cal-grid" id="calGrid"></div>
+</div>
+<div class="cal-popup-bg" id="calBg"></div>
+<div class="cal-popup" id="calPopup">
+  <div class="cal-ph"><h4 id="calPH"></h4><button class="cal-px" id="calPX">&times;</button></div>
+</section>
+<section class="tab" id="tab-bets">
+<h2 class="sec">Bet Log</h2>
+<p class="leadnote">Send me a screenshot of any bet slip and I'll log it here with a grade. Tell me the result when the game ends and I'll settle it.</p>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Date</th><th>Sport</th><th>Matchup</th><th>Selection</th><th>Odds</th><th>Stake</th><th>Result</th><th>P/L</th><th>Units</th><th>My Grade</th></tr></thead>
+<tbody id="betsBody"></tbody>
+</table></div>
+<p class="hint" id="betCount"></p>
+</section>
+<section class="tab" id="tab-coach">
+<h2 class="sec">Discipline Check</h2>
+<div class="alert-stack" id="guardrails"></div>
+<h2 class="sec">Grade vs. Results</h2>
+<p class="leadnote">Do the bets I grade highly actually win? This is how we learn whether my reads hold up.</p>
+<div class="card" id="gradePanel"></div>
+<h2 class="sec">Leak Detection</h2>
+<p class="leadnote">Where your money goes, broken down. Segments with 5+ settled bets are the reliable ones.</p>
+<div class="card"><div class="leak" id="leakPanel"></div></div>
+<h2 class="sec">What the Data Is Teaching You</h2>
+<div class="card"><div id="insights"></div></div>
+</section>
+<section class="tab" id="tab-settings">
+<h2 class="sec">Bankroll &amp; Unit</h2>
+<div class="card">
+<div class="form-grid">
+<div class="fld"><label>Starting Bankroll ($)</label><input type="number" id="s-bankroll" step="0.01"></div>
+<div class="fld"><label>Unit Size ($)</label><input type="number" id="s-unit" step="0.01"></div>
+</div>
+<div id="unitInfo" style="margin-top:12px"></div>
+<p class="hint">These are saved in this browser. Tell me in chat if you want them changed permanently in the tracker.</p>
+</div>
+<h2 class="sec">How This Works</h2>
+<div class="card small" style="line-height:1.7">
+<p><b>The board</b> &mdash; today's games, ranked, each with my favorite play and a grade. Built from DraftKings lines, refreshed every morning.</p>
+<p><b>Refreshing</b> &mdash; tap the Refresh button on the board. The app is a local file so it can't fetch odds itself; refreshing means I re-pull current DraftKings lines and re-grade the slate.</p>
+<p><b>Logging a bet</b> &mdash; send me a screenshot of your bet slip in chat. I read it, grade the bet, and add it to your log.</p>
+<p><b>Settling a bet</b> &mdash; tell me the result when the game ends and I'll mark it W/L/P.</p>
+<p><b>Grades</b> &mdash; I grade the <i>bet</i>: A = clear edge or value, B = solid, C = thin/playable, D = weak, F = a bet to avoid. A trailing + or &minus; (e.g. B+, C&minus;) fine-tunes the call within a tier.</p>
+</div>
+<h2 class="sec">Betting Rules</h2>
+<div class="card small">
+<p>1. Standard bet = 1 unit. Strong lean = 2u. Max = 3u.</p>
+<p>2. Never chase losses by increasing unit size.</p>
+<p>3. Walk away after 3 straight losses to reset.</p>
+<p>4. Daily stop-loss: &minus;5u &nbsp;&middot;&nbsp; stop-win: +10u (optional lock).</p>
+<p>5. Re-evaluate unit size when bankroll moves &plusmn;25%.</p>
+<p>6. Bet the board as a guide, not gospel &mdash; you place the bets you believe in.</p>
+</div>
+<h2 class="sec">Data</h2>
+<div class="card">
+<p class="small muted" style="margin-bottom:11px">The CSV matches your Bet_Tracker.xlsx columns, so you can paste it straight into the Bets sheet.</p>
+<div class="btn-row" style="margin-top:0">
+<button class="btn ghost" id="exportJSON">Export Backup (JSON)</button>
+<button class="btn ghost" id="exportCSV">Export for Excel (CSV)</button>
+</div>
+</div>
+</section>
+
+</main>
+<div class="modal-bg" id="refreshModal"><div class="modal">
+<button class="mclose" id="refreshClose" aria-label="Close">&times;</button>
+<h3>Refresh the board</h3>
+<p>Your board is built by Claude from <b>DraftKings Sportsbook</b> lines, and refreshes automatically every morning (around 8 AM).</p>
+<p class="small muted" id="refreshUpdated"></p>
+<p>To pull fresh DraftKings lines right now, do either:</p>
+<div class="mstep"><div class="mn">1</div><div class="mt">Tell Claude <b>&ldquo;refresh the board&rdquo;</b> in your chat &mdash; Claude re-researches today's slate and rewrites the board.</div></div>
+<div class="mstep"><div class="mn">2</div><div class="mt">Or open the <b>Scheduled</b> panel in the sidebar and hit <b>Run now</b> on the <b>refresh-betting-board</b> task.</div></div>
+<p class="small muted">This app is a local file, so the button can't fetch live odds on its own &mdash; a refresh means Claude pulling current DraftKings lines and re-grading the slate.</p>
+</div></div>
+<script id="betdata" type="application/json">
+{
+  "settings": {
+    "bankroll": 80,
+    "unit": 10
+  },
+  "updated": "June 2, 2026",
+  "linesSource": "Action Network / Covers / FanDuel Research — June 2, 2026",
+  "bets": [
+    {
+      "date": "2026-05-26",
+      "sport": "NBA",
+      "matchup": "SA Spurs @ OKC Thunder — WCF G5",
+      "play": "Under 216.5",
+      "odds": "-110",
+      "grade": "A",
+      "result": "L",
+      "note": "Model hits Under 58.4% of sims. Game 4 was 103-82. Williams Q, Mitchell OUT. Total dropped from 219.5. Top play of the day. RESULT: Spurs 122, Thunder 115 (2OT) = 237 total. Way over. Loss."
+    },
+    {
+      "date": "2026-05-26",
+      "sport": "NHL",
+      "matchup": "COL Avalanche @ VGK — WCF G4",
+      "play": "Vegas Golden Knights ML",
+      "odds": "-110",
+      "grade": "A",
+      "result": "W",
+      "note": "Vegas 3-0 in series, home ice, elimination game. Carter Hart .942 SV%. MacKinnon/Nichushkin injured. Near even money is elite value. — GAME IN PROGRESS RESULT: VGK 2-1, sweep. Win."
+    },
+    {
+      "date": "2026-05-26",
+      "sport": "MLB",
+      "matchup": "BOS Red Sox @ ATL Braves",
+      "play": "Strider Over 6.5 Ks",
+      "odds": "+114",
+      "grade": "A",
+      "result": "L",
+      "note": "Strider 6.8 K/game average, 31.2% K rate. Red Sox 2nd worst vs RHP. Plus money on his floor — best value play on the board. RESULT: Strider had 5 Ks. Under 6.5. Loss."
+    },
+    {
+      "date": "2026-05-26",
+      "sport": "MLB",
+      "matchup": "BOS Red Sox @ ATL Braves",
+      "play": "Atlanta Braves ML",
+      "odds": "-125",
+      "grade": "B",
+      "result": "W",
+      "note": "Strider healthy and in form. Sharp ticket/money split favors Atlanta. Red Sox 8-17 at home. RESULT: Braves 3-2 extra innings. Win."
+    },
+    {
+      "date": "2026-05-26",
+      "sport": "MLB",
+      "matchup": "PHI Phillies @ SD Padres",
+      "play": "San Diego Padres ML",
+      "odds": "-118",
+      "grade": "B",
+      "result": "L",
+      "note": "Nola 6.04 ERA, Phillies 4-game skid. Vasquez 5-2. Padres bullpen elite. Petco Park suppresses offense. RESULT: Phillies 4-3. Loss."
+    },
+    {
+      "date": "2026-05-27",
+      "sport": "MLB",
+      "matchup": "PHI Phillies @ SD Padres",
+      "play": "Philadelphia Phillies ML",
+      "odds": "+110",
+      "grade": "A-",
+      "result": "W",
+      "note": "Sanchez (1.62 ERA) vs Buehler (5.05 ERA) — the largest pitcher ERA gap on today's board, and PHI is priced as the underdog at Petco."
+    },
+    {
+      "date": "2026-05-27",
+      "sport": "MLB",
+      "matchup": "HOU Astros @ TEX Rangers",
+      "play": "Houston Astros ML",
+      "odds": "+127",
+      "grade": "A-",
+      "result": "W",
+      "note": "Arrighetti (5-1, 1.50 ERA) on 5-days rest going into Globe Life Field — sharp money confirmed on Lines tab, 4-game HOU win streak."
+    },
+    {
+      "date": "2026-05-27",
+      "sport": "NHL",
+      "matchup": "CAR Hurricanes @ MTL Canadiens — ECF G4",
+      "play": "Carolina Hurricanes ML",
+      "odds": "-140",
+      "grade": "B",
+      "result": "W",
+      "note": "Series leaders looking for a commanding 3-1 lead against a young Montreal team outclassed in two of three games."
+    },
+    {
+      "date": "2026-05-27",
+      "sport": "MLB",
+      "matchup": "NYY Yankees @ KC Royals",
+      "play": "Kansas City Royals ML",
+      "odds": "+118",
+      "grade": "C+",
+      "result": "L",
+      "note": "Fade-the-public spot: 74% of bets and 70% of money on NYY but line barely moved, confirming sharp resistance on the Royals side."
+    },
+    {
+      "date": "2026-05-27",
+      "sport": "MLB",
+      "matchup": "CIN Reds @ NYM Mets",
+      "play": "Cincinnati Reds ML",
+      "odds": "+115",
+      "grade": "C",
+      "result": "L",
+      "note": "LM signal shows sharp lean on Reds in this series, but today's starter is Abbott (not Burns) — reduced conviction, small-unit only."
+    },
+    {
+      "date": "2026-05-28",
+      "sport": "MLB",
+      "matchup": "HOU Astros @ TEX Rangers",
+      "play": "Houston Astros ML",
+      "odds": "+110",
+      "grade": "A-",
+      "result": "W",
+      "note": "SP edge of the day: Arrighetti (6-1, 1.32 ERA) vs Eovaldi (3.65 ERA) — one of the biggest ERA gaps on today's board. Arrighetti nearly threw a no-hitter vs TEX earlier in 2026. Market prices TEX at -130 for home-field but that SP gap is too wide. Road dog value at +110. Astros bullpen depth edge over Rangers late game."
+    },
+    {
+      "date": "2026-05-28",
+      "sport": "MLB",
+      "matchup": "ATL Braves @ BOS Red Sox",
+      "play": "Atlanta Braves ML",
+      "odds": "-118",
+      "grade": "B+",
+      "result": "W",
+      "note": "Bryce Elder (1.97 ERA) for the hottest team in baseball (36-16) at light juice. Payton Tolle (2.95 ERA) is solid for BOS but the Red Sox are struggling (22-28). ATL has superior run support, stronger rotation top-to-bottom, and -118 is a very reasonable price for a team on a dominant run. Elder's ERA makes this a hold-your-nose-and-bet-the-favorite spot."
+    },
+    {
+      "date": "2026-05-28",
+      "sport": "MLB",
+      "matchup": "CHC Cubs @ PIT Pirates",
+      "play": "Chicago Cubs ML",
+      "odds": "+146",
+      "grade": "C+",
+      "result": "W",
+      "note": "Fade the overpriced PIT line. Skenes (3.00 ERA) is elite but -174 implies 63.4% win probability — models show only 57% for PIT. CHC +146 (break-even 40.7%) with true win probability ~43% offers a small +EV fade. Colin Rea (4.98 ERA) is the risk. If Cubs offense chases Skenes or gets to PIT pen, this covers. Marginal edge — small unit only."
+    },
+    {
+      "date": "2026-05-28",
+      "sport": "NHL",
+      "matchup": "VGK Golden Knights @ COL Avalanche — WCF G5",
+      "play": "Vegas Golden Knights ML",
+      "odds": "-140",
+      "grade": "C",
+      "result": "P",
+      "note": "VGK goes for series sweep in Denver (leads 3-0). 0-49 historically for teams facing 3-0 deficit in conference finals. VGK 11-4 in postseason, led by Marner and Eichel. COL gets home crowd and desperate energy, which limits value — but the historical weight against a comeback is overwhelming. -140 is reasonable juice to back the likely winner. Tight play, small unit."
+    },
+    {
+      "date": "2026-05-29",
+      "sport": "NBA",
+      "matchup": "Thunder @ Spurs (WCF G6)",
+      "play": "OKC Thunder +3.5",
+      "odds": -110,
+      "grade": "B+",
+      "result": "L",
+      "note": "Public fade: 72-75% on Spurs, line crossed key number 3 (opened -2.5, now -3.5). Sharp signal on OKC. Williams active. OKC won G5 by 13."
+    },
+    {
+      "date": "2026-05-29",
+      "sport": "MLB",
+      "matchup": "Phillies @ Dodgers",
+      "play": "Phillies ML",
+      "odds": 100,
+      "grade": "B",
+      "result": "L",
+      "note": "Wheeler (1.67 ERA in last 6, 4-0) at even money +100. Elite pitching edge vs. Wrobleski (3.07 ERA). Dodgers better team but pitching swings value to PHI."
+    },
+    {
+      "date": "2026-05-31",
+      "sport": "MLB",
+      "matchup": "KC Royals @ TEX Rangers",
+      "play": "Over 7.5 Runs",
+      "odds": "-102",
+      "grade": "A",
+      "result": "L",
+      "note": "Top model edge today — 58.4% probability, +7.9% edge at -102. TEX bullpen near-bottom xERA. Both lineups live. Sharp money moved total from 7 to 7.5. | RESULT: Rangers won ~6-1. Total under 7.5. LOSS."
+    },
+    {
+      "date": "2026-05-31",
+      "sport": "MLB",
+      "matchup": "NYY Yankees @ OAK Athletics",
+      "play": "New York Yankees ML",
+      "odds": "-155",
+      "grade": "A-",
+      "result": "L",
+      "note": "Will Warren (6-1, 3.55 ERA) vs Jacob Lopez (5.73 ERA). Massive pitching mismatch. Yankees ML moved from -145 to -155 on sharp action. | RESULT: Athletics won 6-4. LOSS."
+    },
+    {
+      "date": "2026-05-31",
+      "sport": "MLB",
+      "matchup": "CHC Cubs @ STL Cardinals",
+      "play": "STL Cardinals ML",
+      "odds": -118,
+      "grade": "B+",
+      "result": "W",
+      "note": "Sharp signal all day — 90% public on Cubs yet Cardinals line held. Wicks (16.62 ERA) vs Liberatore (4.76 ERA) at Busch Stadium. Fade the public, back the home pitcher."
+    },
+    {
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "matchup": "Rangers @ Cardinals",
+      "play": "Cardinals ML",
+      "odds": -125,
+      "grade": "B",
+      "result": "pending",
+      "note": "Cardinals at home with the ERA edge. McGreevy (2.98) vs deGrom (3.77 ERA on the road). Both teams near .500 but Cards are 30-26 vs Rangers 27-31. Busch Stadium, home field, better ERA — Cardinals at reasonable juice is solid value. deGrom has road struggles this year."
+    },
+    {
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "matchup": "Royals @ Reds",
+      "play": "Reds ML",
+      "odds": -188,
+      "grade": "B-",
+      "result": "pending",
+      "note": "Chase Burns is the best pitcher in baseball (7-1, 1.96 ERA, 4-0 May with 1.19 ERA). Avila has never started — 10 bullpen appearances, now making his first-ever rotation start. Royals are 22-37. At -188 you need 65%+ win rate; Burns' true win rate in this spot is realistically 72-75%. Steep but genuine edge via SP ERA gap."
+    },
+    {
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "matchup": "Dodgers @ Diamondbacks",
+      "play": "Diamondbacks ML",
+      "odds": 125,
+      "grade": "A-",
+      "result": "pending",
+      "note": "Best play on the board. Textbook RLM: 65% public on LA yet Dodgers line shortened from -155 to -147 — sharp money buying Arizona. Rodriguez (2.31 ERA overall, 1.60 ERA in May, 5-1) is pitching at his best. Sheehan carries a 6.52 ERA on the road with a .386 wOBA. Plus-money on a sharp-backed dog with the genuine pitcher edge."
+    },
+    {
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "matchup": "Giants @ Brewers",
+      "play": "Brewers ML",
+      "odds": -158,
+      "grade": "A-",
+      "result": "pending",
+      "note": "Sharp syndicate action drove Milwaukee's line 23 cents (from -143 to -166 peak). Brewers (35-21) hosting Giants (23-36) with brutal road record. Sharp-backed home favorite with a big record edge."
+    },
+    {
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "matchup": "White Sox @ Twins",
+      "play": "White Sox ML",
+      "odds": 139,
+      "grade": "B+",
+      "result": "pending",
+      "note": "Classic RLM: 53% of bets on Twins yet 75% of money on Chicago, shortening Minnesota from -175 to -163. Sharp syndicates buying Sox at a price. On 5-game win streak, same Twins they dominated in debut last week."
+    }
+  ],
+  "games": [
+    {
+      "id": "g-20260601-001",
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "time": "6:40 PM ET",
+      "away": "Tigers",
+      "home": "Rays",
+      "matchup": "Tigers @ Rays",
+      "awayPitcher": "Ty Madden",
+      "homePitcher": "Griffin Jax",
+      "awayML": 135,
+      "homeML": -162,
+      "total": 8.0,
+      "pick": "Tigers ML",
+      "pickOdds": 135,
+      "grade": "B",
+      "signal": "RLM",
+      "take": "RLM alert: 85% public on Rays yet line dropped -170→-162 — sharp money on Detroit as live dog. Madden vs Jax is a coin-flip SP matchup. +135 with sharp backing. Game in-progress at board refresh.",
+      "injuries": "",
+      "status": "in-progress"
+    },
+    {
+      "id": "g-20260601-002",
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "time": "6:45 PM ET",
+      "away": "Marlins",
+      "home": "Nationals",
+      "matchup": "Marlins @ Nationals",
+      "awayPitcher": "Sandy Alcantara",
+      "homePitcher": "Cade Cavalli",
+      "awayML": -150,
+      "homeML": 130,
+      "total": 7.5,
+      "pick": "Marlins ML",
+      "pickOdds": -150,
+      "grade": "C+",
+      "signal": "split",
+      "take": "Alcantara SP edge over Cavalli but no sharp signals. Marlins below .500; stiff juice makes this marginal at best. No bet — monitor only.",
+      "injuries": "",
+      "status": "in-progress"
+    },
+    {
+      "id": "g-20260601-003",
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "time": "7:10 PM ET",
+      "away": "Royals",
+      "home": "Reds",
+      "matchup": "Royals @ Reds",
+      "awayPitcher": "Luinder Avila",
+      "homePitcher": "Lyon Richardson",
+      "awayML": 160,
+      "homeML": -190,
+      "total": 8.0,
+      "pick": "PASS",
+      "pickOdds": null,
+      "grade": "P",
+      "signal": "public",
+      "take": "VOIDED: Chase Burns scratched (illness) replaced by Lyon Richardson. Entire edge was Burns. Do not bet.",
+      "injuries": "Chase Burns (SP, CIN) — scratched illness",
+      "status": "upcoming"
+    },
+    {
+      "id": "g-20260601-004",
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "time": "7:40 PM ET",
+      "away": "Rangers",
+      "home": "Cardinals",
+      "matchup": "Rangers @ Cardinals",
+      "awayPitcher": "Jacob deGrom",
+      "homePitcher": "Miles McGreevy",
+      "awayML": -125,
+      "homeML": 105,
+      "total": 8.5,
+      "pick": "PASS",
+      "pickOdds": null,
+      "grade": "P",
+      "signal": "conflict",
+      "take": "Conflicting signals — no clear sharp lean. deGrom road struggles vs McGreevy ERA edge inconclusive. PASS.",
+      "injuries": "",
+      "status": "upcoming"
+    },
+    {
+      "id": "g-20260601-005",
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "time": "7:40 PM ET",
+      "away": "White Sox",
+      "home": "Twins",
+      "matchup": "White Sox @ Twins",
+      "awayPitcher": "TBD",
+      "homePitcher": "Joe Ryan",
+      "awayML": 139,
+      "homeML": -165,
+      "total": 8.0,
+      "pick": "White Sox ML",
+      "pickOdds": 139,
+      "grade": "B+",
+      "signal": "RLM",
+      "take": "Classic RLM: 53% bets on Twins but 75% of money on Chicago. Sharp syndicates buying Sox. On 5-game win streak vs same Twins they dominated recently.",
+      "injuries": "",
+      "status": "upcoming"
+    },
+    {
+      "id": "g-20260601-006",
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "time": "7:40 PM ET",
+      "away": "Giants",
+      "home": "Brewers",
+      "matchup": "Giants @ Brewers",
+      "awayPitcher": "Landen Roupp",
+      "homePitcher": "Shane Drohan",
+      "awayML": 140,
+      "homeML": -158,
+      "total": 7.5,
+      "pick": "Brewers ML",
+      "pickOdds": -158,
+      "grade": "A-",
+      "signal": "sharp",
+      "take": "Sharp syndicate action drove MIL line ~23 cents. Brewers (35-21) hosting Giants (23-36). Sharp-backed home favorite with major record edge. Also: sharp under money on total (U7.5 -120).",
+      "injuries": "",
+      "status": "upcoming"
+    },
+    {
+      "id": "g-20260601-007",
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "time": "8:40 PM ET",
+      "away": "Dodgers",
+      "home": "Diamondbacks",
+      "matchup": "Dodgers @ Diamondbacks",
+      "awayPitcher": "Jack Sheehan",
+      "homePitcher": "Eduardo Rodriguez",
+      "awayML": -147,
+      "homeML": 125,
+      "total": 8.5,
+      "pick": "Diamondbacks ML",
+      "pickOdds": 125,
+      "grade": "A-",
+      "signal": "RLM",
+      "take": "Textbook RLM: 65% public on LA yet Dodgers line shortened -155→-147 — sharp money buying Arizona. Rodriguez (2.31 ERA, 1.60 ERA May, 5-1 recent) vs Sheehan (6.52 ERA road). Best plus-money play on the board.",
+      "injuries": "",
+      "status": "upcoming"
+    },
+    {
+      "id": "g-20260601-008",
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "time": "9:40 PM ET",
+      "away": "Mets",
+      "home": "Mariners",
+      "matchup": "Mets @ Mariners",
+      "awayPitcher": "TBD",
+      "homePitcher": "TBD",
+      "awayML": 116,
+      "homeML": -136,
+      "total": 7.5,
+      "pick": "Mets ML",
+      "pickOdds": 116,
+      "grade": "B",
+      "signal": "RLM",
+      "take": "RLM: 78% public on Seattle 6-game streak yet line eased -144→-132 (current ~-136) — sharp money on Mets as road dog. +116 price with verified sharp backing.",
+      "injuries": "",
+      "status": "upcoming"
+    },
+    {
+      "id": "g-20260601-009",
+      "date": "2026-06-01",
+      "sport": "Tennis",
+      "time": "Completed",
+      "away": "Osaka",
+      "home": "Sabalenka",
+      "matchup": "Sabalenka vs Osaka (French Open R16)",
+      "awayPitcher": "",
+      "homePitcher": "",
+      "awayML": 380,
+      "homeML": -480,
+      "total": null,
+      "pick": "Sabalenka ML",
+      "pickOdds": -480,
+      "grade": "D",
+      "signal": "public",
+      "take": "COMPLETED: Sabalenka won 7-5, 6-3 advancing to QF. Too much juice (-480) for a bet but result as expected. QF vs TBD on June 2.",
+      "injuries": "",
+      "status": "completed",
+      "result": "Sabalenka won 7-5, 6-3"
+    },
+    {
+      "id": "g-20260601-010",
+      "date": "2026-06-01",
+      "sport": "NHL",
+      "time": "No game today",
+      "away": "Golden Knights",
+      "home": "Hurricanes",
+      "matchup": "Stanley Cup Final — Game 1 June 2",
+      "awayPitcher": "",
+      "homePitcher": "",
+      "awayML": 125,
+      "homeML": -148,
+      "total": null,
+      "pick": "Preview",
+      "pickOdds": null,
+      "grade": "P",
+      "signal": "preview",
+      "take": "Stanley Cup Final: Hurricanes vs Golden Knights. Game 1 is June 2. Hurricanes favored (~55.8% implied). Preview only — grade when lines firm up on Game 1.",
+      "injuries": "",
+      "status": "preview"
+    },
+    {
+      "id": "g-20260601-011",
+      "date": "2026-06-01",
+      "sport": "NBA",
+      "time": "No game today",
+      "away": "Knicks",
+      "home": "Spurs",
+      "matchup": "NBA Finals — Game 1 June 3",
+      "awayPitcher": "",
+      "homePitcher": "",
+      "awayML": null,
+      "homeML": null,
+      "total": null,
+      "pick": "Preview",
+      "pickOdds": null,
+      "grade": "P",
+      "signal": "preview",
+      "take": "NBA Finals begin June 3: Spurs (Wembanyama) vs Knicks. Spurs are series favorites. Preview only — grade when Game 1 lines are available.",
+      "injuries": "",
+      "status": "preview"
+    },
+    {
+      "rank": 1,
+      "kind": "prop",
+      "sport": "MLB",
+      "time": "7:05 PM ET",
+      "matchup": "Yankees vs Guardians — Schlittler Ks",
+      "play": "Cam Schlittler Over 6.5 Strikeouts",
+      "odds": "+116",
+      "stake": "1u",
+      "grade": "A-",
+      "take": "+EV line — Schlittler averaging 6.8 K/game and getting plus money at 6.5.",
+      "starters": "Cam Schlittler (NYY): 7-2, 1.50 ERA, 81 K in 72 IP (6.75 K/game avg), elite 81:13 K:BB ratio",
+      "line": [
+        "Line: Over 6.5 Ks (+116) — FanDuel/DK",
+        "Schlittler avg: 6.8 K/game in 12 starts",
+        "Implied probability at +116 ≈ 46.3% — model gives ~52%"
+      ],
+      "stats": [
+        "Schlittler: 81 Ks in 72 IP = 10.1 K/9",
+        "7-2 record, 1.50 ERA, 0.85 WHIP in 2026",
+        "81:13 K:BB ratio — elite command",
+        "Yankees face Guardians at Yankee Stadium (favorable home SP environment)",
+        "Line at +116 is mispriced relative to career K rate"
+      ],
+      "analysis": "Cam Schlittler has been one of the best pitchers in baseball in 2026, averaging 6.8 strikeouts per appearance against a 6.5 line. At +116, the market is pricing him at ~46% to clear the number when his recent form suggests he should be closer to -130 or -140 on this prop. The plus-money price on a pitcher who regularly exceeds the line is the definition of positive expected value. Back the over with confidence — the only real risk is an early hook, but Schlittler's 1.50 ERA means he rarely gets yanked early."
+    },
+    {
+      "rank": 2,
+      "kind": "prop",
+      "sport": "NHL",
+      "time": "8:00 PM ET",
+      "matchup": "Golden Knights vs Hurricanes — SCF Game 1",
+      "play": "Mark Stone Anytime Goalscorer",
+      "odds": "+220",
+      "stake": "1u",
+      "grade": "B+",
+      "take": "Stone has scored in 3 of last 4 playoff games and thrives in the Stanley Cup spotlight.",
+      "starters": "Mark Stone (VGK): Captain, top line, 3G in last 4 games entering SCF; Frederik Andersen in net for CAR",
+      "line": [
+        "Line: Anytime Goalscorer +220 — DraftKings",
+        "Stone scoring in 3 of last 4 = ~75% recent rate",
+        "Implied at +220 ≈ 31.3%"
+      ],
+      "stats": [
+        "Stone: 3 goals in last 4 playoff games entering SCF",
+        "6 goals in last 8 playoff games (dating back to prior postseason)",
+        "Andersen: 12-1, 1.41 GAA, .931 SV% — elite but not impenetrable",
+        "Stone averages over 3 shots on goal per game in playoffs",
+        "Cup Final intensity historically elevates Stone's output"
+      ],
+      "analysis": "Mark Stone is a big-moment player who has 3 goals in his last 4 playoff games and 6 in his last 8 dating back to 2025. The +220 price implies roughly a 31% chance — but elite goal-scorers with top-line ice time in a 7-game series historically score at a 35-40% per-game clip. Stone's shot volume and net-front presence make him a natural candidate. Frederik Andersen is playing at a historically elite level this postseason, which tempers the grade from A to B+, but the plus-money price still represents value given Stone's red-hot form entering the final."
+    },
+    {
+      "rank": 3,
+      "kind": "prop",
+      "sport": "MLB",
+      "time": "9:40 PM ET",
+      "matchup": "Dodgers @ Diamondbacks — NRFI",
+      "play": "No Run First Inning (NRFI)",
+      "odds": "+105",
+      "stake": "1u",
+      "grade": "B+",
+      "take": "Arizona hasn't scored in the first inning in 7 straight games and Soroka is one of MLB's hottest starters.",
+      "starters": "Mike Soroka (ARI): 7-2, strong first inning history; Eric Lauer (LAD): inconsistent but fresh off solid outing",
+      "line": [
+        "Line: NRFI +105 — DraftKings",
+        "Diamondbacks: 0-for-7 YRFI streak entering tonight",
+        "Dodgers: 27.59% road YRFI rate (below average)"
+      ],
+      "stats": [
+        "Diamondbacks have not scored in first inning in 7 consecutive games",
+        "Mike Soroka (ARI): 7-2 record in 2026, elite first-inning command",
+        "Eric Lauer (LAD): held Rockies to 1 run over 6 IP in last outing",
+        "Dodgers away YRFI rate: 27.59% (below league average)",
+        "Both pitchers historically start strong — low first-inning ERA combined"
+      ],
+      "analysis": "The Diamondbacks bring a 7-game first-inning scoreless streak into tonight's matchup, one of the strongest NRFI trends on the board. Arizona's offense has been suppressed early across multiple starters and ballparks, suggesting a genuine approach/lineup issue, not just luck. Mike Soroka counters with a dominant 2026 season and clean first-inning history. At +105, this is above even-money on a play with two strong first-inning indicators pointing the same direction. NRFI bets at +105 or better with a clear contextual edge are exactly the type of small-edge accumulator plays that build bankroll over time."
+    },
+    {
+      "rank": 4,
+      "kind": "prop",
+      "sport": "MLB",
+      "time": "7:40 PM ET",
+      "matchup": "Giants @ Brewers — NRFI",
+      "play": "No Run First Inning (NRFI)",
+      "odds": "-118",
+      "stake": "1u",
+      "grade": "B",
+      "take": "Kyle Harrison owns a 1.80 ERA in the first inning across 10 starts, and Trevor McDonald has allowed just one earned run across six first innings.",
+      "starters": "Kyle Harrison (MIL): 6-1, 1.57 ERA, 1.80 first-inning ERA; Trevor McDonald (SF): 2-2, 4.34 ERA but strong first inning",
+      "line": [
+        "Line: NRFI -118 — DraftKings",
+        "Harrison first-inning ERA: 1.80 across 10 starts",
+        "McDonald: .167 OBA allowed in inning 1 this season"
+      ],
+      "stats": [
+        "Kyle Harrison (MIL): 6-1, 1.57 ERA, 10.63 K/9, 92nd percentile K rate",
+        "Harrison first-inning ERA: 1.80, opponents hitting .160 through inning 1",
+        "Trevor McDonald (SF): .167 opponents batting average in first inning",
+        "Giants strikeout rate vs LHP is above league average (favorable for NRFI)",
+        "Brewers lineup averages fewer first-inning runs against elite LHP starters"
+      ],
+      "analysis": "Both starters in this matchup have been significantly better in the first inning than the rest of their starts. Kyle Harrison is having a breakout 2026 season with a 1.57 ERA and has not allowed a run in his last three starts spanning 18 innings — his first inning has been his best inning all year. Trevor McDonald, despite a 4.34 ERA overall, has been sharp in the opening frame with just one earned run allowed all season. The -118 price is fair given two first-inning specialists squaring off; take the NRFI as a mechanical edge play."
+    },
+    {
+      "rank": 5,
+      "kind": "prop",
+      "sport": "MLB",
+      "time": "7:20 PM ET",
+      "matchup": "Blue Jays @ Braves — Gausman Ks",
+      "play": "Kevin Gausman Over 5.5 Strikeouts",
+      "odds": "-106",
+      "stake": "1u",
+      "grade": "A-",
+      "take": "Gausman is having a career-year at 35 with a 10.3 K/9 and faces the Braves who strike out at a league-average rate.",
+      "starters": "Kevin Gausman (TOR): 2.89 ERA, 0.98 WHIP, 68 Ks in 59.1 IP (K/9: 10.3), top-10 in MLB strikeout rate",
+      "line": [
+        "Line: Over 5.5 Ks -106 — FanDuel/DK",
+        "Gausman K/9: 10.3 (top-10 in MLB)",
+        "Implied prob at -106 ≈ 51.5% — model gives ~60%"
+      ],
+      "stats": [
+        "Gausman: 68 Ks in 59.1 IP = 10.3 K/9 in 2026",
+        "2.89 ERA, 0.98 WHIP — one of best seasons of his career at 35",
+        "Hit Over 5.5 Ks in 8 of last 10 starts",
+        "Atlanta Braves strikeout at a league-average 23.4% clip",
+        "Near-juice price (-106) gives positive expected value at Gausman's K rate"
+      ],
+      "analysis": "Kevin Gausman is putting up one of the best seasons of his career at age 35 with a 10.3 K/9 that ranks in the top 10 in MLB. His 5.5 strikeout line is below his per-game average, and he has cleared the number in 8 of his last 10 starts. At -106, the market is pricing this at roughly 51.5% when Gausman's recent K rate implies he should be closer to -150 to -160. The Braves strike out at a league-average rate, providing no meaningful resistance. Near-juice on an elite strikeout pitcher consistently below his average is a clear +EV spot."
+    },
+    {
+      "rank": 6,
+      "kind": "prop",
+      "sport": "MLB",
+      "time": "7:10 PM ET",
+      "matchup": "Orioles @ Red Sox — NRFI",
+      "play": "No Run First Inning (NRFI)",
+      "odds": "-135",
+      "stake": "1u",
+      "grade": "B+",
+      "take": "Red Sox have the 2nd-lowest YRFI rate in baseball and Connelly Early owns an 86% NRFI at Fenway in his career.",
+      "starters": "Connelly Early (BOS): 2.95 ERA, 1.16 WHIP, 86% NRFI at Fenway; Shane Baz (BAL): 2.25 ERA last 20 IP, building momentum",
+      "line": [
+        "Line: NRFI -135 — DraftKings",
+        "Red Sox YRFI rate: 17.24% (2nd-lowest in MLB)",
+        "Orioles YRFI rate: 16.67% (worst in MLB)"
+      ],
+      "stats": [
+        "Boston Red Sox: 2nd-lowest YRFI rate on offense (17.24%)",
+        "Baltimore Orioles: worst YRFI rate in MLB (16.67%)",
+        "Connelly Early: 86% NRFI rate at Fenway Park in career starts",
+        "Shane Baz: 2.25 ERA over last 20 IP — in strong form",
+        "Both teams rank bottom-5 in runs scored in first inning this season"
+      ],
+      "analysis": "This matchup has two of the worst first-inning offensive teams in baseball squaring off at Fenway. The Orioles own the worst YRFI rate in the AL at 16.67%, while the Red Sox offense ranks second-lowest at 17.24%. That alone doesn't make a prop, but add Connelly Early's 86% NRFI career rate at home and Shane Baz's recent momentum (2.25 ERA last 20 IP) and the structural edge becomes compelling. The -135 price implies ~57.5% — combined NRFI probability given both offenses' first-inning suppression rates is meaningfully higher. Solid B+ play with a clear, data-backed edge."
+    },
+    {
+      "rank": 7,
+      "kind": "prop",
+      "sport": "MLB",
+      "time": "7:40 PM ET",
+      "matchup": "Giants @ Brewers — Harrison Ks",
+      "play": "Kyle Harrison Over 6.5 Strikeouts",
+      "odds": "+134",
+      "stake": "1u",
+      "grade": "A",
+      "take": "Harrison is riding an 18-inning scoreless streak with 20 Ks in that span and gets plus money at 6.5 against his former team.",
+      "starters": "Kyle Harrison (MIL): 6-1, 1.57 ERA, 10.6 K/9, 18-inning active scoreless streak entering tonight",
+      "line": [
+        "Line: Over 6.5 Ks +134 — FanDuel",
+        "Harrison K/9: 10.6 (elite tier)",
+        "Cleared 6.5 in 2 of last 3 starts incl. 11 Ks vs Cubs",
+        "Implied prob at +134 ≈ 42.7% — model gives ~55%"
+      ],
+      "stats": [
+        "Harrison: 20 Ks in last 18 scoreless innings (active streak)",
+        "Season K/9: 10.6 — 92nd percentile among all starters",
+        "11-strikeout performance vs Cubs in last 3 starts",
+        "Giants lineup (his former team) strikeout rate above league average vs LHP",
+        "Cleared Over 6.5 in 2 of last 3 starts; plus-money price is mispriced"
+      ],
+      "analysis": "Kyle Harrison has been one of the hottest pitchers in the NL over the last month, carrying an active 18-inning scoreless streak into tonight with 20 strikeouts across that span. His season K/9 of 10.6 ranks in the elite tier for starting pitchers, and he's cleared the 6.5 strikeout line in two of his last three starts including an 11-K outing against Chicago. At +134, the market implies roughly 43% probability — significantly below Harrison's actual recent K rate. Facing his former Giants team, who strike out above average against left-handed pitching, gives this a clear statistical edge at plus money."
+    },
+    {
+      "rank": 8,
+      "kind": "prop",
+      "sport": "MLB",
+      "time": "6:45 PM ET",
+      "matchup": "Padres @ Phillies — Nola Ks",
+      "play": "Aaron Nola Over 4.5 Strikeouts",
+      "odds": "-162",
+      "stake": "1u",
+      "grade": "B+",
+      "take": "Nola has cleared 4.5 Ks in 9 of 11 starts with a 7.9 K avg at home — the line is set too low.",
+      "starters": "Aaron Nola (PHI): 2.71 home ERA, 7.9 Ks/home start avg, 9/11 games cleared 4.5 Ks in 2026",
+      "line": [
+        "Line: Over 4.5 Ks -162 — FanDuel",
+        "Nola hit over in 9 of 11 starts = 81.8% rate",
+        "Implied prob at -162 ≈ 61.8% — actual rate: ~82%"
+      ],
+      "stats": [
+        "Nola: 9 of 11 starts cleared 4.5 Ks (81.8% hit rate)",
+        "Home ERA: 2.71, home Ks/start: 7.9 average",
+        "Last 4 starts: 9, 7, 6, 8 strikeouts",
+        "Struck out same Padres lineup 5 times one week prior",
+        "Nola averaged 7.2 Ks/outing across all 11 starts in 2026"
+      ],
+      "analysis": "Aaron Nola enters Tuesday's home start with one of the most consistent strikeout profiles in baseball this season — he has cleared 4.5 strikeouts in nine of his 11 starts, good for an 81.8% hit rate. His home numbers are even better: 7.9 average strikeouts per home start with a 2.71 ERA. The -162 price implies ~62% probability, which is well below his actual 82% clip. He already struck out this same Padres lineup five times last week. Heavy juice plays like this require high confidence in the outcome; Nola's consistency this season provides exactly that justification."
+    }
+  ],
+  "lineMovement": [
+    {
+      "sport": "NHL",
+      "matchup": "Golden Knights @ Hurricanes",
+      "time": "8:00 PM ET",
+      "open": "U5.5 +104",
+      "current": "U5.5 -102",
+      "publicBets": 63,
+      "publicMoney": 82,
+      "side": "Over",
+      "signal": "rlm",
+      "rlm": true,
+      "steam": false,
+      "keyNumber": true,
+      "note": "79-86% of public money on the Over, but the Under has been hammered from +104 to -102 — textbook RLM. Sharp money appears to be siding with the Under despite lopsided public Over action in Game 1 of the Stanley Cup Final."
+    },
+    {
+      "sport": "NHL",
+      "matchup": "Golden Knights @ Hurricanes",
+      "time": "8:00 PM ET",
+      "open": "CAR -150",
+      "current": "CAR -155",
+      "publicBets": 57,
+      "publicMoney": 73,
+      "side": "Hurricanes",
+      "signal": "sharp",
+      "rlm": false,
+      "steam": false,
+      "keyNumber": false,
+      "note": "Carolina opened drawing 90%+ of public money, but sharp influx on Vegas pushed bet% down to 57% Canes and money% to 73%. Line edged to -155 but Vegas remains live as sharp counter-play."
+    },
+    {
+      "sport": "MLB",
+      "matchup": "Guardians @ Yankees",
+      "time": "7:05 PM ET",
+      "open": "-220",
+      "current": "-249",
+      "publicBets": 70,
+      "publicMoney": null,
+      "side": "Yankees",
+      "signal": "public",
+      "rlm": false,
+      "steam": false,
+      "keyNumber": false,
+      "note": "Yankees at -249 represent continued heavy public chalk on the home favorite. Line has moved significantly toward NYY, making Cleveland a possible contrarian value play."
+    },
+    {
+      "sport": "MLB",
+      "matchup": "Padres @ Phillies",
+      "time": "6:40 PM ET",
+      "open": "-135",
+      "current": "-149",
+      "publicBets": null,
+      "publicMoney": null,
+      "side": "Phillies",
+      "signal": "split",
+      "rlm": false,
+      "steam": false,
+      "keyNumber": false,
+      "note": "Phillies favored at home vs. Padres; no strong public or sharp signal identified. Line moved moderately toward Philadelphia."
+    },
+    {
+      "sport": "MLB",
+      "matchup": "Tigers @ Rays",
+      "time": "6:40 PM ET",
+      "open": "-125",
+      "current": "-141",
+      "publicBets": null,
+      "publicMoney": null,
+      "side": "Rays",
+      "signal": "split",
+      "rlm": false,
+      "steam": false,
+      "keyNumber": false,
+      "note": "Rays favored at home in the dome; line has drifted to -141 with no clear sharp signal identified. Monitor for late movement."
+    },
+    {
+      "sport": "MLB",
+      "matchup": "Blue Jays @ Braves",
+      "time": "6:15 PM ET",
+      "open": "-140",
+      "current": "-148",
+      "publicBets": 62,
+      "publicMoney": null,
+      "side": "Braves",
+      "signal": "public",
+      "rlm": false,
+      "steam": false,
+      "keyNumber": false,
+      "note": "62% of public backing Atlanta at home. Line moved with the public toward the Braves; no sharp counter-signal detected. Blue Jays represent the fade-the-public lean."
+    },
+    {
+      "sport": "MLB",
+      "matchup": "Rockies @ Angels",
+      "time": "6:38 PM ET",
+      "open": "-160",
+      "current": "-172",
+      "publicBets": 73,
+      "publicMoney": null,
+      "side": "Angels",
+      "signal": "public",
+      "rlm": false,
+      "steam": false,
+      "keyNumber": false,
+      "note": "73% of public on the Angels over Colorado — one of today's heaviest public leans in MLB. Line moved with the crowd; Rockies are the contrarian underdog of note."
+    },
+    {
+      "sport": "MLB",
+      "matchup": "Orioles @ Red Sox",
+      "time": "6:45 PM ET",
+      "open": "-120",
+      "current": "-118",
+      "publicBets": null,
+      "publicMoney": null,
+      "side": "Red Sox",
+      "signal": "split",
+      "rlm": false,
+      "steam": false,
+      "keyNumber": false,
+      "note": "Red Sox and Orioles closely priced at Fenway on Lou Gehrig Day. No significant sharp or public signal available; treat as a split market."
+    },
+    {
+      "sport": "MLB",
+      "matchup": "Marlins @ Nationals",
+      "time": "6:45 PM ET",
+      "open": "-115",
+      "current": "-118",
+      "publicBets": null,
+      "publicMoney": null,
+      "side": "Nationals",
+      "signal": "split",
+      "rlm": false,
+      "steam": false,
+      "keyNumber": false,
+      "note": "Low-interest divisional matchup with no notable line movement or sharp signal. Public percentages unavailable."
+    },
+    {
+      "sport": "MLB",
+      "matchup": "Royals @ Reds",
+      "time": "7:10 PM ET",
+      "open": "+100",
+      "current": "+102",
+      "publicBets": null,
+      "publicMoney": null,
+      "side": "Reds",
+      "signal": "split",
+      "rlm": false,
+      "steam": false,
+      "keyNumber": false,
+      "note": "Even-money game with minimal movement; no sharp signal detected. Check closer to first pitch for late sharp activity."
+    }
+  ],
+  "research": [
+    {
+      "id": "r-20260602-1617-006",
+      "timestamp": "Tue Jun 2, 2026 — 4:17 PM UTC",
+      "category": "injury",
+      "sport": "MLB",
+      "title": "Crochet Lat Setback — MRI Pending, Sox 15-16 Without Ace",
+      "body": "Garrett Crochet (left shoulder + new lat issue) will not throw his scheduled bullpen June 2. MRI expected early next week. He was 3-3 with a 6.30 ERA before going on IL April 25. Red Sox have gone 15-16 without him, and Roman Anthony is also sidelined. Boston's rotation is weakened for the foreseeable future. Look for value against Red Sox in upcoming games, particularly when they face strong SP opponents or divisional foes exploiting the depleted lineup.",
+      "relevance": "medium",
+      "game": null
+    },
+    {
+      "id": "r-20260602-1617-007",
+      "timestamp": "Tue Jun 2, 2026 — 4:17 PM UTC",
+      "category": "matchup",
+      "sport": "MLB",
+      "title": "Soroka (7-2) vs Lauer (2-5) — Arizona Even Money Value",
+      "body": "Tonight's Dodgers-Diamondbacks (9:40 PM ET) features a sharp SP mismatch: Arizona's Mike Soroka is 7-2 while LA's Eric Lauer is 2-5. The Dodgers are only -118 favorites despite sending the inferior pitcher. Arizona sits at +100 (even money) with the better starter. The Dodgers are 38-22 overall but that record premium doesn't justify the SP gap. Systems favor fading heavy public MLB teams in nationally televised games — this is a double-signal pointing to Arizona +100 tonight.",
+      "relevance": "high",
+      "game": "Dodgers vs Diamondbacks"
+    },
+    {
+      "id": "r-20260602-1617-008",
+      "timestamp": "Tue Jun 2, 2026 — 4:17 PM UTC",
+      "category": "weather",
+      "sport": "MLB",
+      "title": "Atlanta 19% Rain + Wrigley 13 MPH Wind In — Under Lean",
+      "body": "Truist Park (Atlanta, 7:15 PM ET): 19% rain chance, 11 MPH winds blowing in at 73F — both indicators lean Under. Scattered shower risk could cause brief delays disrupting pitching. Wrigley Field (Chicago, 8:05 PM ET): 13 MPH wind blowing in at 65F — cold temps plus wind in is a strong Under lean at Wrigley. All other MLB parks today have 0-7% precip and sub-12 MPH winds, with St. Louis (80F, 0% rain, 10 MPH wind in) also slightly Under-leaning. Philadelphia and Boston neutral.",
+      "relevance": "medium",
+      "game": null
+    },
+    {
+      "id": "r-20260602-1617-009",
+      "timestamp": "Tue Jun 2, 2026 — 4:17 PM UTC",
+      "category": "system",
+      "sport": "MLB",
+      "title": "Fade National TV Fave System Triggered — Dodgers Tonight",
+      "body": "Historical MLB system: fade heavy public favorites in nationally televised games. The Dodgers (38-22) will draw the lion's share of public tickets tonight as -118 chalk in a marquee divisional game. At -118, the implied win probability is ~54%, which appears inflated given Eric Lauer's 2-5 record vs Soroka's 7-2. The O/U is 9.5 with Under at -122. Fade system + SP mismatch + public fave = three-signal alignment on Arizona +100. This is tonight's strongest MLB play.",
+      "relevance": "high",
+      "game": "Dodgers vs Diamondbacks"
+    },
+    {
+      "id": "r-20260602-1617-010",
+      "timestamp": "Tue Jun 2, 2026 — 4:17 PM UTC",
+      "category": "angle",
+      "sport": "NHL",
+      "title": "Live Bet Window: SCF G1 Tight Playoff Moneyline Swings",
+      "body": "SCF Game 1 (Golden Knights vs Hurricanes, 8 PM ET) is priced tight at Carolina -155 / Vegas +128. In close Stanley Cup Final games, live ML windows shift dramatically after the first goal. If Vegas scores first, Carolina live ML will compress to -120 to -130 range — a buyback opportunity on the favorite. If Carolina goes up 1-0 early, Golden Knights live ML could reach +200 to +220, aligning with the sharp pre-game VGK position. Monitor puck drop closely for a favorable live entry.",
+      "relevance": "high",
+      "game": "Golden Knights vs Hurricanes"
+    },
+    {
+      "id": "r-20260602-1617-011",
+      "timestamp": "Tue Jun 2, 2026 — 4:17 PM UTC",
+      "category": "futures",
+      "sport": "NFL",
+      "title": "Rams SB Favorite +550 — Garrett Trade Priced In, Schedule Risk",
+      "body": "LA Rams surged to Super Bowl LXI favorites (+550-600) after acquiring two-time reigning DPOY Myles Garrett from Cleveland. Matthew Stafford returning adds offensive continuity. However, the Rams carry one of the NFL's toughest 2026 schedules — potentially the hardest in the NFC. At +550 (~15.4% implied probability), the Garrett premium may already be baked in. Ravens (+1000) and Bills (+1000) offer comparable contender upside at nearly double the odds. Hold off until early training camp injury reports before committing to Rams futures.",
+      "relevance": "medium",
+      "game": "NFL Futures"
+    },
+    {
+      "id": "r-20260602-1617-012",
+      "timestamp": "Tue Jun 2, 2026 — 4:17 PM UTC",
+      "category": "futures",
+      "sport": "NFL",
+      "title": "Bengals Over 9.5 Wins — 3rd Easiest Schedule, Burrow Healthy",
+      "body": "Cincinnati holds the 3rd-easiest 2026 schedule with only 5 games against projected winning teams. Vegas win total is set at 9.5, and multiple sharp analysts project the Over. The Bengals face the Ravens and Chiefs twice as AFC North/division opponents, but their non-conference slate is soft. With Burrow healthy and a favorable draw, Bengals Over 9.5 is one of the cleaner win-total plays in the AFC. Buy now before training camp — any positive camp news will move this line toward 10.",
+      "relevance": "medium",
+      "game": "NFL Futures"
+    },
+    {
+      "id": "r-20260602-1617-013",
+      "timestamp": "Tue Jun 2, 2026 — 4:17 PM UTC",
+      "category": "futures",
+      "sport": "NBA",
+      "title": "Knicks +164 Series — Sharp-Backed Value vs Spurs -205",
+      "body": "The Spurs are -205 series favorites (implied ~67% win probability) heading into the 2026 NBA Finals, with New York at +164. Sharps have 73% of their series money on Knicks. New York brings the No. 1 playoff defense (104.3 net rating), 40.0% playoff three-point shooting, and a 10-day rest advantage. Victor Wembanyama leads a 62-20 Spurs team entering fatigued on 3-day rest. At +164, Knicks series futures align with both rest data and sharp positioning for a compelling live series play.",
+      "relevance": "medium",
+      "game": "Knicks vs Spurs"
+    },
+    {
+      "id": "tot-20260602-001",
+      "timestamp": "Tue Jun 2, 2026 — 4:55 PM",
+      "category": "totals",
+      "sport": "NHL",
+      "title": "SCF Game 1 Under 5.5 — elite goalies, cautious opener",
+      "body": "Golden Knights vs Hurricanes Game 1 tonight 8 PM ET, total 5.5, Over -122 / Under +111. Frederik Andersen leads all playoff goalies with .931 SV% and 1.41 GAA — tied for third-best GAA in postseason history. Carter Hart posting .924 SV% with .939 over his last two rounds. Carolina has gone under 5.5 in 10 of 13 playoff games; Vegas has allowed only 21 goals in their last 11. Series openers reward defensive structure — this shapes up as a grind. Strong Under lean at +111.",
+      "relevance": "high",
+      "game": "Golden Knights @ Hurricanes"
+    },
+    {
+      "id": "tot-20260602-002",
+      "timestamp": "Tue Jun 2, 2026 — 4:55 PM",
+      "category": "totals",
+      "sport": "NHL",
+      "title": "Under 5.5 reverse line movement — 80% public on Over yet price holds",
+      "body": "Over 5.5 is drawing 79-86% of public bets and 63-67% of money in tonight's SCF Game 1. Despite the massive public lean, Under remains available at +111 rather than being juiced to -130/-140. This implies sharp money absorbing public action on the Under side without moving the line. Combining elite defensive matchup with reverse line movement signal makes Under 5.5 the strongest total play on the board tonight.",
+      "relevance": "high",
+      "game": "Golden Knights @ Hurricanes"
+    },
+    {
+      "id": "tot-20260602-003",
+      "timestamp": "Tue Jun 2, 2026 — 4:55 PM",
+      "category": "totals",
+      "sport": "MLB",
+      "title": "Coors Field Over 8.5 — Rodriguez 7.53 ERA at altitude",
+      "body": "Angels vs Rockies at Coors Field, total 8.5, Over -122. Grayson Rodriguez takes the hill for the Angels with a 7.53 ERA — among the worst qualified starters in baseball. Coors Field is the highest run-environment park in MLB, elevating fly balls and killing movement. Sugano (4.01 ERA) is serviceable but not elite. Wind 6.7 mph, temp 88F, dry — no weather suppression. Two porous rotations in a hitter's park leans hard toward the Over.",
+      "relevance": "high",
+      "game": "Angels @ Rockies"
+    },
+    {
+      "id": "tot-20260602-004",
+      "timestamp": "Tue Jun 2, 2026 — 4:55 PM",
+      "category": "totals",
+      "sport": "MLB",
+      "title": "Brewers vs Giants Under 7.5 — Harrison 1.57 ERA at pitcher's park",
+      "body": "Brewers vs Giants total 7.5, Under -115. Kyle Harrison (6-1, 1.57 ERA) is one of the best starters in the NL and pitches at Oracle Park — one of the best pitcher's parks in baseball. Giants' Trevor McDonald (2-2, 4.34 ERA) is the inferior arm, but Harrison's dominance suppresses the combined total. When a sub-2.00 ERA ace takes the mound in a pitcher's park, the under frequently hits regardless of the opposing starter. Lean Under.",
+      "relevance": "high",
+      "game": "Brewers @ Giants"
+    },
+    {
+      "id": "tot-20260602-005",
+      "timestamp": "Tue Jun 2, 2026 — 4:55 PM",
+      "category": "totals",
+      "sport": "MLB",
+      "title": "Braves vs Blue Jays Under 7.5 — Gausman posting 1.02 ERA last 3 starts",
+      "body": "Blue Jays vs Braves total 7.5, Under +100. Kevin Gausman (4-3, 3.26 ERA) has been dominant in his last 3 starts — 1.02 ERA, 18 Ks, 3 BBs. Bryce Elder (4-3, 2.50 ERA) is solid despite one rough outing vs Boston. Two quality starters at a 7.5 total is a workable under, especially with Gausman in dominant form. Under at even money (+100) is excellent value for a two-ace matchup.",
+      "relevance": "medium",
+      "game": "Blue Jays @ Braves"
+    },
+    {
+      "id": "tot-20260602-006",
+      "timestamp": "Tue Jun 2, 2026 — 4:55 PM",
+      "category": "totals",
+      "sport": "MLB",
+      "title": "Pirates totals Over trend — 6 straight overs, shaky bullpen",
+      "body": "Pittsburgh Pirates totals have gone OVER in 6 consecutive games (+6.00 units, 89% ROI). The Pirates bullpen has been inconsistent and thin beyond their top two arms. If today's Cubs-Pirates total is in the 8.5-9 range, the bullpen leakage and active over trend makes this a watch candidate. Confirm current total and today's SP before logging — this is a trend alert requiring a full cycle check before acting.",
+      "relevance": "medium",
+      "game": "Cubs @ Pirates"
+    },
+    {
+      "id": "tot-20260602-007",
+      "timestamp": "Tue Jun 2, 2026 — 4:55 PM",
+      "category": "totals",
+      "sport": "MLB",
+      "title": "Cleveland Guardians Under trend — 6 straight unders at 92% ROI",
+      "body": "Cleveland Guardians team total has gone UNDER in 6 straight games (+6.10 units, 92% ROI). This is one of the strongest active team-total trends on the board. Any game featuring Cleveland today should lean toward the Under. Check today's matchup and current total before logging — the trend is active and the ROI is exceptional.",
+      "relevance": "medium",
+      "game": null
+    },
+    {
+      "id": "tot-20260602-008",
+      "timestamp": "Tue Jun 2, 2026 — 4:55 PM",
+      "category": "totals",
+      "sport": "WNBA",
+      "title": "Aces vs Sparks Under 175.5 — Kelsey Plum out with ankle injury",
+      "body": "Las Vegas Aces (5-3) vs LA Sparks (4-4), total 175.5. Kelsey Plum ruled out with an ankle injury — she scored 38 points in the last Sparks-Aces game on May 23. Sparks rank last in WNBA in defensive rating but losing their top scorer sharply limits their offensive ceiling. Total at 175.5 was set when both Plum and the Sparks' full roster were assumed healthy. Under lean at the current number.",
+      "relevance": "medium",
+      "game": "Aces @ Sparks"
+    },
+    {
+      "id": "tot-20260602-009",
+      "timestamp": "Tue Jun 2, 2026 — 4:55 PM",
+      "category": "totals",
+      "sport": "MLB",
+      "title": "Red Sox F5 total trend — over hitting in 8 of last 10",
+      "body": "Boston Red Sox first-5-innings total has cashed the Over in 8 of their last 10 games (+6.05 units, 48% ROI). F5 totals isolate the SP matchup and remove bullpen variance, making this a cleaner edge. If Boston plays today, check whether the F5 line is available and if the opposing starter is vulnerable. Strong trend alert — not a blind play but a spot to prioritize if the SP matchup aligns.",
+      "relevance": "medium",
+      "game": null
+    },
+    {
+      "id": "r-20260602-001",
+      "timestamp": "Tue Jun 2, 2026 — 6:30 PM",
+      "category": "matchup",
+      "sport": "NHL",
+      "title": "Stanley Cup Final Game 1: CAR -155, VGK +130",
+      "body": "Carolina Hurricanes host the Vegas Golden Knights in Game 1 at 8 PM ET. Carolina opened -155 and line has barely moved, sitting -150 to -155 across books. Frederik Andersen is the clear goalie edge: 12-1 record, 1.41 GAA, .931 SV% vs Carter Hart's 12-4, 2.22 GAA, .924 SV%. Hurricanes reached the Final needing only 13 games (vs VGK's 16), showing deeper efficiency.",
+      "relevance": "high",
+      "game": "Vegas Golden Knights @ Carolina Hurricanes"
+    },
+    {
+      "id": "r-20260602-002",
+      "timestamp": "Tue Jun 2, 2026 — 6:30 PM",
+      "category": "sharp",
+      "sport": "NHL",
+      "title": "83% of Money on SCF Game 1 Over 5.5",
+      "body": "The total for Golden Knights vs Hurricanes Game 1 is 5.5, shaded to the over at -118. A massive 80% of early bets and 83% of the money has backed the over. This public-heavy lean on the over with minimal line movement suggests sharp money is NOT chasing the over. Fade signal: public-dominated over with an elite goalie in Andersen (1.41 GAA) could favor the under at plus value.",
+      "relevance": "high",
+      "game": "Vegas Golden Knights @ Carolina Hurricanes"
+    },
+    {
+      "id": "r-20260602-003",
+      "timestamp": "Tue Jun 2, 2026 — 6:30 PM",
+      "category": "matchup",
+      "sport": "MLB",
+      "title": "D-Backs Home Dog Value: Soroka 3.25 ERA vs Lauer 5.95",
+      "body": "Arizona Diamondbacks (ML +100) host the Los Angeles Dodgers (-120) at 9:40 PM ET. Mike Soroka is 7-2 with a 3.25 ERA vs Eric Lauer who is 2-5 with a 5.95 ERA and 12 home runs allowed in 9 appearances. The Dodgers are inexplicably favored despite a massive pitching disadvantage. Home underdog with the better pitcher is a classic sharp angle — D-Backs +100 represents clear value.",
+      "relevance": "high",
+      "game": "Los Angeles Dodgers @ Arizona Diamondbacks"
+    },
+    {
+      "id": "r-20260602-004",
+      "timestamp": "Tue Jun 2, 2026 — 6:30 PM",
+      "category": "matchup",
+      "sport": "MLB",
+      "title": "Yankees-Guardians Under 7.5: Schlittler Elite",
+      "body": "Cam Schlittler (7-2, 1.50 ERA, 0.85 WHIP) starts for the Yankees vs Joey Cantillo (4-2, 3.57 ERA) for Cleveland. Schlittler has gone 6+ IP with 2 ER or fewer in 4 straight starts. The under 7.5 is -115 — solid lean given elite pitching on the Yankees side. Yankees are 65% implied win probability favorites at Yankee Stadium.",
+      "relevance": "high",
+      "game": "Cleveland Guardians @ New York Yankees"
+    },
+    {
+      "id": "r-20260602-005",
+      "timestamp": "Tue Jun 2, 2026 — 6:30 PM",
+      "category": "weather",
+      "sport": "MLB",
+      "title": "Wrigley 13 MPH Wind Blowing IN — Under Lean",
+      "body": "Wrigley Field forecast: 65 degrees F, 0% rain, 13 MPH wind blowing IN from left-center. Wind above 10 MPH blowing in significantly suppresses home run output and scoring. Historical data supports unders when Wrigley wind blows in at 12+ MPH. Atlanta also has a 19% rain chance — monitor for delay risk on any Atlanta Braves game tonight.",
+      "relevance": "high",
+      "game": null
+    },
+    {
+      "id": "r-20260602-006",
+      "timestamp": "Tue Jun 2, 2026 — 6:30 PM",
+      "category": "injury",
+      "sport": "MLB",
+      "title": "Crochet Lat Tightness: Skipping June 2 Bullpen",
+      "body": "White Sox ace Garrett Crochet will NOT throw his scheduled live bullpen on June 2 due to lat tightness alongside lingering left shoulder inflammation. This is a concerning development for an ace starter. If he is scratched from an upcoming start, his next opposing team becomes an immediate fade target given the lineup facing a bullpen game. Monitor for roster moves and next start timeline.",
+      "relevance": "medium",
+      "game": null
+    },
+    {
+      "id": "r-20260602-007",
+      "timestamp": "Tue Jun 2, 2026 — 6:30 PM",
+      "category": "matchup",
+      "sport": "NBA",
+      "title": "NBA Finals Game 1 June 3: Knicks +5 at San Antonio",
+      "body": "The 2026 NBA Finals tips off Wednesday June 3 at 8:30 PM ET from Frost Bank Center. San Antonio Spurs (62-20) host the New York Knicks (53-29). Knicks are +5 underdogs (ML +154), total 217.5. New York's defense is the best in the league at 104.3 net rating, 100.6 PPG allowed (1st). Mitchell Robinson (broken finger) is probable with a brace. De'Aaron Fox (ankle) and Dylan Harper (hamstring) both expected to play with injuries.",
+      "relevance": "high",
+      "game": "New York Knicks @ San Antonio Spurs"
+    },
+    {
+      "id": "r-20260602-008",
+      "timestamp": "Tue Jun 2, 2026 — 6:30 PM",
+      "category": "trend",
+      "sport": "NBA",
+      "title": "Knicks on Historic 11-Game Playoff Win Streak",
+      "body": "The Knicks swept through the Hawks, 76ers, and Cavaliers with 11 consecutive wins by a combined +262 points — the most lopsided 11-game playoff run in NBA history. As +5 road underdogs, the Knicks fit the fade-the-public-favorite system in a high-profile Finals matchup. The Spurs are 62-20 but Fox and Harper both nursing injuries. Knicks defensive identity makes +5 compelling ATS value.",
+      "relevance": "high",
+      "game": "New York Knicks @ San Antonio Spurs"
+    },
+    {
+      "id": "r-20260602-009",
+      "timestamp": "Tue Jun 2, 2026 — 6:30 PM",
+      "category": "futures",
+      "sport": "NFL",
+      "title": "Rams Now +550 SB Favorites After Myles Garrett Trade",
+      "body": "The Los Angeles Rams acquired two-time reigning Defensive Player of the Year Myles Garrett from the Cleveland Browns (cost: Jared Verse + 1st-round pick). Rams moved from +800 to +600 to +550 Super Bowl odds — the only team under +1000. Ravens and Bills are second tier at +1000. Cleveland Browns collapsed from +15000 to +25000. The Garrett trade reshapes the NFC defensive balance of power significantly.",
+      "relevance": "medium",
+      "game": "NFL Futures"
+    },
+    {
+      "id": "r-20260602-010",
+      "timestamp": "Tue Jun 2, 2026 — 6:30 PM",
+      "category": "futures",
+      "sport": "NFL",
+      "title": "AJ Brown to Patriots: Drake Maye Stack Activated",
+      "body": "A.J. Brown was traded from Philadelphia to New England for a 2028 1st-round pick. Drake Maye led the NFL in completion rate (72%) and yards per attempt (8.9) last season — now he has a true WR1 in Brown. New England now has a legitimate offensive weapon to pair with their already-improved defense. Eagles losing Brown (replacing with Makai Lemon and Dontayvion Wicks) is a notable regression signal — monitor Eagles win total for over/under movement.",
+      "relevance": "medium",
+      "game": "NFL Futures"
+    },
+    {
+      "id": "r-20260602-011",
+      "timestamp": "Tue Jun 2, 2026 — 6:30 PM",
+      "category": "system",
+      "sport": "NHL",
+      "title": "Goalie Edge System: Andersen Dominant in Playoffs",
+      "body": "Frederik Andersen has a 12-1 record with a 1.41 GAA and .931 SV% this postseason — the best of any playoff goalie. The puck line on Carolina is -1.5 at +170, presenting value if you trust Andersen to steal a game at home. Historical system: home favorites with a top-2 goalie in Game 1 of the Stanley Cup Final cover the puck line at 58% since 2015. Carolina -1.5 at +170 is the best risk/reward in tonight's slate.",
+      "relevance": "high",
+      "game": "Vegas Golden Knights @ Carolina Hurricanes"
+    },
+    {
+      "id": "r-20260602-012",
+      "timestamp": "Tue Jun 2, 2026 — 6:30 PM",
+      "category": "futures",
+      "sport": "NFL",
+      "title": "Dolphins 4.5 Wins: Full Rebuild, Under Has Value",
+      "body": "The Miami Dolphins are tied for the NFL's lowest win total at 4.5 wins — new first-time NFL head coach, QB on his third team before age 27, worst WR room in football, and the worst secondary in the league. This is a verified rebuild, not a retool. Under 4.5 could have value if early-season schedule clusters divisional opponents. Worth watching for juice changes before training camp.",
+      "relevance": "medium",
+      "game": "NFL Futures"
+    },
+    {
+      "id": "tot-1748890000-001",
+      "timestamp": "Tue Jun 2, 2026 — 6:55 PM",
+      "category": "totals",
+      "sport": "NHL",
+      "title": "SCF Game 1: Golden Knights @ Hurricanes — lean OVER 5.5",
+      "body": "Total set at 5.5 with OVER at -122. SportsLine model projects 6.4 combined goals with the over hitting in 59.4% of simulations. Historical Stanley Cup Finals Game 1 average: 6.4 goals per game, with only 3 of last 10 going under 6. OddsShark also recommends the OVER. High-leverage playoff context cuts both ways, but Golden Knights offensive depth and Carolina attack support the over.",
+      "relevance": "high",
+      "game": "Golden Knights @ Hurricanes"
+    },
+    {
+      "id": "tot-1748890000-002",
+      "timestamp": "Tue Jun 2, 2026 — 6:55 PM",
+      "category": "totals",
+      "sport": "MLB",
+      "title": "Pirates @ Astros OVER 9: two bad SPs, both teams trend over",
+      "body": "Total 9 runs, OVER -105 / UNDER -115. Bubba Chandler is 0-5 with a 5.91 ERA his last 7 starts; Mike Burrows has allowed 13 HR in 11 starts (tied for most in AL). Pirates are 33-25-2 on the over, Astros 33-25-3. Daikin Park roof closed (weather neutral). Both bullpens fresh but neither dominant. Stats Insider model hits OVER 52% of simulations. Conviction: medium-high.",
+      "relevance": "high",
+      "game": "Pirates @ Astros"
+    },
+    {
+      "id": "tot-1748890000-003",
+      "timestamp": "Tue Jun 2, 2026 — 6:55 PM",
+      "category": "totals",
+      "sport": "MLB",
+      "title": "Wrigley wind IN at 13 mph — Cubs/A's UNDER lean",
+      "body": "13 MPH winds blowing in from left-center at Wrigley Field tonight. Wrigley is the most weather-sensitive park in baseball — winds in at 13+ mph materially suppress home run output and overall scoring. Starters Taillon (5.37 ERA) vs. Jump (7.20 ERA) are both hittable, but the headwind negates that advantage significantly. Lean UNDER, especially if total is set at 8+. Verify posted line before acting.",
+      "relevance": "high",
+      "game": "Cubs @ Athletics"
+    },
+    {
+      "id": "tot-1748890000-004",
+      "timestamp": "Tue Jun 2, 2026 — 6:55 PM",
+      "category": "totals",
+      "sport": "MLB",
+      "title": "Rockies @ Angels total 8.5: wind out, slight over lean",
+      "body": "Total 8.5, OVER -122 / UNDER +100. Wind blowing out to left-center at 8 MPH in Anaheim. Rockies carry Coors-conditioned offense into a neutral park. Tomoyuki Sugano starting for Colorado. The +100 under price is attractive as a contrarian play, but wind-out conditions with a power lineup lean over. Conviction: medium.",
+      "relevance": "medium",
+      "game": "Rockies @ Angels"
+    },
+    {
+      "id": "tot-1748890000-005",
+      "timestamp": "Tue Jun 2, 2026 — 6:55 PM",
+      "category": "totals",
+      "sport": "MLB",
+      "title": "Brewers @ Giants UNDER 7.5: Harrison on 18-inning scoreless streak",
+      "body": "Total 7.5 with UNDER juiced at -115. Kyle Harrison enters with an 18-inning scoreless streak — elite recent form at pitcher-friendly Oracle Park. Giants have suppressed offense over this stretch. The under price is juiced but the edge is real if Harrison maintains form. Monitor for lineup changes or fatigue flags. Conviction: medium-high.",
+      "relevance": "high",
+      "game": "Brewers @ Giants"
+    },
+    {
+      "id": "tot-1748890000-006",
+      "timestamp": "Tue Jun 2, 2026 — 6:55 PM",
+      "category": "totals",
+      "sport": "WNBA",
+      "title": "Aces @ Sparks UNDER 175.5: Kelsey Plum (ankle) ruled out",
+      "body": "Kelsey Plum (ankle) is ruled out — she is the Sparks' leading scorer and primary ball-handler. Losing a player of this caliber typically reduces team scoring by 8-12 points in WNBA games. Aces favored by -7.5 may coast in the 4th quarter, further limiting scoring. Under 175.5 has legitimate edge with this injury confirmed. Commissioner's Cup stakes do not meaningfully inflate pace. Conviction: medium-high.",
+      "relevance": "high",
+      "game": "Aces @ Sparks"
+    },
+    {
+      "id": "tot-1748890000-007",
+      "timestamp": "Tue Jun 2, 2026 — 6:55 PM",
+      "category": "totals",
+      "sport": "WNBA",
+      "title": "Sun @ Dream total 158.5: Connecticut underdog slow-pace tendency",
+      "body": "Connecticut (2-8) at Atlanta Dream (5-2), total 158.5-159.5. Connecticut has historically played elite half-court defense and may slow the pace as a road underdog. Dream at home and in good form could push scoring, but Sun's defensive identity presses totals down. Slight lean UNDER if Connecticut is playing their traditional style. Watch for lineup news before tip. Conviction: low-medium.",
+      "relevance": "medium",
+      "game": "Sun @ Dream"
+    },
+    {
+      "id": "tot-1748890000-008",
+      "timestamp": "Tue Jun 2, 2026 — 6:55 PM",
+      "category": "totals",
+      "sport": "MLB",
+      "title": "Cleveland Guardians: 6 straight unders on team totals — sustained trend",
+      "body": "The Guardians' team total has gone under in 6 consecutive games with the total around 2.5 runs per game. This is a meaningful pitching-driven pattern worth tracking on any CLE game. Fade the over on Cleveland team totals until this streak breaks. Verify today's opponent and starting pitcher before applying, but the trend is statistically significant.",
+      "relevance": "medium",
+      "game": null
+    },
+    {
+      "id": "r-20260602-001",
+      "timestamp": "Tue Jun 2, 2026 — 2:17 PM ET",
+      "category": "sharp",
+      "sport": "NHL",
+      "title": "Sharp RLM on Under — Hurricanes vs Golden Knights G1",
+      "body": "Public has hammered the Over all week (80% of bets, 83% of money on Over 5.5) in Stanley Cup Final Game 1, yet Under juice has tightened to near-even money — classic reverse line movement indicating sharp action on the Under. Both teams are coming off disciplined defensive series; Game 1 of a Final typically features cautious, feeling-out hockey. Andersen posted 1.41 GAA/.928 SV% in the playoffs; Hart at 2.22 GAA/.924 SV%. Under 5.5 at near -100 is the sharp side tonight.",
+      "relevance": "high",
+      "game": "Vegas Golden Knights @ Carolina Hurricanes"
+    },
+    {
+      "id": "r-20260602-002",
+      "timestamp": "Tue Jun 2, 2026 — 2:17 PM ET",
+      "category": "sharp",
+      "sport": "NHL",
+      "title": "Sharp Money on Vegas ML +128 vs Public Carolina",
+      "body": "61% of public bets and 59% of money are on Carolina (-150), yet sharp bettors have pivoted to Vegas (+128) — the books' second-biggest liability this postseason. Zero line movement since opening (CAR -155 to -150) despite heavy volume, suggesting book confidence sharps are on Vegas. Golden Knights covered the puck line in 14 straight road games as underdogs this postseason. This is a textbook sharp-vs-public divergence on the underdog.",
+      "relevance": "high",
+      "game": "Vegas Golden Knights @ Carolina Hurricanes"
+    },
+    {
+      "id": "r-20260602-003",
+      "timestamp": "Tue Jun 2, 2026 — 2:17 PM ET",
+      "category": "matchup",
+      "sport": "NHL",
+      "title": "Hurricanes Enter Finals 12-1 — Historic Dominance",
+      "body": "Carolina's 12-1 playoff record is the best ever recorded entering the Stanley Cup Final. Andersen's 1.41 GAA and .928 SV% drove the run after a rough regular season. Vegas swept the Avalanche (Cup favorite) in the West Final — battle-tested but potentially fatigued. Puck line is VGK +1.5 at -205. Game 1 tonight at 8 PM ET, Lenovo Center, Raleigh. Carolina is home; series price has CAR -155 to win the Cup.",
+      "relevance": "high",
+      "game": "Vegas Golden Knights @ Carolina Hurricanes"
+    },
+    {
+      "id": "r-20260602-004",
+      "timestamp": "Tue Jun 2, 2026 — 2:17 PM ET",
+      "category": "matchup",
+      "sport": "MLB",
+      "title": "Soroka 3.25 ERA vs Lauer 5.95 ERA — Fade LAD",
+      "body": "Arizona's Mike Soroka (7-2, 3.25 ERA) faces LA's Eric Lauer (2-5, 5.95 ERA) at Chase Field tonight. The 2.70-run ERA gap is one of today's sharpest SP mismatches, yet the Dodgers are ML favorites at -118 — inflated by brand bias. Arizona at +100 ML represents clear value. The D-backs (32-27) get their best arm; LAD (38-22) get their worst. Total is 9.5 (over +100, under -122); the high total reflects Lauer's propensity to give up runs.",
+      "relevance": "high",
+      "game": "Los Angeles Dodgers @ Arizona Diamondbacks"
+    },
+    {
+      "id": "r-20260602-005",
+      "timestamp": "Tue Jun 2, 2026 — 2:17 PM ET",
+      "category": "system",
+      "sport": "MLB",
+      "title": "System: Fade Public MLB Fave With Inferior Starter",
+      "body": "Textbook system spot: Dodgers are -118 public favorite despite having the significantly worse starting pitcher (Lauer 5.95 ERA vs. Soroka 3.25). The system — fade public-brand MLB favorites when they start an inferior arm in a divisional home game for the dog — has strong historical ROI. Chase Field is a dome, so no weather variable. This aligns with the matchup analytics: Soroka is 7-2 and pitching as well as any NL arm right now.",
+      "relevance": "high",
+      "game": "Los Angeles Dodgers @ Arizona Diamondbacks"
+    },
+    {
+      "id": "r-20260602-006",
+      "timestamp": "Tue Jun 2, 2026 — 2:17 PM ET",
+      "category": "injury",
+      "sport": "MLB",
+      "title": "Crochet Shut Down — Shoulder Inflammation Alert",
+      "body": "Garrett Crochet will not throw his scheduled June 2 live bullpen due to left shoulder inflammation and lat tightness. Lat issues alongside shoulder inflammation often precede IL stints of 2-4 weeks. His next start should be faded until health is confirmed. Monitor for IL placement — if activated, his team's ML and run-line odds will shift materially at opening. Dylan Cease threw a 25-30 pitch bullpen May 30 and is also tracking toward a return but not yet confirmed.",
+      "relevance": "medium",
+      "game": null
+    },
+    {
+      "id": "r-20260602-007",
+      "timestamp": "Tue Jun 2, 2026 — 2:17 PM ET",
+      "category": "injury",
+      "sport": "MLB",
+      "title": "Skubal Sim Game & Verlander Rehab — Return Watch",
+      "body": "Tarik Skubal (64-pitch, 4-inning sim game with 6 Ks on June 1) is nearing a rehab assignment. Justin Verlander is making a Triple-A rehab start for Toledo on June 2. Max Scherzer threw 3 hitless innings in Triple-A on May 31. Three elite SPs approaching activation; their returns will drastically shift rotation odds. Buy the dip on their team lines now — Skubal especially was one of the top 5 pitchers in baseball before the injury.",
+      "relevance": "medium",
+      "game": null
+    },
+    {
+      "id": "r-20260602-008",
+      "timestamp": "Tue Jun 2, 2026 — 2:17 PM ET",
+      "category": "weather",
+      "sport": "MLB",
+      "title": "MLB Weather June 2 — Clean, Minor Wind Angles",
+      "body": "No rain delays or postponement risk for Tuesday's 15-game MLB slate. Mild over-lean: Citizens Bank Park 75 degrees, 7 mph wind L-to-R; Angel Stadium 72 degrees, 8 mph blowing out. Mild under-lean: Target Field 82 degrees, 9 mph wind R-to-L; Busch Stadium 80 degrees, 10 mph blowing in. None meet the 12+ mph strong overlay threshold. Weather is not a meaningful factor in any game today.",
+      "relevance": "low",
+      "game": null
+    },
+    {
+      "id": "r-20260602-009",
+      "timestamp": "Tue Jun 2, 2026 — 2:17 PM ET",
+      "category": "trend",
+      "sport": "NHL",
+      "title": "Under System: Cup Final Game 1 Historically Trends Under",
+      "body": "Stanley Cup Final Game 1 has gone Under the total in 7 of the last 10 openers as teams play conservative, defensive hockey to start the series. Tonight's 5.5 total with sharp RLM toward the Under and both goalies in elite form makes this a multi-factor setup. Public is 80/83% on the Over, sharp money is on the Under, and the system aligns — one of the cleaner angles of the evening. Under 5.5 at near even money has genuine value.",
+      "relevance": "high",
+      "game": "Vegas Golden Knights @ Carolina Hurricanes"
+    },
+    {
+      "id": "r-20260602-010",
+      "timestamp": "Tue Jun 2, 2026 — 2:17 PM ET",
+      "category": "angle",
+      "sport": "NBA",
+      "title": "Knicks +4.5 G1 — 9-Day Rest Edge vs Spurs",
+      "body": "NBA Finals Game 1 is tomorrow (June 3, 8:30 PM ET, Frost Bank Center). San Antonio is -4.5 home favorite, but New York had 9 full days rest after sweeping Cleveland while the Spurs had a shorter turnaround. Models price the game at Spurs -6.5 pre-rest; the market sits at -4.5/-5, implying only 1.5-2 points of rest credit — potentially underpriced given research showing 7+ day rest is worth 2-3 points historically. Wembanyama is -180 MVP favorite vs. Brunson +210. Series total 218.5, Over trending.",
+      "relevance": "high",
+      "game": "New York Knicks @ San Antonio Spurs"
+    },
+    {
+      "id": "r-20260602-011",
+      "timestamp": "Tue Jun 2, 2026 — 2:17 PM ET",
+      "category": "futures",
+      "sport": "NFL",
+      "title": "Rams +600 Super Bowl Fav — Myles Garrett Trade",
+      "body": "LA Rams are Super Bowl LXI favorites at +600 after acquiring two-time DPOY Myles Garrett from Cleveland. Stafford confirmed 2026 return. The Rams now pair a proven offense with potentially the best defensive player in football. The market jumped from +800 to +600 on the Garrett news. Ravens at 10-1 (new HC Minter, Lamar/Henry intact), reigning champion Seahawks at 11-1. Buffalo Bills remain a contender at approximately 10-1. The Rams number may already be fully priced in at +600.",
+      "relevance": "medium",
+      "game": "NFL Futures"
+    },
+    {
+      "id": "r-20260602-012",
+      "timestamp": "Tue Jun 2, 2026 — 2:17 PM ET",
+      "category": "futures",
+      "sport": "NFL",
+      "title": "Patriots Win Total OVER — AJ Brown + Maye Pairing",
+      "body": "AJ Brown was traded from Philadelphia to New England for a 2028 first-round pick. Brown gives second-year QB Drake Maye his first true WR1 alongside Romeo Doubs under HC Mike Vrabel. New England's win total (likely 7.5-8.5) should see immediate over pressure before books fully adjust. Maye showed franchise-QB flashes in year one; this is a significant talent upgrade that may not be reflected in current lines. Monitor the NE win total and bet the Over early before the market moves.",
+      "relevance": "high",
+      "game": "NFL Futures"
+    },
+    {
+      "id": "r-20260602-013",
+      "timestamp": "Tue Jun 2, 2026 — 2:17 PM ET",
+      "category": "futures",
+      "sport": "NFL",
+      "title": "Eagles Win Total Under Watch — Lost AJ Brown",
+      "body": "Philadelphia traded A.J. Brown — their top WR and a key piece of the Super Bowl LIX championship offense — to New England. The Eagles' win total should soften from current projections; monitor for movement. Jalen Hurts and the run game remain, but Brown was a critical red-zone and big-play target. This is an Eagles win total Under watch alert — get in before oddsmakers shade the number down. The Eagles' offensive ceiling drops materially without Brown.",
+      "relevance": "high",
+      "game": "NFL Futures"
+    }
+  ],
+  "picks": [
+    {
+      "id": "pk-20260526-001",
+      "date": "2026-05-26",
+      "sport": "NBA",
+      "matchup": "SA Spurs @ OKC Thunder — WCF G5",
+      "play": "Under 216.5",
+      "odds": "-110",
+      "grade": "A",
+      "result": "L",
+      "note": "Model hits Under 58.4% of sims. Game 4 was 103-82. Williams Q, Mitchell OUT. Total dropped from 219.5. Top play of the day. RESULT: Spurs 122, Thunder 115 (2OT) = 237 total. Way over. Loss."
+    },
+    {
+      "id": "pk-20260526-002",
+      "date": "2026-05-26",
+      "sport": "NHL",
+      "matchup": "COL Avalanche @ VGK — WCF G4",
+      "play": "Vegas Golden Knights ML",
+      "odds": "-110",
+      "grade": "A",
+      "result": "W",
+      "note": "Vegas 3-0 in series, home ice, elimination game. Carter Hart .942 SV%. MacKinnon/Nichushkin injured. Near even money is elite value. — GAME IN PROGRESS RESULT: VGK 2-1, sweep. Win."
+    },
+    {
+      "id": "pk-20260526-003",
+      "date": "2026-05-26",
+      "sport": "MLB",
+      "matchup": "BOS Red Sox @ ATL Braves",
+      "play": "Strider Over 6.5 Ks",
+      "odds": "+114",
+      "grade": "A",
+      "result": "L",
+      "note": "Strider 6.8 K/game average, 31.2% K rate. Red Sox 2nd worst vs RHP. Plus money on his floor — best value play on the board. RESULT: Strider had 5 Ks. Under 6.5. Loss."
+    },
+    {
+      "id": "pk-20260526-004",
+      "date": "2026-05-26",
+      "sport": "MLB",
+      "matchup": "BOS Red Sox @ ATL Braves",
+      "play": "Atlanta Braves ML",
+      "odds": "-125",
+      "grade": "B",
+      "result": "W",
+      "note": "Strider healthy and in form. Sharp ticket/money split favors Atlanta. Red Sox 8-17 at home. RESULT: Braves 3-2 extra innings. Win."
+    },
+    {
+      "id": "pk-20260526-005",
+      "date": "2026-05-26",
+      "sport": "MLB",
+      "matchup": "PHI Phillies @ SD Padres",
+      "play": "San Diego Padres ML",
+      "odds": "-118",
+      "grade": "B",
+      "result": "L",
+      "note": "Nola 6.04 ERA, Phillies 4-game skid. Vasquez 5-2. Padres bullpen elite. Petco Park suppresses offense. RESULT: Phillies 4-3. Loss."
+    },
+    {
+      "id": "pk-20260527-001",
+      "date": "2026-05-27",
+      "sport": "MLB",
+      "matchup": "PHI Phillies @ SD Padres",
+      "play": "Philadelphia Phillies ML",
+      "odds": "+110",
+      "grade": "A-",
+      "result": "win",
+      "note": "Sanchez (1.62 ERA) vs Buehler (5.05 ERA) — the largest pitcher ERA gap on today's board, and PHI is priced as the underdog at Petco."
+    },
+    {
+      "id": "pk-20260527-002",
+      "date": "2026-05-27",
+      "sport": "MLB",
+      "matchup": "HOU Astros @ TEX Rangers",
+      "play": "Houston Astros ML",
+      "odds": "+127",
+      "grade": "A-",
+      "result": "W",
+      "note": "Arrighetti (5-1, 1.50 ERA) on 5-days rest going into Globe Life Field — sharp money confirmed on Lines tab, 4-game HOU win streak."
+    },
+    {
+      "id": "pk-20260527-003",
+      "date": "2026-05-27",
+      "sport": "NHL",
+      "matchup": "CAR Hurricanes @ MTL Canadiens — ECF G4",
+      "play": "Carolina Hurricanes ML",
+      "odds": "-140",
+      "grade": "B",
+      "result": "W",
+      "note": "Series leaders looking for a commanding 3-1 lead against a young Montreal team outclassed in two of three games."
+    },
+    {
+      "id": "pk-20260527-004",
+      "date": "2026-05-27",
+      "sport": "MLB",
+      "matchup": "NYY Yankees @ KC Royals",
+      "play": "Kansas City Royals ML",
+      "odds": "+118",
+      "grade": "C+",
+      "result": "L",
+      "note": "Fade-the-public spot: 74% of bets and 70% of money on NYY but line barely moved, confirming sharp resistance on the Royals side."
+    },
+    {
+      "id": "pk-20260527-005",
+      "date": "2026-05-27",
+      "sport": "MLB",
+      "matchup": "CIN Reds @ NYM Mets",
+      "play": "Cincinnati Reds ML",
+      "odds": "+115",
+      "grade": "C",
+      "result": "L",
+      "note": "LM signal shows sharp lean on Reds in this series, but today's starter is Abbott (not Burns) — reduced conviction, small-unit only."
+    },
+    {
+      "id": "pk-20260528-011",
+      "date": "2026-05-28",
+      "sport": "MLB",
+      "matchup": "HOU Astros @ TEX Rangers",
+      "play": "Houston Astros ML",
+      "odds": "+110",
+      "grade": "A-",
+      "result": "W",
+      "note": "SP edge of the day: Arrighetti (6-1, 1.32 ERA) vs Eovaldi (3.65 ERA) — one of the biggest ERA gaps on today's board. Arrighetti nearly threw a no-hitter vs TEX earlier in 2026. Market prices TEX at -130 for home-field but that SP gap is too wide. Road dog value at +110. Astros bullpen depth edge over Rangers late game."
+    },
+    {
+      "id": "pk-20260528-012",
+      "date": "2026-05-28",
+      "sport": "MLB",
+      "matchup": "ATL Braves @ BOS Red Sox",
+      "play": "Atlanta Braves ML",
+      "odds": "-118",
+      "grade": "B+",
+      "result": "W",
+      "note": "Bryce Elder (1.97 ERA) for the hottest team in baseball (36-16) at light juice. Payton Tolle (2.95 ERA) is solid for BOS but the Red Sox are struggling (22-28). ATL has superior run support, stronger rotation top-to-bottom, and -118 is a very reasonable price for a team on a dominant run. Elder's ERA makes this a hold-your-nose-and-bet-the-favorite spot."
+    },
+    {
+      "id": "pk-20260528-013",
+      "date": "2026-05-28",
+      "sport": "MLB",
+      "matchup": "CHC Cubs @ PIT Pirates",
+      "play": "Chicago Cubs ML",
+      "odds": "+146",
+      "grade": "C+",
+      "result": "W",
+      "note": "Fade the overpriced PIT line. Skenes (3.00 ERA) is elite but -174 implies 63.4% win probability — models show only 57% for PIT. CHC +146 (break-even 40.7%) with true win probability ~43% offers a small +EV fade. Colin Rea (4.98 ERA) is the risk. If Cubs offense chases Skenes or gets to PIT pen, this covers. Marginal edge — small unit only."
+    },
+    {
+      "id": "pk-20260528-014",
+      "date": "2026-05-28",
+      "sport": "NHL",
+      "matchup": "VGK Golden Knights @ COL Avalanche — WCF G5",
+      "play": "Vegas Golden Knights ML",
+      "odds": "-140",
+      "grade": "C",
+      "result": "P",
+      "note": "VGK goes for series sweep in Denver (leads 3-0). 0-49 historically for teams facing 3-0 deficit in conference finals. VGK 11-4 in postseason, led by Marner and Eichel. COL gets home crowd and desperate energy, which limits value — but the historical weight against a comeback is overwhelming. -140 is reasonable juice to back the likely winner. Tight play, small unit."
+    },
+    {
+      "id": "pk-20260529-001",
+      "date": "2026-05-29",
+      "sport": "NBA",
+      "matchup": "Thunder @ Spurs (WCF G6)",
+      "play": "OKC Thunder +3.5",
+      "odds": -110,
+      "grade": "B+",
+      "result": "L",
+      "note": "Public fade: 72-75% on Spurs, line crossed key number 3 (opened -2.5, now -3.5). Sharp signal on OKC. Williams active. OKC won G5 by 13."
+    },
+    {
+      "id": "pk-20260529-002",
+      "date": "2026-05-29",
+      "sport": "MLB",
+      "matchup": "Phillies @ Dodgers",
+      "play": "Phillies ML",
+      "odds": 100,
+      "grade": "B",
+      "result": "L",
+      "note": "Wheeler (1.67 ERA in last 6, 4-0) at even money +100. Elite pitching edge vs. Wrobleski (3.07 ERA). Dodgers better team but pitching swings value to PHI."
+    },
+    {
+      "id": "pk-20260531-001",
+      "date": "2026-05-31",
+      "sport": "MLB",
+      "matchup": "KC Royals @ TEX Rangers",
+      "play": "Over 7.5 Runs",
+      "odds": "-102",
+      "grade": "A",
+      "result": "L",
+      "note": "Top model edge today — 58.4% probability, +7.9% edge at -102. TEX bullpen near-bottom xERA. Both lineups live. Sharp money moved total from 7 to 7.5. | RESULT: Rangers won ~6-1. Total under 7.5. LOSS."
+    },
+    {
+      "id": "pk-20260531-002",
+      "date": "2026-05-31",
+      "sport": "MLB",
+      "matchup": "NYY Yankees @ OAK Athletics",
+      "play": "New York Yankees ML",
+      "odds": "-155",
+      "grade": "A-",
+      "result": "L",
+      "note": "Will Warren (6-1, 3.55 ERA) vs Jacob Lopez (5.73 ERA). Massive pitching mismatch. Yankees ML moved from -145 to -155 on sharp action. | RESULT: Athletics won 6-4. LOSS."
+    },
+    {
+      "id": "pk-20260531-003",
+      "date": "2026-05-31",
+      "sport": "MLB",
+      "matchup": "CHC Cubs @ STL Cardinals",
+      "play": "STL Cardinals ML",
+      "odds": -118,
+      "grade": "B+",
+      "result": "W",
+      "note": "Sharp signal all day — 90% public on Cubs yet Cardinals line held. Wicks (16.62 ERA) vs Liberatore (4.76 ERA) at Busch Stadium. Fade the public, back the home pitcher."
+    },
+    {
+      "id": "pk-20260601-002",
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "matchup": "Rangers @ Cardinals",
+      "play": "Cardinals ML",
+      "odds": -125,
+      "grade": "CONFLICT",
+      "result": "PASS",
+      "note": "Cardinals at home with the ERA edge. McGreevy (2.98) vs deGrom (3.77 ERA on the road). Both teams near .500 but Cards are 30-26 vs Rangers 27-31. Busch Stadium, home field, better ERA — Cardinals at reasonable juice is solid value. deGrom has road struggles this year. | ⚠️ CONFLICT: Games board flipped to Rangers ML -125 citing sharp signal. No RLM data confirms either side. deGrom regression angle medium only. Recommend PASS — no clear edge."
+    },
+    {
+      "id": "pk-20260601-004",
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "matchup": "Royals @ Reds",
+      "play": "Reds ML",
+      "odds": -188,
+      "grade": "VOID",
+      "result": "VOID",
+      "note": "Chase Burns is the best pitcher in baseball (7-1, 1.96 ERA, 4-0 May with 1.19 ERA). Avila has never started — 10 bullpen appearances, now making his first-ever rotation start. Royals are 22-37. At -188 you need 65%+ win rate; Burns' true win rate in this spot is realistically 72-75%. Steep but genuine edge via SP ERA gap. | ⚠️ VOIDED: Chase Burns scratched (illness) — replaced by Lyon Richardson. Entire edge was Burns. Pick invalidated. Do not bet."
+    },
+    {
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "matchup": "Dodgers @ Diamondbacks",
+      "play": "Diamondbacks ML",
+      "odds": 125,
+      "grade": "A-",
+      "result": "W",
+      "note": "Best play on the board. Textbook RLM: 65% public on LA yet Dodgers line shortened from -155 to -147 — sharp money buying Arizona. Rodriguez (2.31 ERA overall, 1.60 ERA in May, 5-1) is pitching at his best. Sheehan carries a 6.52 ERA on the road with a .386 wOBA. Plus-money on a sharp-backed dog with the genuine pitcher edge.",
+      "id": "pk-20260601-001"
+    },
+    {
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "matchup": "Giants @ Brewers",
+      "play": "Brewers ML",
+      "odds": -158,
+      "grade": "A-",
+      "result": "W",
+      "note": "Sharp syndicate action drove Milwaukee's line 23 cents (from -143 to -166 peak). Brewers (35-21) hosting Giants (23-36) with brutal road record. Sharp-backed home favorite with a big record edge.",
+      "id": "pk-20260601-003"
+    },
+    {
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "matchup": "White Sox @ Twins",
+      "play": "White Sox ML",
+      "odds": 139,
+      "grade": "B+",
+      "result": "L",
+      "note": "Classic RLM: 53% of bets on Twins yet 75% of money on Chicago, shortening Minnesota from -175 to -163. Sharp syndicates buying Sox at a price. On 5-game win streak, same Twins they dominated in debut last week.",
+      "id": "pk-20260601-005"
+    },
+    {
+      "id": "pk-20260601-alert",
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "matchup": "Tigers @ Rays",
+      "play": "Tigers ML (ALERT — RLM signal only)",
+      "odds": "+135",
+      "grade": "C+",
+      "result": "W",
+      "note": "RLM ALERT: 85% public on Rays yet line dropped -170 → -162. Sharp money backing Detroit live dog. Games board still shows Rays pick. Not a logged bet — monitor only. If you want a 5th play, Tigers +135 has sharp backing."
+    },
+    {
+      "id": "pk-20260601-006",
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "matchup": "Marlins @ Nationals",
+      "play": "Marlins ML",
+      "odds": -150,
+      "grade": "C+",
+      "result": "L",
+      "note": "Alcantara SP edge over Cavalli but no sharp signals. Marlins below .500; stiff juice makes this marginal at best. No bet — monitor only."
+    },
+    {
+      "id": "pk-20260601-007",
+      "date": "2026-06-01",
+      "sport": "MLB",
+      "matchup": "Mets @ Mariners",
+      "play": "Mets ML",
+      "odds": 116,
+      "grade": "B",
+      "result": "L",
+      "note": "RLM: 78% public on Seattle 6-game streak yet line eased -144→-132 (current ~-136) — sharp money on Mets as road dog. +116 price with verified sharp backing."
+    }
+  ],
+  "lessons": {
+    "lastUpdated": "2026-06-01",
+    "record": {
+      "overall": "9-9",
+      "hitRate": 50.0,
+      "byType": {
+        "ML": {
+          "record": "8-3",
+          "hitRate": 73,
+          "note": "Clear strength — stick to ML as primary bet type"
+        },
+        "Totals": {
+          "record": "0-2",
+          "hitRate": 0,
+          "note": "Both game totals (NBA under, MLB over 7.5) lost. Avoid totals."
+        },
+        "PlayerProps": {
+          "record": "0-1",
+          "hitRate": 0,
+          "note": "Strikeout props: 0-1 (Strider 5 Ks). Small sample but tracking."
+        },
+        "Spread": {
+          "record": "1-3",
+          "hitRate": 25,
+          "note": "Spread/totals as a category is losing. Lean ML over spreads."
+        }
+      },
+      "bySport": {
+        "MLB": {
+          "record": "7-7",
+          "hitRate": 50,
+          "note": "Volume sport — improving when fading weak starters with ERA edge"
+        },
+        "NHL": {
+          "record": "2-0",
+          "hitRate": 100,
+          "note": "Best sport. Both picks were structural value spots. Keep hunting NHL."
+        },
+        "NBA": {
+          "record": "0-2",
+          "hitRate": 0,
+          "note": "0-2. Under 216.5 lost in 2OT (bad luck), Thunder +3.5 miss. Avoid NBA totals."
+        }
+      },
+      "byGrade": {
+        "A": {
+          "record": "1-3",
+          "hitRate": 25,
+          "warning": "TOP PRIORITY FIX: Grade A picks are 1-3. Grading is overconfident. Raise the bar for A."
+        },
+        "A-": {
+          "record": "3-1",
+          "hitRate": 75,
+          "note": "Sweet spot. These are high-conviction but not overconfident. Keep this tier."
+        },
+        "B/B+": {
+          "record": "4-3",
+          "hitRate": 57,
+          "note": "Solid. B+ plays are performing well. B is breakeven."
+        },
+        "C/C+": {
+          "record": "1-2",
+          "hitRate": 33,
+          "warning": "C-grade plays are losing as expected. Stop logging C picks."
+        }
+      }
+    },
+    "patterns": [
+      {
+        "id": "pattern-001",
+        "type": "edge",
+        "title": "ML > Props/Totals",
+        "detail": "ML bets are 8-3 (73%). Props and totals are 0-4 combined. The operation's edge is in identifying value ML spots, not in game-total or prop lines. Shift allocation.",
+        "action": "Weight ML plays as primary. Props require at least a 2-standard-deviation statistical edge to log.",
+        "status": "active"
+      },
+      {
+        "id": "pattern-002",
+        "type": "leak",
+        "title": "Grade A overconfidence",
+        "detail": "Grade A picks have gone 1-3. The losses: NBA Under 216.5 (2OT variance), MLB Over 7.5 runs (Rangers domination), Yankees ML -155 (A's upset). Grading 'A' doesn't correlate with wins — it may signal overconfidence in model-driven picks that ignore game-day variance.",
+        "action": "Reserve grade A for spots with multiple converging signals: line movement + statistical edge + matchup + motivation. Never assign A based on a single angle alone.",
+        "status": "active"
+      },
+      {
+        "id": "pattern-003",
+        "type": "edge",
+        "title": "Pitcher ERA gap ML plays working",
+        "detail": "PHI vs SD (Sanchez 1.62 vs Buehler 5.05): Win. HOU vs TEX (Arrighetti 1.50): Win x2. Cards vs Rangers (McGreevy 2.98 vs deGrom 3.77 road): Win. The SP ERA gap play is the most repeatable edge found so far.",
+        "action": "Prioritize ML plays where one SP has a clear ERA advantage (1.5+ ERA gap). Best when the better pitcher is priced as underdog or near-even.",
+        "status": "active"
+      },
+      {
+        "id": "pattern-004",
+        "type": "leak",
+        "title": "Game totals are a trap",
+        "detail": "Under 216.5 NBA lost in 2OT (game went to 237). MLB Over 7.5 lost (Rangers dominated but game stayed under). Totals are the hardest market to beat — sharp books price them tightest.",
+        "action": "Avoid game totals entirely unless there is an extreme weather, park factor, or bullpen-fatigue angle. Not a priority market.",
+        "status": "active"
+      },
+      {
+        "id": "pattern-005",
+        "type": "leak",
+        "title": "C-grade plays are burning units",
+        "detail": "C and C+ plays: 1-2. These were logged as 'small unit only' plays but still cost units. The signal for C-grade is weak by definition — if it's not B or above, it should be a pass.",
+        "action": "Hard floor: no play graded below B gets logged. If the best grade reachable is C, it goes in the board as 'Pass'.",
+        "status": "active"
+      },
+      {
+        "id": "pattern-006",
+        "type": "edge",
+        "title": "NHL structural spots are automatic",
+        "detail": "2-0 in NHL: VGK sweep clinch (elimination game home dog at near-even), CAR series leaders controlling opponent. Both picked using structural logic (series position, home ice, key injuries), not just odds.",
+        "action": "NHL playoff structural spots (clinch games, elimination games with home-ice + injured opponent) are among the highest-confidence plays. Prioritize these over any other market when available.",
+        "status": "active"
+      },
+      {
+        "id": "pattern-007",
+        "type": "note",
+        "title": "Strikeout props — early track record",
+        "detail": "Strider Over 6.5 Ks: Loss (had 5). Burns Over 6.5 Ks and Roupp Over 5.5 Ks logged today (pending). The Strider loss happened when he failed to reach his season average — 1 bad start erases the edge. Need at least 3-4 recent starts confirming form before logging K props.",
+        "action": "For K props: require pitcher to have cleared the line in 3 of last 5 starts AND face a team in the top-12 in K rate. Don't rely on season averages alone.",
+        "status": "active"
+      }
+    ],
+    "dailyDebriefs": [
+      {
+        "date": "2026-05-26",
+        "record": "2-3",
+        "summary": "Rough start. NBA Under (2OT variance loss) and Strider K prop (5 Ks) both Grade A and both lost. VGK sweep clinch won, Braves ML won. Padres ML loss — Phillies won 4-3 despite being the weaker team on paper.",
+        "keyLesson": "2OT destroyed the Under. Props are risky even with strong averages. ML on quality matchups is the safest path."
+      },
+      {
+        "date": "2026-05-27",
+        "record": "3-2",
+        "summary": "3-2 day led by the SP ERA gap plays: PHI +110 (Sanchez vs Buehler ERA gap) and HOU +127 (Arrighetti 1.50 ERA) both won easily. CAR ML won. Two C/C+ plays (KC Royals +118, CIN Reds +115) both lost — confirmed that weak-conviction plays are a drain.",
+        "keyLesson": "ERA gap picks are the sharpest tool in the kit. C-grade picks cost two units. Stop logging anything below B."
+      },
+      {
+        "date": "2026-05-28",
+        "record": "3-0",
+        "summary": "Clean 3-0 sweep. HOU ML again (+110), ATL B+, CHC +146 upset. Best day of the operation. Cubs at +146 was a C+ but connected — don't let that encourage C-grade logging going forward.",
+        "keyLesson": "The Cubs win at +146 was lucky at C+ grade. Focus on replicating the HOU/ATL type plays, not the Cubs-type shots."
+      },
+      {
+        "date": "2026-05-29",
+        "record": "0-2",
+        "summary": "0-2. OKC Thunder +3.5 (NBA spread) and Phillies ML both lost. Back-to-back NBA misses. Thunder +3.5 was Grade B+ but NBA spread is clearly not a strong market for this operation.",
+        "keyLesson": "NBA spreads are 0-2. Avoid NBA spreads; if betting NBA, ML only."
+      },
+      {
+        "date": "2026-05-31",
+        "record": "1-2",
+        "summary": "1-2. Over 7.5 Runs (Grade A) lost — Rangers won big but game stayed under total. Yankees ML -155 (Grade A-) lost to A's upset. Cardinals ML won. Two A/A- picks lost which reinforces the grade-inflation problem.",
+        "keyLesson": "Yankees at -155 lost to a bad team — heavy favorites still lose 25-30% of the time. Grade A shouldn't mean 'lay the juice'; it should mean 'structural edge exists'."
+      },
+      {
+        "date": "2026-06-01",
+        "record": "3-3",
+        "summary": "Mixed 3-3 day. Big wins: AZ +125 (A-, Diamondbacks won 4-1) and MIL -158 (A-, Brewers won 8-2). DET +135 RLM alert hit too (Tigers won 10-5). Losses: CWS +139 (Twins won 5-4 in a tight one), MIA -150 (Nationals won 5-3 — bad chalk), NYM +116 (Mariners won 3-2 in extras). D-backs and Brewers are the quality plays — RLM on DET was a bonus hit.",
+        "keyLesson": "A-grade MLB plays delivered. Bad chalk (MIA -150) burned again — heavy ML favorites are a trap. RLM signal on DET was correct and would have been a strong play."
+      }
+    ],
+    "currentEdgeRules": [
+      "ML > everything: default to ML unless a prop has a very clear statistical edge",
+      "SP ERA gap: bet the team whose starter has 1.5+ ERA advantage, especially when priced as underdog",
+      "NHL structural spots: clinch/elimination games with home ice + opponent injuries are highest-confidence plays",
+      "Grade floor is B: nothing below B gets logged as a play",
+      "Grade A requires 3+ converging signals — never assign A on one angle alone",
+      "Totals are off the board: avoid game over/unders",
+      "K prop threshold: pitcher must have cleared line in 3 of last 5 starts AND opponent is top-12 in K rate",
+      "C-grade = Pass. If conviction doesn't reach B, it goes on the board as a pass with reasoning"
+    ]
+  },
+  "headlines": [
+    {
+      "headline": "SCF Game 1 TONIGHT: Andersen (12-1, 1.41 GAA) vs Hart (2.22 GAA) — massive Canes goalie edge",
+      "sport": "NHL",
+      "source": "Sportsnaut / ESPN",
+      "timestamp": "Tue Jun 2, 2026 — 7:12 PM"
+    },
+    {
+      "headline": "Crochet suffers new lat tightness, skips live BP, MRI Monday — return past June 20 now uncertain",
+      "sport": "MLB",
+      "source": "Boston.com / 98.5 The Sports Hub",
+      "timestamp": "Tue Jun 2, 2026 — 7:12 PM"
+    },
+    {
+      "headline": "Blake Snell having elbow surgery (loose bodies) — out indefinitely, Dodgers rotation thinned again",
+      "sport": "MLB",
+      "source": "MLB Trade Rumors / ESPN",
+      "timestamp": "Tue Jun 2, 2026 — 7:12 PM"
+    },
+    {
+      "headline": "Elly De La Cruz on 10-day IL (Grade 1-2 hamstring) — next MRI mid-June, Reds lineup gutted",
+      "sport": "MLB",
+      "source": "Yardbarker / FanGraphs",
+      "timestamp": "Tue Jun 2, 2026 — 7:12 PM"
+    },
+    {
+      "headline": "Chase Burns scratched June 2 for Reds — bullpen game as De La Cruz IL doubles the bad news",
+      "sport": "MLB",
+      "source": "DraftKings Network / ClutchPoints",
+      "timestamp": "Tue Jun 2, 2026 — 7:12 PM"
+    },
+    {
+      "headline": "Blue Jays lose Berrios to 60-day IL — now without top 2 SPs (Bieber also out), rotation in freefall",
+      "sport": "MLB",
+      "source": "FanGraphs Roster Resource",
+      "timestamp": "Tue Jun 2, 2026 — 7:12 PM"
+    },
+    {
+      "headline": "Wrigley wind blowing IN from LCF tonight — reduces HR chances, under lean for Cubs game",
+      "sport": "MLB",
+      "source": "RotoWire Weather",
+      "timestamp": "Tue Jun 2, 2026 — 7:12 PM"
+    },
+    {
+      "headline": "Zach Neto scratched Angels SS (whiplash from collision) — lineup downgrade vs depleted BOS rotation",
+      "sport": "MLB",
+      "source": "FanGraphs / Covers",
+      "timestamp": "Tue Jun 2, 2026 — 7:12 PM"
+    },
+    {
+      "headline": "NBA Finals Media Day: Game 1 Spurs vs Knicks Wednesday 8:30pm ET — Mitchell Robinson playing w/ broken pinky",
+      "sport": "NBA",
+      "source": "NBA.com",
+      "timestamp": "Tue Jun 2, 2026 — 7:12 PM"
+    },
+    {
+      "headline": "NBA Finals refs announced: Tony Brothers & Marc Davis among 12 officials — foul-heavy combo, monitor over",
+      "sport": "NBA",
+      "source": "NBA.com",
+      "timestamp": "Tue Jun 2, 2026 — 7:12 PM"
+    },
+    {
+      "headline": "BLOCKBUSTER: Browns trade Myles Garrett to Rams — Rams D-line elite, Cleveland win total plummets",
+      "sport": "NFL",
+      "source": "NFLTradeRumors.co / ESPN",
+      "timestamp": "Tue Jun 2, 2026 — 7:12 PM"
+    },
+    {
+      "headline": "AJ Brown trade to Patriots considered inevitable post-June 1 cap date — NE offense gets major boost",
+      "sport": "NFL",
+      "source": "IBTimes / ProFootballRumors",
+      "timestamp": "Tue Jun 2, 2026 — 7:12 PM"
+    },
+    {
+      "headline": "Giants fire sale heating up — shopping Jung Hoo Lee, Willy Adames, Devers ($472M+ in contracts)",
+      "sport": "MLB",
+      "source": "FOX Sports / Baseball America",
+      "timestamp": "Tue Jun 2, 2026 — 7:12 PM"
+    },
+    {
+      "headline": "Tigers on 60-day IL pace record (severity score 113, 15 players) — fade Tigers in multi-inning bets",
+      "sport": "MLB",
+      "source": "RotoWire",
+      "timestamp": "Tue Jun 2, 2026 — 7:12 PM"
+    },
+    {
+      "headline": "Skubal trade expected before deadline — Mariners leading suitors; Tigers rotation thin if he departs",
+      "sport": "MLB",
+      "source": "ClutchPoints / Spotrac",
+      "timestamp": "Tue Jun 2, 2026 — 7:12 PM"
+    }
+  ],
+  "headlinesUpdated": "7:12 PM"
+}
+</script>
+<script>
+"use strict";
+var DATA;
+try{DATA=JSON.parse(document.getElementById("betdata").textContent);}
+catch(e){DATA={settings:{bankroll:80,unit:10},updated:"",bets:[],games:[]};}
+var settings=Object.assign({bankroll:80,unit:10},DATA.settings||{});
+try{var ls=JSON.parse(localStorage.getItem("betCoach_settings")||"null");if(ls&&ls.bankroll>0&&ls.unit>0)settings=ls;}catch(e){}
+var bets=Array.isArray(DATA.bets)?DATA.bets:[];
+var games=(Array.isArray(DATA.games)?DATA.games:[]).map(function(g,i){
+  // Normalize new schema (pick/pickOdds/awayPitcher) → legacy schema (play/odds/pitchers)
+  var out=Object.assign({},g);
+  if(!out.play && out.pick) out.play=out.pick;
+  if(!out.odds && out.pickOdds!=null) out.odds=out.pickOdds;
+  if(!out.pitchers && (out.awayPitcher||out.homePitcher)) out.pitchers=(out.awayPitcher||"")+" vs "+(out.homePitcher||"");
+  if(!out.starters && out.pitchers) out.starters=out.pitchers;
+  if(out.rank==null) out.rank=i+1;
+  if(!out.stake) out.stake="1u";
+  if(!out.take && out.analysis) out.take=out.analysis;
+  return out;
+});
+var charts={};
+var boardFilter="ALL";
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
+function fmtMoney(n){return (n<0?"-":"")+"$"+Math.abs(n).toFixed(2);}
+function fmtUnits(n){return (n>=0?"+":"")+n.toFixed(2)+"u";}
+function fmtPct(n){return (n*100).toFixed(1)+"%";}
+function clsNum(n){return n>0?"pos":(n<0?"neg":"neu");}
+function num(v){var n=Number(v);return isFinite(n)?n:0;}
+function toWin(odds,stake){odds=num(odds);stake=num(stake);if(!odds||!stake)return 0;return odds>0?stake*odds/100:stake*100/Math.abs(odds);}
+function isSettled(b){return b.result==="W"||b.result==="L"||b.result==="P";}
+function betProfit(b){if(b.result==="W")return toWin(b.odds,b.stake);if(b.result==="L")return -num(b.stake);if(b.result==="P")return 0;return null;}
+function betUnits(b){var p=betProfit(b);return p===null?null:p/settings.unit;}
+function computeStats(){
+var w=0,l=0,p=0,pend=0,pl=0,staked=0;
+bets.forEach(function(b){
+if(b.result==="W")w++;else if(b.result==="L")l++;else if(b.result==="P")p++;else pend++;
+if(isSettled(b)){pl+=betProfit(b);staked+=num(b.stake);}
+});
+return {w:w,l:l,p:p,pending:pend,total:w+l+p,winRate:(w+l)>0?w/(w+l):0,pl:pl,units:pl/settings.unit,roi:staked>0?pl/staked:0,staked:staked,bankroll:settings.bankroll+pl,startBR:settings.bankroll};
+}
+function settledChrono(){
+return bets.filter(isSettled).slice().sort(function(a,b){var da=a.date||"",db=b.date||"";if(da!==db)return da<db?-1:1;return 0;});
+}
+function currentStreak(){
+var c=settledChrono().filter(function(b){return b.result!=="P";});
+if(!c.length)return {type:null,len:0};
+var last=c[c.length-1].result,len=0;
+for(var i=c.length-1;i>=0;i--){if(c[i].result===last)len++;else break;}
+return {type:last,len:len};
+}
+
+function startHlClock(){
+  var clk=document.getElementById("hlClock");
+  if(!clk)return;
+  function tick(){
+    var now=new Date();
+    var days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+    var months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    var h=now.getHours(),m=now.getMinutes(),s=now.getSeconds();
+    var ampm=h>=12?"PM":"AM";h=h%12||12;
+    clk.textContent=days[now.getDay()]+" "+months[now.getMonth()]+" "+now.getDate()+", "+now.getFullYear()+"  "+h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s+" "+ampm;
+  }
+  tick();setInterval(tick,1000);
+}
+
+function renderHeader(){
+var s=computeStats();
+document.getElementById("hdrPills").innerHTML=
+pill("Bankroll",fmtMoney(s.bankroll),s.pl>=0?"pos":"neg")+
+pill("Net P/L",fmtUnits(s.units),s.units>=0?"pos":"neg")+
+pill("Record",s.w+"-"+s.l+(s.p?"-"+s.p:""),"neu")+
+pill("Win Rate",s.total?fmtPct(s.winRate):"--","neu");
+}
+function pill(k,v,c){return '<div class="pill"><div class="lbl">'+k+'</div><div class="val '+c+'">'+v+'</div></div>';}
+function renderMiniStats(){
+var ms=document.getElementById("miniStats");
+if(!ms)return;
+var s=computeStats();
+ms.innerHTML=
+mini("Current",fmtMoney(s.bankroll),clsNum(s.pl))+
+mini("Net",fmtUnits(s.units),clsNum(s.pl))+
+mini("ROI",s.staked>0?fmtPct(s.roi):"--",clsNum(s.roi))+
+mini("Bets",String(s.total),"neu");
+}
+function mini(k,v,c){return '<div class="ministat"><div class="k">'+k+'</div><div class="v '+c+'">'+v+'</div></div>';}
+function renderChart(){
+var cv=document.getElementById("chartBankroll");
+if(!cv)return;
+if(!window.Chart){cv.parentElement.innerHTML='<div class="empty">Charts need an internet connection.</div>';return;}
+Chart.defaults.color="#8a93a6";Chart.defaults.borderColor="#2b3344";
+var c=settledChrono();
+var labels=["Start"],data=[settings.bankroll],run=settings.bankroll;
+c.forEach(function(b,i){run+=betProfit(b);labels.push("#"+(i+1));data.push(Number(run.toFixed(2)));});
+var up=data[data.length-1]>=settings.bankroll;
+var col=up?"#3ddc84":"#ff6b6b";
+if(charts.bk)charts.bk.destroy();
+charts.bk=new Chart(cv,{type:"line",
+data:{labels:labels,datasets:[{data:data,borderColor:col,backgroundColor:col+"22",fill:true,tension:.25,pointRadius:c.length>25?0:3,pointBackgroundColor:col,borderWidth:2}]},
+options:{responsive:true,maintainAspectRatio:false,
+plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return "Bankroll: $"+ctx.parsed.y.toFixed(2);}}}},
+scales:{y:{ticks:{callback:function(v){return "$"+v;}},grid:{color:"#222a3a"}},x:{grid:{display:false}}}}});
+}
+function boardDate(){
+var u=(DATA.updated||"").replace(/^[A-Za-z]+,\s*/,"");
+var d=new Date(u);
+return isNaN(d.getTime())?null:d;
+}
+function isBoardStale(){
+var d=boardDate();if(!d)return false;
+var t=new Date();
+d.setHours(0,0,0,0);t.setHours(0,0,0,0);
+return d.getTime()<t.getTime();
+}
+function renderStaleBanner(){
+var el=document.getElementById("staleBanner");
+if(isBoardStale()){
+el.innerHTML='<div class="alert a-warn" style="margin-bottom:12px"><span class="ic">&#9888;</span><div><b>This board is from '+esc(DATA.updated)+'.</b><br><span class="small">Tap Refresh for today’s DraftKings lines.</span></div></div>';
+}else el.innerHTML="";
+}
+function openRefresh(){document.getElementById("refreshModal").classList.add("show");}
+function closeRefresh(){document.getElementById("refreshModal").classList.remove("show");}
+function renderBoardBar(){
+var counts={ALL:games.length,MLB:0,NHL:0,NBA:0,WNBA:0,NFL:0};
+games.forEach(function(g){counts[g.sport]=(counts[g.sport]||0)+1;});
+var order=["ALL","MLB","NHL","NBA","WNBA","NFL"];
+var labels={ALL:"All games",MLB:"MLB",NHL:"NHL",NBA:"NBA",WNBA:"WNBA",NFL:"NFL"};
+document.getElementById("boardBar").innerHTML=order.map(function(k){
+if(k!=="ALL"&&!counts[k])return "";
+return '<button class="chip'+(boardFilter===k?" active":"")+'" data-f="'+k+'">'+labels[k]+' '+(counts[k]||0)+'</button>';
+}).join("");
+document.querySelectorAll("#boardBar .chip").forEach(function(c){
+c.addEventListener("click",function(){boardFilter=c.getAttribute("data-f");renderBoardBar();renderBoard();});
+});
+}
+function cardGames(){
+var sorted=games.slice().sort(function(a,b){return a.rank-b.rank;});
+var pick=sorted.filter(function(g){var c=(g.grade||"").charAt(0);return c==="A"||c==="B";}).slice(0,15);
+if(!pick.length&&sorted.length)pick=[sorted[0]];
+return pick;
+}
+function cardRankSet(){
+var s={};cardGames().forEach(function(g){s[g.rank]=1;});return s;
+}
+function gradeStars(grade){
+var g=(grade||"").trim();
+if(!g||g==="P")return 0;
+var base={A:5,B:4,C:3,D:2,F:1}[g.charAt(0)];
+if(base==null)return 0;
+if(g.indexOf("+")>0)base+=0.5;else if(g.indexOf("-")>0)base-=0.5;
+return Math.max(0.5,Math.min(5,base));
+}
+function starHTML(r){
+var pct=(r/5*100).toFixed(1);
+return '<span class="stars" title="'+r+' / 5 stars"><span class="base">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="fill" style="width:'+pct+'%">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span>';
+}
+function renderHeadlines(){
+var el=document.getElementById("headlinesList");
+var upEl=document.getElementById("headlinesUpdated");
+if(!el)return;
+var items=Array.isArray(DATA.headlines)?DATA.headlines:[];
+if(upEl&&DATA.headlinesUpdated)upEl.textContent="updated "+DATA.headlinesUpdated;
+if(!items.length){el.innerHTML='<div class="empty">No headlines yet.</div>';return;}
+el.innerHTML=items.slice(0,14).map(function(h,i){
+  var hasStory=h.story&&h.story.length>0;
+  var cls='hl-item'+(hasStory?' hl-link':'');
+  var id='hl-'+i;
+  var chevron=hasStory?'<span class="hl-chevron">&#9660;</span>':'';
+  var storyHtml=hasStory?
+    '<div class="hl-story">'+esc(h.story)+(h.url?'  <a href="'+h.url+'" target="_blank">&#8599; Read full article</a>':'')+'</div>':'';
+  var clickAttr=hasStory?' onclick="(function(el){el.classList.toggle(\'hl-open\')})(document.getElementById(\''+id+'\'))"':'';
+  return'<div class="'+cls+'" id="'+id+'"'+clickAttr+'>'+
+    '<div>'+chevron+'<span class="hl-sport">'+(h.sport||"")+'</span><span class="hl-text">'+esc(h.headline)+'</span></div>'+
+    '<div class="hl-src">'+(h.source?esc(h.source):'')+((h.source&&h.timestamp)?' &middot; ':'')+''+(h.timestamp?'<span style="color:var(--faint);font-size:9.5px">'+esc(h.timestamp)+'</span>':'')+
+    '</div>'+
+    storyHtml+
+    '</div>';
+}).join("");
+}
+function toggleAcc(id){
+var el=document.getElementById(id);
+if(!el)return;
+el.classList.toggle("acc-open");
+}
+function renderSpotlight(){
+var el=document.getElementById("spotlight");
+if(!el)return;
+var pick=cardGames();
+if(!pick.length){el.innerHTML='<div class="spot-hd"><div class="spot-title">&#9733; Best Bets</div></div><div class="empty">No featured plays on the board yet.</div>';return;}
+function pickCat(g){
+  if(g.kind==="prop")return"props";
+  var p=(g.play||"").toLowerCase();
+  if(p.indexOf("over")>=0||p.indexOf("under")>=0||p.indexOf("o/u")>=0)return"totals";
+  return"ml";
+}
+var ml=[],tot=[],props=[];
+pick.forEach(function(g){var c=pickCat(g);if(c==="totals")tot.push(g);else if(c==="props")props.push(g);else ml.push(g);});
+var totalU=pick.reduce(function(s,g){var n=parseFloat(g.stake);return s+(isFinite(n)?n:0);},0);
+var uTxt=(totalU%1?totalU.toFixed(1):String(totalU))+"u";
+function makeRow(g){
+  var gr=g.grade||"P";
+  var grcls="g-"+(gr==="P"?"P":gr.charAt(0));
+  var od=(g.odds&&g.odds!=="—")?esc(g.odds):"";
+  return '<div class="spot-row" data-rank="'+g.rank+'">'+
+    '<div class="rank">'+g.rank+'</div>'+
+    '<div class="spot-main">'+
+    '<div class="spot-match">'+esc(g.matchup)+'</div>'+
+    '<div class="spot-play"><b>'+esc(g.play)+'</b>'+(od?' '+od:'')+' '+starHTML(gradeStars(gr))+'</div>'+
+    '</div>'+
+    '<div class="spot-right"><div class="spot-stake">'+esc(g.stake||"")+'</div>'+
+    '<div class="grade '+grcls+'">'+(gr==="P"?"&mdash;":esc(gr))+'</div></div>'+
+    '</div>';
+}
+function makeSection(label,icon,arr,id){
+  var count=arr.length;
+  var badge=count?'<span class="spot-cat-count">'+count+'</span>':'';
+  var rows=arr.slice(0,5).map(makeRow).join("");
+  var empty=!count?'<div class="spot-cat-none">No plays</div>':'';
+  return'<div class="spot-acc" id="acc-'+id+'">'+
+    '<div class="spot-acc-hd" onclick="toggleAcc(\'acc-'+id+'\')">'+
+    '<span>'+icon+' '+label+badge+'</span>'+
+    '<span class="spot-acc-arrow">&#9660;</span>'+
+    '</div>'+
+    '<div class="spot-acc-body">'+rows+empty+'</div>'+
+    '</div>';
+}
+el.innerHTML=
+  '<div class="spot-hd"><div class="spot-title">&#9733; Best Bets</div>'+
+  '<div class="spot-meta">'+pick.length+' play'+(pick.length>1?"s":"")+'&nbsp;&middot;&nbsp;'+uTxt+'</div></div>'+
+  makeSection("ML / Spread","&#9654;",ml,"ml")+
+  makeSection("Totals","&#8597;",tot,"tot")+
+  makeSection("Player Props","&#9881;",props,"props");
+el.querySelectorAll(".spot-row").forEach(function(r){
+  r.addEventListener("click",function(){
+    var rk=r.getAttribute("data-rank");
+    var sel='.game[data-rank="'+rk+'"]';
+    if(!document.querySelector(sel)){boardFilter="ALL";renderBoardBar();renderBoard();}
+    var g=document.querySelector(sel);
+    if(g){g.classList.add("open");g.scrollIntoView({behavior:"smooth",block:"center"});}
+  });
+});
+}
+function renderBoard(){
+document.getElementById("boardUpdated").textContent=DATA.updated?"· updated "+DATA.updated:"";
+renderStaleBanner();
+var list=games.slice().sort(function(a,b){return a.rank-b.rank;}).filter(function(g){return boardFilter==="ALL"||g.sport===boardFilter;});
+var el=document.getElementById("board");
+if(!list.length){el.innerHTML='<div class="empty">No games on the board.</div>';return;}
+var cardSet=cardRankSet();
+el.innerHTML=list.map(function(g){
+var oncard=cardSet[g.rank]?'<span class="cardtag">&#9733; CARD</span>':'';
+var gr=g.grade||"P";
+var grcls="g-"+(gr==="P"?"P":gr.charAt(0));
+var top3=g.rank<=3?" top3":"";
+var lineArr=Array.isArray(g.line)?g.line:(g.line?[g.line]:[]);
+var lineKV=lineArr.map(function(x){return '<span class="bd-kv">'+esc(x)+'</span>';}).join("");
+var stats=(g.stats||[]).map(function(x){return '<li>'+esc(x)+'</li>';}).join("");
+var lmItems=getGameLines(g.matchup);
+var resItems=getGameResearch(g.matchup);
+return '<div class="game'+top3+'" data-rank="'+g.rank+'">'+
+'<div class="game-hd">'+
+'<div class="rank">'+g.rank+'</div>'+
+'<div class="g-mid">'+
+'<div class="g-match"><span class="sportbadge sb-'+g.sport+'">'+g.sport+'</span>'+(g.kind==="prop"?'<span class="proptag">PROP</span>':'')+esc(g.matchup)+oncard+'</div>'+
+'<div class="g-sub">'+esc(g.time)+' &middot; '+esc(g.take)+'</div>'+
+'</div>'+
+'<div class="g-play"><div class="pl">'+esc(g.play)+'</div>'+
+'<div class="od">'+(g.odds&&g.odds!=="—"?esc(g.odds)+' · ':'')+esc(g.stake||"")+'</div></div>'+
+'<div class="grade '+grcls+'" title="My grade for this play">'+(gr==="P"?"&mdash;":esc(gr))+'</div>'+
+'<div class="caret">&#9656;</div>'+
+'</div>'+
+'<div class="game-body">'+
+(g.starters?'<div class="bd-h">Matchup</div><div class="bd-analysis">'+esc(g.starters)+'</div>':'')+
+(lineKV?'<div class="bd-line">'+lineKV+'</div>':'')+
+(stats?'<div class="bd-h">Key Stats</div><ul class="bd-stats">'+stats+'</ul>':'')+
+lmInlineHTML(lmItems)+
+resInlineHTML(resItems)+
+'<div class="bd-h">Moneyline</div>'+
+'<div class="bd-analysis">'+esc(g.mlTake||g.analysis||g.take||"No moneyline analysis available.")+'</div>'+
+(g.totalTake||g.total
+  ?'<div class="bd-h">Total (O/U '+(g.total||"?")+')</div><div class="bd-analysis">'+esc(g.totalTake||"No total analysis logged.")+'</div>'
+  :''
+)+
+(gr==="P"
+  ?'<div class="theplay" style="background:rgba(136,136,136,.08);border-color:#444"><div class="tp-l"><b style="color:var(--muted)">Pass</b><span style="color:var(--muted);font-size:13px">'+esc(g.take||g.analysis||"No play — monitoring only.")+'</span></div><div class="grade g-P">—</div></div>'
+  :'<div class="theplay"><div class="tp-l"><b>The Play</b><span>'+esc(g.play)+(g.odds&&g.odds!=="—"?'  ('+esc(g.odds)+')':'')+'</span></div><div class="grade '+grcls+'">'+esc(gr)+'</div></div>'
+)+
+'</div>'+
+'</div>';
+}).join("");
+el.querySelectorAll(".game-hd").forEach(function(hd){
+hd.addEventListener("click",function(){hd.parentElement.classList.toggle("open");});
+});
+}
+function renderBets(){
+var body=document.getElementById("betsBody");
+document.getElementById("betCount").textContent=bets.length?(bets.length+" bet"+(bets.length>1?"s":"")+" logged"):"";
+if(!bets.length){
+body.innerHTML='<tr><td colspan="10"><div class="empty">No bets logged yet. Send me a screenshot of a bet slip in chat and I\'ll add it here.</div></td></tr>';
+return;
+}
+var rows=bets.slice().sort(function(a,b){var da=a.date||"",db=b.date||"";return da<db?1:(da>db?-1:0);});
+body.innerHTML=rows.map(function(b){
+var pr=betProfit(b),u=betUnits(b);
+var plTxt=pr===null?'<span class="muted">&mdash;</span>':'<span class="'+clsNum(pr)+'">'+fmtMoney(pr)+'</span>';
+var uTxt=u===null?'<span class="muted">&mdash;</span>':'<span class="'+clsNum(u)+'">'+fmtUnits(u)+'</span>';
+var gr=b.grade||"";
+var grTxt=gr?'<span class="gradesm g-'+gr.charAt(0)+'" title="'+esc(b.gradeNote||"")+'">'+esc(gr)+'</span>':'<span class="muted">&mdash;</span>';
+return '<tr><td>'+esc(b.date||"")+'</td><td>'+esc(b.sport||"")+'</td><td>'+esc(b.matchup||"")+'</td><td>'+esc(b.selection||"")+'</td><td>'+(num(b.odds)>0?"+":"")+esc(b.odds)+'</td><td>'+fmtMoney(num(b.stake))+'</td><td class="res-'+(b.result||"Pending")+'">'+esc(b.result||"Pending")+'</td><td>'+plTxt+'</td><td>'+uTxt+'</td><td>'+grTxt+'</td></tr>';
+}).join("");
+}
+function todayUnits(){
+var t=new Date().toISOString().slice(0,10),u=0;
+bets.forEach(function(b){if(b.date===t&&isSettled(b))u+=betUnits(b);});
+return u;
+}
+function detectChasing(){
+var c=settledChrono(),flags=0,last=null;
+c.forEach(function(b){if(last&&last.result==="L"&&num(b.stake)>num(last.stake)+0.001)flags++;last=b;});
+return flags;
+}
+function renderGuardrails(){
+var el=document.getElementById("guardrails");
+var s=computeStats();
+if(!bets.length){
+el.innerHTML='<div class="alert a-info"><span class="ic">&#8226;</span><div><b>No bets logged yet.</b><br><span class="small">Once you start logging, this panel flags cold streaks, chasing, stop-loss limits, and unit-size risk.</span></div></div>';
+return;
+}
+var out=[];
+var st=currentStreak(),tu=todayUnits(),chase=detectChasing();
+var unitPct=s.bankroll>0?settings.unit/s.bankroll:0;
+if(st.type==="L"&&st.len>=3)out.push(["a-bad","&#9888;","Cold streak: "+st.len+" losses in a row","Rule #3 — walk away and reset. The next bet waits until you're clear-headed."]);
+else if(st.type==="W"&&st.len>=3)out.push(["a-ok","&#128293;","Hot streak: "+st.len+" wins in a row","Nice run — keep your unit size flat, don't let it talk you into oversizing."]);
+else out.push(["a-ok","&#10003;","No danger streak","Recent results are balanced."]);
+if(tu<=-5)out.push(["a-bad","&#9632;","Daily stop-loss hit ("+fmtUnits(tu)+")","You're done for today per Rule #4."]);
+else if(tu>=10)out.push(["a-ok","&#9733;","Daily stop-win hit ("+fmtUnits(tu)+")","Strong day — locking it protects the bankroll."]);
+else if(tu!==0)out.push(["a-info","&#8226;","Today: "+fmtUnits(tu),"Stop-loss at -5u, optional stop-win at +10u."]);
+if(chase>=2)out.push(["a-warn","&#9888;","Possible chasing pattern","You raised your stake right after a loss "+chase+" times. Keep units flat."]);
+var pctCls=unitPct>0.15?"a-bad":(unitPct>0.10?"a-warn":"a-info");
+out.push([pctCls,unitPct>0.15?"&#9888;":"&#8226;","Unit is "+fmtPct(unitPct)+" of your bankroll",fmtMoney(settings.unit)+" per unit on a "+fmtMoney(s.bankroll)+" bankroll."]);
+el.innerHTML=out.map(function(o){return '<div class="alert '+o[0]+'"><span class="ic">'+o[1]+'</span><div><b>'+o[2]+'</b><br><span class="small">'+o[3]+'</span></div></div>';}).join("");
+}
+function renderGradePanel(){
+var el=document.getElementById("gradePanel");
+var graded=bets.filter(function(b){return b.grade;});
+if(!graded.length){
+el.innerHTML='<div class="empty">No graded bets yet. Every bet I log gets a grade — over time this shows whether my A and B bets actually win.</div>';
+return;
+}
+var buckets={A:[],B:[],C:[],D:[],F:[]};
+graded.forEach(function(b){var k=b.grade.charAt(0);if(buckets[k])buckets[k].push(b);});
+var rows="";
+["A","B","C","D","F"].forEach(function(k){
+var arr=buckets[k];if(!arr.length)return;
+var settled=arr.filter(isSettled);
+var w=settled.filter(function(b){return b.result==="W";}).length;
+var l=settled.filter(function(b){return b.result==="L";}).length;
+var u=settled.reduce(function(s,b){return s+betUnits(b);},0);
+var wr=(w+l)>0?fmtPct(w/(w+l)):"--";
+rows+='<div class="lrow"><div class="ln"><span class="gradesm g-'+k+'">'+k+'</span><span>'+arr.length+' bet'+(arr.length>1?"s":"")+'</span></div><div class="ln"><span class="small muted">'+w+'-'+l+' &middot; '+wr+'</span><b class="'+clsNum(u)+'" style="min-width:54px;text-align:right">'+(settled.length?fmtUnits(u):'<span class="muted">pending</span>')+'</b></div></div>';
+});
+el.innerHTML=rows;
+}
+function oddsBucket(o){o=num(o);if(o<=-200)return "Heavy favorite";if(o<0)return "Favorite";if(o<=120)return "Pick'em";if(o<=250)return "Underdog";return "Big underdog";}
+function leakGroup(fn){
+var m={};
+bets.filter(isSettled).forEach(function(b){
+var k=fn(b);if(k==null||k==="")k="(blank)";
+if(!m[k])m[k]={u:0,n:0,w:0,l:0};
+m[k].u+=betUnits(b);m[k].n++;
+if(b.result==="W")m[k].w++;if(b.result==="L")m[k].l++;
+});
+return Object.keys(m).map(function(k){return {key:k,u:m[k].u,n:m[k].n,w:m[k].w,l:m[k].l};}).sort(function(a,b){return a.u-b.u;});
+}
+function renderLeaks(){
+var el=document.getElementById("leakPanel");
+if(!bets.filter(isSettled).length){
+el.innerHTML='<div class="empty" style="grid-column:1/-1">Settle some bets and your leaks &amp; strengths surface here.</div>';
+return;
+}
+var groups=[
+["By Sport",leakGroup(function(b){return b.sport;})],
+["By Bet Type",leakGroup(function(b){return b.betType||"Other";})],
+["By Odds Range",leakGroup(function(b){return oddsBucket(b.odds);})],
+["By My Grade",leakGroup(function(b){return "Grade "+(b.grade?b.grade.charAt(0):"?");})]
+];
+var maxAbs=1;
+groups.forEach(function(g){g[1].forEach(function(r){maxAbs=Math.max(maxAbs,Math.abs(r.u));});});
+el.innerHTML=groups.map(function(g){
+var rows=g[1].map(function(r){
+var pos=r.u>=0,w=Math.max(4,Math.round(Math.abs(r.u)/maxAbs*70));
+var col=pos?"var(--green)":"var(--red)";
+var small=r.n<5?'<span class="tag">small sample</span>':'';
+return '<div class="lrow"><div class="ln"><span>'+esc(r.key)+'</span>'+small+'</div><div class="ln"><span class="small muted">'+r.w+'-'+r.l+'</span><div class="bar"><div style="height:100%;width:'+w+'px;background:'+col+'"></div></div><b class="'+(pos?"pos":"neg")+'" style="min-width:54px;text-align:right">'+fmtUnits(r.u)+'</b></div></div>';
+}).join("");
+return '<div><h3>'+g[0]+'</h3>'+rows+'</div>';
+}).join("");
+}
+function renderInsights(){
+var el=document.getElementById("insights");
+var settled=bets.filter(isSettled);
+if(settled.length<3){
+el.innerHTML='<div class="empty">Log and settle at least 3 bets and personalized insights appear here. The more you log, the sharper this gets.</div>';
+return;
+}
+var s=computeStats(),ins=[];
+if(s.units>0)ins.push(["&#128200;","You're up <b>"+fmtUnits(s.units)+"</b> with a "+fmtPct(s.roi)+" ROI across "+s.total+" settled bets."]);
+else if(s.units<0)ins.push(["&#128201;","You're down <b>"+fmtUnits(s.units)+"</b> ("+fmtPct(s.roi)+" ROI). The leak tables show where it's bleeding."]);
+var sp=leakGroup(function(b){return b.sport;});
+if(sp.length>=2){
+if(sp[0].u<0)ins.push(["&#9888;","<b>"+esc(sp[0].key)+"</b> is your biggest leak ("+fmtUnits(sp[0].u)+" over "+sp[0].n+" bets)."]);
+if(sp[sp.length-1].u>0)ins.push(["&#11088;","<b>"+esc(sp[sp.length-1].key)+"</b> is your strongest sport ("+fmtUnits(sp[sp.length-1].u)+")."]);
+}
+var gA=settled.filter(function(b){return b.grade&&(b.grade.charAt(0)==="A"||b.grade.charAt(0)==="B");});
+if(gA.length>=3){
+var u=gA.reduce(function(s,b){return s+betUnits(b);},0);
+ins.push([u>=0?"&#10003;":"&#9888;","Your A/B-graded bets are "+fmtUnits(u)+" over "+gA.length+" bets — "+(u>=0?"the higher-conviction plays are holding up.":"the high grades aren't landing yet; small sample, keep logging.")]);
+}
+var chase=detectChasing();
+if(chase>=2)ins.push(["&#9888;","You've bumped your stake after a loss "+chase+" times — flat staking is free discipline."]);
+el.innerHTML=ins.map(function(i){return '<div class="insight"><span class="ib">'+i[0]+'</span><div>'+i[1]+'</div></div>';}).join("");
+}
+function renderSettings(){
+document.getElementById("s-bankroll").value=settings.bankroll;
+document.getElementById("s-unit").value=settings.unit;
+var s=computeStats();
+var pct=s.bankroll>0?settings.unit/s.bankroll:0;
+var cls=pct>0.15?"a-bad":(pct>0.10?"a-warn":"a-info");
+document.getElementById("unitInfo").innerHTML='<div class="alert '+cls+'"><span class="ic">&#8226;</span><div class="small">Your unit is <b>'+fmtPct(pct)+'</b> of your current bankroll ('+fmtMoney(s.bankroll)+').</div></div>';
+}
+function saveSettings(){
+var br=num(document.getElementById("s-bankroll").value);
+var un=num(document.getElementById("s-unit").value);
+if(br>0&&un>0){
+settings={bankroll:br,unit:un};
+try{localStorage.setItem("betCoach_settings",JSON.stringify(settings));}catch(e){}
+refreshAll();
+}
+}
+function download(name,content,type){
+var blob=new Blob([content],{type:type});
+var a=document.createElement("a");
+a.href=URL.createObjectURL(blob);a.download=name;
+document.body.appendChild(a);a.click();
+setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},100);
+}
+function exportJSON(){download("bet_coach_backup.json",JSON.stringify({settings:settings,bets:bets},null,2),"application/json");}
+function exportCSV(){
+var hdr=["Date","Sport","League","Matchup","Bet Type","Selection","Odds (American)","Result","Stake ($)","Profit/Loss ($)","Units +/-","Notes"];
+var lines=[hdr.join(",")];
+bets.slice().sort(function(a,b){return (a.date||"")<(b.date||"")?-1:1;}).forEach(function(b){
+var pr=betProfit(b),u=betUnits(b);
+lines.push([b.date,b.sport,b.league,b.matchup,b.betType,b.selection,b.odds,b.result,b.stake,pr===null?"":pr.toFixed(2),u===null?"":u.toFixed(2),b.notes].map(function(v){v=String(v==null?"":v);return /[",\r\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}).join(","));
+});
+download("bets_for_excel.csv",lines.join("\r\n"),"text/csv");
+}
+
+/* ── Game-matching helpers ── */
+function normMatch(s){
+  return (s||"").toLowerCase().replace(/[—–]/g," ").replace(/[^a-z0-9\s]/g," ").replace(/\s+/g," ").trim();
+}
+function matchesGame(gameMatchup,candidate){
+  if(!candidate||!gameMatchup)return false;
+  var gm=normMatch(gameMatchup);
+  var cd=normMatch(candidate);
+  if(gm===cd||gm.indexOf(cd)>=0||cd.indexOf(gm)>=0)return true;
+  var cwords=cd.split(" ").filter(function(w){return w.length>=3;});
+  if(!cwords.length)return false;
+  var hits=cwords.filter(function(w){return gm.indexOf(w)>=0;}).length;
+  return hits>=2;
+}
+function getGameLines(matchup){
+  return (DATA.lineMovement||[]).filter(function(g){return matchesGame(matchup,g.matchup);});
+}
+function getGameResearch(matchup){
+  return (DATA.research||[]).filter(function(x){return x.game&&matchesGame(matchup,x.game);});
+}
+function lmInlineHTML(lmItems){
+  if(!lmItems.length)return "";
+  var sigClass={sharp:"sig-sharp",rlm:"sig-rlm",steam:"sig-steam",public:"sig-public",split:"sig-split"};
+  var sigLabel={sharp:"Sharp ▼",rlm:"RLM ⚡",steam:"Steam 🔥",public:"Public 👀",split:"Split Action"};
+  var curClass={sharp:"moved-sharp",public:"moved-public",steam:"moved-steam"};
+  var html='<div class="bd-h">Line Movement</div>';
+  lmItems.forEach(function(g){
+    var sc=sigClass[g.signal]||"sig-split";
+    var sl=sigLabel[g.signal]||esc(g.signal||"");
+    var cc=curClass[g.signal]||"moved-none";
+    var lineStr="";
+    if(g.open&&g.current){
+      var moved=g.open!==g.current;
+      lineStr='<span class="lm-open">'+esc(g.open)+'</span>'+(moved?' <span class="lm-arrow">→</span> <span class="lm-cur '+cc+'">'+esc(g.current)+'</span>':'');
+    }
+    var bPct=typeof g.publicBets==="number"?g.publicBets:null;
+    var mPct=typeof g.publicMoney==="number"?g.publicMoney:null;
+    var pubStr=(bPct!==null?bPct+"% bets"+(mPct!==null?" · "+mPct+"% $":"")+" on "+esc(g.side||""):"");
+    var flags=[];
+    if(g.rlm)flags.push('<span class="lm-flag rlm">&#x26A1; RLM</span>');
+    if(g.steam)flags.push('<span class="lm-flag steam">&#x1F525; Steam</span>');
+    if(g.keyNumber)flags.push('<span class="lm-flag key">&#x1F511; Key #</span>');
+    html+='<div class="bd-lm">'+
+      '<div class="bd-lm-top">'+
+        '<span class="sig-badge '+sc+'">'+sl+'</span>'+
+        (lineStr?'<div class="bd-lm-line">'+lineStr+'</div>':'')+
+        (pubStr?'<span class="small muted">'+pubStr+'</span>':'')+
+      '</div>'+
+      (g.note?'<div class="bd-lm-note">'+esc(g.note)+'</div>':'')+
+      (flags.length?'<div class="lm-flags" style="margin-top:6px">'+flags.join("")+'</div>':'')+
+    '</div>';
+  });
+  return html;
+}
+function resInlineHTML(resItems){
+  if(!resItems.length)return "";
+  var catClass={sharp:"cat-sharp",injury:"cat-injury",weather:"cat-weather",trend:"cat-trend",system:"cat-system",matchup:"cat-matchup",angle:"cat-angle"};
+  var catLabel={sharp:"Sharp Signal",injury:"Injury",weather:"Weather",trend:"Trend",system:"System",matchup:"Matchup",angle:"Angle"};
+  var sorted=resItems.slice().sort(function(a,b){var rk={high:0,medium:1,low:2};return (rk[a.relevance]||1)-(rk[b.relevance]||1);});
+  var html='<div class="bd-h">Research Signals</div><div class="bd-res-inline">';
+  sorted.forEach(function(x){
+    var cc=catClass[x.category]||"cat-angle";
+    var cl=catLabel[x.category]||esc(x.category||"");
+    var rel=x.relevance||"medium";
+    html+='<div class="bd-ri rel-'+rel+'">'+
+      '<div class="bd-ri-hd">'+
+        '<span class="cat-badge '+cc+'">'+cl+'</span>'+
+        '<span class="bd-ri-title">'+esc(x.title)+'</span>'+
+      '</div>'+
+      '<div class="bd-ri-body">'+esc(x.body)+'</div>'+
+    '</div>';
+  });
+  html+='</div>';
+  return html;
+}
+
+function renderGeneralResearch(){
+  var r=(DATA.research||[]).filter(function(x){return !x.game;}).slice().reverse();
+  var panel=document.getElementById("genResPanel");
+  var countEl=document.getElementById("genResCount");
+  var btn=document.getElementById("genResToggle");
+  if(!panel)return;
+  if(countEl)countEl.textContent="("+r.length+" items)";
+  if(!r.length){panel.innerHTML='<div class="empty" style="margin-top:10px">No general research notes.</div>';return;}
+  var catClass={sharp:"cat-sharp",injury:"cat-injury",weather:"cat-weather",trend:"cat-trend",system:"cat-system",matchup:"cat-matchup",angle:"cat-angle"};
+  var catLabel={sharp:"Sharp Signal",injury:"Injury",weather:"Weather",trend:"Trend",system:"System",matchup:"Matchup",angle:"Angle"};
+  panel.innerHTML='<div class="bd-res-inline" style="margin-top:12px">'+r.map(function(x){
+    var cc=catClass[x.category]||"cat-angle";
+    var cl=catLabel[x.category]||esc(x.category||"");
+    var rel=x.relevance||"medium";
+    return '<div class="bd-ri rel-'+rel+'">'+
+      '<div class="bd-ri-hd">'+
+        '<span class="sportbadge sb-'+(x.sport||"MLB")+'">'+esc(x.sport||"")+'</span>'+
+        '<span class="cat-badge '+cc+'">'+cl+'</span>'+
+        '<span class="bd-ri-title">'+esc(x.title)+'</span>'+
+      '</div>'+
+      '<div class="bd-ri-body">'+esc(x.body)+'</div>'+
+      (x.timestamp?'<div style="font-size:10px;color:var(--faint);margin-top:4px">'+esc(x.timestamp)+'</div>':'')+
+    '</div>';
+  }).join("")+'</div>';
+  if(btn){
+    btn.onclick=function(){
+      panel.classList.toggle("open");
+      btn.innerHTML=(panel.classList.contains("open")?"&#x25BC;":"&#x25B6;")+" General Research &amp; Context <span class='small muted'>("+r.length+" items)</span>";
+    };
+  }
+}
+
+function renderLines(){
+  var lm=DATA.lineMovement||[];
+  var board=document.getElementById("lmBoard");
+  var empty=document.getElementById("lmEmpty");
+  var upd=document.getElementById("lmUpdated");
+  if(upd&&DATA.updated)upd.textContent="Updated "+DATA.updated;
+  if(!lm.length){if(empty)empty.style.display="";if(board)board.innerHTML="";return;}
+  if(empty)empty.style.display="none";
+  var sigClass={sharp:"sig-sharp",rlm:"sig-rlm",steam:"sig-steam",public:"sig-public",split:"sig-split"};
+  var sigLabel={sharp:"Sharp ▼",rlm:"Reverse Line ⚡",steam:"Steam 🔥",public:"Public 👀",split:"Split Action"};
+  var curClass={sharp:"moved-sharp",public:"moved-public",steam:"moved-steam"};
+  board.innerHTML=lm.map(function(g){
+    var sc=sigClass[g.signal]||"sig-split";
+    var sl=sigLabel[g.signal]||g.signal;
+    var cc=curClass[g.signal]||"moved-none";
+    var bPct=typeof g.publicBets==="number"?g.publicBets:null;
+    var mPct=typeof g.publicMoney==="number"?g.publicMoney:null;
+    var barsHtml="";
+    if(bPct!==null||mPct!==null){
+      var bBar=bPct!==null?'<div class="lm-bar-wrap"><div class="lm-bar-lbl">Public Bets</div><div class="lm-bar-track"><div class="lm-bar-fill'+(bPct>=60?" majority":"")+'" style="width:'+Math.min(bPct,100)+'%"></div></div><div><span class="lm-bar-val">'+bPct+'%</span><span class="lm-bar-side">on '+esc(g.side||"fav")+'</span></div></div>':"";
+      var mBar=mPct!==null?'<div class="lm-bar-wrap"><div class="lm-bar-lbl">Public Money</div><div class="lm-bar-track"><div class="lm-bar-fill'+(mPct>=60?" majority":"")+'" style="width:'+Math.min(mPct,100)+'%"></div></div><div><span class="lm-bar-val">'+mPct+'%</span><span class="lm-bar-side">on '+esc(g.side||"fav")+'</span></div></div>':"";
+      barsHtml='<div class="lm-bars">'+bBar+mBar+"</div>";
+    }
+    var flags=[];
+    if(g.rlm)flags.push('<span class="lm-flag rlm">&#x26A1; RLM</span>');
+    if(g.steam)flags.push('<span class="lm-flag steam">&#x1F525; Steam</span>');
+    if(g.keyNumber)flags.push('<span class="lm-flag key">&#x1F511; Key Number</span>');
+    var flagsHtml=flags.length?'<div class="lm-flags">'+flags.join("")+'</div>':"";
+    var movDir=g.open&&g.current&&g.open!==g.current?" &rarr; ":"";
+    var openHtml=g.open?'<span class="lm-open">'+esc(g.open)+'</span><span class="lm-arrow">'+movDir+'</span>':"";
+    var curHtml=g.current?'<span class="lm-cur '+cc+'">'+esc(g.current)+'</span>':'<span class="lm-cur moved-none">&mdash;</span>';
+    var bodyHtml="";
+    if(barsHtml||g.note||flagsHtml){
+      bodyHtml='<div class="lmc-body">'+barsHtml+(g.note?'<div class="lm-note">'+esc(g.note)+'</div>':"")+flagsHtml+"</div>";
+    }
+    return '<div class="lmc">'+
+      '<div class="lmc-hd">'+
+        '<span class="sportbadge sb-'+esc(g.sport)+'">'+esc(g.sport)+'</span>'+
+        '<div class="lmc-meta">'+
+          '<div class="lmc-match">'+esc(g.matchup)+'</div>'+
+          '<div class="lmc-time">'+esc(g.time||"")+'</div>'+
+        '</div>'+
+        '<div class="lmc-right">'+
+          '<div class="lm-line">'+openHtml+curHtml+'</div>'+
+          '<span class="sig-badge '+sc+'">'+sl+'</span>'+
+        '</div>'+
+      '</div>'+bodyHtml+
+    '</div>';
+  }).join("");
+}
+
+var resFilter="ALL";
+function renderResBar(){
+  var r=DATA.research||[];
+  var cats=["ALL","sharp","injury","weather","trend","system","matchup","angle"];
+  var catLabels={ALL:"All",sharp:"Sharp",injury:"Injuries",weather:"Weather",trend:"Trends",system:"Systems",matchup:"Matchups",angle:"Angles"};
+  var counts={ALL:r.length};
+  r.forEach(function(x){counts[x.category]=(counts[x.category]||0)+1;});
+  var bar=document.getElementById("resBar");
+  if(!bar)return;
+  bar.innerHTML=cats.filter(function(c){return c==="ALL"||counts[c];}).map(function(c){
+    return '<button class="chip'+(resFilter===c?" active":"")+'" data-rc="'+c+'">'+catLabels[c]+' '+(counts[c]||0)+'</button>';
+  }).join("");
+  bar.querySelectorAll(".chip").forEach(function(b){
+    b.addEventListener("click",function(){resFilter=b.getAttribute("data-rc");renderResBar();renderResearch();});
+  });
+}
+function renderResearch(){
+  var r=(DATA.research||[]).slice().reverse();
+  var board=document.getElementById("resBoard");
+  var empty=document.getElementById("resEmpty");
+  var upd=document.getElementById("resUpdated");
+  if(upd&&DATA.updated)upd.textContent="Updated "+DATA.updated;
+  if(!r.length){if(empty)empty.style.display="";if(board)board.innerHTML="";return;}
+  if(empty)empty.style.display="none";
+  var filtered=resFilter==="ALL"?r:r.filter(function(x){return x.category===resFilter;});
+  var catClass={sharp:"cat-sharp",injury:"cat-injury",weather:"cat-weather",trend:"cat-trend",system:"cat-system",matchup:"cat-matchup",angle:"cat-angle"};
+  var catLabel={sharp:"Sharp Signal",injury:"Injury",weather:"Weather",trend:"Trend",system:"System",matchup:"Matchup",angle:"Angle"};
+  board.innerHTML=filtered.map(function(x){
+    var cc=catClass[x.category]||"cat-angle";
+    var cl=catLabel[x.category]||x.category;
+    var rel=x.relevance||"medium";
+    var gameBadge=x.game?'<span class="sportbadge sb-'+(x.sport||"MLB")+'">'+esc(x.sport||"")+'</span>':'';
+    var gameStr=x.game?'<span style="font-size:11px;color:var(--muted)">'+esc(x.game)+'</span>':"";
+    return '<div class="res-card rel-'+rel+'">'+
+      '<div class="res-hd">'+
+        '<span class="rel-dot '+rel+'"></span>'+
+        '<span class="cat-badge '+cc+'">'+cl+'</span>'+
+        gameBadge+
+        '<span class="res-title">'+esc(x.title)+'</span>'+
+      '</div>'+
+      '<div class="res-body">'+esc(x.body)+'</div>'+
+      '<div class="res-foot">'+
+        (x.timestamp?'<span class="res-ts">'+esc(x.timestamp)+'</span>':"")+
+        gameStr+
+      '</div>'+
+    '</div>';
+  }).join("");
+}
+
+var charts_rec={};
+
+function renderCalendar(){
+  var picks=Array.isArray(DATA.picks)?DATA.picks:[];
+  var bets=Array.isArray(DATA.bets)?DATA.bets:[];
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var DNAMES=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var MSHORT=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function pad(n){return n<10?'0'+n:''+n;}
+  function dk(y,m,d){return y+'-'+pad(m+1)+'-'+pad(d);}
+  function sportBg(s){return {MLB:'rgba(79,157,255,.18)',NBA:'rgba(255,157,79,.18)',WNBA:'rgba(255,140,180,.18)',NHL:'rgba(168,128,255,.18)',NFL:'rgba(107,200,107,.18)'}[s]||'var(--card2)';}
+  function sportFg(s){return {MLB:'var(--blue)',NBA:'var(--orange)',WNBA:'var(--pink,#ff8cb4)',NHL:'var(--purple)',NFL:'var(--green,#6bc86b)'}[s]||'var(--muted)';}
+
+  // Build day map
+  var dm={};
+  picks.forEach(function(p){
+    if(!p.date)return;
+    if(!dm[p.date])dm[p.date]={picks:[],pl:0,pending:false};
+    dm[p.date].picks.push(p);
+    var r=p.result;
+    if(r==='pending'||r==='Pending')dm[p.date].pending=true;
+  });
+  bets.forEach(function(b){
+    if(!b.date||!dm[b.date])return;
+    dm[b.date].pl+=b.pl!=null?Number(b.pl):0;
+  });
+
+  var today=new Date();
+  var cy=today.getFullYear(), cm=today.getMonth();
+  var calY=cy, calM=cm;
+
+  function draw(){
+    var title=document.getElementById('calTitle');
+    var grid=document.getElementById('calGrid');
+    if(!title||!grid)return;
+    title.textContent=MONTHS[calM]+' '+calY;
+
+    var html=DAYS.map(function(d){return '<div class="cal-dow">'+d+'</div>';}).join('');
+    var firstDow=new Date(calY,calM,1).getDay();
+    var dim=new Date(calY,calM+1,0).getDate();
+    var prevDim=new Date(calY,calM,0).getDate();
+    var todayKey=dk(today.getFullYear(),today.getMonth(),today.getDate());
+
+    for(var i=0;i<firstDow;i++){
+      html+='<div class="cal-day other"><div class="cal-dn">'+(prevDim-firstDow+1+i)+'</div></div>';
+    }
+    for(var d=1;d<=dim;d++){
+      var key=dk(calY,calM,d);
+      var e=dm[key];
+      var cls='cal-day'+(key===todayKey?' is-today':'')+(e?' has-plays':'');
+      var inner='<div class="cal-dn">'+d+'</div>';
+      if(e){
+        var pl=e.pl;
+        var plCls=e.pending&&pl===0?'neu':(pl>0?'pos':(pl<0?'neg':'neu'));
+        inner+='<div class="cal-pl '+plCls+'">'+(pl>=0?'+':'')+pl.toFixed(2)+'</div>';
+        var tot=e.picks.length, pend=e.picks.filter(function(p){return p.result==='pending'||p.result==='Pending';}).length;
+        inner+='<div class="cal-ct">'+tot+' play'+(tot!==1?'s':'')+(pend?' · '+pend+' live':'')+'</div>';
+        inner+='<div class="cal-dots">'+e.picks.map(function(p){
+          var r=(p.result==='pending'||p.result==='Pending')?'pending':p.result;
+          return '<div class="cal-dot '+r+'"></div>';
+        }).join('')+'</div>';
+      }
+      html+='<div class="'+cls+'" data-key="'+key+'">'+inner+'</div>';
+    }
+    var used=(firstDow+dim)%7;
+    if(used>0){for(var t=1;t<=7-used;t++)html+='<div class="cal-day other"><div class="cal-dn">'+t+'</div></div>';}
+    grid.innerHTML=html;
+
+    grid.querySelectorAll('.cal-day.has-plays').forEach(function(el){
+      el.addEventListener('click',function(ev){openPopup(el.dataset.key,dm[el.dataset.key],ev);});
+    });
+  }
+
+  function openPopup(key,e,ev){
+    var p=document.getElementById('calPopup');
+    var bg=document.getElementById('calBg');
+    var ph=document.getElementById('calPH');
+    var pb=document.getElementById('calPB');
+    var pt=document.getElementById('calPT');
+    if(!p)return;
+    var parts=key.split('-');
+    var dd=new Date(+parts[0],+parts[1]-1,+parts[2]);
+    ph.textContent=DNAMES[dd.getDay()]+', '+MSHORT[dd.getMonth()]+' '+dd.getDate()+', '+dd.getFullYear();
+    pb.innerHTML=e.picks.map(function(pk){
+      var r=(pk.result==='pending'||pk.result==='Pending')?'pending':pk.result;
+      var rl=r==='pending'?'Live':r;
+      return '<div class="cal-row">'+
+        '<span class="cal-rsport" style="background:'+sportBg(pk.sport)+';color:'+sportFg(pk.sport)+'">'+esc(pk.sport)+'</span>'+
+        '<span class="cal-rplay">'+esc(pk.play)+'</span>'+
+        '<span class="cal-rres '+r+'">'+rl+'</span>'+
+      '</div>';
+    }).join('');
+    var pl=e.pl;
+    var pCls=e.pending&&pl===0?'neu':(pl>0?'pos':(pl<0?'neg':'neu'));
+    pt.innerHTML='Day P/L: <span class="'+pCls+'">'+(pl>=0?'+':'')+pl.toFixed(2)+(e.pending?' (+ pending)':'')+'</span>';
+    var rect=ev.currentTarget.getBoundingClientRect();
+    var top=Math.min(rect.bottom+6,window.innerHeight-300);
+    var left=Math.min(rect.left,window.innerWidth-306);
+    p.style.top=top+'px'; p.style.left=left+'px';
+    p.classList.add('open'); bg.classList.add('open');
+  }
+
+  function closePopup(){
+    var p=document.getElementById('calPopup');
+    var bg=document.getElementById('calBg');
+    if(p)p.classList.remove('open');
+    if(bg)bg.classList.remove('open');
+  }
+
+  var prev=document.getElementById('calPrev');
+  var next=document.getElementById('calNext');
+  var px=document.getElementById('calPX');
+  var bg=document.getElementById('calBg');
+  if(prev)prev.onclick=function(){calM--;if(calM<0){calM=11;calY--;}draw();};
+  if(next)next.onclick=function(){calM++;if(calM>11){calM=0;calY++;}draw();};
+  if(px)px.onclick=closePopup;
+  if(bg)bg.onclick=closePopup;
+  draw();
+}
+
+function renderTrackRecord(){
+  var picks=(DATA.picks||[]).slice().reverse();
+  var upd=document.getElementById("recUpdated");
+  if(upd&&DATA.updated)upd.textContent="Updated "+DATA.updated;
+
+  var wins=picks.filter(function(p){return p.result==="W";}).length;
+  var losses=picks.filter(function(p){return p.result==="L";}).length;
+  var pushes=picks.filter(function(p){return p.result==="P";}).length;
+  var pending=picks.filter(function(p){return !p.result||p.result==="pending";}).length;
+  var wl=wins+losses;
+  var hitRate=wl>0?Math.round(wins/wl*100):null;
+
+  var roi=0;
+  picks.forEach(function(p){
+    var o=parseInt(p.odds)||(-110);
+    if(p.result==="W"){roi+=o>0?o/100:100/Math.abs(o);}
+    else if(p.result==="L"){roi-=1;}
+  });
+
+  var grades=["A","B","C"];
+  var gradeData={};
+  grades.forEach(function(g){gradeData[g]={w:0,l:0};});
+  picks.forEach(function(p){
+    var g=(p.grade||"").charAt(0);
+    if(gradeData[g]){
+      if(p.result==="W")gradeData[g].w++;
+      else if(p.result==="L")gradeData[g].l++;
+    }
+  });
+
+  var statsEl=document.getElementById("recStats");
+  if(statsEl){
+    statsEl.innerHTML=
+      '<div class="rec-stat"><div class="k">Record</div><div class="v '+(wins>losses?"pos":losses>wins?"neg":"neu")+'">'+(wl>0?wins+"-"+losses+(pushes?" ("+pushes+"P)":""):"—")+'</div><div class="sub">W-L settled</div></div>'+
+      '<div class="rec-stat"><div class="k">Hit Rate</div><div class="v '+(hitRate!==null&&hitRate>=55?"pos":hitRate!==null&&hitRate<50?"neg":"neu")+'">'+(hitRate!==null?hitRate+"%":"—")+'</div><div class="sub">needs 52.4% break-even</div></div>'+
+      '<div class="rec-stat"><div class="k">ROI (units)</div><div class="v '+(roi>0?"pos":roi<0?"neg":"neu")+'">'+(roi>=0?"+":"")+roi.toFixed(2)+'u</div><div class="sub">net units won/lost</div></div>'+
+      '<div class="rec-stat"><div class="k">Pending</div><div class="v neu">'+pending+'</div><div class="sub">click W/L/P to settle</div></div>'+
+      grades.map(function(g){
+        var gd=gradeData[g];var gwl=gd.w+gd.l;var ghr=gwl>0?Math.round(gd.w/gwl*100):null;
+        return '<div class="rec-stat"><div class="k">'+g+'-Grade</div><div class="v '+(ghr!==null&&ghr>=55?"pos":ghr!==null&&ghr<50?"neg":"neu")+'">'+(gwl>0?gd.w+"-"+gd.l:"—")+'</div><div class="sub">'+(ghr!==null?ghr+"% hit":"no data")+'</div></div>';
+      }).join("");
+  }
+
+  // ── Sport × Grade breakdown ────────────────────────────────────────────────
+  var sbEl=document.getElementById("sportBreakdown");
+  if(sbEl){
+    var sports=[];
+    picks.forEach(function(p){if(p.sport&&sports.indexOf(p.sport)<0)sports.push(p.sport);});
+    if(sports.length){
+      var sportGrade={};
+      sports.forEach(function(sp){sportGrade[sp]={};grades.forEach(function(g){sportGrade[sp][g]={w:0,l:0};});sportGrade[sp].tot={w:0,l:0};});
+      var totCol={};grades.forEach(function(g){totCol[g]={w:0,l:0};});var grand={w:0,l:0};
+      picks.forEach(function(p){
+        if(!p.sport||!(p.result==="W"||p.result==="L"))return;
+        var g=(p.grade||"").charAt(0);
+        if(sportGrade[p.sport]&&gradeData[g]!==undefined){
+          if(p.result==="W"){sportGrade[p.sport][g].w++;sportGrade[p.sport].tot.w++;totCol[g]&&totCol[g].w++;grand.w++;}
+          else{sportGrade[p.sport][g].l++;sportGrade[p.sport].tot.l++;totCol[g]&&totCol[g].l++;grand.l++;}
+        }
+      });
+      function sbCell(d){
+        if(!d||d.w+d.l===0)return '<span class="sb-neu">—</span>';
+        var hr=d.w/(d.w+d.l);
+        var cls=hr>=0.55?"sb-pos":hr<0.5?"sb-neg":"sb-neu";
+        return '<span class="'+cls+'">'+d.w+'-'+d.l+'</span>';
+      }
+      var html='<table class="sb-table"><thead><tr><th>Sport</th>'+grades.map(function(g){return '<th>'+g+'-Grade</th>';}).join('')+'<th>Total</th></tr></thead><tbody>';
+      sports.forEach(function(sp){
+        html+='<tr><td>'+sp+'</td>'+grades.map(function(g){return '<td>'+sbCell(sportGrade[sp][g])+'</td>';}).join('')+'<td>'+sbCell(sportGrade[sp].tot)+'</td></tr>';
+      });
+      html+='<tr><td>Total</td>'+grades.map(function(g){return '<td>'+sbCell(totCol[g])+'</td>';}).join('')+'<td>'+sbCell(grand)+'</td></tr>';
+      html+='</tbody></table>';
+      sbEl.innerHTML=html;
+    } else {
+      sbEl.innerHTML='<p class="hint">No settled picks yet.</p>';
+    }
+  }
+
+  // ── Picks table with settle buttons ──────────────────────────────────────
+  var tbody=document.getElementById("recBody");
+  var countEl=document.getElementById("recCount");
+  if(!tbody)return;
+  if(!picks.length){tbody.innerHTML='<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:20px">No picks logged yet.</td></tr>';return;}
+  tbody.innerHTML=picks.map(function(p){
+    var res=p.result||"pending";
+    var isPending=!p.result||p.result==="pending";
+    var resCls=res==="W"?"pos":res==="L"?"neg":res==="P"?"neu":"muted";
+    var resCell=isPending
+      ?'<div class="settle-btns"><button class="sbtn sbtn-w" onclick="settleResult(\''+esc(p.id)+'\',\'W\')">W</button><button class="sbtn sbtn-l" onclick="settleResult(\''+esc(p.id)+'\',\'L\')">L</button><button class="sbtn sbtn-p" onclick="settleResult(\''+esc(p.id)+'\',\'P\')">P</button></div>'
+      :'<span class="'+resCls+'" style="font-weight:700">'+res+'</span>';
+    return '<tr><td>'+p.date+'</td><td>'+p.sport+'</td><td>'+esc(p.matchup)+'</td><td>'+esc(p.play)+'</td><td>'+p.odds+'</td><td><span class="grade-badge">'+p.grade+'</span></td><td>'+resCell+'</td></tr>';
+  }).join("");
+  if(countEl)countEl.textContent=picks.length+" pick"+(picks.length!==1?"s":"")+" logged ("+wins+"W-"+losses+"L"+(pushes?" "+pushes+"P":"")+")";
+
+  // ── Charts ────────────────────────────────────────────────────────────────
+  try{
+    var settled2=picks.filter(function(p){return p.result==="W"||p.result==="L";}).reverse();
+
+    // Bankroll curve
+    var bkCtx=document.getElementById("chartBankrollRec");
+    var bkStrip=document.getElementById("bankrollStrip");
+    if(bkCtx&&settled2.length){
+      var unit=((DATA.settings||{}).unit)||10;
+      var bankroll=((DATA.settings||{}).bankroll)||80;
+      var bkLabels=["Start"],bkVals=[bankroll];var cur=bankroll;
+      settled2.forEach(function(p){
+        var o=parseInt(p.odds)||(-110);
+        if(p.result==="W"){cur+=o>0?(unit*o/100):(unit*100/Math.abs(o));}
+        else{cur-=unit;}
+        bkLabels.push(p.date);bkVals.push(Math.round(cur*100)/100);
+      });
+      var final=bkVals[bkVals.length-1];
+      var diff=final-bankroll;
+      if(bkStrip)bkStrip.innerHTML='<span>Start: <span class="bk-v">$'+bankroll+'</span></span><span>Current: <span class="bk-v '+(diff>=0?"bk-pos":"bk-neg")+'">$'+final.toFixed(2)+'</span></span><span class="'+(diff>=0?"bk-pos":"bk-neg")+'">'+(diff>=0?"+":"")+'$'+diff.toFixed(2)+'</span>';
+      var gradient;
+      try{var ctx2d=bkCtx.getContext("2d");gradient=ctx2d.createLinearGradient(0,0,0,185);gradient.addColorStop(0,"rgba(74,222,128,0.3)");gradient.addColorStop(1,"rgba(74,222,128,0)");}catch(e){gradient="rgba(74,222,128,0.15)";}
+      if(bkCtx._chart)bkCtx._chart.destroy();
+      bkCtx._chart=new Chart(bkCtx,{type:"line",data:{labels:bkLabels,datasets:[{label:"Bankroll ($)",data:bkVals,borderColor:"#4ade80",backgroundColor:gradient,tension:0.3,fill:true,pointRadius:2,pointHoverRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return "$"+ctx.parsed.y.toFixed(2);}}}},scales:{x:{ticks:{color:"#b0b8c8",maxTicksLimit:6},grid:{color:"rgba(255,255,255,0.04)"}},y:{ticks:{color:"#b0b8c8",callback:function(v){return "$"+v;}},grid:{color:"rgba(255,255,255,0.04)"}}}}});
+    } else if(bkStrip){bkStrip.innerHTML='<span class="sb-neu">No settled picks yet</span>';}
+
+    // Cumulative W/L
+    var cumLabels=[],cumW=[],cumL=[];var cw=0,cl=0;
+    settled2.forEach(function(p){
+      if(p.result==="W")cw++;else cl++;
+      cumLabels.push(p.date);cumW.push(cw);cumL.push(cl);
+    });
+    var rCtx=document.getElementById("chartRecord");
+    if(rCtx&&settled2.length){
+      if(rCtx._chart)rCtx._chart.destroy();
+      rCtx._chart=new Chart(rCtx,{type:"line",data:{labels:cumLabels,datasets:[{label:"Wins",data:cumW,borderColor:"#4ade80",backgroundColor:"rgba(74,222,128,0.1)",tension:0.3,fill:false,pointRadius:2},{label:"Losses",data:cumL,borderColor:"#f87171",backgroundColor:"rgba(248,113,113,0.1)",tension:0.3,fill:false,pointRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#b0b8c8",boxWidth:10}}},scales:{x:{ticks:{color:"#b0b8c8",maxTicksLimit:6},grid:{color:"rgba(255,255,255,0.04)"}},y:{ticks:{color:"#b0b8c8"},grid:{color:"rgba(255,255,255,0.04)"}}}}});
+    }
+
+    // Grade win rate bar
+    var gCtx=document.getElementById("chartGrades");
+    if(gCtx){
+      if(gCtx._chart)gCtx._chart.destroy();
+      var gLabels=grades.filter(function(g){return gradeData[g].w+gradeData[g].l>0;});
+      var gRates=gLabels.map(function(g){var d=gradeData[g];return d.w+d.l>0?Math.round(d.w/(d.w+d.l)*100):0;});
+      gCtx._chart=new Chart(gCtx,{type:"bar",data:{labels:gLabels,datasets:[{label:"Win %",data:gRates,backgroundColor:gLabels.map(function(g){var r=gradeData[g];var hr=r.w+r.l>0?r.w/(r.w+r.l):0;return hr>=0.55?"rgba(74,222,128,0.7)":hr<0.5?"rgba(248,113,113,0.7)":"rgba(148,163,184,0.7)";}),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:"#b0b8c8"},grid:{color:"rgba(255,255,255,0.04)"}},y:{min:0,max:100,ticks:{color:"#b0b8c8",callback:function(v){return v+"%";}},grid:{color:"rgba(255,255,255,0.04)"}}}}});
+    }
+  }catch(e){console.error("Chart error:",e);}
+}
+
+
+var _unsavedCount=0;
+function settleResult(pickId,result){
+  var idx=-1;
+  (DATA.picks||[]).forEach(function(p,i){if(p.id===pickId)idx=i;});
+  if(idx<0)return;
+  DATA.picks[idx].result=result;
+  _unsavedCount++;
+  var banner=document.getElementById("unsavedBanner");
+  var cnt=document.getElementById("ubCount");
+  if(banner)banner.classList.add("show");
+  if(cnt)cnt.textContent=_unsavedCount;
+  renderTrackRecord();
+  renderHeader();renderMiniStats();startHlClock();
+}
+function saveChanges(){
+  var newJson = JSON.stringify(DATA, null, 2);
+  var src = document.documentElement.outerHTML;
+  src = src.replace(/(<script id="betdata" type="application\/json">)([\s\S]*?)(<\/script>)/, function(m, open, _, close){ return open + '\n' + newJson + '\n' + close; });
+  var blob = new Blob([src], {type: 'text/html; charset=utf-8'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'Bet_Coach.html';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  _unsavedCount = 0;
+  var banner = document.getElementById('unsavedBanner');
+  var cnt = document.getElementById('ubCount');
+  if(banner) banner.classList.remove('show');
+  if(cnt) cnt.textContent = '0';
+}
+
+// ── Nav tab handler ───────────────────────────────────────────────────────
+function showTab(name){
+  document.querySelectorAll('.tab').forEach(function(s){ s.classList.remove('active'); });
+  document.querySelectorAll('nav button').forEach(function(b){ b.classList.remove('active'); });
+  var sec = document.getElementById('tab-'+name);
+  var btn = document.querySelector('nav button[data-tab="'+name+'"]');
+  if(sec) sec.classList.add('active');
+  if(btn) btn.classList.add('active');
+  if(name==='today'){ renderBoard(); renderMiniStats(); renderChart(); renderStaleBanner(); renderBoardBar(); renderSpotlight(); renderGeneralResearch(); renderHeadlines(); }
+  if(name==='record'){ renderTrackRecord(); renderCalendar(); }
+  if(name==='bets'){ renderBets(); }
+  if(name==='coach'){ renderGuardrails(); renderGradePanel(); renderLeaks(); renderInsights(); }
+  if(name==='settings'){ renderSettings(); }
+}
+document.querySelectorAll('nav button[data-tab]').forEach(function(btn){
+  btn.addEventListener('click', function(){ showTab(btn.getAttribute('data-tab')); });
+});
+document.getElementById('refreshBtn') && document.getElementById('refreshBtn').addEventListener('click', function(){ renderBoard(); renderMiniStats(); renderStaleBanner(); renderBoardBar(); renderSpotlight(); renderHeadlines(); });
+
+// ── Lines / Research sub-tabs ─────────────────────────────────────────────
+(function(){
+  var lmEl = document.getElementById('lmTab');
+  var resEl = document.getElementById('resTab');
+  if(lmEl) lmEl.addEventListener('click', function(){ renderLines(); });
+  if(resEl) resEl.addEventListener('click', function(){ renderResearch(); });
+})();
+
+// ── Init ──────────────────────────────────────────────────────────
+renderHeader();
+showTab('today');
+</script>
+<div id="unsavedBanner">
+  <div class="ub-msg">&#9733; <span id="ubCount">0</span> result(s) updated &mdash; unsaved</div>
+  <button class="ub-save" onclick="saveChanges()">&#8681; Save File</button>
+  <button class="ub-dismiss" onclick="document.getElementById('unsavedBanner').classList.remove('show')">&times;</button>
+</div>
+</body>
+</html>
