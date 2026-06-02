@@ -2848,85 +2848,34 @@ el.classList.toggle("acc-open");
 function renderSpotlight(){
 var el=document.getElementById("spotlight");
 if(!el)return;
-var pick=cardGames();
-if(!pick.length){el.innerHTML='<div class="spot-hd"><div class="spot-title">&#9733; Best Bets</div></div><div class="empty">No featured plays on the board yet.</div>';return;}
-function pickCat(g){
-  if(g.kind==="prop")return"props";
-  var p=(g.play||"").toLowerCase();
-  if(p.indexOf("over")>=0||p.indexOf("under")>=0||p.indexOf("o/u")>=0)return"totals";
-  return"ml";
-}
-var ml=[],tot=[],props=[];
-pick.forEach(function(g){var c=pickCat(g);if(c==="totals")tot.push(g);else if(c==="props")props.push(g);else ml.push(g);});
-var totalU=pick.reduce(function(s,g){var n=parseFloat(g.stake);return s+(isFinite(n)?n:0);},0);
-var uTxt=(totalU%1?totalU.toFixed(1):String(totalU))+"u";
-function makeRow(g){
-  var gr=g.grade||"P";
-  var grcls="g-"+(gr==="P"?"P":gr.charAt(0));
-  var od=(g.odds&&g.odds!=="—")?esc(g.odds):"";
-  return '<div class="spot-row" data-rank="'+g.rank+'">'+
-    '<div class="rank">'+g.rank+'</div>'+
+// ── Queued plays only ─────────────────────────────────────────────────────
+var queued=(DATA.picks||[]).filter(function(p){return p.result==="queued"&&p.date===new Date().toISOString().slice(0,10);});
+if(!queued.length){el.innerHTML='<div class="spot-hd"><div class="spot-title">&#9733; Best Bets</div></div><div class="empty">No queued plays yet.</div>';return;}
+var uTxt=queued.length+"u";
+var qRows=queued.map(function(p){
+  var gr=p.grade||"A";
+  var grcls="g-"+(gr.charAt(0));
+  return '<div class="spot-row" style="border-left:3px solid var(--orange);padding-left:10px">'+
+    '<div class="rank" style="color:var(--orange)">⏳</div>'+
     '<div class="spot-main">'+
-    '<div class="spot-match">'+esc(g.matchup)+'</div>'+
-    '<div class="spot-play"><b>'+esc(g.play)+'</b>'+(od?' '+od:'')+' '+starHTML(gradeStars(gr))+'</div>'+
+    '<div class="spot-match">'+esc(p.matchup)+'</div>'+
+    '<div class="spot-play"><b>'+esc(p.play)+'</b> '+esc(p.odds)+' '+starHTML(gradeStars(gr))+'</div>'+
+    '<div style="font-size:11px;color:var(--orange);margin-top:2px">'+esc(p.note)+'</div>'+
     '</div>'+
-    '<div class="spot-right"><div class="spot-stake">'+esc(g.stake||"")+'</div>'+
-    '<div class="grade '+grcls+'">'+(gr==="P"?"&mdash;":esc(gr))+'</div></div>'+
+    '<div class="spot-right"><div class="spot-stake">1u</div>'+
+    '<div class="grade '+grcls+'">'+esc(gr)+'</div></div>'+
     '</div>';
-}
-function makeSection(label,icon,arr,id){
-  var count=arr.length;
-  var badge=count?'<span class="spot-cat-count">'+count+'</span>':'';
-  var rows=arr.slice(0,5).map(makeRow).join("");
-  var empty=!count?'<div class="spot-cat-none">No plays</div>':'';
-  return'<div class="spot-acc" id="acc-'+id+'">'+
-    '<div class="spot-acc-hd" onclick="toggleAcc(\'acc-'+id+'\')">'+
-    '<span>'+icon+' '+label+badge+'</span>'+
-    '<span class="spot-acc-arrow">&#9660;</span>'+
-    '</div>'+
-    '<div class="spot-acc-body">'+rows+empty+'</div>'+
-    '</div>';
-}
+}).join("");
 el.innerHTML=
   '<div class="spot-hd"><div class="spot-title">&#9733; Best Bets</div>'+
-  '<div class="spot-meta">'+pick.length+' play'+(pick.length>1?"s":"")+'&nbsp;&middot;&nbsp;'+uTxt+'</div></div>'+
-  makeSection("ML / Spread","&#9654;",ml,"ml")+
-  makeSection("Totals","&#8597;",tot,"tot")+
-  makeSection("Player Props","&#9881;",props,"props");
-el.querySelectorAll(".spot-row").forEach(function(r){
-  r.addEventListener("click",function(){
-    var rk=r.getAttribute("data-rank");
-    var sel='.game[data-rank="'+rk+'"]';
-    if(!document.querySelector(sel)){boardFilter="ALL";renderBoardBar();renderBoard();}
-    var g=document.querySelector(sel);
-    if(g){g.classList.add("open");g.scrollIntoView({behavior:"smooth",block:"center"});}
-  });
-});
-// ── Queued plays section ──────────────────────────────────────────────────
-var queued=(DATA.picks||[]).filter(function(p){return p.result==="queued"&&p.date===new Date().toISOString().slice(0,10);});
-if(queued.length){
-  var qRows=queued.map(function(p){
-    var gr=p.grade||"A";
-    var grcls="g-"+(gr.charAt(0));
-    return '<div class="spot-row" style="border-left:3px solid var(--orange);padding-left:10px">'+
-      '<div class="rank" style="color:var(--orange)">⏳</div>'+
-      '<div class="spot-main">'+
-      '<div class="spot-match">'+esc(p.matchup)+'</div>'+
-      '<div class="spot-play"><b>'+esc(p.play)+'</b> '+esc(p.odds)+' '+starHTML(gradeStars(gr))+'</div>'+
-      '<div style="font-size:11px;color:var(--orange);margin-top:2px">'+esc(p.note)+'</div>'+
-      '</div>'+
-      '<div class="spot-right"><div class="spot-stake">1u</div>'+
-      '<div class="grade '+grcls+'">'+esc(gr)+'</div></div>'+
-      '</div>';
-  }).join("");
-  el.innerHTML+='<div class="spot-acc acc-open" id="acc-queued">'+
-    '<div class="spot-acc-hd" onclick="toggleAcc(\'acc-queued\')" style="color:var(--orange)">'+
-    '<span>⏳ Queued Plays<span class="spot-cat-count">'+queued.length+'</span></span>'+
-    '<span class="spot-acc-arrow">&#9660;</span>'+
-    '</div>'+
-    '<div class="spot-acc-body">'+qRows+'</div>'+
-    '</div>';
-}
+  '<div class="spot-meta">'+queued.length+' play'+(queued.length>1?"s":"")+'&nbsp;&middot;&nbsp;'+uTxt+'</div></div>'+
+  '<div class="spot-acc acc-open" id="acc-queued">'+
+  '<div class="spot-acc-hd" onclick="toggleAcc(\'acc-queued\')" style="color:var(--orange)">'+
+  '<span>⏳ Queued Plays<span class="spot-cat-count">'+queued.length+'</span></span>'+
+  '<span class="spot-acc-arrow">&#9660;</span>'+
+  '</div>'+
+  '<div class="spot-acc-body">'+qRows+'</div>'+
+  '</div>';
 }
 function renderBoard(){
 document.getElementById("boardUpdated").textContent=DATA.updated?"· updated "+DATA.updated:"";
@@ -3686,3 +3635,4 @@ try{showTab('today');}catch(e){}
 </div>
 </body>
 </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
