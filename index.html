@@ -3,7 +3,7 @@
 <title>Bet Coach</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-:root{--bg:#0a0a0a;--panel:#111111;--card:#1a1a1a;--card2:#222222;--border:#333333;--text:#d4d4d4;--muted:#888888;--faint:#555555;--green:#d4af37;--green-d:#7a6010;--red:#c0392b;--red-d:#6b1f1a;--gold:#d4af37;--blue:#c0c0c0;--orange:#b8960c;--purple:#a89060}
+:root{--bg:#0a0a0a;--panel:#111111;--card:#1a1a1a;--card2:#222222;--border:#333333;--text:#d4d4d4;--muted:#888888;--faint:#555555;--green:#d4af37;--green-d:#7a6010;--red:#c0392b;--red-d:#6b1f1a;--gold:#d4af37;--blue:#c0c0c0;--orange:#b8960c;--purple:#a89060;--fg:#e6e6e6;--accent:#d4af37;--card3:#262626}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
 a{color:var(--blue)}
@@ -143,7 +143,7 @@ input:focus{outline:none;border-color:var(--blue)}
 .spot-title{font-weight:800;font-size:14px;color:var(--gold);letter-spacing:.3px}
 .spot-meta{font-size:11px;font-weight:700;color:var(--muted);margin-left:auto}
 .spot-note{font-size:11px;color:var(--faint);margin-bottom:9px}
-.spot-rows{display:flex;flex-direction:column;gap:6px}.spot-acc{border:1px solid var(--border);border-radius:9px;margin-bottom:7px;overflow:hidden}.spot-acc-hd{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;cursor:pointer;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--faint);background:var(--card2);user-select:none}.spot-acc-hd:hover{background:var(--card3,var(--card2));color:var(--fg)}.spot-acc-arrow{font-size:9px;transition:transform .2s}.spot-acc.acc-open .spot-acc-arrow{transform:rotate(180deg)}.spot-acc-body{display:none;padding:8px 8px 4px}.spot-acc.acc-open .spot-acc-body{display:block}.spot-cat-count{background:var(--accent,#4a9eff);color:#fff;border-radius:8px;font-size:9px;padding:1px 6px;margin-left:6px;font-weight:700}.spot-cat-none{font-size:11px;color:var(--faint);padding:4px 2px 6px}.spot-cat{margin-bottom:10px}.spot-cat-lbl{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);padding:4px 0 5px 2px;display:block}.spot-cat-empty{font-size:11px;color:var(--faint);padding:2px 0 8px 2px}.spot-cat .spot-row{margin-bottom:4px}
+.spot-rows{display:flex;flex-direction:column;gap:6px}.spot-acc{border:1px solid var(--border);border-radius:9px;margin-bottom:7px;overflow:hidden}.spot-acc-hd{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;cursor:pointer;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--faint);background:var(--card2);user-select:none}.spot-acc-hd:hover{background:var(--card3,var(--card2));color:var(--fg)}.spot-acc-arrow{font-size:9px;transition:transform .2s}.spot-acc.acc-open .spot-acc-arrow{transform:rotate(180deg)}.spot-acc-body{display:none;padding:8px 8px 4px}.spot-acc.acc-open .spot-acc-body{display:block}.spot-cat-count{background:var(--accent,#4a9eff);color:#0c1117;border-radius:8px;font-size:9px;padding:1px 6px;margin-left:6px;font-weight:700}.spot-cat-none{font-size:11px;color:var(--faint);padding:4px 2px 6px}.spot-cat{margin-bottom:10px}.spot-cat-lbl{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);padding:4px 0 5px 2px;display:block}.spot-cat-empty{font-size:11px;color:var(--faint);padding:2px 0 8px 2px}.spot-cat .spot-row{margin-bottom:4px}
 .spot-row{display:flex;align-items:center;gap:9px;background:var(--card2);border:1px solid var(--border);border-radius:9px;padding:8px 10px;cursor:pointer}
 .spot-row:hover{border-color:var(--faint)}
 .spot-row .rank{width:22px;height:22px;font-size:10px}
@@ -1492,7 +1492,4 @@ try{showTab('today');}catch(e){}
 <div id="unsavedBanner">
   <div class="ub-msg">&#9733; <span id="ubCount">0</span> result(s) updated &mdash; unsaved</div>
   <button class="ub-save" onclick="saveChanges()">&#8681; Save File</button>
-  <button class="ub-dismiss" onclick="document.getElementById('unsavedBanner').classList.remove('show')">&times;</button>
-</div>
-</body>
-</html>
+  <button class="ub-dismiss" onclick="document.getElementById('unsavedBanner').classList.remove(
