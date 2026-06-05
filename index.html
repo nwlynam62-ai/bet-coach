@@ -408,7 +408,10 @@ canvas{max-width:100%!important}
 /* a11y: visible keyboard focus rings + reduced-motion guard */
 button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;scroll-behavior:auto!important}}
+/* proto badge */
+.proto-badge{position:fixed;bottom:10px;right:10px;z-index:9999;background:#6b1f1a;color:#ffd7d0;font-size:10px;font-weight:800;letter-spacing:1px;padding:5px 10px;border-radius:8px;opacity:.92;pointer-events:none}
 </style></head><body>
+<div class="proto-badge">RICHCARD PROTOTYPE — NOT LIVE</div>
 <header>
 <div class="hdr-top">
 <div class="logo"><div class="mark">B</div><div>BET COACH<small>YOUR STATS &middot; TODAY'S BOARD</small></div></div>
@@ -420,7 +423,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 <button data-tab="bets">My Bets</button>
 <button data-tab="coach">Coach</button>
 <button data-tab="settings">Settings</button>
-<button onclick="location.href='worldcup.html'" style="color:var(--gold)">World Cup &#9917;</button>
 </nav>
 </header>
 <main>
@@ -584,14 +586,6 @@ var games=(Array.isArray(DATA.games)?DATA.games:[]).map(function(g,i){
 });
 var charts={};
 var boardFilter="ALL";
-function resolveBoardFilter(){
-  if(boardFilter!=="ALL")return;
-  var ord=["MLB","WC","NHL","NBA","WNBA","PLL","UFC","TENNIS","NFL"];
-  var have={};(games||[]).forEach(function(g){have[g.sport]=1;});
-  var f=ord.filter(function(k){return have[k];})[0];
-  if(!f){var ks=Object.keys(have);f=ks.length?ks[0]:null;}
-  if(f)boardFilter=f;
-}
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
 function fmtMoney(n){return (n<0?"-":"")+"$"+Math.abs(n).toFixed(2);}
 function fmtUnits(n){return (n>=0?"+":"")+n.toFixed(2)+"u";}
@@ -697,7 +691,7 @@ games.forEach(function(g){counts[g.sport]=(counts[g.sport]||0)+1;});
 var order=["MLB","NHL","NBA","WNBA","PLL","UFC","TENNIS","NFL"];
 Object.keys(counts).forEach(function(k){if(order.indexOf(k)<0)order.push(k);});
 var labels={MLB:"MLB",NHL:"NHL",NBA:"NBA",WNBA:"WNBA",PLL:"PLL",UFC:"UFC",TENNIS:"Tennis",NFL:"NFL"};
-resolveBoardFilter();if(!counts[boardFilter]){boardFilter=order.filter(function(k){return counts[k];})[0]||"MLB";}
+if(boardFilter==="ALL"||!counts[boardFilter]){boardFilter=order.filter(function(k){return counts[k];})[0]||"MLB";}
 document.getElementById("boardBar").innerHTML=order.map(function(k){
 if(!counts[k])return "";
 return '<button class="chip'+(boardFilter===k?" active":"")+'" data-f="'+k+'">'+(labels[k]||k)+' '+(counts[k]||0)+'</button>';
@@ -859,7 +853,6 @@ if(watch.length){
 el.innerHTML=html;
 }
 function renderBoard(){
-resolveBoardFilter();
 document.getElementById("boardUpdated").textContent=DATA.updated?"· updated "+DATA.updated:"";
 renderStaleBanner();
 var list=games.slice().sort(function(a,b){return a.rank-b.rank;}).filter(function(g){return boardFilter==="ALL"||g.sport===boardFilter;});
