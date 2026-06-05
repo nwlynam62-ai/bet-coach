@@ -73,7 +73,7 @@ html{scroll-behavior:smooth}
 <body>
 <header>
 <div class="logo"><div class="mark">F</div><div>FANTASY CORNER<small>BY BET COACH</small></div></div>
-<details class="menu"><summary>Menu</summary><nav class="mpanel"><a href="#cbs">Your CBS Room Edge</a><a href="#tiers">Win-Total Tiers</a><a href="#board">ADP vs Vegas Board</a><a href="#sleepers">Market Sleepers</a><a href="#landmines">Market Landmines</a><a href="#positions">Positional Board</a><a href="#quick">Draft-Day Quick Sheet</a><a href="#roadmap">Roadmap</a><a href="index.html">&larr; Bet Coach Board</a></nav></details><a class="back" href="index.html">&larr; Back to the Board</a>
+<details class="menu"><summary>Menu</summary><nav class="mpanel"><a href="#cbs">Your CBS Room Edge</a><a href="#survival">Survival Bands</a><a href="#wfl">WFL Lens</a><a href="#tiers">Win-Total Tiers</a><a href="#board">ADP vs Vegas Board</a><a href="#sleepers">Market Sleepers</a><a href="#landmines">Market Landmines</a><a href="#positions">Positional Board</a><a href="#quick">Draft-Day Quick Sheet</a><a href="#roadmap">Roadmap</a><a href="index.html">&larr; Bet Coach Board</a></nav></details><a class="back" href="index.html">&larr; Back to the Board</a>
 </header>
 <main>
 <div class="hero">
@@ -120,6 +120,30 @@ html{scroll-behavior:smooth}
 <p style="margin-top:10px"><b>Two reads corrected now that we have room data:</b> Lamar Jackson is an Underdog-56 value, but CBS rooms take him at <b>45 and never past 51</b> &mdash; in your league the window is round 4, not round 5. And &ldquo;wait on Kittle&rdquo; only half-survives contact: rooms take him at 92 (as early as 73), not the market's 119 &mdash; he's a round-8 target here, not a round-10 one.</p>
 <p style="margin-top:8px"><b>Where the room and market agree (and Vegas doesn't):</b> CBS rooms (29) and Underdog (28) both buy Breece Hall &mdash; only the books (Jets 5.5) disagree. That's a market fade, not a room edge: someone will pay the agreed price; it doesn't have to be you.</p>
 <p class="small muted" style="margin-top:8px">Room = CBS live PPR draft ADP w/ Hi/Lo survival range, cbssports.com/fantasy/football/draft/averages/ppr (fetched June 5, 2026, late night &mdash; refreshes with every CBS draft; re-pulled each build). Mkt = Underdog ADP (FantasyPros + BestBallTeamBuilder, June 3&ndash;5). Note: Underdog is half-PPR &mdash; in your full-PPR league, pass-catchers are worth slightly MORE than these market numbers imply.</p>
+</div>
+
+<div class="sec" id="survival">Survival bands &mdash; when they're actually gone</div>
+<div class="card">
+<h3>Probability your target survives, from real CBS draft data</h3>
+<p>Model: normal curve on CBS room ADP with spread &sigma; = (latest &minus; earliest pick) &divide; 4 &mdash; the published availability method (RotoGraphs/DraftKick), run on our room's own numbers. Read it as: <b class="hi">75% = safe to wait</b> &middot; 50% = coin flip &middot; <b class="lo">25% = take him now or lose him</b>. Rounds are 13-team rounds.</p>
+<div class="pl"><span class="pname hi">Patrick Mahomes <span class="pos">QB &middot; KC</span></span> 75% @ pick 127 (rd 10) &middot; 50% @ 133 (rd 11) &middot; 25% @ 139 (rd 11) &middot; hard deadline 159</div>
+<div class="pl"><span class="pname hi">Jayden Reed <span class="pos">WR &middot; GB</span></span> 75% @ 110 (rd 9) &middot; 50% @ 114 (rd 9) &middot; 25% @ 117 (rd 9) &middot; deadline 124</div>
+<div class="pl"><span class="pname hi">George Kittle <span class="pos">TE &middot; SF</span></span> 75% @ 86 (rd 7) &middot; 50% @ 92 (rd 8) &middot; 25% @ 99 (rd 8) &middot; deadline 109</div>
+<div class="pl"><span class="pname hi">Mike Evans <span class="pos">WR &middot; SF</span></span> 75% @ 60 (rd 5) &middot; 50% @ 63 (rd 5) &middot; 25% @ 66 (rd 6) &middot; deadline 71</div>
+<div class="pl"><span class="pname hi">Jameson Williams <span class="pos">WR &middot; DET</span></span> 75% @ 54 (rd 5) &middot; 50% @ 57 (rd 5) &middot; 25% @ 61 (rd 5) &middot; deadline 65</div>
+<div class="pl"><span class="pname hi">Lamar Jackson <span class="pos">QB &middot; BAL</span></span> 75% @ 43 (rd 4) &middot; 50% @ 45 (rd 4) &middot; 25% @ 47 (rd 4) &middot; deadline 51</div>
+<div class="pl"><span class="pname hi">Kenneth Walker III <span class="pos">RB &middot; KC</span></span> 75% @ 21 (rd 2) &middot; 50% @ 23 (rd 2) &middot; 25% @ 24 (rd 2) &middot; deadline 27</div>
+<p class="small muted" style="margin-top:8px">Method confirmed 2+ sources (RotoGraphs ADP Availability 2017; DraftKick; standard range rule). Caveat: ADP is right-skewed &mdash; players fall further than they rise &mdash; so late-side odds are slightly conservative. Data: CBS PPR Hi/Lo, fetched June 5, 2026. Bands tighten to your exact slot once the 2026 draft order posts.</p>
+</div>
+
+<div class="sec" id="wfl">The WFL lens &mdash; 13-team &middot; full PPR &middot; 6-pt pass TD</div>
+<div class="card">
+<h3>Format corrections every public board gets wrong for your league</h3>
+<p><b>1. Every market ADP here is half-PPR (Underdog).</b> Your league pays full point per catch: bump high-catch players up &mdash; Reed, McConkey, Wan'Dale-profile slots, pass-catching RBs, 100-catch TEs (Bowers, McBride) are all worth MORE than the boards above show.</p>
+<p><b>2. 6-pt passing TDs: QBs are worth more than any public board says.</b> The spread between elite QBs widens (a 40-TD season gains +60&ndash;80 pts on the field vs 4-pt scoring), and pocket volume passers gain the most relative value &mdash; Burrow and Mahomes are the format's biggest winners. The rushing-QB edge shrinks (a rush TD beats a pass TD by 1.5 pts here, not 3.5) &mdash; Lamar stays elite, but the gap behind him closes.</p>
+<p><b>3. 13 teams: scarcity bites.</b> ADP 100&ndash;150 players are starters in your league. TE13 is already replacement level &mdash; <b>top-3 TE at value, or punt and churn</b>; there is no middle. Roughly 2 QBs rostered per team means QB2s vanish &mdash; which is exactly why room-faller Mahomes at 133 is the format steal.</p>
+<p><b>4. Six bench spots, no IR: no handcuffs.</b> The only peer-reviewed test (1,350 leagues) found handcuffing gives ZERO win-rate benefit (51.0% vs 50.6%). Bench = upside swings on 10.5+ win-total offenses. K/DST in the last two rounds, always &mdash; CBS autopilot teams take theirs in rounds 9&ndash;11 and donate skill depth to you.</p>
+<p class="small muted" style="margin-top:8px">Derived from the June 5, 2026 algorithm deep study (Fantasy_Algorithm_Spec.md): PFF 6-pt analysis, Liu et al. 2022 (Judgment &amp; Decision Making), Harstad/Footballguys replacement studies, CBS Autopilot documentation. League settings: WFL on CBS &mdash; 1QB/2RB/2WR/1TE/1FLEX/1K/1DST, 6 bench.</p>
 </div>
 
 <div class="sec" id="tiers">Market cheat sheet &mdash; 2026 win-total tiers</div>
@@ -210,7 +234,8 @@ html{scroll-behavior:smooth}
 <div class="card roadmap">
 <ul>
 <li><b>ADP vs Vegas board</b> — <span class="hi">shipped above</span> (first edition). Next: expand the player pool and add prop-market projections as books post them.</li>
-<li><b>Room ADP + pick-survival bands</b> — <span class="hi">shipped above</span>: live CBS PPR draft data with &ldquo;gone by&rdquo; deadlines per target.</li>
+<li><b>Room ADP + pick-survival bands</b> — <span class="hi">shipped above</span>: live CBS PPR draft data, now with full 75/50/25% survival probabilities per target.</li>
+<li><b>WFL format lens</b> — <span class="hi">shipped above</span>: 13-team / full-PPR / 6-pt-pass-TD corrections from the algorithm deep study.</li>
 <li><b>Team offense outlooks</b> — all 32, built from win totals + implied team totals, not preseason hype.</li>
 <li><b>Market Sleepers &amp; Landmines</b> — <span class="hi">shipped above</span> (first edition); refreshed as lines and ADP move through August.</li>
 </ul>
