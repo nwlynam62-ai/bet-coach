@@ -41,6 +41,15 @@ footer{text-align:center;font-size:11px;color:var(--faint);padding:20px;border-t
 .chip.split{border-style:dashed;border-color:var(--gold);color:var(--gold)}
 .chip small{font-size:9.5px;color:var(--muted)}
 .tnote{flex-basis:100%;font-size:11px;color:var(--muted);margin-top:2px}
+.pos{font-size:10px;color:var(--muted);font-weight:600;margin-left:4px;white-space:nowrap}
+.pl{padding:8px 0;border-bottom:1px solid #222;font-size:12.5px;color:var(--text)}
+.pl:last-child{border-bottom:0}
+.pname{display:block;font-weight:800;font-size:13px;margin-bottom:2px}
+.lede{font-size:12.5px;color:var(--muted);margin-bottom:6px}
+.qr{padding:8px 0;border-bottom:1px solid #222;font-size:12.5px}
+.qr:last-of-type{border-bottom:0}
+.qround{display:inline-block;background:rgba(212,175,55,.12);color:var(--gold);font-weight:800;font-size:10.5px;border-radius:4px;padding:3px 8px;margin-right:6px;min-height:24px;line-height:18px}
+td .pos{display:block;margin-left:0}
 @media(max-width:480px){.hero h1{font-size:18px}main{padding:14px 12px 50px}}
 </style>
 </head>
@@ -51,7 +60,7 @@ footer{text-align:center;font-size:11px;color:var(--faint);padding:20px;border-t
 </header>
 <main>
 <div class="hero">
-<span class="tag">2026 Draft Prep &middot; Launching July</span>
+<span class="tag">2026 Draft Prep &middot; June Edition &middot; Live</span>
 <h1>Fantasy advice from the sharpest source there is: the betting market.</h1>
 <p>Rankings sites guess. The market puts money on it. This section reads Vegas win totals, team totals, and player prop markets to find the fantasy values the consensus is sleeping on &mdash; and the landmines it's still drafting too high.</p>
 </div>
@@ -83,7 +92,62 @@ footer{text-align:center;font-size:11px;color:var(--faint);padding:20px;border-t
 <p>The best draft tools (FantasyPros' Draft Wizard is the industry standard) all converge on the same insight: <b>drafters don't need rank #23 vs #24 &mdash; they need to know where the cliffs are.</b> Tiers tell you when to reach and when to wait. Ours differ in one way: the tier breaks come from betting-market numbers with real money behind them, not staff consensus.</p>
 </div>
 
-<div class="sec">Coming in July</div>
+<div class="sec">ADP vs Vegas &mdash; the value board</div>
+<div class="card">
+<h3>Where draft cost and the betting market disagree most</h3>
+<p>Underdog draft cost vs the team's two-book win total. Big gap up = the market likes the offense more than drafters do. Big gap down = you're paying a playoff-offense price for a basement offense.</p>
+<table>
+<thead><tr><th>Player</th><th>ADP</th><th>Team #</th><th>Market read</th></tr></thead>
+<tbody>
+<tr><td class="hi">Lamar Jackson <span class="pos">QB &middot; BAL</span></td><td>56</td><td>11.5</td><td>QB on the market's #1 team priced as the QB6. Biggest gap on the board</td></tr>
+<tr><td class="hi">Patrick Mahomes <span class="pos">QB &middot; KC</span></td><td>90</td><td>10.5</td><td>Books project +4.5 wins vs 2025. Drafters are pricing last year's 6-11, not this year's number</td></tr>
+<tr><td class="hi">Mike Evans <span class="pos">WR &middot; SF</span></td><td>44</td><td>10.5</td><td>Top-tier offense, WR27 price</td></tr>
+<tr><td class="hi">Jameson Williams <span class="pos">WR &middot; DET</span></td><td>46</td><td>10.5</td><td>Books lean Lions over (-115); WR2 on an elite offense in round 4</td></tr>
+<tr><td class="hi">Joe Burrow <span class="pos">QB &middot; CIN</span></td><td>63</td><td>9.5</td><td>Over juiced -130 at both books &mdash; market expects 10+ wins, QB3 talent at QB-shrug price</td></tr>
+<tr><td class="lo">Ashton Jeanty <span class="pos">RB &middot; LV</span></td><td>12</td><td>5.5</td><td>First-round price on a 5.5-win offense, books lean under</td></tr>
+<tr><td class="lo">De'Von Achane <span class="pos">RB &middot; MIA</span></td><td>14</td><td class="lo">4.5</td><td>Round 1-2 cost, lowest team number in the league</td></tr>
+<tr><td class="lo">Jeremiyah Love <span class="pos">RB &middot; ARI</span></td><td>22</td><td class="lo">4.5</td><td>Round 2 rookie on the co-worst offense; under juiced to -150</td></tr>
+<tr><td class="lo">Trey McBride <span class="pos">TE &middot; ARI</span></td><td>26</td><td class="lo">4.5</td><td>TE1 cost, 4.5-win environment</td></tr>
+<tr><td class="lo">Malik Nabers <span class="pos">WR &middot; NYG</span></td><td>27</td><td>7.5</td><td>Target hog, but a below-average offense at a top-tier price</td></tr>
+</tbody>
+</table>
+<p class="small muted" style="margin-top:8px">ADP: Underdog, cross-checked FantasyPros best-ball ADP vs BestBallTeamBuilder live tracker (both as of June 3&ndash;5, 2026; sources agree within ~1&ndash;3 picks). Win totals: DraftKings + bet365 board above.</p>
+</div>
+
+<div class="sec">Market sleepers</div>
+<div class="card">
+<p class="lede">Late-round players attached to offenses the books believe in. The market reasoning, not staff hunches:</p>
+<div class="pl"><span class="pname hi">Jadarian Price <span class="pos">RB &middot; SEA &middot; ADP 58</span></span> Seattle is 10.5 with the over juiced -135. A round-5 RB in a top-tier offense.</div>
+<div class="pl"><span class="pname hi">Christian Watson <span class="pos">WR &middot; GB &middot; ADP 59</span></span> Packers 10.5 both books. Field-stretcher on an elite-tier offense at WR29 cost.</div>
+<div class="pl"><span class="pname hi">Jayden Reed <span class="pos">WR &middot; GB &middot; ADP 82</span></span> Same 10.5 offense, round-7 price. One of two GB receivers the market says are underpriced.</div>
+<div class="pl"><span class="pname hi">Tucker Kraft <span class="pos">TE &middot; GB &middot; ADP 80</span></span> Third GB pass-catcher going 60+ picks after the offense's market tier says he should.</div>
+<div class="pl"><span class="pname hi">Blake Corum <span class="pos">RB &middot; LAR &middot; ADP 94</span></span> Rams 10.5&ndash;11.5 (split &mdash; bet365 already moved up). Round-8 handcuff to a top-2 market offense.</div>
+<div class="pl"><span class="pname hi">Ricky Pearsall <span class="pos">WR &middot; SF &middot; ADP 100</span></span> 49ers 10.5 with over value (+125 DK). Round-9 dart in a top-tier passing game.</div>
+<div class="pl"><span class="pname hi">Sam LaPorta <span class="pos">TE &middot; DET &middot; ADP 96</span></span> Lions 10.5, over -115. A proven TE1 at TE7 cost in a market-elite offense.</div>
+</div>
+
+<div class="sec">Market landmines</div>
+<div class="card">
+<p class="lede">Early picks the books quietly disagree with. Volume on bad teams is real &mdash; the issue is the price:</p>
+<div class="pl"><span class="pname lo">Ashton Jeanty <span class="pos">RB &middot; LV &middot; ADP 12</span></span> Raiders 5.5 with the under favored at both books. Talent isn't the question; 17 games of bad game-script is.</div>
+<div class="pl"><span class="pname lo">De'Von Achane <span class="pos">RB &middot; MIA &middot; ADP 14</span></span> Dolphins 4.5 &mdash; tied for the lowest number on the board. Round-1/2 price for the league's worst projected offense.</div>
+<div class="pl"><span class="pname lo">Brock Bowers <span class="pos">TE &middot; LV &middot; ADP 20</span></span> Generational target share, 5.5-win environment, TE2 premium price.</div>
+<div class="pl"><span class="pname lo">Jeremiyah Love <span class="pos">RB &middot; ARI &middot; ADP 22</span></span> Books juiced the Cardinals under to -150 &mdash; the sharpest team signal on the board &mdash; while drafters spend a round-2 pick on its rookie RB.</div>
+<div class="pl"><span class="pname lo">Cam Skattebo <span class="pos">RB &middot; NYG &middot; ADP 43</span></span> Giants 7.5. Fine price for volume, but the market caps this offense's ceiling.</div>
+</div>
+
+<div class="sec">Draft-day quick sheet</div>
+<div class="card">
+<p class="lede">The market's round-by-round leans, condensed (12-team, Underdog):</p>
+<div class="qr"><span class="qround">Rd 1&ndash;2</span> The landmine cluster lives here: Jeanty 12, Achane 14, Bowers 20, Love 22. Every one is on a 5.5-or-worse team. The market alternative at the same cost: Walker (KC, 16), Henry (BAL, 17), London (ATL).</div>
+<div class="qr"><span class="qround">Rd 3&ndash;4</span> Burrow window opens (63) &mdash; but Mike Evans 44 and Jameson Williams 46 are the value picks here.</div>
+<div class="qr"><span class="qround">Rd 5</span> Lamar at 56 is the single biggest ADP-vs-market gap on the board. If he's there, stop thinking.</div>
+<div class="qr"><span class="qround">Rd 6&ndash;8</span> Green Bay stack zone: Watson 59, Kraft 80, Reed 82 &mdash; three discounted pieces of a 10.5-win offense.</div>
+<div class="qr"><span class="qround">Rd 8+</span> Mahomes 90, Corum 94, LaPorta 96, Pearsall 100. All on 10.5+ offenses. This is where the market edge compounds.</div>
+<p class="small muted" style="margin-top:8px">Built from the boards above &mdash; same sources, same dates. Refreshed as ADP and totals move.</p>
+</div>
+
+<div class="sec">Roadmap</div>
 <div class="card roadmap">
 <ul>
 <li><b>ADP vs Vegas Big Board</b> — every fantasy-relevant player's draft cost against his prop-market projection. The gaps are the picks.</li>
