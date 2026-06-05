@@ -138,7 +138,7 @@ input:focus{outline:none;border-color:var(--blue)}
 .mstep{display:flex;gap:10px;background:var(--card2);border:1px solid var(--border);border-radius:9px;padding:10px 12px;margin-bottom:8px}
 .mstep .mn{width:22px;height:22px;border-radius:50%;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;color:var(--green);flex-shrink:0}
 .mstep .mt{font-size:12.5px}
-@media(max-width:720px){.leak,.form-grid{grid-template-columns:1fr}main{padding:16px}.g-sub{display:none}}
+@media(max-width:720px){.leak,.form-grid{grid-template-columns:1fr}main{padding:16px}.g-sub{font-size:10.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}}
 .top-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:14px;margin-bottom:14px}
 .chart-wrap.compact{height:158px}
 .spot{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:13px 14px;display:flex;flex-direction:column}
@@ -374,7 +374,44 @@ input:focus{outline:none;border-color:var(--blue)}
 .bankroll-strip .bk-v{font-weight:700;font-size:14px}
 .bk-pos{color:#4ade80}.bk-neg{color:#f87171}
 
-.pill .val,.stat .v,.ministat .v,.spot-stake,.tc-stake,.tc-play,.lm-bar-val{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}</style></head><body>
+.pill .val,.stat .v,.ministat .v,.spot-stake,.tc-stake,.tc-play,.lm-bar-val{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+/* ── richcard proto: glance line ── */
+.g-ml{font-variant-numeric:tabular-nums;color:var(--text);font-weight:600}
+/* ── headlines: severity tiers, game chips, freshness ── */
+.hl-item{border-left:3px solid transparent;padding:8px 8px 8px 10px;border-radius:6px;margin-bottom:2px}
+.hl-t0{border-left-color:var(--red);background:rgba(192,57,43,.08)}
+.hl-t0 .hl-text{font-size:13.5px;font-weight:700;color:var(--fg)}
+.hl-t1{border-left-color:var(--gold);background:rgba(212,175,55,.05)}
+.hl-stale{opacity:.55}
+.hl-game{display:inline-flex;align-items:center;min-height:24px;margin:2px 0 0 8px;font-size:10px;font-weight:700;letter-spacing:.4px;color:var(--gold);border:1px solid var(--gold);border-radius:9px;padding:3px 10px;cursor:pointer;white-space:nowrap;vertical-align:middle}
+.hl-game:hover{background:var(--gold);color:#111}
+.hl-picknote{font-size:10.5px;font-weight:700;color:#ff6b6b;margin:3px 0 1px 2px}
+/* ── ML + Total breakdown: the visual core of the expanded card ── */
+.bd-core{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 4px}
+.bd-take{background:var(--card2);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:10px;padding:10px 12px;min-width:0}
+.bd-take-h{font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);font-weight:800;margin-bottom:5px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.bd-take-n{font-variant-numeric:tabular-nums;color:var(--text);font-weight:700;font-size:11.5px;letter-spacing:0}
+.bd-take-b{font-size:12.5px;line-height:1.55;color:var(--text)}
+@media(max-width:720px){.bd-core{grid-template-columns:1fr}}
+/* ── line-movement graph + analysis (mobile-safe) ── */
+canvas{max-width:100%!important}
+.lm-graph-block{margin-top:10px;min-width:0}
+.lm-cvwrap{position:relative;height:175px;max-width:100%;overflow:hidden;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:8px}
+.lm-cv-note{font-size:10.5px;color:var(--faint);margin-top:5px;font-style:italic}
+.lm-analysis{margin-top:8px;background:var(--card2);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:10px;padding:10px 12px;font-size:12.5px;line-height:1.5}
+.lm-verdict{font-weight:700;color:var(--gold);margin-bottom:6px}
+.lm-an-row{display:flex;gap:8px;margin:4px 0;align-items:flex-start}
+.lm-an-k{flex:0 0 88px;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:700;padding-top:2px}
+.lm-an-v{flex:1;min-width:0;color:var(--text);overflow-wrap:anywhere}
+.clv-pos{color:#3ddc84;font-weight:700}.clv-neg{color:#ff6b6b;font-weight:700}.clv-flat{color:var(--muted);font-weight:700}
+@media(max-width:600px){.lm-an-k{flex-basis:70px}.lm-cvwrap{height:150px}}
+/* a11y: visible keyboard focus rings + reduced-motion guard */
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;scroll-behavior:auto!important}}
+/* proto badge */
+.proto-badge{position:fixed;bottom:10px;right:10px;z-index:9999;background:#6b1f1a;color:#ffd7d0;font-size:10px;font-weight:800;letter-spacing:1px;padding:5px 10px;border-radius:8px;opacity:.92;pointer-events:none}
+</style></head><body>
+<div class="proto-badge">RICHCARD PROTOTYPE — NOT LIVE</div>
 <header>
 <div class="hdr-top">
 <div class="logo"><div class="mark">B</div><div>BET COACH<small>YOUR STATS &middot; TODAY'S BOARD</small></div></div>
@@ -550,6 +587,14 @@ var games=(Array.isArray(DATA.games)?DATA.games:[]).map(function(g,i){
 });
 var charts={};
 var boardFilter="ALL";
+function resolveBoardFilter(){
+  if(boardFilter!=="ALL")return;
+  var ord=["MLB","WC","NHL","NBA","WNBA","PLL","UFC","TENNIS","NFL"];
+  var have={};(games||[]).forEach(function(g){have[g.sport]=1;});
+  var f=ord.filter(function(k){return have[k];})[0];
+  if(!f){var ks=Object.keys(have);f=ks.length?ks[0]:null;}
+  if(f)boardFilter=f;
+}
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
 function fmtMoney(n){return (n<0?"-":"")+"$"+Math.abs(n).toFixed(2);}
 function fmtUnits(n){return (n>=0?"+":"")+n.toFixed(2)+"u";}
@@ -655,7 +700,7 @@ games.forEach(function(g){counts[g.sport]=(counts[g.sport]||0)+1;});
 var order=["MLB","NHL","NBA","WNBA","PLL","UFC","TENNIS","NFL"];
 Object.keys(counts).forEach(function(k){if(order.indexOf(k)<0)order.push(k);});
 var labels={MLB:"MLB",NHL:"NHL",NBA:"NBA",WNBA:"WNBA",PLL:"PLL",UFC:"UFC",TENNIS:"Tennis",NFL:"NFL"};
-if(boardFilter==="ALL"||!counts[boardFilter]){boardFilter=order.filter(function(k){return counts[k];})[0]||"MLB";}
+resolveBoardFilter();if(!counts[boardFilter]){boardFilter=order.filter(function(k){return counts[k];})[0]||"MLB";}
 document.getElementById("boardBar").innerHTML=order.map(function(k){
 if(!counts[k])return "";
 return '<button class="chip'+(boardFilter===k?" active":"")+'" data-f="'+k+'">'+(labels[k]||k)+' '+(counts[k]||0)+'</button>';
@@ -685,6 +730,30 @@ function starHTML(r){
 var pct=(r/5*100).toFixed(1);
 return '<span class="stars" title="'+r+' / 5 stars"><span class="base">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="fill" style="width:'+pct+'%">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span>';
 }
+function hlMatchGame(hl){
+  var txt=String(hl.headline||"")+" "+String(hl.story||"");
+  var best=null;
+  (games||[]).forEach(function(g){
+    if(best)return;
+    var names=[g.away,g.home];
+    for(var i=0;i<names.length;i++){
+      var n=names[i];
+      if(typeof n==="string"&&n.length>3){
+        var re=new RegExp("\\b"+n.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\b","i");
+        if(re.test(txt)){best=g;return;}
+      }
+    }
+  });
+  return best;
+}
+function hlGameHasPick(g){return !!(g&&g.play&&String(g.play).trim()&&g.grade&&g.grade!=="P");}
+function hlGoGame(ev,rank){
+  if(ev&&ev.stopPropagation)ev.stopPropagation();
+  var el=document.querySelector('.game[data-rank="'+rank+'"]');
+  if(!el)return;
+  if(!el.classList.contains("open")){el.classList.add("open");if(typeof renderLmCharts==="function")renderLmCharts(el);}
+  el.scrollIntoView({behavior:"smooth",block:"center"});
+}
 function renderHeadlines(){
 var el=document.getElementById("headlinesList");
 var upEl=document.getElementById("headlinesUpdated");
@@ -692,16 +761,30 @@ if(!el)return;
 var items=Array.isArray(DATA.headlines)?DATA.headlines:[];
 if(upEl&&DATA.headlinesUpdated)upEl.textContent="updated "+DATA.headlinesUpdated;
 if(!items.length){el.innerHTML='<div class="empty">No headlines yet.</div>';return;}
-el.innerHTML=items.slice(0,14).map(function(h,i){
+var todayDay=new Date().toLocaleDateString("en-US",{timeZone:"America/New_York",month:"short",day:"numeric"});
+var dayNum=todayDay.split(" ")[1];
+var ranked=items.map(function(hl,i){
+  var g=hlMatchGame(hl);
+  var tier=g?(hlGameHasPick(g)?0:1):2;
+  return{hl:hl,i:i,g:g,tier:tier};
+});
+ranked.sort(function(a,b){return a.tier-b.tier||a.i-b.i;});
+el.innerHTML=ranked.slice(0,14).map(function(r){
+  var h=r.hl,i=r.i,g=r.g;
   var hasStory=h.story&&h.story.length>0;
-  var cls='hl-item'+(hasStory?' hl-link':'');
+  var cls='hl-item hl-t'+r.tier+(hasStory?' hl-link':'');
+  var ts=String(h.timestamp||"");
+  if(ts&&!(ts.indexOf(todayDay)>=0||new RegExp("-"+dayNum+"\\b").test(ts)))cls+=' hl-stale';
   var id='hl-'+i;
   var chevron=hasStory?'<span class="hl-chevron">&#9660;</span>':'';
+  var gameChip=g?'<span class="hl-game" onclick="hlGoGame(event,'+g.rank+')" title="Jump to this game on the board">'+esc(g.matchup)+(g.time?' &middot; '+esc(g.time):'')+'</span>':'';
+  var pickNote=(g&&r.tier===0)?'<div class="hl-picknote">&#9888; affects our pick: '+esc(g.play)+(g.odds&&g.odds!=="—"?' ('+esc(g.odds)+')':'')+'</div>':'';
   var storyHtml=hasStory?
     '<div class="hl-story">'+esc(h.story)+(h.url?'  <a href="'+h.url+'" target="_blank">&#8599; Read full article</a>':'')+'</div>':'';
   var clickAttr=hasStory?' onclick="(function(el){el.classList.toggle(\'hl-open\')})(document.getElementById(\''+id+'\'))"':'';
   return'<div class="'+cls+'" id="'+id+'"'+clickAttr+'>'+
-    '<div>'+chevron+'<span class="hl-sport">'+(h.sport||"")+'</span><span class="hl-text">'+esc(h.headline)+'</span></div>'+
+    '<div>'+chevron+'<span class="hl-sport">'+(h.sport||"")+'</span><span class="hl-text">'+esc(h.headline)+'</span>'+gameChip+'</div>'+
+    pickNote+
     '<div class="hl-src">'+(h.source?esc(h.source):'')+((h.source&&h.timestamp)?' &middot; ':'')+''+(h.timestamp?'<span style="color:var(--faint);font-size:9.5px">'+esc(h.timestamp)+'</span>':'')+
     '</div>'+
     storyHtml+
@@ -779,6 +862,7 @@ if(watch.length){
 el.innerHTML=html;
 }
 function renderBoard(){
+resolveBoardFilter();
 document.getElementById("boardUpdated").textContent=DATA.updated?"· updated "+DATA.updated:"";
 renderStaleBanner();
 var list=games.slice().sort(function(a,b){return a.rank-b.rank;}).filter(function(g){return boardFilter==="ALL"||g.sport===boardFilter;});
@@ -795,12 +879,15 @@ var lineKV=lineArr.map(function(x){return '<span class="bd-kv">'+esc(x)+'</span>
 var stats=(g.stats||[]).map(function(x){return '<li>'+esc(x)+'</li>';}).join("");
 var lmItems=getGameLines(g.matchup);
 var resItems=getGameResearch(g.matchup);
+var aml=(typeof g.awayML==="number")?((g.awayML>0?"+":"")+g.awayML):null;
+var hml=(typeof g.homeML==="number")?((g.homeML>0?"+":"")+g.homeML):null;
+var glance=esc(g.time)+(aml&&hml?' &middot; <span class="g-ml">ML '+aml+' / '+hml+'</span>':'')+(g.total?' &middot; <span class="g-ml">O/U '+esc(g.total)+'</span>':'');
 return '<div class="game'+top3+'" data-rank="'+g.rank+'">'+
 '<div class="game-hd">'+
 '<div class="rank">'+g.rank+'</div>'+
 '<div class="g-mid">'+
 '<div class="g-match"><span class="sportbadge sb-'+g.sport+'">'+g.sport+'</span>'+(g.kind==="prop"?'<span class="proptag">PROP</span>':'')+esc(g.matchup)+oncard+'</div>'+
-'<div class="g-sub">'+esc(g.time)+' &middot; '+esc(g.take)+'</div>'+
+'<div class="g-sub">'+glance+'</div>'+
 '</div>'+
 '<div class="g-play"><div class="pl">'+esc(g.play)+'</div>'+
 '<div class="od">'+(g.odds&&g.odds!=="—"?esc(g.odds)+' · ':'')+esc(g.stake||"")+'</div></div>'+
@@ -810,16 +897,15 @@ return '<div class="game'+top3+'" data-rank="'+g.rank+'">'+
 '<div class="game-body">'+
 (g.starters?'<div class="bd-h">Matchup</div><div class="bd-analysis">'+esc(g.starters)+'</div>':'')+
 (lineKV?'<div class="bd-line">'+lineKV+'</div>':'')+
+(g.take?'<div class="bd-h">The Read</div><div class="bd-analysis">'+esc(g.take)+'</div>':'')+
+'<div class="bd-h">The Breakdown</div>'+
+'<div class="bd-core">'+
+'<div class="bd-take"><div class="bd-take-h"><span>Moneyline</span>'+(aml&&hml?'<span class="bd-take-n">'+aml+' / '+hml+'</span>':'')+'</div><div class="bd-take-b">'+esc(g.mlTake||g.analysis||"No moneyline read logged yet.")+'</div></div>'+
+((g.totalTake||g.total)?'<div class="bd-take"><div class="bd-take-h"><span>Total</span>'+(g.total?'<span class="bd-take-n">O/U '+esc(g.total)+'</span>':'')+'</div><div class="bd-take-b">'+esc(g.totalTake||"No total read logged yet.")+'</div></div>':'')+
+'</div>'+
 (stats?'<div class="bd-h">Key Stats</div><ul class="bd-stats">'+stats+'</ul>':'')+
-lmInlineHTML(lmItems)+
+lmInlineHTML(lmItems,g)+
 resInlineHTML(resItems)+
-'<div class="bd-h">Moneyline</div>'+
-'<div class="bd-analysis">'+esc(g.mlTake||g.analysis||g.take||"No moneyline analysis available.")+'</div>'+
-(g.totalTake?'<div class="bd-h">Total</div><div class="bd-analysis">'+esc(g.totalTake)+'</div>':'')+
-(g.totalTake||g.total
-  ?'<div class="bd-h">Total (O/U '+(g.total||"?")+')</div><div class="bd-analysis">'+esc(g.totalTake||"No total analysis logged.")+'</div>'
-  :''
-)+
 (gr==="P"
   ?'<div class="theplay" style="background:rgba(136,136,136,.08);border-color:#444"><div class="tp-l"><b style="color:var(--muted)">Pass</b><span style="color:var(--muted);font-size:13px">'+esc(g.take||g.analysis||"No play — monitoring only.")+'</span></div><div class="grade g-P">—</div></div>'
   :'<div class="theplay"><div class="tp-l"><b>The Play</b><span>'+esc(g.play)+(g.odds&&g.odds!=="—"?'  ('+esc(g.odds)+')':'')+'</span></div><div class="grade '+grcls+'">'+esc(gr)+'</div></div>'
@@ -828,7 +914,7 @@ resInlineHTML(resItems)+
 '</div>';
 }).join("");
 el.querySelectorAll(".game-hd").forEach(function(hd){
-hd.addEventListener("click",function(){hd.parentElement.classList.toggle("open");});
+hd.addEventListener("click",function(){var p=hd.parentElement;p.classList.toggle("open");if(p.classList.contains("open")&&typeof renderLmCharts==="function")renderLmCharts(p);});
 });
 }
 function renderBets(){
@@ -1014,13 +1100,147 @@ function getGameLines(matchup){
 function getGameResearch(matchup){
   return (DATA.research||[]).filter(function(x){return x.game&&matchesGame(matchup,x.game);});
 }
-function lmInlineHTML(lmItems){
+/* ── Line-movement graph + analysis ──
+   Chart.js line graph + plain-English movement analysis in each expanded card.
+   Works from 2 points (open → current) and auto-upgrades when lineMovement
+   items gain a history:[{time,line}] array. */
+var LM_CHART_DATA={};
+function lmParseMLs(s){var m=String(s==null?"":s).match(/[+-]\d{3,4}(?!\d)/g);return m?m.map(function(x){return parseInt(x,10);}):[];}
+function lmParseTotal(s){var m=String(s==null?"":s).match(/O[\s\-\/–]?U\s*([0-9]+(?:\.[0-9]+)?)/i);return m?parseFloat(m[1]):null;}
+function lmParseSpread(s){var t=String(s==null?"":s).replace(/[+-]\d{3,4}(?!\d)/g," ");var m=t.match(/[+-](?:\d|[1-5]\d)(?:\.5)?(?![\d.])/);return m?parseFloat(m[0]):null;}
+function lmImplied(ml){return ml>0?100/(ml+100):(-ml)/((-ml)+100);}
+function lmPickWantsTotal(game){var p=(game&&(game.pick||game.play))||"";return /\b(over|under|total)\b/i.test(p);}
+function lmSeriesFor(g,game){
+  if(Array.isArray(g.history)&&g.history.length>=2){
+    var pts=[];
+    for(var i=0;i<g.history.length;i++){var h=g.history[i];var v=typeof h.line==="number"?h.line:parseFloat(h.line);if(isFinite(v))pts.push({t:h.time||("T"+i),v:v});}
+    if(pts.length>=2)return{label:g.historyLabel||"Line",points:pts,kind:g.historyKind||"ml"};
+  }
+  var prefTotal=lmPickWantsTotal(game);
+  var oT=lmParseTotal(g.open),cT=lmParseTotal(g.current);
+  var oM=lmParseMLs(g.open),cM=lmParseMLs(g.current);
+  var oS=lmParseSpread(g.open),cS=lmParseSpread(g.current);
+  if(prefTotal&&oT!=null&&cT!=null)return{label:"Total (O/U)",points:[{t:"Open",v:oT},{t:"Now",v:cT}],kind:"total"};
+  if(oM.length&&cM.length){
+    var o=oM[0],c=cM[0];
+    var raw=game?String(game.pickOdds||game.odds||"").replace(/[^+\-0-9]/g,""):"";
+    var our=parseInt(raw,10);
+    if(isFinite(our)&&our){
+      var oo=null,cc=null,a;
+      for(a=0;a<oM.length;a++){if((our>0)===(oM[a]>0)){oo=oM[a];break;}}
+      for(a=0;a<cM.length;a++){if((our>0)===(cM[a]>0)){cc=cM[a];break;}}
+      if(oo!=null&&cc!=null){o=oo;c=cc;}
+    }
+    return{label:"Moneyline",points:[{t:"Open",v:o},{t:"Now",v:c}],kind:"ml"};
+  }
+  if(oS!=null&&cS!=null)return{label:"Spread",points:[{t:"Open",v:oS},{t:"Now",v:cS}],kind:"spread"};
+  if(oT!=null&&cT!=null)return{label:"Total (O/U)",points:[{t:"Open",v:oT},{t:"Now",v:cT}],kind:"total"};
+  return null;
+}
+function lmFmtVal(v,kind){if(kind==="ml")return (v>0?"+":"")+v;if(kind==="total")return "O/U "+v;return (v>0?"+":"")+v;}
+function lmKeysCrossed(ser){
+  if(!ser||ser.points.length<2)return [];
+  var a=ser.points[0].v,b=ser.points[ser.points.length-1].v;
+  var lo=Math.min(a,b),hi=Math.max(a,b),out=[];
+  if(ser.kind==="ml"){if(lo<-100&&hi>100)out.push("favorite/dog flip (+100)");return out;}
+  for(var k=Math.ceil(lo);k<=Math.floor(hi);k++){if(k>lo&&k<hi)out.push(String(k));}
+  return out;
+}
+function lmCLV(g,game){
+  if(!game)return null;
+  var raw=String(game.pickOdds||game.odds||"").replace(/[^+\-0-9]/g,"");
+  var our=parseInt(raw,10);
+  if(!isFinite(our)||!our)return null;
+  var cur=null,arr=lmParseMLs(g.current);
+  for(var i=0;i<arr.length;i++){if((our>0)===(arr[i]>0)){cur=arr[i];break;}}
+  if(cur==null)return null;
+  var cents=our>0?(our-cur):(cur-our);
+  var edge=(lmImplied(cur)-lmImplied(our))*100;
+  return{our:our,cur:cur,cents:cents,edgePts:edge};
+}
+function lmAnalysisHTML(g,game,ser){
+  var verdictMap={
+    sharp:"Sharp money is driving this number.",
+    rlm:"Reverse line movement — the line is moving AGAINST the ticket majority. Books are siding with the smaller, bigger-money crowd.",
+    steam:"Steam move — a fast, market-wide sharp hit. The triggering number is usually gone within minutes.",
+    public:"Public-driven move — the books moved toward the ticket majority. No sharp confirmation in this number.",
+    split:"Split / quiet market — no clear sharp-vs-public tell in this number yet."
+  };
+  var rows="";
+  function row(k,v){rows+='<div class="lm-an-row"><div class="lm-an-k">'+k+'</div><div class="lm-an-v">'+v+'</div></div>';}
+  var bP=typeof g.publicBets==="number"?g.publicBets:null;
+  var mP=typeof g.publicMoney==="number"?g.publicMoney:null;
+  if(bP!=null&&mP!=null){
+    var gap=mP-bP;
+    var splitTxt=bP+"% of tickets vs "+mP+"% of money on "+esc(g.side||"the favorite")+".";
+    if(gap>=8)splitTxt+=" Money share outruns ticket share by "+gap+" pts — the bigger (sharper) bets are on this side.";
+    else if(gap<=-8)splitTxt+=" Ticket share outruns money share by "+(-gap)+" pts — lots of small public bets, with big money leaning the other way.";
+    else splitTxt+=" Tickets and money are aligned — no bets-vs-money tell.";
+    row("Tickets vs $",splitTxt);
+  }
+  if(ser&&ser.points.length>=2){
+    var a=ser.points[0].v,b=ser.points[ser.points.length-1].v;
+    if(a===b)row("Move",ser.label+" hasn’t moved off the opener ("+lmFmtVal(a,ser.kind)+").");
+    else row("Move",ser.label+" "+lmFmtVal(a,ser.kind)+" → "+lmFmtVal(b,ser.kind)+".");
+    var keys=lmKeysCrossed(ser);
+    if(keys.length)row("Key numbers","Crossed "+keys.join(", ")+(ser.kind==="total"?" — totals gain or lose real win share at whole numbers.":"."));
+    else if(g.keyNumber)row("Key numbers","Sitting on a key number per the board flag.");
+  }
+  var clv=lmCLV(g,game);
+  if(clv){
+    var cls=clv.cents>0?"clv-pos":(clv.cents<0?"clv-neg":"clv-flat");
+    var word=clv.cents>0?"beating":(clv.cents<0?"behind":"flat vs");
+    row("CLV","Our number "+lmFmtVal(clv.our,"ml")+" vs current "+lmFmtVal(clv.cur,"ml")+" — <span class=\""+cls+"\">"+(clv.cents>0?"+":"")+clv.cents+"¢ ("+word+" the close"+(Math.abs(clv.edgePts)>=0.05?", "+(clv.edgePts>0?"+":"")+clv.edgePts.toFixed(1)+" pts implied":"")+")</span>. The current number is effectively the closing line — consistently beating it is the strongest long-term skill signal.");
+  }
+  if(g.note)row("Read",esc(g.note));
+  return '<div class="lm-analysis"><div class="lm-verdict">'+(verdictMap[g.signal]||verdictMap.split)+'</div>'+rows+'</div>';
+}
+function lmGraphBlockHTML(g,game,idx){
+  var ser=lmSeriesFor(g,game);
+  var html="";
+  if(ser){
+    var gid=game&&game.id?game.id:(game&&game.rank!=null?"r"+game.rank:"x");
+    var cid="lmcv-"+gid+"-"+(idx||0);
+    var clv=lmCLV(g,game);
+    ser.ourNum=(clv&&ser.kind==="ml")?clv.our:null;
+    LM_CHART_DATA[cid]=ser;
+    html+='<div class="lm-graph-block"><div class="bd-h">Line Movement Graph</div>'+
+      '<div class="lm-cvwrap"><canvas class="lm-cv" id="'+cid+'"></canvas></div>'+
+      (ser.points.length<=2?'<div class="lm-cv-note">Open → current only for now — this graph fills in automatically once timestamped line snapshots are logged.</div>':'')+
+      '</div>';
+  }
+  html+=lmAnalysisHTML(g,game,ser);
+  return html;
+}
+function renderLmCharts(cardEl){
+  if(!window.Chart||!cardEl||!cardEl.querySelectorAll)return;
+  var cvs=cardEl.querySelectorAll("canvas.lm-cv");
+  Array.prototype.forEach.call(cvs,function(cv){
+    var d=LM_CHART_DATA[cv.id];
+    if(!d||!d.points||d.points.length<2)return;
+    if(charts[cv.id]){try{charts[cv.id].destroy();}catch(e){}charts[cv.id]=null;}
+    var col="#d4af37";
+    var sparse=d.points.length<=2;
+    var ds=[{label:d.label,data:d.points.map(function(p){return p.v;}),borderColor:col,backgroundColor:col+"22",fill:true,tension:.2,pointRadius:5,pointBackgroundColor:col,borderWidth:2,borderDash:sparse?[6,5]:[]}];
+    if(d.ourNum!=null){ds.push({label:"Our number",data:d.points.map(function(){return d.ourNum;}),borderColor:"#c0c0c0",borderWidth:1.5,borderDash:[3,4],pointRadius:0,fill:false});}
+    try{
+      charts[cv.id]=new Chart(cv,{type:"line",
+        data:{labels:d.points.map(function(p){return p.t;}),datasets:ds},
+        options:{responsive:true,maintainAspectRatio:false,
+          plugins:{legend:{display:d.ourNum!=null,labels:{boxWidth:14,font:{size:10}}},
+            tooltip:{callbacks:{label:function(ctx){return d.label+": "+lmFmtVal(ctx.parsed.y,d.kind);}}}},
+          scales:{y:{title:{display:true,text:d.label,font:{size:10}},ticks:{callback:function(v){return lmFmtVal(v,d.kind);}},grid:{color:"#222a3a"}},x:{grid:{display:false}}}}});
+    }catch(e){}
+  });
+}
+
+function lmInlineHTML(lmItems,game){
   if(!lmItems.length)return "";
   var sigClass={sharp:"sig-sharp",rlm:"sig-rlm",steam:"sig-steam",public:"sig-public",split:"sig-split"};
   var sigLabel={sharp:"Sharp ▼",rlm:"RLM ⚡",steam:"Steam 🔥",public:"Public 👀",split:"Split Action"};
   var curClass={sharp:"moved-sharp",public:"moved-public",steam:"moved-steam"};
   var html='<div class="bd-h">Line Movement</div>';
-  lmItems.forEach(function(g){
+  lmItems.forEach(function(g,lmIdx){
     var sc=sigClass[g.signal]||"sig-split";
     var sl=sigLabel[g.signal]||esc(g.signal||"");
     var cc=curClass[g.signal]||"moved-none";
@@ -1042,8 +1262,8 @@ function lmInlineHTML(lmItems){
         (lineStr?'<div class="bd-lm-line">'+lineStr+'</div>':'')+
         (pubStr?'<span class="small muted">'+pubStr+'</span>':'')+
       '</div>'+
-      (g.note?'<div class="bd-lm-note">'+esc(g.note)+'</div>':'')+
       (flags.length?'<div class="lm-flags" style="margin-top:6px">'+flags.join("")+'</div>':'')+
+      lmGraphBlockHTML(g,game,lmIdx)+
     '</div>';
   });
   return html;
