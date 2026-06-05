@@ -423,6 +423,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 <button data-tab="bets">My Bets</button>
 <button data-tab="coach">Coach</button>
 <button data-tab="settings">Settings</button>
+<button onclick="location.href='worldcup.html'" style="color:var(--gold)">World Cup &#9917;</button>
 </nav>
 </header>
 <main>
@@ -1717,7 +1718,7 @@ function showTab(name){
   var btn = document.querySelector('nav button[data-tab="'+name+'"]');
   if(sec) sec.classList.add('active');
   if(btn) btn.classList.add('active');
-  if(name==='today'){ renderBoard(); renderMiniStats(); renderChart(); renderStaleBanner(); renderBoardBar(); renderSpotlight(); renderGeneralResearch(); renderHeadlines(); }
+  if(name==='today'){ renderBoardBar(); renderBoard(); renderMiniStats(); renderChart(); renderStaleBanner(); renderSpotlight(); renderGeneralResearch(); renderHeadlines(); }
   if(name==='record'){ renderTrackRecord(); renderCalendar(); }
   if(name==='bets'){ renderBets(); }
   if(name==='coach'){ renderGuardrails(); renderGradePanel(); renderLeaks(); renderInsights(); }
@@ -1726,7 +1727,7 @@ function showTab(name){
 document.querySelectorAll('nav button[data-tab]').forEach(function(btn){
   btn.addEventListener('click', function(){ showTab(btn.getAttribute('data-tab')); });
 });
-document.getElementById('refreshBtn') && document.getElementById('refreshBtn').addEventListener('click', function(){ renderBoard(); renderMiniStats(); renderStaleBanner(); renderBoardBar(); renderSpotlight(); renderHeadlines(); var ru=document.getElementById('refreshUpdated'); if(ru) ru.textContent = DATA.updated ? ('Board last updated: '+DATA.updated) : ''; openRefresh(); });
+document.getElementById('refreshBtn') && document.getElementById('refreshBtn').addEventListener('click', function(){ renderBoardBar(); renderBoard(); renderMiniStats(); renderStaleBanner(); renderSpotlight(); renderHeadlines(); var ru=document.getElementById('refreshUpdated'); if(ru) ru.textContent = DATA.updated ? ('Board last updated: '+DATA.updated) : ''; openRefresh(); });
 
 // ── Lines / Research sub-tabs ─────────────────────────────────────────────
 (function(){
