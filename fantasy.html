@@ -50,13 +50,23 @@ footer{text-align:center;font-size:11px;color:var(--faint);padding:20px;border-t
 .qr:last-of-type{border-bottom:0}
 .qround{display:inline-block;background:rgba(212,175,55,.12);color:var(--gold);font-weight:800;font-size:10.5px;border-radius:4px;padding:3px 8px;margin-right:6px;min-height:24px;line-height:18px}
 td .pos{display:block;margin-left:0}
+html{scroll-behavior:smooth}
+.sec{scroll-margin-top:70px}
+.menu{position:relative}
+.menu summary{list-style:none;cursor:pointer;color:var(--gold);font-size:12.5px;font-weight:700;border:1px solid var(--border);border-radius:20px;padding:6px 14px;min-height:24px;user-select:none}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary::after{content:' \25BE';font-size:10px}
+.menu[open] summary{border-color:var(--gold)}
+.mpanel{position:absolute;right:0;top:calc(100% + 8px);background:var(--card);border:1px solid var(--border);border-radius:12px;min-width:230px;z-index:50;box-shadow:0 10px 28px rgba(0,0,0,.55);padding:6px}
+.mpanel a{display:block;padding:11px 13px;color:var(--text);text-decoration:none;font-size:13px;border-radius:8px;min-height:24px}
+.mpanel a:hover{background:#222;color:var(--gold)}
 @media(max-width:480px){.hero h1{font-size:18px}main{padding:14px 12px 50px}}
 </style>
 </head>
 <body>
 <header>
 <div class="logo"><div class="mark">F</div><div>FANTASY CORNER<small>BY BET COACH</small></div></div>
-<a class="back" href="index.html">&larr; Back to the Board</a>
+<details class="menu"><summary>Menu</summary><nav class="mpanel"><a href="#cbs">Your CBS Room Edge</a><a href="#tiers">Win-Total Tiers</a><a href="#board">ADP vs Vegas Board</a><a href="#sleepers">Market Sleepers</a><a href="#landmines">Market Landmines</a><a href="#quick">Draft-Day Quick Sheet</a><a href="#roadmap">Roadmap</a><a href="index.html">&larr; Bet Coach Board</a></nav></details><a class="back" href="index.html">&larr; Back to the Board</a>
 </header>
 <main>
 <div class="hero">
@@ -72,7 +82,37 @@ td .pos{display:block;margin-left:0}
 <p><b>3. ADP vs the market is the edge.</b> When drafters price a player far below what the prop market implies &mdash; that's a pick. Far above &mdash; that's a fade. We'll publish both lists all draft season.</p>
 </div>
 
-<div class="sec">Market cheat sheet &mdash; 2026 win-total tiers</div>
+<div class="sec" id="cbs">Your room &mdash; the CBS edge</div>
+<div class="card">
+<h3>CBS leagues draft off CBS ranks. That makes the room predictable.</h3>
+<p>Most home-league drafters pick straight from the default rank list on the CBS draft screen (3-expert consensus: Eisenberg / Richard / Cummings, updated daily). Diff those ranks against real market ADP and you know who falls and who gets reached for &mdash; before the draft starts.</p>
+<p class="lede" style="margin-top:10px"><b class="hi">They'll fall to you</b> &mdash; CBS ranks them far below where the market drafts them:</p>
+<table>
+<thead><tr><th>Player</th><th>CBS</th><th>Mkt</th><th>The play</th></tr></thead>
+<tbody>
+<tr><td class="hi">Patrick Mahomes <span class="pos">QB &middot; KC</span></td><td>126</td><td>90</td><td>The room lets the books' +4.5-win bounce-back QB sit until rd 10+. Wait, then take him</td></tr>
+<tr><td class="hi">Jayden Reed <span class="pos">WR &middot; GB</span></td><td>128</td><td>82</td><td>10.5-win offense, PPR slot profile, falls ~4 rounds past market. Prime PPR value</td></tr>
+<tr><td class="hi">Mike Evans <span class="pos">WR &middot; SF</span></td><td>68</td><td>44</td><td>Market sleeper AND room faller &mdash; double edge in rd 6</td></tr>
+<tr><td class="hi">Blake Corum <span class="pos">RB &middot; LAR</span></td><td>111</td><td>94</td><td>Handcuff to a top-2 market offense, available a round later than everywhere else</td></tr>
+<tr><td class="hi">George Kittle <span class="pos">TE &middot; SF</span></td><td>117</td><td>120</td><td>Not a faller &mdash; but the room's TE panic (see below) makes him the patience play</td></tr>
+</tbody>
+</table>
+<p class="lede" style="margin-top:14px"><b class="lo">Let the room reach</b> &mdash; CBS ranks them far above the market; someone else will pay:</p>
+<table>
+<thead><tr><th>Player</th><th>CBS</th><th>Mkt</th><th>The read</th></tr></thead>
+<tbody>
+<tr><td class="lo">Rashee Rice <span class="pos">WR &middot; KC</span></td><td>11</td><td>29</td><td>CBS says round 1; the market says round 3. Never your pick at 11</td></tr>
+<tr><td class="lo">Cam Skattebo <span class="pos">RB &middot; NYG</span></td><td>32</td><td>43</td><td>Room reach + 7.5-win team = the cleanest fade in your draft</td></tr>
+<tr><td class="lo">Sam LaPorta <span class="pos">TE &middot; DET</span></td><td>61</td><td>96</td><td>CBS pushes TEs early across the board (McBride 22, Bowers 26). Let the run happen, take Kittle late</td></tr>
+<tr><td class="lo">Drake Maye <span class="pos">QB &middot; NE</span></td><td>48</td><td>70</td><td>QB reach in a room that will also leave Mahomes at 126. Wait</td></tr>
+<tr><td class="lo">Josh Jacobs <span class="pos">RB &middot; GB</span></td><td>19</td><td>36</td><td>Right offense, wrong price &mdash; the market gets the same offense via Watson/Reed/Kraft for free</td></tr>
+</tbody>
+</table>
+<p style="margin-top:10px"><b>Where CBS is right and the market's drafters are wrong:</b> CBS has Breece Hall 47 and Travis Etienne 45 while Underdog drafters take them at 27-28 &mdash; and Vegas sides with CBS (Jets 5.5, Saints 7.5). When the room AND the books agree, don't be the contrarian.</p>
+<p class="small muted" style="margin-top:8px">CBS: consensus PPR Top 200, cbssports.com, updated June 5, 2026 (refreshes daily &mdash; re-pulled each build). Mkt = Underdog ADP (FantasyPros + BestBallTeamBuilder, Jun 3&ndash;5). Your league scores PPR &mdash; all calls on this page are graded for it.</p>
+</div>
+
+<div class="sec" id="tiers">Market cheat sheet &mdash; 2026 win-total tiers</div>
 <div class="card">
 <h3>Every team, tiered by what the books say &mdash; not what rankers feel</h3>
 <p>This is the draft-prep skeleton: tiers built from season win totals confirmed across two books. High tier = offenses to pay for. Basement = volume-only dart throws. Teams where the two books disagree are flagged &mdash; a split number means the market itself hasn't decided, and that's where draft values hide.</p>
@@ -92,7 +132,7 @@ td .pos{display:block;margin-left:0}
 <p>The best draft tools (FantasyPros' Draft Wizard is the industry standard) all converge on the same insight: <b>drafters don't need rank #23 vs #24 &mdash; they need to know where the cliffs are.</b> Tiers tell you when to reach and when to wait. Ours differ in one way: the tier breaks come from betting-market numbers with real money behind them, not staff consensus.</p>
 </div>
 
-<div class="sec">ADP vs Vegas &mdash; the value board</div>
+<div class="sec" id="board">ADP vs Vegas &mdash; the value board</div>
 <div class="card">
 <h3>Where draft cost and the betting market disagree most</h3>
 <p>Underdog draft cost vs the team's two-book win total. Big gap up = the market likes the offense more than drafters do. Big gap down = you're paying a playoff-offense price for a basement offense.</p>
@@ -114,19 +154,19 @@ td .pos{display:block;margin-left:0}
 <p class="small muted" style="margin-top:8px">ADP: Underdog, cross-checked FantasyPros best-ball ADP vs BestBallTeamBuilder live tracker (both as of June 3&ndash;5, 2026; sources agree within ~1&ndash;3 picks). Win totals: DraftKings + bet365 board above.</p>
 </div>
 
-<div class="sec">Market sleepers</div>
+<div class="sec" id="sleepers">Market sleepers</div>
 <div class="card">
 <p class="lede">Late-round players attached to offenses the books believe in. The market reasoning, not staff hunches:</p>
 <div class="pl"><span class="pname hi">Jadarian Price <span class="pos">RB &middot; SEA &middot; ADP 58</span></span> Seattle is 10.5 with the over juiced -135. A round-5 RB in a top-tier offense.</div>
 <div class="pl"><span class="pname hi">Christian Watson <span class="pos">WR &middot; GB &middot; ADP 59</span></span> Packers 10.5 both books. Field-stretcher on an elite-tier offense at WR29 cost.</div>
-<div class="pl"><span class="pname hi">Jayden Reed <span class="pos">WR &middot; GB &middot; ADP 82</span></span> Same 10.5 offense, round-7 price. One of two GB receivers the market says are underpriced.</div>
+<div class="pl"><span class="pname hi">Jayden Reed <span class="pos">WR &middot; GB &middot; ADP 82</span></span> Same 10.5 offense, round-7 price. Slot target profile &mdash; extra juice in PPR (your scoring).</div>
 <div class="pl"><span class="pname hi">Tucker Kraft <span class="pos">TE &middot; GB &middot; ADP 80</span></span> Third GB pass-catcher going 60+ picks after the offense's market tier says he should.</div>
 <div class="pl"><span class="pname hi">Blake Corum <span class="pos">RB &middot; LAR &middot; ADP 94</span></span> Rams 10.5&ndash;11.5 (split &mdash; bet365 already moved up). Round-8 handcuff to a top-2 market offense.</div>
 <div class="pl"><span class="pname hi">Ricky Pearsall <span class="pos">WR &middot; SF &middot; ADP 100</span></span> 49ers 10.5 with over value (+125 DK). Round-9 dart in a top-tier passing game.</div>
 <div class="pl"><span class="pname hi">Sam LaPorta <span class="pos">TE &middot; DET &middot; ADP 96</span></span> Lions 10.5, over -115. A proven TE1 at TE7 cost in a market-elite offense.</div>
 </div>
 
-<div class="sec">Market landmines</div>
+<div class="sec" id="landmines">Market landmines</div>
 <div class="card">
 <p class="lede">Early picks the books quietly disagree with. Volume on bad teams is real &mdash; the issue is the price:</p>
 <div class="pl"><span class="pname lo">Ashton Jeanty <span class="pos">RB &middot; LV &middot; ADP 12</span></span> Raiders 5.5 with the under favored at both books. Talent isn't the question; 17 games of bad game-script is.</div>
@@ -136,7 +176,7 @@ td .pos{display:block;margin-left:0}
 <div class="pl"><span class="pname lo">Cam Skattebo <span class="pos">RB &middot; NYG &middot; ADP 43</span></span> Giants 7.5. Fine price for volume, but the market caps this offense's ceiling.</div>
 </div>
 
-<div class="sec">Draft-day quick sheet</div>
+<div class="sec" id="quick">Draft-day quick sheet</div>
 <div class="card">
 <p class="lede">The market's round-by-round leans, condensed (12-team, Underdog):</p>
 <div class="qr"><span class="qround">Rd 1&ndash;2</span> The landmine cluster lives here: Jeanty 12, Achane 14, Bowers 20, Love 22. Every one is on a 5.5-or-worse team. The market alternative at the same cost: Walker (KC, 16), Henry (BAL, 17), London (ATL).</div>
@@ -147,7 +187,7 @@ td .pos{display:block;margin-left:0}
 <p class="small muted" style="margin-top:8px">Built from the boards above &mdash; same sources, same dates. Refreshed as ADP and totals move.</p>
 </div>
 
-<div class="sec">Roadmap</div>
+<div class="sec" id="roadmap">Roadmap</div>
 <div class="card roadmap">
 <ul>
 <li><b>ADP vs Vegas board</b> — <span class="hi">shipped above</span> (first edition). Next: expand the player pool and add prop-market projections as books post them.</li>
@@ -159,5 +199,6 @@ td .pos{display:block;margin-left:0}
 <p class="small muted" style="margin-top:14px">This section runs separately from the Bet Coach board &mdash; fantasy content never touches the picks operation.</p>
 </main>
 <footer>Fantasy Corner &middot; a Bet Coach project &middot; market data labeled with source and date</footer>
+<script>document.querySelectorAll(".mpanel a").forEach(function(a){a.addEventListener("click",function(){document.querySelector(".menu").removeAttribute("open");});});</script>
 </body>
 </html>
