@@ -33,6 +33,14 @@ td{padding:8px;border-bottom:1px solid #222;font-variant-numeric:tabular-nums}
 .roadmap li{font-size:13px;margin:0 0 8px 18px}
 .roadmap b{color:var(--fg)}
 footer{text-align:center;font-size:11px;color:var(--faint);padding:20px;border-top:1px solid var(--border)}
+.tiers{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.tier{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;background:#151515;border:1px solid #262626;border-radius:10px;padding:10px}
+.tval{min-width:64px;min-height:24px;font-weight:800;font-size:14px;color:var(--fg);font-variant-numeric:tabular-nums}
+.tteams{flex:1;display:flex;flex-wrap:wrap;gap:6px;min-width:200px}
+.chip{background:#222;border:1px solid #3a3a3a;border-radius:14px;padding:4px 10px;font-size:12px;color:var(--text);min-height:24px;display:inline-flex;align-items:center;gap:4px}
+.chip.split{border-style:dashed;border-color:var(--gold);color:var(--gold)}
+.chip small{font-size:9.5px;color:var(--muted)}
+.tnote{flex-basis:100%;font-size:11px;color:var(--muted);margin-top:2px}
 @media(max-width:480px){.hero h1{font-size:18px}main{padding:14px 12px 50px}}
 </style>
 </head>
@@ -55,19 +63,24 @@ footer{text-align:center;font-size:11px;color:var(--faint);padding:20px;border-t
 <p><b>3. ADP vs the market is the edge.</b> When drafters price a player far below what the prop market implies &mdash; that's a pick. Far above &mdash; that's a fade. We'll publish both lists all draft season.</p>
 </div>
 
-<div class="sec">Market watch — first look</div>
+<div class="sec">Market cheat sheet &mdash; 2026 win-total tiers</div>
 <div class="card">
-<h3>The early win-total board is unusually flat</h3>
-<p>DraftKings opened the 2026 season with the <span class="hi">Ravens at 11.5</span> &mdash; the only team above the pack &mdash; and a nine-team logjam at 10.5. The basement: <span class="lo">Dolphins 4.5</span> and <span class="lo">Cardinals 4.5</span>.</p>
-<table>
-<thead><tr><th>Tier</th><th>Teams</th><th>Fantasy read</th></tr></thead>
-<tbody>
-<tr><td class="hi">11.5 (top)</td><td>Ravens</td><td>Market's only elite offense projection — their skill players carry the safest floors in drafts</td></tr>
-<tr><td>10.5 logjam</td><td>9 teams</td><td>Historic parity — late-round players from this tier are where draft-day value hides</td></tr>
-<tr><td class="lo">4.5 (floor)</td><td>Dolphins, Cardinals</td><td>Volume can still feed one fantasy starter each, but avoid paying for efficiency here</td></tr>
-</tbody>
-</table>
-<p class="small muted" style="margin-top:8px">Source: DraftKings opening 2026 win totals via VSiN/Covers. Early lines — totals move all summer; full team-by-team breakdown lands with the July edition.</p>
+<h3>Every team, tiered by what the books say &mdash; not what rankers feel</h3>
+<p>This is the draft-prep skeleton: tiers built from season win totals confirmed across two books. High tier = offenses to pay for. Basement = volume-only dart throws. Teams where the two books disagree are flagged &mdash; a split number means the market itself hasn't decided, and that's where draft values hide.</p>
+<div class="tiers">
+<div class="tier"><div class="tval hi">11.5</div><div class="tteams"><span class="chip">Ravens</span><span class="chip split">Rams <small>10.5&ndash;11.5</small></span></div><div class="tnote">Elite projections &mdash; safest fantasy floors on the board</div></div>
+<div class="tier"><div class="tval">10.5</div><div class="tteams"><span class="chip">Bills</span><span class="chip">Lions</span><span class="chip">Packers</span><span class="chip">Eagles</span><span class="chip">Chiefs</span><span class="chip">49ers</span><span class="chip">Seahawks</span><span class="chip split">Chargers <small>9.5&ndash;10.5</small></span><span class="chip split">Texans <small>9.5&ndash;10.5</small></span></div><div class="tnote">Historic logjam &mdash; late-round picks from these offenses are the value pocket</div></div>
+<div class="tier"><div class="tval">9.5</div><div class="tteams"><span class="chip">Broncos</span><span class="chip">Patriots</span><span class="chip">Bears</span><span class="chip">Bengals</span><span class="chip split">Jaguars <small>8.5&ndash;9.5</small></span><span class="chip split">Cowboys <small>8.5&ndash;9.5</small></span></div><div class="tnote">Playoff-bubble offenses &mdash; fine prices, don't pay elite tags here</div></div>
+<div class="tier"><div class="tval">8.5</div><div class="tteams"><span class="chip">Buccaneers</span><span class="chip">Steelers</span><span class="chip">Vikings</span><span class="chip split">Colts <small>7.5&ndash;8.5</small></span></div><div class="tnote">Middle of the market &mdash; target individual volume, not the offense</div></div>
+<div class="tier"><div class="tval">7.5</div><div class="tteams"><span class="chip">Giants</span><span class="chip">Saints</span><span class="chip">Commanders</span><span class="chip split">Falcons <small>6.5&ndash;7.5</small></span><span class="chip split">Panthers <small>6.5&ndash;7.5</small></span></div><div class="tnote">Below-average projections &mdash; one fantasy starter each, priced accordingly</div></div>
+<div class="tier"><div class="tval lo">6.5 &amp; under</div><div class="tteams"><span class="chip">Titans</span><span class="chip">Browns</span><span class="chip">Raiders 5.5</span><span class="chip">Jets 5.5</span><span class="chip">Cardinals 4.5</span><span class="chip">Dolphins 4.5</span></div><div class="tnote">Basement &mdash; volume darts only; never pay for efficiency from these offenses</div></div>
+</div>
+<p class="small muted" style="margin-top:10px"><span class="chip split" style="font-size:10px">Split</span> = books disagree on the number. Sources: DraftKings via RotoWire (May 2026) &middot; bet365 via Covers (as of June 4, 2026). Totals move all summer &mdash; refreshed on later builds.</p>
+</div>
+
+<div class="sec">Why tiers, not rankings</div>
+<div class="card">
+<p>The best draft tools (FantasyPros' Draft Wizard is the industry standard) all converge on the same insight: <b>drafters don't need rank #23 vs #24 &mdash; they need to know where the cliffs are.</b> Tiers tell you when to reach and when to wait. Ours differ in one way: the tier breaks come from betting-market numbers with real money behind them, not staff consensus.</p>
 </div>
 
 <div class="sec">Coming in July</div>
