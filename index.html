@@ -571,7 +571,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   "bankroll": 80,
   "unit": 10
  },
- "updated": "Sat Jun 6, 2026 - 7:28 AM ET (SYNC, RADAR_ONLY). Radar refreshed: BOS +114 ML firm lean (Judge OUT, dog sweet spot, Fri dog cashed) + Giants@Cubs Cubs-F5 SP-edge pivot (Brown 1.92 vs Roupp 4.22, FG over cap). WNBA Storm@Lynx total not watchlist-eligible; Reds@Cardinals (Lodolo 5.20 vs Liberatore 4.35) no edge. No picks logged (deep in-window workup pending). Record 19-17-1P.",
+ "updated": "Sat Jun 6, 2026 - 7:36 AM ET (GAME ANALYST, RADAR_ONLY). TIME CORRECTION: BOS@NYY moved to 7:35 PM ET (FOX night game; board had wrong 1:05). Judge confirmed OUT (rib stress fx, IL'd) -> BOS +114 ML lean firms. Lines filled: Giants@Cubs SF +118/CHC -138 t8.5 (Cubs-F5 pivot, SF live dog); Reds@Cardinals STL -126/CIN +108 (no edge). Storm@Lynx -13.5/159.5 early Under lean. No picks logged (no in-window games). Record 19-17-1P.",
  "linesSource": "Midnight build Jun 6: Odds API sandbox-blocked (proxy) and ESPN free DK also blocked from sandbox this run - board ML/total fields NULL 'line pending'. Polymarket indicative prices (via Covers, as of Jun 5) cited in takes/lineMovement as single-source reference only. AM analyst gates any pick on 2-book confirmation.",
  "bets": [
   {
@@ -825,7 +825,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
    "id": "g-20260606-001",
    "date": "2026-06-06",
    "sport": "MLB",
-   "time": "1:05 PM ET",
+   "time": "7:35 PM ET",
    "away": "Red Sox",
    "home": "Yankees",
    "matchup": "Red Sox @ Yankees",
@@ -873,8 +873,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
    "matchup": "Reds @ Cardinals",
    "awayPitcher": "Nick Lodolo (LHP)",
    "homePitcher": "Matthew Liberatore (LHP)",
-   "awayML": null,
-   "homeML": null,
+   "awayML": 108,
+   "homeML": -126,
    "total": null,
    "status": "scheduled",
    "rank": 3,
@@ -1041,9 +1041,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
    "matchup": "Giants @ Cubs",
    "awayPitcher": "Landen Roupp (back, Q)",
    "homePitcher": "Ben Brown",
-   "awayML": null,
-   "homeML": null,
-   "total": null,
+   "awayML": 118,
+   "homeML": -138,
+   "total": 8.5,
    "status": "scheduled",
    "rank": 11,
    "grade": "C",
@@ -1351,16 +1351,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
  ],
  "research": [
   {
-   "id": "r-20260605-1920-02",
-   "timestamp": "2026-06-05T19:20:00-04:00",
-   "category": "matchup",
-   "sport": "MLB",
-   "title": "Messick 2.21 gives CLE the SP edge",
-   "body": "Parker Messick (6-1, 2.21 ERA, LHP) for CLE vs Kumar Rocker (2-5, 3.54) for TEX. DK CLE -126 / TEX +105; BOL CLE -122 / TEX +111 (BOL a touch better on the Rangers dog). Clear starter edge to Cleveland; total 7.5. Lean Guardians ML / under-leaning game.",
-   "relevance": "high",
-   "game": "Guardians @ Rangers"
-  },
-  {
    "id": "r-20260605-1920-03",
    "timestamp": "2026-06-05T19:20:00-04:00",
    "category": "matchup",
@@ -1592,6 +1582,16 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
    "game": "Storm @ Lynx",
    "title": "EARLY RADAR: Lynx -13.5 steep, early Under lean (1:00 ET)",
    "body": "EARLY RADAR (RADAR_ONLY run, T-~6h). Line multi-book free-confirmed (Covers): Lynx -13.5 (-112 DK, -110 FD/bet365/Caesars, -115 MGM/Fanatics) / Storm +13.5; total 159.5 (DK o-115/u-105) / 160.5 (bet365/MGM/Caesars); ML Lynx -1000 DK / -847 FD, Storm +650 DK / +540 FD. Commissioner's Cup (ABC). Records: Lynx 8-2 (W6, 8-2 ATS) at home; Storm 3-8 (L4, 7 of last 9), 75.6 PPG / 81.3 allowed. READ: Lynx clearly better and healthier at home, but -13.5 is a steep WNBA number - no spread edge at the open. Primary early lean = UNDER (Storm low pace/scoring + Lynx elite D; public consensus also Under); best number Under 160.5 (-110). WNBA injury report unconfirmed this run (injury=edge - recheck in-window). STATUS: watchlist-only through Jun 18 (calibration) - analysis only, NO pick logged."
+  },
+  {
+   "id": "r-20260606-0736-radar",
+   "timestamp": "2026-06-06T07:36:00-04:00",
+   "category": "early",
+   "sport": "MLB",
+   "game": "Multi (radar refresh)",
+   "relevance": "high",
+   "title": "07:36 RADAR REFRESH + time correction: BOS@NYY is a 7:35 PM FOX night game (board had 1:05 PM)",
+   "text": "DATA CORRECTION: Red Sox @ Yankees is the FOX Saturday night game at 7:35 PM ET (FOX broadcast 7:30), NOT 1:05 PM as the board showed — game time fixed in games[] and watchlist so the gate re-windows it for the evening. JUDGE CONFIRMED OUT: Yankees IL'd Aaron Judge (first-rib stress fracture) and made a corresponding roster move — firms the BOS +114 ML radar lean (NYY weaker vs LHP without Judge; same dog angle cashed Fri BOS +123 W 5-3). Price-to-beat +114; in-window veto checks (BetOnline-vs-DK, BOS lineup, both bullpens, Bronx wx) still pending pre-lock. GIANTS @ CUBS (2:20 ET, Wrigley): lines now CHC -138 / SF +118, total 8.5, Cubs -1.5 (+155); Ben Brown 1.92 vs Roupp 4.22 SP gap confirms Cubs-F5 pivot, but SF +118 is a live dog on a single angle — don't auto-fade. REDS @ CARDINALS (2:15 ET, Busch): STL -126 / CIN +108 (one book STL -142/CIN +120), Liberatore vs Lodolo near pick'em (~51% STL) — no radar edge, monitor only. STORM @ LYNX (1:00 ET): Lynx -13.5 / total 159.5 unchanged — early Under lean noted, not watchlist-eligible. MARKER:GA_RADAR_20260606_0736_WRITE_MARKER"
   }
  ],
  "picks": [
@@ -2365,7 +2365,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
    "play": "Red Sox +114 ML",
    "odds": "+114",
    "grade": "B",
-   "time": "1:05 PM ET",
+   "time": "7:35 PM ET",
    "promoted": false,
    "note": "FIRM RADAR LEAN. Judge OUT (rib stress fx, IL'd Fri) softens NYY vs LHP; same dog angle cashed Fri (BOS +123 W 5-3). NYY -134/BOS +114 multi-book (FD/DK/Covers). SP near-even: Warren 3.22 vs Suarez 3.37. Dog/near-even sweet spot. Price-to-beat +114. IN-WINDOW VETO CHECKS before logging: BetOnline-vs-DK sharp read, BOS lineup health, both bullpens, Bronx weather."
   },
