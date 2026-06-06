@@ -34,6 +34,17 @@ ul{margin-left:18px;font-size:13px}
 li{margin-bottom:7px}
 footer{text-align:center;font-size:11px;color:var(--faint);padding:20px;border-top:1px solid var(--border)}
 @media(max-width:480px){.hero h1{font-size:18px}.count div{width:64px}main{padding:14px 12px 50px}}
+.grp{border-top:1px solid var(--border);padding:10px 0}
+.grp:first-of-type{border-top:none;padding-top:2px}
+.gh{display:flex;align-items:center;gap:8px;margin-bottom:3px}
+.gh b{color:var(--fg);font-size:13.5px}
+.tag{font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:10px;font-weight:700;min-height:0}
+.tag.soft{background:#14361f;color:#5fd08a}
+.tag.mid{background:#3a3416;color:#d4af37}
+.tag.death{background:#3a1514;color:#e07a72}
+.gt{font-size:13px;color:var(--text);margin-bottom:3px;font-weight:600}
+.gr{font-size:12px;color:var(--muted);margin-bottom:0}
+.fnote{font-size:11px;color:var(--faint);margin:2px 0 0}
 </style>
 </head>
 <body>
@@ -73,14 +84,31 @@ footer{text-align:center;font-size:11px;color:var(--faint);padding:20px;border-t
 
 <div class="sec">Futures watch</div>
 <div class="card" id="futures">
-<h3>First edition lands this week</h3>
-<p class="muted">Group winners, golden boot, and where the value sits against the sharpest books — researched nightly and updated here as lines move toward kickoff.</p>
+<h3>To lift the trophy &mdash; no clear king</h3>
+<p class="fnote" style="margin-bottom:10px">Prediction-market %: Kalshi via Squawka, 5 Jun 2026. Sportsbook prices: FanDuel, 2&ndash;3 Jun 2026.</p>
+<p><b>Spain &amp; France &mdash; pick &rsquo;em at the top (~16.5% each &middot; +475 / +500).</b> The two best teams on the planet priced as a coin flip. No real value backing either at ~6/1, but it sets the anchor: the true favorite line is a 50/50, worth remembering when their group-winner and match prices land.</p>
+<p><b>England, the lone third pick (10&ndash;13% &middot; +650).</b> The only other double-digit side &mdash; the market&rsquo;s clearest talent-vs-temperament bet. Squads this good have flattered to deceive before; the price already assumes they fix it this time.</p>
+<p><b>Argentina, holders, as the value angle (~9% &middot; +900).</b> A Messi farewell, a side that wins tight knockout games, and a kinder draw than the co-favorites &mdash; the best price among genuine contenders. The risk is age across a month of North-American heat.</p>
+<p><b>Golden Boot: Mbapp&eacute; the chalk (+600), Kane next (+700).</b> <span class="muted small">FOX Sports / RotoWire, early Jun 2026.</span> Mbapp&eacute; takes France&rsquo;s penalties and should play deepest of any elite scorer. Haaland (+1400) is the lottery ticket &mdash; elite finisher, but Norway likely bow out early.</p>
+<p class="fnote" style="margin-bottom:0">Hosts are longshots &mdash; USA &amp; Mexico ~2% each, Canada ~1% (Kalshi, 5 Jun): all three combined still price below France alone.</p>
 </div>
 
 <div class="sec">Groups &amp; results</div>
 <div class="card" id="groups">
-<h3>Group tables go live June 11</h3>
-<p class="muted">Standings, results, and qualification scenarios for all 12 groups, updated every night of the tournament.</p>
+<h3>All 12 groups confirmed</h3>
+<p class="fnote" style="margin-bottom:12px">Draw held 5 Dec 2025, Washington D.C. Teams verified via NBC Sports &amp; Wikipedia (Jun 2026). Top two per group plus the eight best third-placed teams reach the Round of 32. Difficulty reads are ours.</p>
+<div class="grp"><div class="gh"><b>Group A</b><span class="tag soft">soft</span></div><p class="gt">Mexico &middot; South Korea &middot; South Africa &middot; Czechia</p><p class="gr">Mexico should top it; Czechia and South Korea fight for second, South Africa the outsider.</p></div>
+<div class="grp"><div class="gh"><b>Group B</b><span class="tag mid">mid</span></div><p class="gt">Canada &middot; Switzerland &middot; Qatar &middot; Bosnia-Herzegovina</p><p class="gr">The most open Pot-1 group &mdash; Switzerland may be the strongest side here, with Canada, Bosnia and Qatar all live for second.</p></div>
+<div class="grp"><div class="gh"><b>Group C</b><span class="tag death">tough</span></div><p class="gt">Brazil &middot; Morocco &middot; Scotland &middot; Haiti</p><p class="gr">Group-of-death feel: Brazil and 2022 semifinalist Morocco both fancied through, leaving a returning Scotland and Haiti to scrap for a third-place ticket.</p></div>
+<div class="grp"><div class="gh"><b>Group D</b><span class="tag mid">mid</span></div><p class="gt">United States &middot; Paraguay &middot; Australia &middot; T&uuml;rkiye</p><p class="gr">The hosts&rsquo; draw has bite &mdash; T&uuml;rkiye are dangerous, Paraguay stubborn, Australia organized; nothing is handed to the USA.</p></div>
+<div class="grp"><div class="gh"><b>Group E</b><span class="tag soft">soft</span></div><p class="gt">Germany &middot; Ivory Coast &middot; Ecuador &middot; Cura&ccedil;ao</p><p class="gr">Germany should cruise; Ecuador and Ivory Coast contest second, with debutants Cura&ccedil;ao the minnows.</p></div>
+<div class="grp"><div class="gh"><b>Group F</b><span class="tag mid">mid</span></div><p class="gt">Netherlands &middot; Sweden &middot; Tunisia &middot; Japan</p><p class="gr">Balanced and competitive &mdash; the Netherlands favored, but Japan and Sweden make second a genuine fight.</p></div>
+<div class="grp"><div class="gh"><b>Group G</b><span class="tag mid">mid</span></div><p class="gt">Belgium &middot; Egypt &middot; Iran &middot; New Zealand</p><p class="gr">Belgium ahead of the pack; Salah&rsquo;s Egypt and a savvy Iran chase second, New Zealand the outsiders.</p></div>
+<div class="grp"><div class="gh"><b>Group H</b><span class="tag death">tough</span></div><p class="gt">Spain &middot; Cape Verde &middot; Saudi Arabia &middot; Uruguay</p><p class="gr">Brutal &mdash; Spain favored, but Uruguay is a heavyweight for a third seed; Cape Verde and Saudi Arabia face a steep climb.</p></div>
+<div class="grp"><div class="gh"><b>Group I</b><span class="tag mid">mid</span></div><p class="gt">France &middot; Senegal &middot; Iraq &middot; Norway</p><p class="gr">France comfortable on paper, but Senegal&rsquo;s athleticism and Haaland&rsquo;s Norway give this real edge.</p></div>
+<div class="grp"><div class="gh"><b>Group J</b><span class="tag soft">soft</span></div><p class="gt">Argentina &middot; Algeria &middot; Austria &middot; Jordan</p><p class="gr">Argentina clear at the top; Austria the solid second pick, with Algeria the dark horse.</p></div>
+<div class="grp"><div class="gh"><b>Group K</b><span class="tag death">tough</span></div><p class="gt">Portugal &middot; DR Congo &middot; Uzbekistan &middot; Colombia</p><p class="gr">Loaded &mdash; Portugal vs Colombia is a marquee Pot-1/Pot-2 clash; DR Congo and Uzbekistan are no pushovers.</p></div>
+<div class="grp"><div class="gh"><b>Group L</b><span class="tag mid">mid</span></div><p class="gt">England &middot; Croatia &middot; Ghana &middot; Panama</p><p class="gr">England favored; an aging Croatia still dangerous, Ghana athletic, Panama the outsiders.</p></div>
 </div>
 
 <p class="small muted" style="margin-top:14px">This hub runs separately from the Bet Coach board &mdash; tournament content never touches the picks operation.</p>
