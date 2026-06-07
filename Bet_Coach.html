@@ -670,7 +670,7 @@ select:focus{outline:none;border-color:var(--blue)}
   "bankroll": 80,
   "unit": 10
  },
- "updated": "Sun Jun 7, 2026 - 10:08 AM ET (manager sweep 6/7 ~10:08 AM ET: line-accuracy audit vs DK/ESPN feed — corrected Rays/Marlins total 8->7.5, Rangers -148->-144, Braves -162->-157, Tigers favorite restored -110/+100; all 15 MLB + 2 WNBA verified; sport coverage complete; shell/file/key/stale-write all clean.)",
+ "updated": "Sun Jun 7, 2026 - 10:16 AM ET (GA radar [RADAR_ONLY, 0 in-window]: all 15 MLB + 2 WNBA + 1 NBA DK lines re-pulled live off the ESPN feed; line-shape sanity passed on all. Real moves: Mariners shortened to -109 (slim road fav), Guardians to +119, Pirates to +130, WNBA Tempo out to -162. Rest of the board flat, no RLM/steam without public-bet data. Trend display-match refreshed - Seattle/St. Louis/Houston/Kansas City Under + Milwaukee Over all hit today's slate, display-only, written as objects. | manager 10:16 AM ET: re-verified all 15 MLB + 2 WNBA lines vs DK/ESPN feed — Rangers -144, Braves -157, Rays/Marlins total 7.5, Tigers -110 fav all confirmed; re-synced live to this fresher GA pull.)",
  "linesSource": "DraftKings via ESPN feed (cache-busted), 2-source confirmed vs Yahoo Sports",
  "bets": [],
  "games": [
@@ -705,7 +705,7 @@ select:focus{outline:none;border-color:var(--blue)}
    "matchup": "Mariners @ Tigers",
    "awayPitcher": "Luis Castillo",
    "homePitcher": "Jack Flaherty",
-   "awayML": "+100",
+   "awayML": "-109",
    "homeML": "-110",
    "total": 8.5,
    "status": "scheduled",
@@ -726,7 +726,7 @@ select:focus{outline:none;border-color:var(--blue)}
    "matchup": "Guardians @ Rangers",
    "awayPitcher": "Joey Cantillo",
    "homePitcher": "Jacob deGrom",
-   "awayML": "+126",
+   "awayML": "+119",
    "homeML": "-144",
    "total": 7,
    "status": "scheduled",
@@ -831,7 +831,7 @@ select:focus{outline:none;border-color:var(--blue)}
    "matchup": "Pirates @ Braves",
    "awayPitcher": "Bubba Chandler",
    "homePitcher": "Bryce Elder",
-   "awayML": "+138",
+   "awayML": "+130",
    "homeML": "-157",
    "total": 9,
    "status": "scheduled",
@@ -999,8 +999,8 @@ select:focus{outline:none;border-color:var(--blue)}
    "matchup": "Sky @ Tempo",
    "awayPitcher": null,
    "homePitcher": null,
-   "awayML": "+124",
-   "homeML": "-148",
+   "awayML": "+136",
+   "homeML": "-162",
    "total": 174.5,
    "status": "scheduled",
    "rank": 1,
@@ -1072,11 +1072,11 @@ select:focus{outline:none;border-color:var(--blue)}
    "matchup": "Mariners @ Tigers",
    "time": "1:40 PM ET (Jun 7)",
    "open": "Mariners -120",
-   "current": "Mariners +100 / Tigers -110 · O/U 8.5",
+   "current": "Mariners -109 / Tigers -110 · O/U 8.5",
    "publicBets": null,
    "publicMoney": null,
    "side": null,
-   "signal": "Tigers -110 fav at DK; Mariners the near-even +100 road side.",
+   "signal": "Mariners shortened to -109 from +100; back to a slim road favorite over Tigers -110.",
    "rlm": false,
    "steam": false
   },
@@ -1085,11 +1085,11 @@ select:focus{outline:none;border-color:var(--blue)}
    "matchup": "Guardians @ Rangers",
    "time": "2:35 PM ET (Jun 7)",
    "open": "Guardians +113",
-   "current": "Guardians +126 / Rangers -144 · O/U 7",
+   "current": "Guardians +119 / Rangers -144 · O/U 7",
    "publicBets": null,
    "publicMoney": null,
    "side": null,
-   "signal": "Rangers -144 at DK (was shown -148); Guardians the +126 road dog.",
+   "signal": "Guardians shortened to +119 from +126; Rangers steady -144.",
    "rlm": false,
    "steam": false
   },
@@ -1150,11 +1150,11 @@ select:focus{outline:none;border-color:var(--blue)}
    "matchup": "Pirates @ Braves",
    "time": "1:35 PM ET (Jun 7)",
    "open": "Pirates +123",
-   "current": "Pirates +138 / Braves -157 · O/U 9",
+   "current": "Pirates +130 / Braves -157 · O/U 9",
    "publicBets": null,
    "publicMoney": null,
    "side": null,
-   "signal": "Braves -157 at DK (was shown -162); Pirates the +138 road dog.",
+   "signal": "Pirates shortened to +130 from +138; Braves steady -157.",
    "rlm": false,
    "steam": false
   },
@@ -1251,6 +1251,11 @@ select:focus{outline:none;border-color:var(--blue)}
   }
  ],
  "research": [
+  {
+   "title": "10:07 AM RADAR: DK lines re-pulled live off ESPN feed - 3 small two-way drifts, rest flat",
+   "ts": "",
+   "body": "RADAR_ONLY pass (0 in-window). All 15 MLB + 2 WNBA + 1 NBA Finals DK lines re-pulled LIVE from the ESPN structured DraftKings feed via the connected browser (Odds API not called, 0 credits). Real moves this cycle: Mariners @ Tigers - Seattle shortened to -109 from +100, back to a slim road favorite (Tigers -110); Guardians @ Rangers - Cleveland shortened to +119 from +126 (Rangers steady -144); Pirates @ Braves - Pittsburgh shortened to +130 from +138 (Braves steady -157); WNBA Sky @ Tempo - Toronto lengthened to -162 from -148 as the home favorite (Sky now +136). Rest of the board flat. Line-shape sanity passed on every game (implied prob sums >100% at DK; SEA/DET and NYM/SD are normal both-negative pick'ems). No public-bet data, so no RLM/steam call. TREND DISPLAY-MATCHING: all 5 vetted market Unders/Over hit today's slate, display-only - Seattle/St. Louis/Houston/Kansas City Under + Milwaukee Over (Coors); refreshed onto the Trends tab as objects, NOT fed to the pick engine."
+  },
   {
    "id": "r-20260607-0907-radar",
    "timestamp": "2026-06-07T09:07:00-04:00",
@@ -1485,16 +1490,6 @@ select:focus{outline:none;border-color:var(--blue)}
    "relevance": "high",
    "title": "18:09 DEEP (in-window): NHL Cup G3 line DISCOVERED (pick'em, O/U 5.5); BOS@NYY favorite shortened -134->-118 = money on Boston dog (positive CLV on logged BOS +114); Judge OUT CONFIRMED",
    "body": "TOP SIGNAL - Red Sox @ Yankees (7:35, T-86m): DK shortened NYY -134->-118 (BOS -102) while FanDuel still posts BOS +114/NYY -135. Favorite shortening + dog support = money on Boston; the earlier-logged BOS ML +114 now sits ahead of the market (positive CLV). Aaron Judge CONFIRMED OUT - right first-rib stress fracture, on IL since May 31, 4-6wk reeval (CBS Sports + Bleacher Report, multi-source); a Judge-less lineup vs LHP Ranger Suarez, and BOS won the opener. RLM flagged, not key-number steam. NHL Stanley Cup Final Game 3, Hurricanes @ Golden Knights (8:00) - LINE DISCOVERED this run via web_fetch (DK opening-odds article + aggregate): near PICK'EM VGK -111 / CAR -110, total 5.5 (O -124/U +102), Cup futures CAR -145/VGK +125. Series 1-1 (G2 was CAR 4-3 OT, Jarvis winner); Vegas hosts G3. Modest home edge already priced - no value play; Under 5.5 framework lean only. Fills the null NHL board line. Guardians @ Rangers (7:35) - CLE -126/TEX +108 (DK) holds; near pick'em on a 2nd book; total ticked 8->7.5 (mild Under). Bibee 0-7/4.57 vs Leiter 3-4/4.34; prediction-market still leans TEX ~53%. No steam, no logged play. PLL Cannons @ Waterdogs (8:00, watchlist-only thru Jun 28) - line carry (Waterdogs -1.5, O/U 25.5, Cannons +100; no free PLL odds source). AVAILABILITY CAUTION per the non-negotiable rule: the official PLL injury report did NOT render via web_fetch this run (JS-only page returned nav shell), so today's availability is UNCONFIRMED; the Adler/Wilson Waterdogs-defender absences are carry-forward from the last confirmed Fri report and were not re-verified - did NOT upgrade them to fact, and did NOT propagate a stale season-opener out-list a web search surfaced. NETWORK: web_fetch reached premierlacrosseleague.com, actionnetwork.com, dknetwork.draftkings.com fine; ESPN site.api URLs blocked by provenance this run so free-ESPN DK numbers came via WebSearch aggregate instead. Odds API NOT called this run (budget preserved). GA_DEEP_WRITE_20260606_1807Z_uniqB7"
-  },
-  {
-   "id": "r-20260606-1837-mlb735",
-   "timestamp": "2026-06-06T18:37:00-04:00",
-   "category": "deep",
-   "sport": "MLB",
-   "game": "7:35 ET pair: Red Sox@Yankees, Guardians@Rangers",
-   "relevance": "high",
-   "title": "Pre-lock read on the 7:35 ET games: Red Sox at Yankees and Guardians at Rangers",
-   "body": "Red Sox at Yankees: the market is back to New York around -134 to -135 with Boston a +110 to +114 dog and the total at 8.5. The brief move toward Boston seen earlier (DraftKings had shortened the Yankees to -118) has settled back to consensus, so the Boston dog price is steady rather than strengthening. Aaron Judge remains out with a first-rib stress fracture, and a Judge-less lineup faces left-hander Ranger Suarez. The lean stays on Boston at plus money; the counter is that even without Judge, New York hits left-handed pitching well. Guardians at Rangers (corrected): Texas is the slight home favorite at -115 with Cleveland a -105 road dog and the total at 7.5 - an earlier read had the favorite and dog reversed. Cleveland's Tanner Bibee is 0-7 with a 5.96 road ERA and the slate's worst soft-contact rate, while Jack Leiter is sharper at home with Wyatt Langford and Corey Seager back. The lean is Texas at home, with the total leaning Under in a pitcher-friendly park."
   }
  ],
  "picks": [
@@ -2500,7 +2495,7 @@ select:focus{outline:none;border-color:var(--blue)}
  "_ga_marker": "GA_IDLE_20260606_2338ET_uniqM7",
  "_marker": "LOGPICKS-1780769495",
  "trends": {
-  "updated": "Sun Jun 7, 2026 - 9:45 AM ET",
+  "updated": "Sun Jun 7, 2026 - 10:07 AM ET",
   "note": "Vetted only — full-season sample + a real mechanism required. Market trends are team-total leans pre-matched to today's slate; own-number-first, never bet a trend blind. REJECTED: naive 'Coors = automatic over' (Rockies are 18-19 / 49% over in 2026, under-leaning at home) and OddsShark's underdog report (its tables are stale 2024 data).",
   "marketTrends": [
    {
@@ -2515,7 +2510,12 @@ select:focus{outline:none;border-color:var(--blue)}
     "situation": "team_total_under",
     "betSide": "Under",
     "appliesToday": [
-     "Mariners @ Tigers (1:40 PM ET)"
+     {
+      "matchup": "Mariners @ Tigers (1:40 PM ET)",
+      "gameId": "g-20260607-002",
+      "side": "Under 8.5",
+      "play": "total"
+     }
     ]
    },
    {
@@ -2530,7 +2530,12 @@ select:focus{outline:none;border-color:var(--blue)}
     "situation": "team_total_under",
     "betSide": "Under",
     "appliesToday": [
-     "Reds @ Cardinals (2:15 PM ET, Busch)"
+     {
+      "matchup": "Reds @ Cardinals (2:15 PM ET, Busch)",
+      "gameId": "g-20260607-007",
+      "side": "Under 9.5",
+      "play": "total"
+     }
     ]
    },
    {
@@ -2545,7 +2550,12 @@ select:focus{outline:none;border-color:var(--blue)}
     "situation": "team_total_under",
     "betSide": "Under",
     "appliesToday": [
-     "Athletics @ Astros (2:10 PM ET)"
+     {
+      "matchup": "Athletics @ Astros (2:10 PM ET)",
+      "gameId": "g-20260607-014",
+      "side": "Under 9",
+      "play": "total"
+     }
     ]
    },
    {
@@ -2560,7 +2570,12 @@ select:focus{outline:none;border-color:var(--blue)}
     "situation": "team_total_under",
     "betSide": "Under",
     "appliesToday": [
-     "Royals @ Twins (2:10 PM ET)"
+     {
+      "matchup": "Royals @ Twins (2:10 PM ET)",
+      "gameId": "g-20260607-013",
+      "side": "Under 9",
+      "play": "total"
+     }
     ]
    },
    {
@@ -2575,7 +2590,12 @@ select:focus{outline:none;border-color:var(--blue)}
     "situation": "team_total_over",
     "betSide": "Over",
     "appliesToday": [
-     "Brewers @ Rockies (3:10 PM ET, Coors)"
+     {
+      "matchup": "Brewers @ Rockies (3:10 PM ET, Coors)",
+      "gameId": "g-20260607-012",
+      "side": "Over 11.5",
+      "play": "total"
+     }
     ]
    }
   ],
@@ -2586,7 +2606,8 @@ select:focus{outline:none;border-color:var(--blue)}
     "record": "11-7 (61%)",
     "n": 18,
     "confidence": "directional (small sample)",
-    "clv": "uncaptured"
+    "clv": "uncaptured",
+    "appliesToday": []
    },
    {
     "trend": "Moneyline is our primary bet type",
@@ -2594,7 +2615,8 @@ select:focus{outline:none;border-color:var(--blue)}
     "record": "19-12-1P (61%)",
     "n": 31,
     "confidence": "directional",
-    "clv": "uncaptured"
+    "clv": "uncaptured",
+    "appliesToday": []
    },
    {
     "trend": "Grade A is NOT outperforming grade B (calibration inverted)",
@@ -2602,7 +2624,8 @@ select:focus{outline:none;border-color:var(--blue)}
     "record": "A 7-7 vs B 12-10",
     "n": 36,
     "confidence": "directional flag",
-    "clv": "uncaptured"
+    "clv": "uncaptured",
+    "appliesToday": []
    }
   ]
  },
