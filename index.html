@@ -409,6 +409,16 @@ canvas{max-width:100%!important}
 button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;scroll-behavior:auto!important}}
 /* proto badge */
+.fld select{width:100%}
+select{background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:9px 11px;font-size:13px;font-family:inherit}
+select:focus{outline:none;border-color:var(--blue)}
+.betlog-form{margin-bottom:14px}
+.bl-actions{white-space:nowrap}
+.bl-settle{display:inline-block;width:auto;min-width:80px;padding:5px 7px;font-size:12px}
+.bl-del{background:var(--red-d);color:#ffd9d9;border:none;border-radius:6px;width:28px;height:30px;font-size:15px;cursor:pointer;font-family:inherit;margin-left:6px;vertical-align:middle}
+.bl-del:hover{filter:brightness(1.1)}
+.bl-ok{color:var(--green);font-weight:700}
+
 
 
 /* ============================================================
@@ -566,9 +576,24 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 </section>
 <section class="tab" id="tab-bets">
 <h2 class="sec">Bet Log</h2>
-<p class="leadnote">Send me a screenshot of any bet slip and I'll log it here with a grade. Tell me the result when the game ends and I'll settle it.</p>
+<p class="leadnote">Log your own plays below &mdash; they save on this device so they stick through the daily updates. Or send me a screenshot in chat and I'll add one with a grade.</p>
+<div class="card betlog-form">
+<form id="betLogForm" autocomplete="off">
+<div class="form-grid">
+<div class="fld"><label>Date</label><input type="date" id="bl-date"></div>
+<div class="fld"><label>Sport</label><select id="bl-sport"><option value="MLB">MLB</option><option value="NHL">NHL</option><option value="NBA">NBA</option><option value="WNBA">WNBA</option><option value="NFL">NFL</option><option value="UFC">UFC</option><option value="Tennis">Tennis</option><option value="PLL">PLL</option><option value="WC">World Cup</option><option value="Other">Other</option></select></div>
+<div class="fld"><label>Matchup</label><input type="text" id="bl-matchup" placeholder="e.g. Red Sox @ Yankees"></div>
+<div class="fld"><label>Selection</label><input type="text" id="bl-selection" placeholder="e.g. Yankees ML"></div>
+<div class="fld"><label>Odds</label><input type="text" id="bl-odds" placeholder="e.g. -110 or +120"></div>
+<div class="fld"><label>Stake ($)</label><input type="number" id="bl-stake" step="0.01" min="0" placeholder="10"></div>
+<div class="fld"><label>Result</label><select id="bl-result"><option value="Pending">Pending</option><option value="W">Win</option><option value="L">Loss</option><option value="P">Push</option></select></div>
+</div>
+<div class="btn-row"><button type="submit" class="btn">&#43; Log play</button><span id="bl-msg" class="hint" style="align-self:center"></span></div>
+</form>
+</div>
+
 <div class="tbl-wrap"><table>
-<thead><tr><th>Date</th><th>Sport</th><th>Matchup</th><th>Selection</th><th>Odds</th><th>Stake</th><th>Result</th><th>P/L</th><th>Units</th><th>My Grade</th></tr></thead>
+<thead><tr><th>Date</th><th>Sport</th><th>Matchup</th><th>Selection</th><th>Odds</th><th>Stake</th><th>Result</th><th>P/L</th><th>Units</th><th>My Grade</th><th>Actions</th></tr></thead>
 <tbody id="betsBody"></tbody>
 </table></div>
 <p class="hint" id="betCount"></p>
@@ -3193,6 +3218,17 @@ catch(e){DATA={settings:{bankroll:80,unit:10},updated:"",bets:[],games:[]};}
 var settings=Object.assign({bankroll:80,unit:10},DATA.settings||{});
 try{var ls=JSON.parse(localStorage.getItem("betCoach_settings")||"null");if(ls&&ls.bankroll>0&&ls.unit>0)settings=ls;}catch(e){}
 var bets=Array.isArray(DATA.bets)?DATA.bets:[];
+var USERBETS_KEY="betCoach_userBets";
+function loadUserBets(){try{var a=JSON.parse(localStorage.getItem(USERBETS_KEY)||"[]");return Array.isArray(a)?a:[];}catch(e){return [];}}
+function saveUserBets(a){try{localStorage.setItem(USERBETS_KEY,JSON.stringify(a));}catch(e){}}
+function mergeUserBets(){var base=Array.isArray(DATA.bets)?DATA.bets:[];var seen={};base.forEach(function(b){if(b&&b.id)seen[b.id]=1;});var extra=loadUserBets().filter(function(b){return b&&!(b.id&&seen[b.id]);});bets=base.concat(extra);}
+function refreshAfterBetChange(){mergeUserBets();try{renderBets();}catch(e){}try{renderHeader();}catch(e){}try{renderMiniStats();}catch(e){}}
+function addUserBet(bet){var ub=loadUserBets();ub.push(bet);saveUserBets(ub);refreshAfterBetChange();}
+function settleUserBet(id,result){var ub=loadUserBets();ub.forEach(function(b){if(b.id===id)b.result=result;});saveUserBets(ub);refreshAfterBetChange();}
+function deleteUserBet(id){var ub=loadUserBets().filter(function(b){return b.id!==id;});saveUserBets(ub);refreshAfterBetChange();}
+function wireBetLogActions(){var bd=document.getElementById("betsBody");if(!bd)return;Array.prototype.forEach.call(bd.querySelectorAll(".bl-settle"),function(s){s.addEventListener("change",function(){settleUserBet(s.getAttribute("data-id"),s.value);});});Array.prototype.forEach.call(bd.querySelectorAll(".bl-del"),function(x){x.addEventListener("click",function(){if(window.confirm("Delete this logged play?"))deleteUserBet(x.getAttribute("data-id"));});});}
+mergeUserBets();
+
 var games=(Array.isArray(DATA.games)?DATA.games:[]).map(function(g,i){
   // Normalize new schema (pick/pickOdds/awayPitcher) → legacy schema (play/odds/pitchers)
   var out=Object.assign({},g);
@@ -3530,9 +3566,9 @@ hd.addEventListener("click",function(){var p=hd.parentElement;p.classList.toggle
 }
 function renderBets(){
 var body=document.getElementById("betsBody");
-document.getElementById("betCount").textContent=bets.length?(bets.length+" bet"+(bets.length>1?"s":"")+" logged"):"";
+var cnt=document.getElementById("betCount");if(cnt)cnt.textContent=bets.length?(bets.length+" bet"+(bets.length>1?"s":"")+" logged"):"";
 if(!bets.length){
-body.innerHTML='<tr><td colspan="10"><div class="empty">No bets logged yet. Send me a screenshot of a bet slip in chat and I\'ll add it here.</div></td></tr>';
+body.innerHTML='<tr><td colspan="11"><div class="empty">No bets logged yet. Use “Log a play” above, or send me a screenshot in chat.</div></td></tr>';
 return;
 }
 var rows=bets.slice().sort(function(a,b){var da=a.date||"",db=b.date||"";return da<db?1:(da>db?-1:0);});
@@ -3542,8 +3578,15 @@ var plTxt=pr===null?'<span class="muted">&mdash;</span>':'<span class="'+clsNum(
 var uTxt=u===null?'<span class="muted">&mdash;</span>':'<span class="'+clsNum(u)+'">'+fmtUnits(u)+'</span>';
 var gr=b.grade||"";
 var grTxt=gr?'<span class="gradesm g-'+gr.charAt(0)+'" title="'+esc(b.gradeNote||"")+'">'+esc(gr)+'</span>':'<span class="muted">&mdash;</span>';
-return '<tr><td>'+esc(b.date||"")+'</td><td>'+esc(b.sport||"")+'</td><td>'+esc(b.matchup||"")+'</td><td>'+esc(b.selection||"")+'</td><td>'+(num(b.odds)>0?"+":"")+esc(b.odds)+'</td><td>'+fmtMoney(num(b.stake))+'</td><td class="res-'+(b.result||"Pending")+'">'+esc(b.result||"Pending")+'</td><td>'+plTxt+'</td><td>'+uTxt+'</td><td>'+grTxt+'</td></tr>';
+var mine=b.id&&((""+b.id).indexOf("usr-")===0);
+var act;
+if(mine){
+var opts=['Pending','W','L','P'].map(function(r){return '<option value="'+r+'"'+(((b.result||'Pending')===r)?' selected':'')+'>'+r+'</option>';}).join('');
+act='<td class="bl-actions"><select class="bl-settle" data-id="'+esc(b.id)+'" aria-label="Settle bet">'+opts+'</select><button class="bl-del" data-id="'+esc(b.id)+'" title="Delete" aria-label="Delete bet">&times;</button></td>';
+}else{act='<td class="bl-actions"><span class="muted">&mdash;</span></td>';}
+return '<tr><td>'+esc(b.date||"")+'</td><td>'+esc(b.sport||"")+'</td><td>'+esc(b.matchup||"")+'</td><td>'+esc(b.selection||b.play||"")+'</td><td>'+(num(b.odds)>0?"+":"")+esc(b.odds)+'</td><td>'+fmtMoney(num(b.stake))+'</td><td class="res-'+(b.result||"Pending")+'">'+esc(b.result||"Pending")+'</td><td>'+plTxt+'</td><td>'+uTxt+'</td><td>'+grTxt+'</td>'+act+'</tr>';
 }).join("");
+wireBetLogActions();
 }
 function todayUnits(){
 var t=new Date().toISOString().slice(0,10),u=0;
@@ -4367,13 +4410,31 @@ document.getElementById('refreshBtn') && document.getElementById('refreshBtn').a
 // ── Init ──────────────────────────────────────────────────────────
 try{renderHeader();}catch(e){}
 try{showTab('today');}catch(e){}
+document.addEventListener("DOMContentLoaded",function(){
+  var f=document.getElementById("betLogForm");if(!f)return;
+  function today(){try{return new Date().toLocaleDateString("en-CA",{timeZone:"America/New_York"});}catch(e){return new Date().toISOString().slice(0,10);}}
+  var dt=document.getElementById("bl-date");if(dt&&!dt.value)dt.value=today();
+  f.addEventListener("submit",function(e){
+    e.preventDefault();
+    var g=function(id){var el=document.getElementById(id);return el?(""+el.value).trim():"";};
+    var sel=g("bl-selection");
+    if(!sel){alert("Add a selection (what you bet).");return;}
+    var stake=g("bl-stake");
+    var bet={id:"usr-"+Date.now(),date:g("bl-date")||today(),sport:g("bl-sport"),matchup:g("bl-matchup"),selection:sel,odds:g("bl-odds"),stake:stake===""?0:Number(stake),result:g("bl-result")||"Pending",note:"Logged in app"};
+    addUserBet(bet);
+    f.reset();
+    var d2=document.getElementById("bl-date");if(d2)d2.value=today();
+    var m=document.getElementById("bl-msg");if(m){m.innerHTML='<span class="bl-ok">Logged &#10003; saved on this device</span>';setTimeout(function(){m.textContent="";},2800);}
+  });
+});
+
 
 /* ── Mobile bottom-nav wiring (prototype) — DOM-ready; reuses showTab() ── */
 document.addEventListener('DOMContentLoaded', function(){
   var bn = document.getElementById('bottomNav');
   var sheet = document.getElementById('moreSheet');
   if(!bn || !sheet) return;
-  var PRIMARY = ['today','bets','record','coach'];
+  var PRIMARY = ['today','bets','record','trends'];
   function fa(list, fn){ Array.prototype.forEach.call(list, fn); }
   function closeMore(){ sheet.classList.remove('show'); }
   function openMore(){ sheet.classList.add('show'); }
@@ -4422,13 +4483,13 @@ document.addEventListener('DOMContentLoaded', function(){
   <button data-tab="today" class="active"><span class="bn-ic">&#128202;</span>Today</button>
   <button data-tab="bets"><span class="bn-ic">&#127915;</span>My Bets</button>
   <button data-tab="record"><span class="bn-ic">&#128200;</span>Record</button>
-  <button data-tab="coach"><span class="bn-ic">&#129504;</span>Coach</button>
+  <button data-tab="trends"><span class="bn-ic">&#128201;</span>Trends</button>
   <button id="bnMore"><span class="bn-ic">&#9776;</span>More</button>
 </nav>
 <div id="moreSheet" role="dialog" aria-label="More sections">
   <div class="ms-panel">
     <div class="ms-grip"></div>
-    <button class="ms-item" data-tab="trends"><span class="bn-ic">&#128201;</span>Trends</button>
+    <button class="ms-item" data-tab="coach"><span class="bn-ic">&#129504;</span>Coach</button>
     <button class="ms-item" data-tab="settings"><span class="bn-ic">&#9881;&#65039;</span>Settings</button>
     <button class="ms-item" onclick="location.href='worldcup.html'"><span class="bn-ic">&#9917;</span>World Cup</button>
   </div>
