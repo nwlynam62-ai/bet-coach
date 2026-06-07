@@ -3347,7 +3347,7 @@ var SETTLED={'W':1,'L':1,'P':1,'win':1,'loss':1,'push':1,'void':1,'VOID':1,'pass
 var active=(DATA.picks||[]).filter(function(p){return p.date===todayET && !SETTLED[String(p.result)];});
 function gtime(m){var hit=(games||[]).filter(function(g){return g.matchup===m;})[0];return hit&&hit.time?hit.time:'';}
 // On My Radar: plays I'm strongly considering but have NOT queued. Hidden once promoted/settled or the game starts.
-function radarStarted(w){var t=gtime(w.matchup)||w.time||'';var m=t.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);if(!m)return false;var hh=(+m[1])%12;if(/pm/i.test(m[3]))hh+=12;var sm=hh*60+(+m[2]);var p=new Date().toLocaleTimeString('en-GB',{timeZone:'America/New_York',hour12:false}).split(':');var nowMin=(+p[0])*60+(+p[1]);return w.date===todayET&&nowMin>=sm-15;}
+function radarStarted(w){if(w.date&&w.date<todayET)return true;var t=gtime(w.matchup)||w.time||'';var m=t.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);if(!m)return false;var hh=(+m[1])%12;if(/pm/i.test(m[3]))hh+=12;var sm=hh*60+(+m[2]);var p=new Date().toLocaleTimeString('en-GB',{timeZone:'America/New_York',hour12:false}).split(':');var nowMin=(+p[0])*60+(+p[1]);return (!w.date||w.date===todayET)&&nowMin>=sm-15;}
 var watch=(DATA.watchlist||[]).filter(function(w){return w.date===todayET && !SETTLED[String(w.result)] && !w.promoted && !radarStarted(w);});
 if(!active.length && !watch.length){el.innerHTML='<div class="spot-hd"><div class="spot-title">&#9733; Today\'s Plays</div></div><div class="empty">No plays locked or on radar yet — locked plays appear ~30 min before game time.</div>';return;}
 var rows=active.map(function(p){
