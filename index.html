@@ -670,7 +670,7 @@ select:focus{outline:none;border-color:var(--blue)}
   "bankroll": 80,
   "unit": 10
  },
- "updated": "Mon Jun 8, 2026 - 11:09 AM ET (game-analyst IDLE light pass). Verdict IDLE - no games in lock or radar window; next is Mariners @ Orioles 6:35 PM ET (T-~448m), first deep research window opens ~3:50 PM ET. ESPN/DK structured scoreboard feed still provenance-blocked this environment (site.api.espn.com not in web_fetch provenance set; WebSearch surfaces only prose prices, which the line rule forbids as a source) - so all 12 DK lines + lineMovement history PRESERVED (no re-pull, no fabrication, no nulling of good data). Trend display-matches re-verified vs live 12-game slate: Mariners->Under (g-004), Astros->Under (g-001), Brewers->Over (g-002); Cardinals & Royals not on slate -> empty. Public/money splits: none captured (IDLE, no in-window games; split sources also out of provenance set). Picks engine idle (THE SYSTEM only; trends walled off from picks).",
+ "updated": "Mon Jun 8, 2026 - 11:38 AM ET (game-analyst RADAR pass). Verdict RADAR_ONLY - 0 games in lock window, 1 in radar (Mariners @ Orioles 6:35 PM ET, T-~5h; deep window opens ~3:50 PM ET). ESPN/DK structured scoreboard endpoint stayed provenance-blocked this environment, so all 12 DK lines + lineMovement history PRESERVED (no re-pull, no fabrication). RADAR UPDATE: Orioles named Chris Bassitt (5.27 ERA) vs Mariners' Hancock (2.80) - SP edge Seattle; early ML lean Mariners -136 (radar-only, juiced FAV outside dog band), early total lean Slight Under 9. Public/money splits unavailable (Covers no consensus; split sources out of provenance set) -> publicTicketPct/moneyPct null on the radar game, no guessing. Trend display-matches re-verified: Mariners->Under (g-004), Astros->Under (g-001), Brewers->Over (g-002); Cardinals/Royals not on slate -> empty. Picks engine idle (THE SYSTEM only; trends walled off).",
  "linesSource": "DraftKings via ESPN feed (cache-busted), 2-source confirmed vs Yahoo Sports",
  "bets": [],
  "games": [
@@ -746,17 +746,17 @@ select:focus{outline:none;border-color:var(--blue)}
    "home": "Orioles",
    "matchup": "Mariners @ Orioles",
    "awayPitcher": "Emerson Hancock (4-2, 2.80 ERA, 0.95 WHIP)",
-   "homePitcher": "TBD",
+   "homePitcher": "Chris Bassitt (4-4, 5.27 ERA)",
    "awayML": "-136",
    "homeML": "+113",
    "total": 9,
    "status": "scheduled",
    "rank": 4,
-   "grade": "C+",
-   "take": "Mariners @ Orioles at Camden Yards, 6:35 PM. Seattle's Emerson Hancock has quietly been sharp (4-2, 2.80 ERA, 0.95 WHIP). Baltimore had not posted a confirmed starter at pull time, which caps how much can be said about the matchup.",
-   "mlTake": "Lean: Mild Mariners -131 on the known SP edge. Edge: Hancock's 0.95 WHIP is a real plus and the Orioles (31-35) are scuffling. Risk: Baltimore's starter is TBD, so this is an incomplete matchup - confirm the arm before treating it as a play.",
-   "totalTake": "Lean: Slight Under 9. Why: Hancock's WHIP suppresses one side, but Camden Yards is a home-run park and the O's arm is unknown, so conviction is low. Re-read once Baltimore names a starter.",
-   "note": "Venue: Oriole Park at Camden Yards (HR-friendly). Line: DraftKings, confirmed vs ESPN DK feed (SEA -131, total 9). BAL SP TBD at pull."
+   "grade": "B-",
+   "take": "Mariners @ Orioles at Camden Yards, 6:35 PM ET. Baltimore has now named Chris Bassitt (4-4, 5.27 ERA), so this is a full matchup: Seattle's Emerson Hancock (4-2, 2.80 ERA, 0.95 WHIP) is the clearly sharper arm and the Orioles (31-35) are under .500. DK line preserved off the last confirmed feed; ESPN/DK structured endpoint stayed provenance-blocked this run, so no re-pull.",
+   "mlTake": "Lean: Mariners -136 on a real starting-pitcher edge. Edge: Hancock's 2.80 ERA / 0.95 WHIP sits well below Bassitt's 5.27 ERA, and Baltimore's bats have been ordinary. Risk: -136 is a juiced road favorite outside our dog-ML value band, and with no public/money splits available this is radar-only, not a fireable play. The contrarian angle to watch is Orioles +113 IF the public stacks Seattle and the line shortens on Baltimore.",
+   "totalTake": "Lean: Slight Under 9. Why: Hancock's 0.95 WHIP plus Seattle's bottom-tier offense should hold one side down. Risk: Bassitt's 5.27 ERA in HR-friendly Camden Yards is a live Over threat, so conviction stays low. Re-confirm near lock.",
+   "note": "Venue: Oriole Park at Camden Yards (HR-friendly). Line: DraftKings (SEA -136 / BAL +113, total 9), PRESERVED from last confirmed feed - ESPN DK structured endpoint provenance-blocked this run, no re-pull, no fabrication. BAL SP now confirmed: Chris Bassitt."
   },
   {
    "id": "g-20260608-005",
@@ -978,7 +978,11 @@ select:focus{outline:none;border-color:var(--blue)}
    "side": null,
    "signal": "Opening DraftKings line. Mariners -131 / Orioles +109, total 9.",
    "rlm": false,
-   "steam": false
+   "steam": false,
+   "publicTicketPct": null,
+   "moneyPct": null,
+   "rlmSide": null,
+   "splitNote": "Public/money splits unavailable this run - Covers shows no consensus yet for this game and the Action Network / VSiN / Sports Insights split pages are out of this environment's fetch-provenance set. No RLM signal can be read, so THE SYSTEM correctly treats this as no-bet."
   },
   {
    "sport": "MLB",
@@ -1047,6 +1051,16 @@ select:focus{outline:none;border-color:var(--blue)}
   }
  ],
  "research": [
+  {
+   "id": "r-20260608-1138-radar",
+   "timestamp": "11:38 AM ET (Jun 8)",
+   "category": "radar",
+   "sport": "MLB",
+   "relevance": "medium",
+   "title": "11:38 AM RADAR (T-~5h to Mariners@Orioles): Orioles name Bassitt (5.27 ERA) vs Hancock (2.80) - SP edge to Seattle; no splits available; DK lines preserved (ESPN endpoint blocked)",
+   "matchup": "Mariners @ Orioles",
+   "body": "RADAR_ONLY pass (game_window.py: 0 in-window, 1 radar = Mariners @ Orioles 6:35 PM ET). LINE: ESPN/DK structured scoreboard endpoint again provenance-blocked (site.api.espn.com not in this environment's web_fetch set; WebSearch returns only prose prices, which the line rule forbids as a source). All 12 DK lines and lineMovement history PRESERVED - no re-pull, no fabrication, no nulling of good data. RADAR UPDATE: Baltimore named its starter - Chris Bassitt (4-4, 5.27 ERA) vs Seattle's Emerson Hancock (4-2, 2.80 ERA, 0.95 WHIP); the game obj's homePitcher/take/mlTake/totalTake updated off the now-complete matchup. EARLY ML LEAN: Mariners -136 on a clear SP edge, but -136 is a juiced road favorite outside our +100/+200 dog band, so radar-only; contrarian watch = Orioles +113 if the public piles on Seattle and the line shortens on Baltimore. EARLY TOTAL LEAN: Slight Under 9 (Hancock WHIP + Seattle weak bats), tempered by Bassitt's 5.27 ERA in HR-friendly Camden. SPLITS (STEP 2.5): genuinely unavailable - Covers shows no consensus yet and the split sources are out of provenance set; publicTicketPct/moneyPct/rlmSide set null on the Mariners@Orioles lineMovement entry, no guessing (no-RLM = no-bet, correct). TRENDS (display-only): re-matched vs live slate - Mariners->Under (g-004), Astros->Under (g-001), Brewers->Over (g-002); Cardinals & Royals not on slate -> empty. Trends remain walled off from the pick engine. Picks engine idle (THE SYSTEM only; rules 4-5 require splits that aren't available)."
+  },
   {
    "id": "r-20260607-1907-deep",
    "timestamp": "7:07 PM ET (Jun 7)",
@@ -1267,16 +1281,6 @@ select:focus{outline:none;border-color:var(--blue)}
    "title": "15:37 DEEP (in-window): free multi-book (FanDuel) on 4pm batch at lock - HOU fav reverted to pick'em (OAK money back ~22c), ARI firmed -150->-162, TB firmed -133->-142, PIT@ATL near pick'em; PLL Outlaws ESPN #1 (no free odds; ESPN standings rendered 0s)",
    "body": "FULL DEEP pass, T~28m to 4pm first pitch. Free multi-book snapshot via FanDuel research page (search-surfaced, accepted by provenance gate). ESPN /mlb scoreboard www page returned client-rendered empty shell (no DK numbers free this run); FanDuel used as the free multi-book proxy. ODDS API: api.the-odds-api.com remains BLOCKED by the web_fetch provenance gate (URL cannot enter the provenance set because it never appears in a user message or search result) - this is the recurring 'unreachable' cause: NOT a network/allowlist failure and NOT a tool-choice error, the gate simply rejects the un-surfaced URL. 0 paid Odds API credits spendable via tool this run; relied on free FanDuel/ESPN-search. 4PM BATCH (FanDuel 15:37 vs 15:07): (1) CHW@PHI: PHI -136/CHW +116, tot 8.5 - FLAT (15:07 was -137/+117). White Sox ML +116 LOGGED 15:26; no countersignal at lock, price holds. Painter 5.74 soft -136 fav. (2) OAK@HOU: REVERTED to pick'em -108/-108 from 15:07 HOU -130/OAK +113 (~22c back toward Athletics). Path: 14:06 pickem -> 15:07 HOU fav -> 15:37 pickem again = two-way oscillation, OAK money returned. numberFire edges Athletics 50.5%. Imai (HOU, 5.52) vs Morris (OAK, debut/limited). OAK +EV value re-appeared; treated as keyNumber-region noise, not clean steam. (3) WSH@ARI: ARI FIRMED -150->-162 (WSH +136), tot 9 - reversal of earlier easing, Diamondbacks money returning into lock; fade WSH dog. E-Rod/Littell. (4) PIT@ATL: ATL -112/PIT -104, tot 8.5 - near pick'em, Braves shaded down from -116; Strider (ATL) vs Ashcraft (PIT) but market not buying ATL heavily; under 8.5 lean intact. (5) TB@MIA: TB FIRMED -133->-142 (MIA +120), tot 8 - Rays fav backed. SP per FanDuel: Bachar (TB) vs McClanahan (MIA) - McClanahan listed on Marlins side is a source oddity, FLAG/verify before any SP-based play. RECORDS (FanDuel, scoreboard-independent): PHI 34-29, CHW 33-30, HOU 29-36, OAK 30-33, ARI 33-30, WSH 32-32, ATL 43-21, PIT 34-30, TB 37-23, MIA 29-35. PLL Outlaws@Chaos (5:30 ET, T~113m): Outlaws ESPN #1 in Week 4 power rankings ('team to beat'); Chaos G Blaze Riorden ~64% save rate in recent 10-8 win over Philadelphia. NO free PLL odds; ESPN /pll/standings rendered all-zeros this run (client-render fallback) so PF/PA event-rate read UNAVAILABLE - flagged, not invented. No paid PLL snapshot possible (Odds API provenance-blocked). TOP SIGNALS (ranked): OAK@HOU ~22c revert toward Athletics (value, but oscillating) > ARI firm -150->-162 (fav backed) > TB firm -133->-142 (fav backed) > CHW@PHI flat (logged play holds). No BetOnline-vs-DK divergence read (paid blocked). Sources: FanDuel Sat MLB odds (6-6-2026), ESPN PLL standings/power-rankings (Week 4).",
    "_marker": "GA_DEEP_WRITE_20260606_1537Z_uniq37"
-  },
-  {
-   "id": "r-20260606-1607-deep",
-   "timestamp": "2026-06-06T16:10:00-04:00",
-   "category": "deep",
-   "sport": "MLB/PLL",
-   "game": "4pm MLB batch (5) CLOSING + PLL Outlaws@Chaos pre-lock",
-   "relevance": "high",
-   "title": "16:10 DEEP/CLOSE: all five 4pm MLB games FLAT 15:37->close, NO late steam (ARI -162 & TB -142 held over-cap=pass; OAK@HOU held true pick'em); McClanahan confirmed RAYS arm (FanDuel home-first); PLL Outlaws PM 52% near pick'em, no free PF/PA",
-   "body": "FULL DEEP/CLOSING pass via free FanDuel multi-book research page + Polymarket (web_fetch reached both; ESPN site.api + Odds API both URL-provenance-gated this run - a hard gate, NOT a network outage; 0 Odds API credits spent). MLB 4pm batch at/just-after first pitch: (1) CHW@PHI PHI -136/CHW +116 tot 8.5 FLAT - logged CHW +116 holds, Painter 5.74 soft fav. (2) OAK@HOU true pick'em -108/-108 held into close (15:07 HOU -130 fully reverted ~22c back to OAK) - unknown-SP coin flip, pass. (3) WSH@ARI ARI -162/WSH +136 tot 9 - fav firmed off 15:07 -150 dip and held; E-Rod 5-1 2.24 vs Littell 5-4 5.01 best SP mismatch on board but ARI -162 OVER cap & RL uncapped-fav = pass. (4) PIT@ATL not re-quoted by FanDuel; carry 15:37 ATL -112/PIT -104 near pick'em, under 8.5 the lean, thin/pass. (5) TB@MIA TB -142/MIA +120 tot 8 FLAT, fav held; over cap = pass. DATA CORRECTION: FanDuel probable-pitcher field lists HOME pitcher first (verified vs Painter=PHI, E-Rod=ARI, Imai=HOU) => TB@MIA 'Lake Bachar vs. Shane McClanahan' means McClanahan = RAYS (away) front-line arm, Bachar = MIA - resolves prior 15:37 flag. Record refreshes (FanDuel): PHI 34-29/CHW 33-30; HOU 29-36/OAK 30-33; ARI 33-30/WSH 32-32; TB 37-23/MIA 29-35. NET: no steam, no RLM, no BetOnline-vs-DK divergence read (paid not spent); every clearing angle either over-cap (ARI/TB) or thin pick'em (OAK,PIT). Nothing new clears beyond logged CHW +116. PLL Outlaws@Chaos (5:30 ET, T-80m): Polymarket indicative Denver Outlaws 52% (near pick'em, slight Denver lean), Outlaws ESPN #1 power-ranked, both 2-1. ESPN PLL standings rendered all-zeros (JS-populated) so NO free PF/PA event-rate read; FOGO%/goalie save data unavailable free => no confirmed faceoff/goalie edge. Watchlist-only slight Outlaws lean, no price-to-beat clears."
   }
  ],
  "picks": [
