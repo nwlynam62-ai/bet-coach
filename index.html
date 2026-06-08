@@ -664,13 +664,14 @@ select:focus{outline:none;border-color:var(--blue)}
 <div class="mstep"><div class="mn">2</div><div class="mt">Or open the <b>Scheduled</b> panel in the sidebar and hit <b>Run now</b> on the <b>refresh-betting-board</b> task.</div></div>
 <p class="small muted">This app is a local file, so the button can't fetch live odds on its own &mdash; a refresh means Claude pulling current DraftKings lines and re-grading the slate.</p>
 </div></div>
-<script id="betdata" type="application/json">{
+<script id="betdata" type="application/json">
+{
  "settings": {
   "bankroll": 80,
   "unit": 10
  },
- "updated": "Mon Jun 8, 2026 - 4:14 PM ET (GAME ANALYST deep pass). game_window=ACTIVE: 3 MLB in-window (Mariners@Orioles 6:35, Red Sox@Rays 6:40, Yankees@Guardians 6:40). Ran THE SYSTEM on each: 0 fires = correct no-bet. NEW THIS RUN - live Jun 8 public/money splits CAPTURED (SportsBettingDime) for 2 of 3: Red Sox@Rays 51% tickets/61% money on Boston (sharp on the favorite, line moved toward it, no dog RLM); Yankees@Guardians 50/50 tickets but 66% money on the Yankees (+16 sharp-money divergence, but NYY -102 pick'em + no line move = no fire); Mariners@Orioles splits still null. INJURY: Bassitt (BAL) to 15-day IL, rookie Gibson starts (MLB.com/Baltimore Sun/NBC). DK lines preserved off last confirmed feed (ESPN endpoint blocked), cross-checked vs SBD = consistent, none fabricated. Total leans: Under 9 SEA@BAL (low), Under 8 SOX@RAYS & NYY@CLE (both fade heavy public Overs). Trends walled off. Odds API 0 credits.",
- "linesSource": "DraftKings via ESPN feed (cache-busted), 2-source confirmed vs Yahoo Sports",
+ "updated": "Mon Jun 8, 2026 - 4:42 PM ET (GAME ANALYST deep pass). game_window=ACTIVE: 6 in-window (3 MLB: Mariners@Orioles 6:35, Red Sox@Rays 6:40, Yankees@Guardians 6:40; Phillies@Blue Jays 7:07; 2 WNBA 7:00) + 6 on radar (NBA Spurs@Knicks 8:30; MLB Astros@Angels, Reds@Padres, Nationals@Giants, Brewers@Athletics; WNBA Storm@Aces). Ran THE SYSTEM on each MLB game: 0 fires = correct no-bet (no +100/+200 dog with public fade + reverse line move + money-over-ticket tell). LINES: all 12 games passed line-shape sanity (implied-prob sums 104-105%, normal vig, no sign errors). DK lines PRESERVED off last confirmed feed - ESPN structured scoreboard endpoint remains provenance-blocked to web_fetch this run; no fresher structured pull available; lines internally consistent, none fabricated. SPLITS: live Jun 8 ticket%/money% remain UNAVAILABLE from fetchable sources (Action Network / VSiN / RotoWire are JavaScript-rendered = empty over fetch; SportsBettingDime / Covers / scoresandodds are serving stale Jun 7 slates). Preserved the two same-day captures from earlier today: Red Sox@Rays 51% tickets/61% money on Boston (sharp on the FAVORITE, line ticked toward it, NO dog RLM); Yankees@Guardians 50/50 tickets but 66% money on the Yankees (+16 money-over-ticket divergence, but NYY -102 pick'em + no line move = no fire). Other games: splits null and said so - sync-worker correctly treats no-RLM-signal as no-bet. INJURY: Bassitt (BAL) on the 15-day IL, rookie Trey Gibson starting - RE-CONFIRMED via MLB.com probable pitchers this run (Hancock vs Gibson). No new scratches surfaced. TOTAL leans: Under 9 SEA@BAL (low conviction, Camden HR risk), Under 8 SOX@RAYS (fade 85% public Over) & NYY@CLE (fade 90% public Over), Over 9 HOU@LAA (Rodriguez 9.50 ERA), Under 11 MIL@OAK (inflated park number). Trends DISPLAY-ONLY, walled off from picks. Odds API 0 credits used.",
+ "linesSource": "DraftKings via ESPN feed (last confirmed pull); ESPN structured endpoint provenance-blocked to web_fetch this run, lines preserved & line-shape-sanity-passed, none fabricated",
  "bets": [],
  "games": [
   {
@@ -985,7 +986,7 @@ select:focus{outline:none;border-color:var(--blue)}
    "publicTicketPct": null,
    "moneyPct": null,
    "rlmSide": null,
-   "splitNote": "Public/money splits still UNAVAILABLE for this game (the SportsBettingDime Mariners write-up carried no ticket/money %, Covers consensus is stale Jun 3, Action Network is JS-empty over fetch) -> publicTicketPct/moneyPct null, no RLM signal, correct no-bet. MATERIAL CHANGE: Baltimore placed Chris Bassitt on the 15-day IL (low back) and recalled Trey Gibson (1-0, 3.65 ERA, Triple-A) to start - confirmed via MLB.com probable pitchers, Baltimore Sun and NBC Sports."
+   "splitNote": "Public/money splits still UNAVAILABLE for this game (the SportsBettingDime Mariners write-up carried no ticket/money %, Covers consensus is stale Jun 3, Action Network is JS-empty over fetch) -> publicTicketPct/moneyPct null, no RLM signal, correct no-bet. MATERIAL CHANGE: Baltimore placed Chris Bassitt on the 15-day IL (low back) and recalled Trey Gibson (1-0, 3.65 ERA, Triple-A) to start - confirmed via MLB.com probable pitchers, Baltimore Sun and NBC Sports. [4:42 PM re-check: splits still unavailable; SP confirmed Hancock vs Gibson (Bassitt IL).]"
   },
   {
    "sport": "MLB",
@@ -1008,7 +1009,7 @@ select:focus{outline:none;border-color:var(--blue)}
     "Guardians": 34
    },
    "rlmSide": null,
-   "splitNote": "Public/money splits CAPTURED (SportsBettingDime, Jun 8): moneyline tickets are an even 50/50 but 66% of the money is on the Yankees (34% Cleveland) - a 16-pt money-over-ticket divergence flagging sharp cash on New York. But the price is a pick'em (NYY -102 / CLE -118), so the Yankees aren't in the +100/+200 dog band, the ticket split isn't lopsided enough to fade, and the DK line hasn't moved toward New York (no confirmed reverse line move). It's the closest thing to a signal on the board but it does NOT clear THE SYSTEM. Totals: 90% of bets on the Over 8 (heavy public Over)."
+   "splitNote": "Public/money splits CAPTURED (SportsBettingDime, Jun 8): moneyline tickets are an even 50/50 but 66% of the money is on the Yankees (34% Cleveland) - a 16-pt money-over-ticket divergence flagging sharp cash on New York. But the price is a pick'em (NYY -102 / CLE -118), so the Yankees aren't in the +100/+200 dog band, the ticket split isn't lopsided enough to fade, and the DK line hasn't moved toward New York (no confirmed reverse line move). It's the closest thing to a signal on the board but it does NOT clear THE SYSTEM. Totals: 90% of bets on the Over 8 (heavy public Over). [4:42 PM re-check: capture preserved; still no line move toward NYY = no fire.]"
   },
   {
    "sport": "MLB",
@@ -1057,7 +1058,7 @@ select:focus{outline:none;border-color:var(--blue)}
     "Rays": 39
    },
    "rlmSide": null,
-   "splitNote": "Public/money splits CAPTURED (SportsBettingDime, Jun 8): moneyline 51% tickets / 61% money on the Red Sox, 49% / 39% on the Rays. Money outruns tickets by 10 pts on the favorite Boston - the sharp side here is the favorite, not a dog, so there is no reverse line move toward an underdog. The DK line ticked BOS -115 to -118 (toward the favorite), which confirms it. No contrarian dog signal -> THE SYSTEM stays no-bet. Totals: 85% of bets / 82% of money on the Over 8 (heavy public Over)."
+   "splitNote": "Public/money splits CAPTURED (SportsBettingDime, Jun 8): moneyline 51% tickets / 61% money on the Red Sox, 49% / 39% on the Rays. Money outruns tickets by 10 pts on the favorite Boston - the sharp side here is the favorite, not a dog, so there is no reverse line move toward an underdog. The DK line ticked BOS -115 to -118 (toward the favorite), which confirms it. No contrarian dog signal -> THE SYSTEM stays no-bet. Totals: 85% of bets / 82% of money on the Over 8 (heavy public Over). [4:42 PM re-check: capture preserved; money on favorite, no dog RLM = no fire.]"
   },
   {
    "sport": "NBA",
@@ -2371,11 +2372,11 @@ select:focus{outline:none;border-color:var(--blue)}
    "note": "Biggest starting-pitcher edge on the board - Arrighetti (1.94 ERA) over the Angels' starter. But Houston's a -131 favorite, and our money's made on dogs and near-even prices, not chalk. No public or sharp read available yet (splits sites are still serving yesterday's games). Watching the deep window ~3:50 PM ET for a real value angle; not a play as priced."
   }
  ],
- "_ga_marker": "ga-20260608_1543-radar",
+ "_ga_marker": "ga-20260608_1642-active",
  "_marker": "DEBRIEF-20260608-0036ET",
  "trends": {
-  "updated": "Mon Jun 8, 2026 - 4:14 PM ET",
-  "note": "Trend display-matches re-verified vs today's 12-game June 8 board (4:14 PM deep pass): Seattle -> Mariners@Orioles Under, Houston -> Astros@Angels Under, Milwaukee -> Brewers@Athletics Over still map to the slate; St. Louis & Kansas City under-trends have no game today -> []. Trends stay DISPLAY-ONLY and walled off from the pick engine.",
+  "updated": "Mon Jun 8, 2026 - 4:42 PM ET",
+  "note": "Trend display-matches RE-VERIFIED vs today's 12-game June 8 board (4:42 PM deep pass): Seattle -> Mariners@Orioles Under, Houston -> Astros@Angels Under, Milwaukee -> Brewers@Athletics Over still map to the slate; St. Louis & Kansas City under-trends have no game today -> []. Trends stay DISPLAY-ONLY and walled off from the pick engine.",
   "marketTrends": [
    {
     "trend": "Seattle Mariners games stay UNDER",
@@ -2555,7 +2556,8 @@ select:focus{outline:none;border-color:var(--blue)}
    "score": "Final: Giants 2, Cubs 1 (3 total runs, Under 8 won)"
   }
  ]
-}</script>
+}
+</script>
 <script>
 var DATA;
 try{DATA=JSON.parse(document.getElementById("betdata").textContent);}
