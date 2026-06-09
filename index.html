@@ -664,13 +664,14 @@ select:focus{outline:none;border-color:var(--blue)}
 <div class="mstep"><div class="mn">2</div><div class="mt">Or open the <b>Scheduled</b> panel in the sidebar and hit <b>Run now</b> on the <b>refresh-betting-board</b> task.</div></div>
 <p class="small muted">This app is a local file, so the button can't fetch live odds on its own &mdash; a refresh means Claude pulling current DraftKings lines and re-grading the slate.</p>
 </div></div>
-<script id="betdata" type="application/json">{
+<script id="betdata" type="application/json">
+{
   "settings": {
     "bankroll": 80,
     "unit": 10
   },
-  "updated": "Tue Jun 9, 2026 - 3:44 PM ET (GA radar pass - refreshed public/money splits on 8 games: sharp money-over-ticket divergence flagged on Reds +33pt, Yankees +15pt, Astros +11pt; Nationals split sources conflict; trends re-verified; DK lines carried/cross-book confirmed; no fires, RADAR_ONLY).",
-  "linesSource": "DraftKings via ESPN feed (carried unchanged from prior reachable pull; ESPN structured scoreboard endpoint provenance-blocked to web_fetch this pass; cross-book shape-confirmed vs FanDuel + scoresandodds consensus).",
+  "updated": "Tue Jun 9, 2026 - 4:07 PM ET (GA deep pass :05 - VERDICT ACTIVE, 6 games in-window. DK lines carried from last reachable pull and cross-confirmed shape-sane vs FanDuel + scoresandodds (Jun 9); pitchers official; public/money splits refreshed (SEA@BAL, NYY@CLE +15pt sharp NYY, BOS@TB +7pt sharp TB, ARI@MIA); LAD@PIT & MIN@DET splits null. No in-window fav steeper than -135 so all leans are full-game ML, no F5 pivot. Lead reads: Mariners -126, Pirates -110, Marlins -125, Yankees -131; best totals Under Red Sox@Rays 7.5.)",
+  "linesSource": "DraftKings via ESPN feed (carried unchanged from prior reachable pull; ESPN structured scoreboard endpoint provenance-blocked to web_fetch this pass; cross-book shape-confirmed vs FanDuel Research and scoresandodds consensus, Jun 9 2026).",
   "bets": [],
   "games": [
     {
@@ -1260,6 +1261,15 @@ select:focus{outline:none;border-color:var(--blue)}
   ],
   "research": [
     {
+      "id": "ga-20260609-1607",
+      "timestamp": "2026-06-09 16:07 ET",
+      "category": "deep",
+      "sport": "MLB",
+      "relevance": "high",
+      "title": "4:07 PM DEEP PASS (:05) - VERDICT ACTIVE, 6 in-window (first pitch 6:35 PM ET SEA@BAL). Lines cross-confirmed, splits refreshed, pitchers official.",
+      "body": "First ACTIVE/IN_WINDOW deep pass of the day (6 games: Mariners@Orioles 6:35; Dodgers@Pirates, D-backs@Marlins, Yankees@Guardians, Twins@Tigers, Red Sox@Rays 6:40). LINES: ESPN structured DK scoreboard endpoint remained provenance-blocked to web_fetch this pass; DK lines carried unchanged from the last reachable pull and re-confirmed shape-sane against two reachable books - FanDuel Research (Jun 9) and scoresandodds consensus (Jun 9). Cross-book agreement: SEA -120 to -126 / BAL +102 to +104; PIT pick'em-to--112 vs LAD (Skenes side); MIA -125 to -130 / ARI +104 to +110; NYY -131 to -134 / CLE +109 to +114; DET -120 to -125 / MIN +102 to +104; BOS/TB true pick'em. No DK number was invented; carried lines are within cross-book range. PITCHERS (official via posted probables, FanDuel): SEA Logan Gilbert vs BAL Trevor Rogers; LAD Eric Lauer vs PIT Paul Skenes; ARI Zac Gallen vs MIA Max Meyer; NYY Gerrit Cole vs CLE Slade Cecconi; MIN Taj Bradley vs DET Troy Melton; BOS Payton Tolle vs TB Nick Martinez - all match the board; re-verify at lock. No official IL surprises pulled this pass. F5 PIVOT CHECK: no in-window favorite is steeper than -135 (top fav is NYY -131), so every in-window lean stays a FULL-GAME ML - no F5 conversion needed. LEANS (by edge): (1) Mariners ML -126 - Gilbert (3.79) a class above Rogers (6.29); SEA tickets 64%/money 62% (no divergence). (2) Pirates ML -110 - Skenes ace in a pick'em vs Lauer (5.74, HR-prone); splits unavailable for this game (null). (3) Marlins ML -125 - Meyer (2.81, 0.61 HR9) over Gallen (5.32) at loanDepot; public 93% on the Over (no ML split divergence). (4) Yankees ML -131 - Cole healthy vs Cecconi (4.92); +15pt money-over-ticket sharp tell on NYY (61% money / 46% tickets). (5) Rays ML -110 (slight) - stronger club at home; +7pt mild sharp lean Tampa (57% money / 50% tickets). (6) Twins@Tigers - PASS on ML (Bradley actually the better arm vs small-sample Melton); splits unavailable (null). TOTALS: committal Unders where a real edge exists - Red Sox@Rays Under 7.5 (two low-ERA/low-HR arms in the dome) is the most confident totals read; D-backs@Marlins Under 7.5 (Meyer + loanDepot, fade the 93% public Over); Twins@Tigers Under 8 (Comerica + Bradley K's); Dodgers@Pirates Under 8 light (Skenes + PNC). Mariners@Orioles - NO totals edge (DK 8.5 carried but cross-book totals sit higher ~9-9.5, so no Under value); Yankees@Guardians Under 8 light only. SPLITS available (scoresandodds Jun 9): SEA@BAL, NYY@CLE, BOS@TB, ARI@MIA captured; LAD@PIT and MIN@DET splits unavailable -> null and said so (sync treats no-RLM as no contrarian path; the fundamental SP/ML reads still fire). TRENDS (display-only, walled off): Seattle Under->Mariners@Orioles, Kansas City Under->Rangers@Royals, St. Louis Under->Cardinals@Mets, Houston Under->Astros@Angels, Milwaukee Over->Brewers@Athletics all still map to today's slate. Odds API: not queried this pass (BetOnline-vs-DK sharp read not needed; cross-book shape confirm sufficient)."
+    },
+    {
       "id": "ga-20260609-1544",
       "timestamp": "2026-06-09 15:44 ET",
       "category": "radar",
@@ -1467,16 +1477,6 @@ select:focus{outline:none;border-color:var(--blue)}
       "relevance": "med",
       "title": "9:07 AM RADAR: DK lines re-pulled live - modest two-way drift; NBA Finals Game line now posted",
       "body": "RADAR_WINDOW pass (0 in-window; first pitch 1:35 PM ET = T-268m). All 15 MLB DraftKings lines re-pulled live from the ESPN structured feed; line-shape sanity passed on every game (two-sided implied probabilities sum ~104-105%). Movement since the 8:07 AM pull is minor and two-directional, no RLM/steam: Mariners eased from -120 to -110 (Tigers firmed to -109); Rangers firmed to -148 with the Guardians-Rangers total down to 7; Phillies firmed to -175 and that total ticked to 9; the Cardinals total nudged up to 9.5; the Coors total eased to 12; Diamondbacks eased to -132; Cubs firmed to -125. WNBA Sky-Tempo moved to +124/-148. NBA Finals (Mon Jun 8) Spurs @ Knicks now has a posted DK line: Knicks -135 / Spurs +114, total 215.5. Five vetted team-total trends still map to today's slate (Mariners/Cardinals/Astros/Royals Unders, Brewers Over) - Trends-tab display only, walled off from the pick engine."
-    },
-    {
-      "id": "r-20260607-0807-radar",
-      "timestamp": "2026-06-07T08:14:23-04:00",
-      "category": "radar",
-      "sport": "MLB/WNBA",
-      "game": "Full Sunday slate (15 MLB + 2 WNBA)",
-      "relevance": "med",
-      "title": "8:07 AM RADAR: DK lines re-pulled from ESPN feed - slate essentially stable, WNBA MLs now posted",
-      "body": "RADAR_WINDOW pass (0 in-window; 11 games on the early-radar clock, first pitch 1:35 PM ET). All 15 MLB lines re-pulled LIVE from the ESPN structured DraftKings feed; line-shape sanity passed on every game (two-sided implied probabilities sum ~104-105%). Movement since the 7:42 AM pull is minor: Rays -115 to -117, Pirates/Braves firmed (PIT +130 to +135, ATL -157 to -163), Mets/Padres flattened to a -110/-110 pick'em. Best dog shape remains Red Sox +141 at Yankees (Suarez vs Schlittler, Judge IL'd - re-verify at lock). WNBA money lines now posted: Tempo -142 vs Sky (O/U 173.5), Sparks -305 vs Fire (Sparks total ticked 177.5 to 176.5). Trend display-matching refreshed: all five vetted team-total trends (SEA/STL/HOU/KC Unders, MIL Over) hit a today game - DISPLAY ONLY, walled off from the pick engine. No same-day SP confirmation yet; deep in-window runs will confirm starters and injuries before anything graduates."
     }
   ],
   "picks": [
@@ -2948,7 +2948,8 @@ select:focus{outline:none;border-color:var(--blue)}
       "settleNote": "Final: Spurs 115, Knicks 111 [mgr 6/9 3:38p: trend result settled to mirror the recap-verified pick]"
     }
   ]
-}</script>
+}
+</script>
 <script>
 var DATA;
 try{DATA=JSON.parse(document.getElementById("betdata").textContent);}
