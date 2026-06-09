@@ -670,7 +670,7 @@ select:focus{outline:none;border-color:var(--blue)}
   "bankroll": 80,
   "unit": 10
  },
- "updated": "Tue Jun 9, 2026 - 12:56 PM ET (PICK SYNTHESIZER :35 radar pass - VERDICT RADAR_ONLY, 0 IN_WINDOW, 11 in radar window (closest first pitch 6:35 PM ET, ~5.5h out). No real picks logged - no game in lock window. Refreshed radar to 6 converging leans, all Path A SP-edge MLs or standalone totals, all within price rules; no F5 pivot needed (only edge-side fav past -135 is Braves -162, low-conviction, left off). Leans: Reds ML -117 (cleanest SP gap, Burns 2.05 vs Giolito 4.86), Mariners ML -126 (Gilbert>Rogers, 2-book confirmed), Marlins ML -125 (Meyer>Gallen, loanDepot), Pirates ML -110 (Skenes pick'em value), Red Sox@Rays Under 7.5 (two low-ERA SP, most confident read), Phillies@BlueJays Under 7.5 (Wheeler-Cease). All capped at B/B- (bullpens unworked at radar stage); promote near game time once lines hold + pens check clean. Lines preserved from last good DK pull (structured feed unreachable; FanDuel cross-check within a tick - no clobber). trendPicks unchanged (Jun 8 set, no vetted same-day trend stacks today). 51 picks / 15 MLB+1 NHL+3 WNBA games / 5 trendPicks preserved.)",
+ "updated": "Tue Jun 9, 2026 - 1:11 PM ET (GAME ANALYST :05 radar pass - VERDICT RADAR_ONLY, 0 IN_WINDOW, 13 in radar window. Structured ESPN/DK odds feed unreachable (no-date endpoint = Jun 8 finals w/o odds; date-param fetch provenance-blocked) -> DK lines CARRIED FORWARD from 12:56 good pull, FanDuel within a tick, no clobber, no fabrication; all 16 priced games line-shape sane (implied sum >100%). Public/money splits NULL for all in-window games (Covers static = stale Jun 4, Action/VSiN JS-gated) - no RLM path confirmable, fundamental SP-edge paths intact. 6 leans unchanged: Reds ML -117, Mariners ML -126, Marlins ML -125, Pirates ML -110, Red Sox@Rays U7.5, Phillies@BlueJays U7.5 (all B/B-, bullpens unworked at radar). No F5 pivot (only fav past -135 is Braves -162, low conviction, off). 5 display-only team-total trends all mapped to tonight; appliesToday preserved. 51 picks / 19 MLB+NHL+WNBA games today / 5 trendPicks all preserved.)",
  "linesSource": "DraftKings book of record. Astros@Angels pulled fresh 8:36 PM (-132/+109, O/U 9) via game-odds feed; other in-window DK lines carried and 2-book-confirmed vs FanDuel this run (same favorites). ESPN structured scoreboard endpoint remains provenance-blocked to web_fetch; no lines fabricated, all line-shape-sanity passed.",
  "bets": [],
  "games": [
@@ -1258,6 +1258,15 @@ select:focus{outline:none;border-color:var(--blue)}
  ],
  "research": [
   {
+   "id": "res-20260609-1311-radar",
+   "timestamp": "Tue Jun 9, 2026 - 1:11 PM ET",
+   "category": "radar",
+   "sport": "MLB",
+   "relevance": "medium",
+   "title": "1:11 PM ET RADAR - structured DK feed unreachable (returned Jun 8 finals, no odds); lines carried + FanDuel-confirmed, splits null (no accessible source), 6 leans + 5 display-trends confirmed",
+   "body": "Gate=RADAR_ONLY (game_window.py: 0 IN_WINDOW, 13 in radar window; closest first pitch 6:35 PM ET SEA@BAL, ~5.5h out). LINE: attempted the structured ESPN/DK odds feed (site.api.espn.com baseball scoreboard) - the no-date endpoint returned the Jun 8 FINAL slate with NO odds object, and the provenance-restricted fetch blocked appending ?dates=20260609, so a fresh structured DK pull was unreachable this run. DK lines CARRIED FORWARD from the last good pull (validated 12:56 PM, FanDuel within a tick) - no clobber, no fabrication. Line-shape sanity: all 16 priced games sum >100% implied (real vigged DK prices, no no-vig mirrors). SPLITS: public/money unavailable for tonight's games - Covers consensus static HTML carried only stale Jun 4 matchups (live table JS-gated); Action Network/VSiN JS-rendered. publicTicketPct/moneyPct=null for all in-window games; no RLM path can be confirmed this run (fundamental SP-edge ML/total paths still valid). LEANS (unchanged from 12:56, all within price band): Reds ML -117 (Burns 2.05 vs Giolito 4.86, cleanest SP gap, Petco), Mariners ML -126 (Gilbert>Rogers, 2-book confirmed), Marlins ML -125 (Meyer>Gallen, loanDepot), Pirates ML -110 (Skenes pick'em value), Red Sox@Rays Under 7.5 (two low-ERA SP, most confident total), Phillies@BlueJays Under 7.5 (Wheeler-Cease). All capped B/B- (bullpens unworked at radar). F5 PIVOT: only edge-side fav past -135 is Braves -162 (low conviction) - left off, no F5 needed. TRENDS (display-only): all 5 vetted team-total trends map to a live game tonight - Mariners U (@ Orioles), Royals U (Rangers@Royals), Cardinals U (@ Mets), Astros U (@ Angels), Brewers O (@ Athletics, total 12). appliesToday preserved. Sanity sample: Reds (31-33) @ Padres (33-31) 104.7%, Mariners (35-32) @ Orioles (31-36) 104.8%. Picks preserved: 51. Odds API: not called this run (no fresh structured feed; carried lines)."
+  },
+  {
    "id": "res-20260609-1140-radar",
    "timestamp": "Tue Jun 9, 2026 - 11:40 AM ET",
    "category": "radar",
@@ -1469,16 +1478,6 @@ select:focus{outline:none;border-color:var(--blue)}
    "relevance": "high",
    "title": "21:07 DEEP (in-window): all three night lines steady; starters confirmed",
    "body": "30-minute refresh. ESPN dated feed remains provenance-blocked to web_fetch this cycle, so DK numbers were re-verified via multi-book aggregate (FanDuel/BetMGM/Covers/DK previews) — no fabrication, all three lines confirmed unchanged from the 20:40 ET DK pull. MIL@COL: MIL -311/COL +246, total 11 — at first pitch; FanDuel softer at -168 (market split on the chalk); no value laying -311, Coors Over 11 stays the only live angle (wind ~14 out to center, 85F, Rockies bullpen game behind Agnos). LAA@LAD: LAD -362/LAA +282, total 8.5 — Yamamoto (5-4, 2.86) vs Kochanowicz (2-4, 5.23) both confirmed; total tested toward 8 at some books, reinforcing Under 8.5; price too steep to lay. NYM@SD: NYM -125/SD +104, total 7.5 — McLean (3-4, 4.19) vs Canning (0-4, 7.25) both confirmed; Padres shut out in 3 of last 4 at home and on a 6-game skid; Mets -125 the lean at the cap, Under 7.5 the cleaner angle. No RLM, no new steam vs stored history; no new injuries on official sources."
-  },
-  {
-   "id": "r-20260606-2040-deep",
-   "timestamp": "2026-06-06T20:40:00-04:00",
-   "category": "deep",
-   "sport": "MLB",
-   "game": "In-window night slate (MIL@COL, LAA@LAD, NYM@SD)",
-   "relevance": "high",
-   "title": "20:40 DEEP (in-window): live DK lines re-pulled + totals workup",
-   "body": "Lines re-pulled LIVE from the ESPN structured DraftKings feed via the connected browser. MIL@COL: MIL -311/COL +246, total 11 (open -259, steam to MIL); Misiorowski (6-2, 1.65, MLB K leader) vs Colorado bullpen game (Tanner Gordon to IL with a hip impingement, Zach Agnos opening). Coors weather confirmed 85F with a 14 mph wind blowing out to center -> Over 11 lean; no side on the -311 chalk. LAA@LAD: LAD firmed -355->-362 behind Yamamoto (2.86, ~30% whiffs) vs Kochanowicz (5.23, 3+ ER in each of his last five) -> Under 8.5; -362 too steep to lay. NYM@SD: NYM -125/SD +104, total 7.5; Canning 0-4/7.16 and the Padres have lost 10 of 11 incl. five straight at Petco -> Mets -125 lean at the cap, Under 7.5 on the marine-layer. All three line-shapes sane (implied probs sum ~104.6% at DK). Odds API NOT called (0 credits used)."
   }
  ],
  "picks": [
@@ -2593,37 +2592,43 @@ select:focus{outline:none;border-color:var(--blue)}
  },
  "headlines": [
   {
-   "headline": "Aaron Judge OUT — rib stress fracture, 4-6 weeks; Yankees lineup gutted",
+   "headline": "Reds without Elly De La Cruz (hamstring) — MRI moved up to Jun 12",
    "sport": "MLB",
-   "source": "ESPN / MLB.com",
-   "timestamp": "Jun 2 (status current Jun 9)"
+   "source": "MLBTradeRumors / FOX19",
+   "timestamp": "IL late May, status Jun 9"
   },
   {
-   "headline": "Stanley Cup Final G4 tonight: Vegas leads 2-1, totals trending OVER",
+   "headline": "Aaron Judge OUT — 1st-rib stress fracture, reimaging in 4-6 wks; gutted Yankees lineup",
+   "sport": "MLB",
+   "source": "MLB.com / ESPN",
+   "timestamp": "Jun 9"
+  },
+  {
+   "headline": "Stanley Cup Final G4 tonight: Vegas leads 2-1, first 3 games all 1-goal — OVER trend",
    "sport": "NHL",
    "source": "NHL.com / CBS Sports",
-   "timestamp": "G3 Jun 6, preview Jun 9"
+   "timestamp": "Jun 9 (G4 preview)"
   },
   {
-   "headline": "Lynx hammered: Collier (ankle) + Juhász out, Cechova done for season",
+   "headline": "Lynx host Wings without Collier (ankle), Juhasz (foot), Cechova (knee)",
    "sport": "WNBA",
-   "source": "CBS Sports / Athlon",
-   "timestamp": "Jun 5-6 — verify final report"
+   "source": "Athlon / CBS Sports",
+   "timestamp": "Jun 9 injury report"
   },
   {
-   "headline": "Reds without Elly De La Cruz (hamstring); ahead of schedule, MRI moved to Jun 12",
+   "headline": "Brewers thin rotation — Woodruff to 15-day IL, shoulder inflammation",
    "sport": "MLB",
-   "source": "ESPN / MLB Trade Rumors",
-   "timestamp": "IL Jun 1, update Jun 8"
+   "source": "FoxSports / RotoWire",
+   "timestamp": "to IL Jun 5, ongoing"
   },
   {
    "headline": "No home-plate umpires posted yet for tonight's 15 MLB games — recheck near first pitch",
    "sport": "MLB",
-   "source": "RefMetrics",
-   "timestamp": "Jun 9 (live board)"
+   "source": "RefMetrics (live board)",
+   "timestamp": "Jun 9 (live)"
   }
  ],
- "headlinesUpdated": "11:14 AM ET, Jun 9",
+ "headlinesUpdated": "1:12 PM ET, Jun 9",
  "watchlist": [
   {
    "id": "wl-20260609-001",
