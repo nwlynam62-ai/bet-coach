@@ -268,6 +268,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,th:focus-visible{outlin
       <div id="evidenceBox" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;margin-top:4px"></div>
       <div class="ksub" style="margin-top:10px">Every number traces to a verified publication · full citations in Site_Research_Report.md · these are base rates, not picks.</div>
     </div>
+    <div class="cell" style="margin-bottom:16px"><h3 class="bh">Study Hall &#8212; university lectures worth your time</h3>
+      <div id="studyBox" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;margin-top:4px"></div>
+      <div class="ksub" style="margin-top:10px">Every link verified live · free/open access · full guide in Study_Hall.md</div>
+    </div>
     <div class="intel3">
       <div><h3 class="bh">Headlines</h3><div id="intelHl"></div></div>
       <div><h3 class="bh">Line Movement</h3><div id="intelLm"></div></div>
@@ -746,6 +750,24 @@ function renderRecord(){
    ["World Cup · draws & chalk","Group-stage draws run ~17–23% (≈1 in 5); casual money piles on big-name favorites.","3-way probs need Shin/power de-vig — proportional overstates the draw. Wary of steep chalk.","Dixon–Coles JRSS 1997 · Shin EJ 1993"],
    ["Umpire angles · dead","Historic call biases vanish under pitch-tracking scrutiny; sequence noise ≈1.5 pts is unbettable.","Distrust any tout selling umpire systems in the tracking era.","AER 2011 · QJE 2016"],
    ["Own number · the recipe","Pythagorean strength (γ≈1.8) → log5 matchup → SP adjustment → home bump → compare to de-vigged close.","The cheap, defensible daily model — fire only on threshold disagreement.","Miller (Williams) · Bradley–Terry 1952 · Glickman 1999"]];
+  var SH=[
+   ["Thorp \u00b7 Kelly Criterion","The canonical paper: Kelly in blackjack, sports betting & markets \u2014 and why pros bet FRACTIONAL Kelly.","Overbetting a true edge still busts you. A $10 unit on $80 is multiples of safe size.","https://gwern.net/doc/statistics/decision/2006-thorp.pdf","PDF \u00b7 MIT/UCI"],
+   ["Gambling w/ Side Information","Cover & Thomas Ch.6 taught as a lecture: growth rate = how much less wrong you are than the book.","If you can\u2019t beat the close, optimal stake is zero \u2014 the info-theory proof of CLV grading.","https://roughan.info/notes/InformationTheory/files/lecture17.notes.pdf","PDF \u00b7 Adelaide"],
+   ["MIT 6.041 \u00b7 Probability","25 lectures + recitations, Tsitsiklis. Bayes, conditioning, limit theorems \u2014 the best free prob course.","P(win|SP gap) \u2260 P(win|all evidence). Condition jointly \u2014 that\u2019s what fire rules approximate.","https://ocw.mit.edu/courses/6-041-probabilistic-systems-analysis-and-applied-probability-fall-2010/","MIT OCW"],
+   ["MIT 18.05 \u00b7 Stats","Simulation-first intro: Bayesian updating, CIs, hypothesis tests, R labs with solutions.","Computes exactly why 50 bets prove nothing and how many you\u2019d need.","https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/","MIT OCW"],
+   ["Harvard Stat 110","Blitzstein. Lecture 7 is literally Gambler\u2019s Ruin. Free book + edX.","Ruin math: unit size vs edge decides compounding or busting \u2014 2% vs 12% is that line.","https://stat110.hsites.harvard.edu/","Harvard"],
+   ["MIT 15.S50 \u00b7 Poker Theory","Sloan course: EV, pot odds, variance, bankroll \u2014 decision quality under uncertainty.","Grade the decision by the price you got, not the result \u2014 poker\u2019s version of CLV.","https://ocw.mit.edu/courses/15-s50-poker-theory-and-analytics-january-iap-2015/","MIT OCW"],
+   ["Math behind Moneyball","Wayne Winston (Mathletics): team ratings, spreads\u2194moneylines, Kelly parts I\u2013III, \u201Cis your system real?\u201D","Module 10 has the exact significance test to run on this ledger before believing it.","https://www.coursera.org/learn/mathematics-sport","Coursera \u00b7 free audit"],
+   ["Cornell \u00b7 Markets & Info","Easley/Kleinberg Ch.22: how betting markets aggregate beliefs into prices, and when they fail.","The close is a belief-aggregation device at its sharpest \u2014 the theory behind CLV.","https://www.cs.cornell.edu/home/kleinber/networks-book/networks-book-ch22.pdf","PDF \u00b7 Cornell"],
+   ["Tetlock \u00b7 Superforecasting","Long Now talk: tournament forecasters beat analysts 30% by keeping score + outside-view base rates.","\u201CAll it takes to improve is KEEP SCORE\u201D \u2014 the case for myProb on every pick.","https://longnow.org/seminars/02015/nov/23/superforecasting/","Video \u00b7 Wharton"],
+   ["NYU Stern \u00b7 Inefficiency","Honors thesis: documented bettor biases \u2014 ESPN effect, streak-chasing, hometown bias.","Fade the recency-inflated side; never bet a team because it\u2019s been hot.","https://www.stern.nyu.edu/sites/default/files/assets/documents/con_042958.pdf","PDF \u00b7 NYU"],
+   ["MIT Sloan Sports Analytics","Peer-judged research paper archive \u2014 win-prob models, market pricing, every sport.","Steal model structure from finalist papers when refining the own-number recipe.","https://www.sloansportsconference.com/research-paper-competition","MIT Sloan"],
+   ["Stanford EE376A notes","Full information-theory machinery (entropy, KL divergence) behind the gambling chapter.","KL divergence between your prob and the market\u2019s is the only quantity that pays.","https://web.stanford.edu/class/ee376a/files/lecture_notes.pdf","PDF \u00b7 Stanford"]];
+  document.getElementById("studyBox").innerHTML=SH.map(function(s){
+    return '<a href="'+s[3]+'" target="_blank" rel="noopener" style="display:block;border:1px solid var(--line);background:var(--bg2);padding:11px 13px;text-decoration:none">'+
+    '<div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:4px"><span style="font:600 13px var(--disp);letter-spacing:.05em;color:var(--cyan);text-transform:uppercase">'+s[0]+'</span><span style="font:9px var(--mono);color:var(--dim);white-space:nowrap">'+s[4]+'</span></div>'+
+    '<div style="font-size:12.5px;color:var(--ink);margin-bottom:5px">'+s[1]+'</div>'+
+    '<div style="font-size:12px;color:var(--mut)">&#9656; '+s[2]+'</div></a>';}).join("");
   document.getElementById("evidenceBox").innerHTML=EV.map(function(e){
     return '<div style="border:1px solid var(--line);background:var(--bg2);padding:11px 13px">'+
     '<div style="font:600 13px var(--disp);letter-spacing:.05em;color:var(--volt);text-transform:uppercase;margin-bottom:4px">'+e[0]+'</div>'+
