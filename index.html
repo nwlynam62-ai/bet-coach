@@ -205,6 +205,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,th:focus-visible{outlin
       <div class="cell bx3"><h3 class="bh">Last 10</h3><div id="lastTen" style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px"></div><div class="ksub" id="lastTenSub"></div></div>
       <div class="cell bx8"><h3 class="bh">Profit Curve — units, settled picks</h3><div class="spark" id="curve"></div></div>
       <div class="cell bx4"><h3 class="bh">System Status</h3><div id="sysBox"></div></div>
+      <div class="cell bx12"><h3 class="bh">League Coverage &#8212; everything I track</h3><div id="lgBox" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:4px 22px"></div></div>
       <div class="cell bx6"><h3 class="bh">Today's Sharpest — top of the board</h3><div id="topPlays"></div></div>
       <div class="cell bx6"><h3 class="bh">Headlines</h3><div id="headlinesList"></div><div class="ksub" id="hlStamp"></div></div>
       <div class="cell bx6 hi"><h3 class="bh">Queued &#8212; logged, waiting on result</h3><div id="queuedBox"></div></div>
@@ -394,6 +395,22 @@ function showPage(id){
       '<div class="ht">'+esc(h.headline)+'</div><div class="hb">'+esc(h.timestamp||"")+'</div></div>';
   }).join("")||'<div class="empty">No headlines.</div>';
   document.getElementById("hlStamp").textContent="updated "+(DATA.headlinesUpdated||"—");
+  /* league coverage */
+  var LEAGUES=[
+    {k:"MLB",lbl:"MLB",off:"full slate daily \u2014 primary market"},
+    {k:"NBA",lbl:"NBA \u00b7 Finals",off:"Knicks\u2013Spurs \u2014 board on game days only"},
+    {k:"NHL",lbl:"NHL \u00b7 Cup Final",off:"VGK\u2013Canes \u2014 board on game days only"},
+    {k:"WNBA",lbl:"WNBA",off:"watchlist-only through Jun 18"},
+    {k:"PLL",lbl:"PLL Lacrosse",off:"weekend slates \u2014 watchlist through Jun 28"},
+    {k:"WC",lbl:"World Cup",off:"Jun 11\u2013Jul 19 \u00b7 3-way MLs \u2014 watchlist through group stage"},
+    {k:"UFC",lbl:"UFC \u00b7 Tennis \u00b7 NFL futures",off:"event-driven \u2014 fires only when an edge shows"}];
+  var cntBy={};(DATA.games||[]).forEach(function(g){cntBy[g.sport]=(cntBy[g.sport]||0)+1;});
+  document.getElementById("lgBox").innerHTML=LEAGUES.map(function(L){
+    var n=cntBy[L.k]||0,onb=n>0;
+    return '<div class="kv"><span class="k" style="color:'+(onb?'var(--volt)':'var(--dim)')+'">'+
+      '<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:'+(onb?'var(--volt)':'var(--line2)')+';margin-right:7px"></span>'+L.lbl+'</span>'+
+      '<span class="v" style="color:'+(onb?'var(--ink)':'var(--dim)')+'">'+(onb?n+' on the board today':L.off)+'</span></div>';
+  }).join("");
   /* queued + radar */
   function pad2(n){return (n<10?"0":"")+n;}
   var _d=new Date(),today=_d.getFullYear()+"-"+pad2(_d.getMonth()+1)+"-"+pad2(_d.getDate());
@@ -443,11 +460,17 @@ function renderBoard(){
     return '<div class="brow'+((g.rank||99)<=3?' top':'')+'" data-gid="'+esc(g.id)+'" role="button" tabindex="0">'+
       '<div class="rk">'+(g.rank||"·")+'</div>'+
       '<div class="tm">'+esc((g.time||"").replace(" ET",""))+'<br>ET</div>'+
-      '<div class="mid"><div class="mu">'+esc(g.away)+' <span style="color:var(--dim)">@</span> '+esc(g.home)+' <span class="gr gr-'+gLetter(g.grade)+'" style="margin-left:6px">'+esc(g.grade||"–")+'</span></div>'+
+      '<div class="mid"><div class="mu">'+esc(g.away)+' <span style="color:var(--dim)">@</span> '+esc(g.home)+' <span class="gr gr-'+gLetter(g.grade)+'" style="margin-left:6px">'+esc(g.grade||"–")+'</span>'+(/watchlist/i.test(g.note||"")?'<span class="tg amber" style="margin-left:6px">WATCHLIST</span>':'')+'</div>'+
       '<div class="sp">'+sub+'</div>'+
       '<div class="lean"><b>Lean:</b> '+esc(lean)+'</div></div>'+
       '<div class="px">'+fmtML(g)+'</div></div>';
-  }).join("")||'<div class="empty">No games match.</div>';
+  }).join("")||'<div class="empty">'+(({
+    PLL:"No PLL games today \u2014 weekend league. Next slate hits the board Saturday; watchlist-only through Jun 28.",
+    NHL:"No NHL game tonight \u2014 Cup Final returns Thu Jun 11, 8:00 ET (VGK\u2013Canes G5).",
+    WC:"World Cup kicks off Jun 11 \u2014 3-way ML breakdowns land here; watchlist-only through the group stage.",
+    WNBA:"No WNBA on today\u2019s board \u2014 watchlist-only through Jun 18.",
+    NBA:"No NBA tonight \u2014 Finals are board-only on game days."
+  })[boardFilt]||"No games match.")+'</div>';
   var rows=document.querySelectorAll("#board .brow");
   for(var i=0;i<rows.length;i++)(function(r){
     r.addEventListener("click",function(){openDrawer(r.getAttribute("data-gid"));});
@@ -455,8 +478,11 @@ function renderBoard(){
   })(rows[i]);
 }
 (function(){
-  var sports=["ALL"];(DATA.games||[]).forEach(function(g){if(sports.indexOf(g.sport)<0)sports.push(g.sport);});
-  document.getElementById("boardChips").innerHTML=sports.map(function(s){return '<button data-f="'+esc(s)+'"'+(s==="ALL"?' class="on"':'')+'>'+esc(s)+'</button>';}).join("");
+  var sports=["ALL","MLB","NBA","NHL","WNBA","PLL","WC"];(DATA.games||[]).forEach(function(g){if(sports.indexOf(g.sport)<0)sports.push(g.sport);});
+  var _cnt={};(DATA.games||[]).forEach(function(g){_cnt[g.sport]=(_cnt[g.sport]||0)+1;});
+  document.getElementById("boardChips").innerHTML=sports.map(function(s){
+    var n=s==="ALL"?(DATA.games||[]).length:(_cnt[s]||0);
+    return '<button data-f="'+esc(s)+'"'+(s==="ALL"?' class="on"':'')+(n?'':' style="opacity:.55"')+'>'+esc(s)+(n?' \u00b7 '+n:'')+'</button>';}).join("");
   var cb=document.querySelectorAll("#boardChips button");
   for(var i=0;i<cb.length;i++)(function(b){b.addEventListener("click",function(){
     boardFilt=b.getAttribute("data-f");
