@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Bet Coach — VOLT</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -63,6 +63,7 @@ h3.bh::before{content:"";width:7px;height:7px;background:var(--volt);clip-path:p
 .spark{margin-top:12px}
 /* ring */
 .ringwrap{display:flex;gap:18px;align-items:center}
+.ringwrap svg{max-width:100%;height:auto}
 .ringtxt .rt1{font:700 30px/1 var(--disp)}
 .ringtxt .rt2{font:11px var(--mono);color:var(--mut);margin-top:4px}
 /* lists in cells */
@@ -162,20 +163,36 @@ button:focus-visible,a:focus-visible,input:focus-visible,th:focus-visible{outlin
 @media (max-width:920px){
   #app{grid-template-columns:1fr}
   #side{display:none}
-  #main{padding:18px 14px 110px}
-  .ph h1{font-size:34px}
-  .bx6,.bx4,.bx8,.bx3{grid-column:span 12}
+  #main{padding:14px 12px calc(96px + env(safe-area-inset-bottom))}
+  .ph{margin-bottom:14px}
+  .ph h1{font-size:32px}
+  .ph .pm{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+  .bento{gap:10px}
+  .bx6,.bx4,.bx8{grid-column:span 12}
+  .bx3{grid-column:span 6}
+  .cell{padding:14px}
+  .knum{font-size:32px}
+  .knum small{font-size:13px}
+  .ksub{font-size:10.5px}
+  .ringwrap{gap:12px}
+  .ringtxt .rt1{font-size:22px}
+  h2 .bh{font-size:11px}
   .intel3{grid-template-columns:1fr}
+  table{font-size:12px}
+  th,td{padding:9px 8px}
   .brow{grid-template-columns:34px 1fr;grid-template-rows:auto auto;gap:6px 12px;padding:14px}
   .brow .tm{grid-column:2}
   .brow .mid{grid-column:2}
   .brow .rk{grid-row:span 2;align-self:start}
   .brow .px{grid-column:2;justify-content:flex-start}
   #bnav{display:flex;position:fixed;left:0;right:0;bottom:0;background:rgba(10,11,9,.92);backdrop-filter:blur(14px);border-top:1px solid var(--line2);z-index:50}
+  #bnav{padding-bottom:env(safe-area-inset-bottom)}
   #bnav button{flex:1;background:none;border:none;color:var(--dim);font:600 10px var(--mono);letter-spacing:.08em;padding:9px 2px 12px;display:flex;flex-direction:column;align-items:center;gap:4px;min-height:56px}
   #bnav button svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8}
   #bnav button.on{color:var(--volt)}
-  #drawer{width:100vw;max-width:100vw;border-left:none}
+  #drawer{width:100vw;max-width:100vw;border-left:none;padding:16px 14px calc(60px + env(safe-area-inset-bottom))}
+  .dh1{font-size:24px}
+  .dx{width:44px;height:44px}
 }
 </style></head><body>
 <div id="app">
