@@ -151,8 +151,8 @@ input:focus{outline:none;border-color:var(--blue)}
 .spot-row:hover{border-color:var(--faint)}
 .spot-row .rank{width:22px;height:22px;font-size:10px}
 .spot-main{flex:1;min-width:0}
-.spot-match{font-weight:700;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.spot-play{font-size:11px;color:var(--muted);margin-top:1px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.spot-match{font-weight:500;font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.spot-play{font-size:14px;color:var(--text);margin-top:3px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}.spot-play b{font-weight:700;font-size:15px;color:var(--text)}.spot-price{color:var(--gold);font-weight:600;font-size:13px}
 .spot-play b{color:var(--text);font-weight:800}
 .spot-right{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:2px}
 .spot-stake{font-size:12px;font-weight:800;color:var(--green)}
@@ -670,7 +670,7 @@ select:focus{outline:none;border-color:var(--blue)}
     "bankroll": 80,
     "unit": 10
   },
-  "updated": "Tue Jun 9, 2026 - 10:38 PM ET (GA light pass). game_window=IDLE: all of today's 19 games are live or final and past the active grace window; no game inside any pre-game research or radar window, so no deep pass. External line refresh not possible this pass - the structured DK/ESPN scoreboard odds feed remains provenance-walled (web_fetch URL not in provenance set), so last-confirmed DK closing lines are carried unchanged; no fabrication, no movement expected on live/closed markets. No new public/money splits (markets closed). Trends appliesToday and all picks/bets/watchlist/research preserved untouched; 4-pick daily cap stands. Next deep pass fires when tomorrow's (Jun 10) slate enters its radar window.",
+  "updated": "Tue Jun 9, 2026 - 11:08 PM ET (GA light pass). game_window=IDLE: all of today's 19 games are live or final and past the active grace window; no game inside any pre-game research or radar window, so no deep pass. External line refresh not possible - the structured DK/ESPN scoreboard odds feed is provenance-walled this session (web_fetch URL not in provenance set, re-tested and rejected); last-confirmed DK lines carried unchanged, no fabrication. Markets live/closed so no new public/money splits, no RLM, no expected movement. Trends appliesToday, picks, bets, watchlist, research all preserved untouched; 4-pick daily cap stands. Next deep pass when Jun 10 slate enters its radar window.",
   "linesSource": "DraftKings via ESPN feed (last confirmed pull); ESPN structured endpoint provenance-blocked to web_fetch this run (re-tried), oddsshark/covers served stale boards; all 16 ML lines preserved & re-passed line-shape sanity (sums 104.5-104.8%), none fabricated",
   "bets": [],
   "games": [
@@ -2833,7 +2833,7 @@ select:focus{outline:none;border-color:var(--blue)}
   ],
   "headlinesUpdated": "Jun 9, 9:11 PM ET",
   "watchlist": [],
-  "_ga_marker": "ga_livewin_20260609_221000",
+  "_ga_marker": "ga_light_20260609_2308ET",
   "_marker": "sync-20260609_185830",
   "trends": {
     "updated": "Tue Jun 9, 2026 - 7:37 PM ET",
@@ -3322,12 +3322,12 @@ var rows=active.map(function(p){
   var gr=p.grade||"A";
   var grcls="g-"+(gr.charAt(0));
   var t=gtime(p.matchup);
-  return '<div class="spot-row" style="border-left:3px solid var(--orange);padding-left:10px">'+
-    '<div class="rank" style="color:var(--orange)">&#9733;</div>'+
+  return '<div class="spot-row" style="border-left:2px solid var(--border);padding-left:12px">'+
+    '<div class="rank" style="color:var(--faint);font-size:9px">&#9679;</div>'+
     '<div class="spot-main">'+
     '<div class="spot-match">'+esc(p.matchup)+(t?' &middot; '+esc(t):'')+'</div>'+
-    '<div class="spot-play"><b>'+esc(p.play)+'</b> '+esc(p.odds||'')+' '+starHTML(gradeStars(gr))+'</div>'+
-    (p.note?'<div style="font-size:11px;color:var(--orange);margin-top:2px">'+esc(p.note)+'</div>':'')+
+    '<div class="spot-play"><b>'+esc(p.play)+'</b> <span class="spot-price">'+esc(p.odds||'')+'</span> '+starHTML(gradeStars(gr))+'</div>'+
+    (p.note?'<div style="font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.45">'+esc(p.note)+'</div>':'')+
     '</div>'+
     '<div class="spot-right"><div class="spot-stake">1u</div>'+
     '<div class="grade '+grcls+'">'+esc(gr)+'</div></div>'+
