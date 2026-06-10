@@ -664,13 +664,12 @@ select:focus{outline:none;border-color:var(--blue)}
 <div class="mstep"><div class="mn">2</div><div class="mt">Or open the <b>Scheduled</b> panel in the sidebar and hit <b>Run now</b> on the <b>refresh-betting-board</b> task.</div></div>
 <p class="small muted">This app is a local file, so the button can't fetch live odds on its own &mdash; a refresh means Claude pulling current DraftKings lines and re-grading the slate.</p>
 </div></div>
-<script id="betdata" type="application/json">
-{
+<script id="betdata" type="application/json">{
  "settings": {
   "bankroll": 80,
   "unit": 10
  },
- "updated": "Tue Jun 9, 2026 - 8:12 PM ET (GAME ANALYST deep pass, :05 slot). game_window=ACTIVE, 8 in-window (NHL Canes@Knights Cup-Final G4 & WNBA Wings@Lynx 8:00 underway; Cubs@Rockies 8:40; Astros@Angels 9:38; Reds@Padres 9:40; Nationals@Giants 9:45; WNBA Mercury@Valkyries 10:00; Brewers@Athletics 10:05). LINES: ESPN structured DK feed provenance-blocked to web_fetch again - DK lines carried + line-shape sanity re-passed; 2-book confirmed via scoresandodds best-odds + dimers + Yahoo (favorites/magnitudes all align). NHL refreshed live: Hurricanes -113 / Golden Knights -106, total 5.5; Vegas leads series 2-1. SPLITS: live scoresandodds consensus re-pull CONFIRMS - Reds 26% tickets/59% money (+33 sharp tell, LEAD); Nationals 27%/40% (+13) + RLM toward Washington (contrarian); Astros 77%/88% & Brewers 85%/92% straight chalk; totals all heavy public Overs. Cubs/NHL/WNBA splits null (not on board). LEANS equal-by-confidence, unchanged: Reds -117 leads; Astros -126 + Under 8.5; Nationals -101 contrarian + Under 8.5 at Oracle; Brewers -119 + Under 12; Cubs F5-look-only at Coors + Over light; NHL Canes -113 + Under 5.5. F5 PIVOT: only Cubs (-149) triggers look-only among in-window games. INJURY: all probable SP confirmed via dimers board, no scratches. TRENDS display-only, 5/5 mapped (SEA/KC/STL/HOU Under, MIL Over), walled off from picks. Odds API 0 credits used.",
+ "updated": "Tue Jun 9, 2026 - 9:00 PM ET (SYNTHESIZER, :55 slot). game_window=ACTIVE, 6 in-window (Cubs@Rockies started; Astros@Angels 9:38; Reds@Padres 9:40; Nationals@Giants 9:45; WNBA 10:00; Brewers@A's 10:05). DECISION: 0 new real picks - already at the 4-pick daily cap (Yankees ML, Pirates ML, Red Sox U7.5, Marlins ML); late clean leans HELD on radar per cap rule (not timidity). RADAR maintained: Reds -117 (cleanest SP gap; corrected to public-chalk splits, Path A SP-edge not contrarian) + Nationals -101 (FIXED stale note: SAO revised WSH to 53/57, NOT public-minority - prior 27/40 contrarian tell withdrawn; thin SP-edge value + RLM remains). trendPicks unchanged (4 mirrors; no vetted same-day trend stacks). No promotion, no over-fire under COMMIT pressure.",
  "linesSource": "DraftKings via ESPN feed (last confirmed pull); ESPN structured endpoint provenance-blocked to web_fetch this run (re-tried), oddsshark/covers served stale boards; all 16 ML lines preserved & re-passed line-shape sanity (sums 104.5-104.8%), none fabricated",
  "bets": [],
  "games": [
@@ -693,7 +692,13 @@ select:focus{outline:none;border-color:var(--blue)}
    "take": "Reds @ Padres at Petco, 9:40 PM. Cleanest starter gap on the board: Chase Burns has been excellent (7-1, 2.05 ERA, 10.4 K9, 0.95 WHIP) while Lucas Giolito is scuffling (4.86 ERA, 1.74 WHIP). Petco is one of the league's best pitcher's parks, which helps both the Reds ML and the Under.",
    "mlTake": "Lean: Reds -117. Edge: Burns (2.05 ERA) is a run-and-a-half better than Giolito (4.86) and Cincinnati is the road favorite at a near-even number, exactly the SP-edge spot we want. Risk: Burns is a rookie who can run up pitch counts; if he is pulled early San Diego's bullpen is strong at home.",
    "totalTake": "Lean: Under 7.5. Why: Burns is missing bats at an elite clip and Petco suppresses scoring; neither offense forces the issue. The Reds ML is the lead read, the Under supports it.",
-   "note": "Venue: Petco Park (pitcher's park). Line: DraftKings Reds -117 / Padres -103, total 7.5."
+   "note": "Venue: Petco Park (pitcher's park). Line: DraftKings Reds -117 / Padres -103, total 7.5.",
+   "history": [
+    {
+     "time": "8:42 PM ET",
+     "line": "-117/-103 O/U 7.5"
+    }
+   ]
   },
   {
    "id": "g-20260609-002",
@@ -903,7 +908,13 @@ select:focus{outline:none;border-color:var(--blue)}
    "take": "Astros @ Angels at Angel Stadium, 9:38 PM. Two young arms with similar lines: Kai-Wei Teng (3.06 ERA) and Walbert Ureña (2.68 ERA, 0.72 HR9). Houston is the road favorite on team quality.",
    "mlTake": "Lean: Astros -126, light. Edge: Houston is the better roster and Teng has been steady. Risk: Ureña has actually pitched a touch better than Teng this year, so the edge is mostly team-based, not pitching - keep it small.",
    "totalTake": "Lean: Under 8.5. Why: Both starters own sub-3 ERAs and the Angels' offense is the worst on the slate by record; expected runs land under the number.",
-   "note": "Venue: Angel Stadium (neutral). Line: DraftKings Astros -126 / Angels +104, total 8.5."
+   "note": "Venue: Angel Stadium (neutral). Line: DraftKings Astros -126 / Angels +104, total 8.5.",
+   "history": [
+    {
+     "time": "8:42 PM ET",
+     "line": "-126/+104 O/U 8.5"
+    }
+   ]
   },
   {
    "id": "g-20260609-012",
@@ -924,7 +935,13 @@ select:focus{outline:none;border-color:var(--blue)}
    "take": "Nationals @ Giants at Oracle Park, 9:45 PM. The market has the Giants -120 even though Adrian Houser (5.49 ERA, 1.58 WHIP) has been worse than Andrew Alvarez (3.54 ERA on 20.1 IP). Oracle's marine layer kills offense.",
    "mlTake": "Lean: Nationals -101, small. Edge: On the arms alone Washington should be the favorite, not the dog - Houser's 5.49 ERA is a red flag and Alvarez has thrown well. Risk: Alvarez's sample is tiny and the Giants are home; treat as a thin value lean, not a strong play.",
    "totalTake": "Lean: Under 8.5. Why: Oracle Park is a premier pitcher's park and both offenses are weak; even with Houser's ERA the venue caps run scoring. Confident Under.",
-   "note": "Venue: Oracle Park (pitcher's park, marine layer). Line: DraftKings Giants -120 / Nationals -101, total 8.5."
+   "note": "Venue: Oracle Park (pitcher's park, marine layer). Line: DraftKings Giants -120 / Nationals -101, total 8.5 (FanDuel SF -112 / WSH -104 this pass - the Giants favorite is still softening = line drifting toward Washington).",
+   "history": [
+    {
+     "time": "8:42 PM ET",
+     "line": "WSH -101/SF -120 O/U 8.5"
+    }
+   ]
   },
   {
    "id": "g-20260609-013",
@@ -938,14 +955,20 @@ select:focus{outline:none;border-color:var(--blue)}
    "homePitcher": "J.T. Ginn (3-3, 2.74 ERA, 1.08 WHIP)",
    "awayML": "-119",
    "homeML": "-102",
-   "total": 12,
+   "total": 13,
    "status": "scheduled",
    "rank": 13,
    "grade": "C+",
    "take": "Brewers @ Athletics at Sutter Health Park, 10:05 PM. Milwaukee has the better record (40-23) but draws J.T. Ginn (2.74 ERA, 1.08 WHIP), the steadier starter, over Robert Gasser (4.73 ERA on 13 IP). The West Sacramento park inflates totals (12).",
    "mlTake": "Lean: Brewers -119, light. Edge: Milwaukee is the much better team and near a pick'em. Risk: Ginn has out-pitched Gasser this year and the small ballpark can erase a one-run lead in a hurry; keep the size down.",
-   "totalTake": "Lean: Under 12. Why: 12 is an inflated number even for this launching pad, and Ginn limits hard contact; the value is on the Under of a sky-high total rather than chasing the Over.",
-   "note": "Venue: Sutter Health Park (hitter-friendly). Line: DraftKings Brewers -119 / Athletics -102, total 12."
+   "totalTake": "Lean: Under 13, light. Why: the number has climbed from 12 to 13 (market 13-13.5) and the money tells the story - the Over leads tickets 78% but only 62% of the money (a ~16pt Under-money tilt), so sharp dollars are buying the Under at the inflated Sutter Health total. Ginn (2.74 ERA) limits hard contact; lean the Under of a sky-high number rather than chasing the Over.",
+   "note": "Venue: Sutter Health Park (hitter-friendly). Line: DraftKings Brewers -119 / Athletics -102, total 13 (up from 12; FanDuel 13, scoresandodds 13.5).",
+   "history": [
+    {
+     "time": "8:42 PM ET",
+     "line": "-119/-102 O/U 13"
+    }
+   ]
   },
   {
    "id": "g-20260609-014",
@@ -966,7 +989,13 @@ select:focus{outline:none;border-color:var(--blue)}
    "take": "Cubs @ Rockies at Coors Field, 8:40 PM. Colin Rea (4.59 ERA) and Tomoyuki Sugano (3.98 ERA) at altitude, where every line gets noisier. Chicago is the road favorite over the league's worst team (24-42).",
    "mlTake": "Lean: Cubs on team quality, but -149 at Coors is a volatile favorite - prefer it as an F5 look if anything. Risk: Coors turns any game into a coin flip late; the Rockies hit at home and a bullpen meltdown can flip it. Low conviction.",
    "totalTake": "Lean: Over 12.5, light. Why: Coors altitude plus two hittable starters is the classic Over setup, though 12.5 is already a steep number to clear. Lean Over.",
-   "note": "Venue: Coors Field (extreme hitter's park, altitude). Line: DraftKings Cubs -149 / Rockies +123, total 12.5."
+   "note": "Venue: Coors Field (extreme hitter's park, altitude). Line: DraftKings Cubs -149 / Rockies +123, total 12.5.",
+   "history": [
+    {
+     "time": "8:42 PM ET",
+     "line": "-149/+123 O/U 12.5"
+    }
+   ]
   },
   {
    "id": "g-20260609-015",
@@ -1067,15 +1096,21 @@ select:focus{outline:none;border-color:var(--blue)}
    "homePitcher": null,
    "awayML": null,
    "homeML": null,
-   "total": 161.5,
-   "spread": "GS -7.5",
+   "total": 162.5,
+   "spread": "GS -8.5",
    "status": "scheduled",
    "rank": 3,
    "grade": "watchlist",
    "take": "Phoenix Mercury @ Golden State Valkyries, 10:00 PM. Golden State laying 7.5 at home; low total of 161.5.",
-   "mlTake": "Watchlist only. Read: The Valkyries have been strong on their home floor; 7.5 is fair against a Phoenix team that can go cold.",
-   "totalTake": "Lean (watchlist): Under 161.5. Both defenses have been stingier than the market expects.",
-   "note": "Watchlist-only (WNBA). Line: DraftKings GS -7.5, total 161.5."
+   "mlTake": "Watchlist only. Read: Golden State is heavy home chalk (moneyline around -370, Phoenix +285) - far past our price band with no moneyline value either way; the only live angles are the spread (GS -8.5) and the total.",
+   "totalTake": "Lean (watchlist): Under 162.5. Both defenses have graded stingier than the market expects; the number ticked up from 161.5.",
+   "note": "Watchlist-only (WNBA, Commissioner's Cup). Line: DraftKings GS -8.5, total 162.5; moneyline GS -370 / PHX +285.",
+   "history": [
+    {
+     "time": "8:42 PM ET",
+     "line": "GS -8.5 O/U 162.5"
+    }
+   ]
   }
  ],
  "lineMovement": [
@@ -1085,10 +1120,13 @@ select:focus{outline:none;border-color:var(--blue)}
    "time": "9:40 PM ET (Jun 9)",
    "open": "Reds -110",
    "current": "-117 / -103 · O/U 7.5",
-   "publicBets": "ML: Reds 26% / Padres 74% tickets. Total: Over 92% / Under 8%.",
-   "publicMoney": "ML: Reds 59% / Padres 41% money. Total: Over 87% / Under 13% money.",
-   "side": "Reds (strong money-over-ticket divergence: 59% money on 26% tickets = +33pt sharp tell on Cincinnati) + Under support at Petco",
-   "signal": "Sharp tell on our side: the Reds draw just 26% of tickets but 59% of the money, a +33-point money-over-ticket divergence on Cincinnati, backing the Reds ML lead lean (Burns SP edge). Total is a 92% public Over at pitcher-friendly Petco; the Under 7.5 supports the read."
+   "publicBets": "ML: Reds 78% / Padres 22% tickets. Total: Over 92% / Under 8%.",
+   "publicMoney": "ML: Reds 75% / Padres 25% money. Total: Over 86% / Under 14% money.",
+   "side": "Reds (public chalk; money 75% roughly matches 78% tickets = no divergence). The Reds lean rests on the starting-pitcher edge, not a sharp-money tell.",
+   "signal": "CORRECTION to the prior snapshot (which had the Reds at 26% tickets - that was inverted): the live scoresandodds consensus table shows Cincinnati is the PUBLIC side at 78% tickets / 75% money, no money-over-ticket divergence. So there is no contrarian/sharp path here - the Reds -117 lean stands purely on Chase Burns (2.05 ERA) vs Lucas Giolito (4.86). On the total the public is 92% Over with a mild Under-money tilt (only 86% of money on the Over); Petco + Burns support the Under 7.5.",
+   "splitNote": "CORRECTED 8:42 PM: Reds 78% tickets / 75% money (public chalk, no divergence). Prior +33 'sharp tell' was a data error. ML lean = SP-edge only.",
+   "rlmSide": null,
+   "divergence": null
   },
   {
    "sport": "MLB",
@@ -1197,34 +1235,39 @@ select:focus{outline:none;border-color:var(--blue)}
    "time": "9:38 PM ET (Jun 9)",
    "open": "Astros -126",
    "current": "-126 / +104 · O/U 8.5",
-   "publicBets": "ML: Astros 77% / Angels 23% tickets. Total: Over 91% / Under 9%.",
-   "publicMoney": "ML: Astros 88% / Angels 12% money. Total: Over 83% / Under 17% money.",
-   "side": "Astros (public + money both on Houston chalk; no divergence)",
-   "signal": "Houston is a consensus chalk read (77% tickets, 88% money) - no contrarian path. Total is a heavy public Over (91% tickets) with no clean Under edge."
+   "publicBets": "ML: Astros 62% / Angels 38% tickets. Total: Over 93% / Under 7%.",
+   "publicMoney": "ML: Astros 67% / Angels 33% money. Total: Over 91% / Under 9% money.",
+   "side": "Astros (public + money both on Houston; mild +5pt money-over-ticket tilt to Houston, no strong divergence).",
+   "signal": "Houston is the public side (62% tickets) and the money agrees a touch more (67%) - a mild +5pt tilt, not a contrarian path. Total is a heavy public Over (93% tickets / 91% money); the Under 8.5 is the value side on two sub-3.00 starters at a neutral park, against the public.",
+   "rlmSide": null,
+   "divergence": "Mild: Astros +5pt money-over-ticket (below the 10pt strong threshold)."
   },
   {
    "sport": "MLB",
    "matchup": "Nationals @ Giants",
    "time": "9:45 PM ET (Jun 9)",
    "open": "Giants -126",
-   "current": "-120 / -101 · O/U 8.5",
-   "publicBets": "ML: Nationals 27% / Giants 73% tickets. Total: Over 90% / Under 10%.",
-   "publicMoney": "ML: Nationals 40% / Giants 60% money. Total: Over 87% / Under 13% money.",
-   "side": "Nationals (contrarian money tell + RLM: 40% money on 27% tickets = +13pt money-over-ticket on the Washington dog, and the line drifted from Giants -126 open toward -120 = reverse line movement to the minority-ticket side)",
-   "signal": "Radar aligned contrarian read: Washington draws only 27% of tickets but 40% of the money (+13pt sharp tell on the dog) while the line drifted toward Washington (Giants -126 open -> -120 now) = reverse line movement to the minority side. DK prices it near pick'em (Nationals -101 / Giants -120), so the +price value is book-dependent (WSH +130 elsewhere); a contrarian path if the number holds. Total: 90% public Over at pitcher-friendly Oracle supports the Under 8.5 read.",
-   "splitNote": "WSH dog: 40% money on 27% tickets (+13pt) AND line moved toward Washington = RLM toward the minority side (rlmSide=Washington). Radar contrarian path; DK number near pick'em. [7:09 PM re-verify: capture preserved; live splits refresh came back stale, no change.]",
-   "rlmSide": "Nationals (Washington)"
+   "current": "DK Giants -120 / Nationals -101 · O/U 8.5 (FanDuel SF -112 / WSH -104 this pass - favorite still softening)",
+   "publicBets": "ML: Nationals 53% / Giants 47% tickets. Total: Over 94% / Under 6%.",
+   "publicMoney": "ML: Nationals 57% / Giants 43% money. Total: Over 95% / Under 5% money.",
+   "side": "Nationals (mild money tilt + RLM): Washington draws 57% of the money on 53% of tickets (a modest +4pt tilt) and the line has drifted from Giants -126 open toward -120 (DK) and -112 (FanDuel) = reverse line movement toward Washington.",
+   "signal": "Revised on the live consensus table: Washington is NOT a public-minority side here (53% tickets), so this is not a clean public-fade - it is a thin own-number value lean (Houser 5.49 ERA should not be favored over Alvarez) with mild sharp support: +4pt money tilt to Washington and clear RLM (Giants -126 -> -120 -> -112). Treat as a small value lean, not a strong contrarian play. Total: 94% public Over at pitcher-friendly Oracle supports the Under 8.5.",
+   "splitNote": "Revised 8:42 PM (live SAO): WSH 53% tickets / 57% money (+4pt mild tilt) + RLM toward Washington (Giants -126 open -> -120 DK -> -112 FD). WSH not public-minority, so value/own-number lean rather than a public-fade.",
+   "rlmSide": "Nationals (Washington)",
+   "divergence": "Mild: Washington +4pt money-over-ticket (below 10pt strong threshold)."
   },
   {
    "sport": "MLB",
    "matchup": "Brewers @ Athletics",
    "time": "10:05 PM ET (Jun 9)",
    "open": "Athletics +100",
-   "current": "-119 / -102 · O/U 12",
-   "publicBets": "ML: Brewers 85% / Athletics 15% tickets. Total: Over 85% / Under 15%.",
-   "publicMoney": "ML: Brewers 92% / Athletics 8% money. Total: Over 71% / Under 29% money.",
-   "side": "Brewers (public + money both on Milwaukee chalk); some Under money on the total (29%)",
-   "signal": "Milwaukee is consensus chalk (85% tickets, 92% money) - no contrarian path. On the total the Over leads tickets (85%) but the money is softer (only 71% Over), a mild Under-money tilt worth watching at the hitter-friendly Las Vegas park."
+   "current": "-119 / -102 · O/U 13 (total up from 12; market 13-13.5)",
+   "publicBets": "ML: Brewers 58% / Athletics 42% tickets. Total: Over 78% / Under 22%.",
+   "publicMoney": "ML: Brewers 58% / Athletics 42% money. Total: Over 62% / Under 38% money.",
+   "side": "Brewers ML (no divergence, 58%/58%); the live edge is on the TOTAL - sharp Under money.",
+   "signal": "On the moneyline Milwaukee is a near-pickem favorite with tickets and money even (58%/58%) - no edge. The total is the story: it has climbed from 12 to 13 (market 13-13.5) and while the Over leads tickets 78%, only 62% of the money is on the Over - a ~16pt Under-money tilt. Sharp dollars are taking the Under of an inflated launching-park number; that is the lead read in this game.",
+   "rlmSide": null,
+   "divergence": "Strong on the total: Over 78% tickets but 62% money = ~16pt Under-money tilt."
   },
   {
    "sport": "MLB",
@@ -1232,10 +1275,12 @@ select:focus{outline:none;border-color:var(--blue)}
    "time": "8:40 PM ET (Jun 9)",
    "open": "Cubs -149",
    "current": "-149 / +123 · O/U 12.5",
-   "publicBets": "Cubs 73% bets (ML); total Over 49% bets",
-   "publicMoney": "Cubs 72% handle (ML); total Over 55% money",
+   "publicBets": "ML: Cubs 70% / Rockies 30% tickets. Total: Over 74% / Under 26%.",
+   "publicMoney": "ML: Cubs 53% / Rockies 47% money. Total: Over 74% / Under 26% money.",
    "side": null,
-   "signal": "Cubs a normal road chalk (73% bets / 72% money - no divergence) at Coors; total split near even (Over 49% bets / 55% money). No contrarian path. Cubs steep (-149): F5 pivot stays the radar lean."
+   "signal": "Cubs are the public ticket side (70%) but the money lags badly (only 53% on Cubs) - a 17pt favorite money-under-ticket gap, a faint lean toward Colorado, but COL +123 at Coors is not a system play. Cubs are steep at -149, so the F5 pivot stays the radar lean (price near pick'em). Total split is even (Over 74% tickets and 74% money) - no edge; the light Over is altitude-only.",
+   "rlmSide": null,
+   "divergence": "Cubs favorite money-under-ticket by 17pt (faint Rockies tilt; no actionable play)."
   },
   {
    "sport": "MLB",
@@ -1258,9 +1303,31 @@ select:focus{outline:none;border-color:var(--blue)}
    "publicMoney": null,
    "side": null,
    "signal": "Stanley Cup Final Game 4 at Vegas; Golden Knights lead the series 2-1. Carolina is the slight road favorite (-113) at a near pick'em. Over is juiced to ~-130. Public/money splits not posted on the consensus board for this game = null (no contrarian path; the small Hurricanes lean is fundamental)."
+  },
+  {
+   "sport": "WNBA",
+   "matchup": "Mercury @ Valkyries",
+   "time": "10:00 PM ET (Jun 9)",
+   "open": "GS -7.5",
+   "current": "GS -8.5 · O/U 162.5 · ML GS -370 / PHX +285",
+   "publicBets": null,
+   "publicMoney": null,
+   "side": null,
+   "signal": "Watchlist-only (WNBA calibration). Public/money splits not captured this pass (MLB consensus table does not cover WNBA) = null. Spread ticked from GS -7.5 to -8.5 and the total from 161.5 to 162.5; Golden State is heavy moneyline chalk (-370) with no price value.",
+   "rlmSide": null,
+   "divergence": null
   }
  ],
  "research": [
+  {
+   "id": "ga-20260609-2042",
+   "timestamp": "2026-06-09 20:42 ET",
+   "category": "deep",
+   "sport": "MULTI",
+   "relevance": "high",
+   "title": "8:42 PM DEEP PASS (:35) - VERDICT ACTIVE, 6 in-window (Cubs@Rockies 8:40; Astros@Angels 9:38; Reds@Padres 9:40; Nationals@Giants 9:45; WNBA Mercury@Valkyries 10:00; Brewers@Athletics 10:05). Lines DK-carried + 2-book confirmed (FanDuel + scoresandodds consensus). Live SAO consensus table re-pulled - MATERIALLY REVISES the prior pass's splits.",
+   "body": "LINES: ESPN structured DK feed provenance-blocked to web_fetch again (carried DK book-of-record, signs normalized, line-shape sane). 2-book confirm via FanDuel research pages + scoresandodds consensus - favorites/magnitudes align. Updates: Brewers@Athletics total climbed 12 -> 13 (FanDuel 13, SAO 13.5); WNBA Mercury@Valkyries spread -7.5 -> -8.5, total 161.5 -> 162.5; Nationals@Giants Giants favorite still softening (DK -120 / FanDuel -112). SPLITS (live scoresandodds consensus, authoritative): MATERIAL CORRECTION - the prior pass's splits were unreliable. Reds: prior said 26% tix/59% money (+33 sharp tell); LIVE table shows Cincinnati is the PUBLIC side at 78% tix/75% money with NO divergence - the +33 'tell' was a data error. Corrected; the Reds -117 lean now rests on the SP edge alone (Burns 2.05 vs Giolito 4.86), no contrarian path. Astros 62/67 (prior 77/88) mild +5 Houston tilt. Brewers 58/58 ML (prior 85/92) no ML edge - but the TOTAL carries sharp Under money (Over 78% tix / 62% money = ~16pt Under tilt at the inflated 13). Nationals 53/57 (prior 27/40): WSH is NOT public-minority, so the contrarian framing is downgraded to a thin value/own-number lean with mild +4 money tilt + real RLM toward Washington (Giants -126 open -> -120 -> -112). Cubs 70 tix/53 money = favorite money lags 17pt (faint COL tilt, no play); F5 pivot stays. WNBA splits null (not on MLB consensus board) - said so. LEANS (equal-by-confidence): Reds -117 (SP edge, lead) + Under 7.5 support; Astros -126 light + Under 8.5 (value vs 93% public Over); Nationals thin value -101 + RLM + Under 8.5 at Oracle; Brewers TOTAL Under 13 is the lead read (sharp Under money) with Brewers -119 ML secondary; Cubs F5-look-only at Coors (steep -149) + light Over. F5 PIVOT: only Cubs (-149, steeper than -135) triggers F5 look among in-window games. INJURY: all probable SPs carried from the locked dimers board (Cubs@Rockies already underway, lineups set); no scratches surfaced this pass. TRENDS display-only: HOU-Under maps to Astros@Angels, MIL-Over maps to Brewers@Athletics (note: our totals read on that game is Under - trend is walled off from picks). Odds API: 0 credits used."
+  },
   {
    "id": "ga-20260609-2012",
    "timestamp": "2026-06-09 20:12 ET",
@@ -1477,9 +1544,6 @@ select:focus{outline:none;border-color:var(--blue)}
    "title": "5:45 PM DEEP: live DK re-pull - Fire@Sparks Under 174.5 (both healthy), Giants@Cubs Cubs -136/Under 8 (NWS wind in); trend matches cleared (games final)",
    "matchup": "5:45 PM DEEP (in-window): Live DK lines re-pulled off the ESPN structured feed via connected Chrome. WNBA Fire@Sparks held Sparks -7.5, total 174.5 (shape sane) - Sparks healthy, Portland's Barker (quad) & Samuelson (Achilles) both probable and expected to play, so no scorer-out swing; Under 174.5 and watchlist Fire dog reaffirmed. MLB Giants@Cubs: Cubs ticked -132 -> -136 (DK fav), total 8, runline Cubs -1.5; probables confirmed McDonald (SF) vs Taillon (CHC). NWS authoritative read: NE/ENE wind ~10 mph blowing IN at Wrigley, 67-68 deg, 20% storms - Under 8 reaffirmed (a secondary 'wind out' source was wrong). No steam/RLM; 0 Odds API credits used. Trends re-matched display-only: all 5 vetted MLB total trends now point at games that are FINAL or in the 9th, so appliesToday cleared on all - none of tonight's two remaining games match a vetted trend. 0 new picks - baseline pick engine, trends walled off.",
    "body": "5:45 PM DEEP (in-window): Live DK lines re-pulled off the ESPN structured feed via connected Chrome. WNBA Fire@Sparks held Sparks -7.5, total 174.5 (shape sane) - Sparks healthy, Portland's Barker (quad) & Samuelson (Achilles) both probable and expected to play, so no scorer-out swing; Under 174.5 and watchlist Fire dog reaffirmed. MLB Giants@Cubs: Cubs ticked -132 -> -136 (DK fav), total 8, runline Cubs -1.5; probables confirmed McDonald (SF) vs Taillon (CHC). NWS authoritative read: NE/ENE wind ~10 mph blowing IN at Wrigley, 67-68 deg, 20% storms - Under 8 reaffirmed (a secondary 'wind out' source was wrong). No steam/RLM; 0 Odds API credits used. Trends re-matched display-only: all 5 vetted MLB total trends now point at games that are FINAL or in the 9th, so appliesToday cleared on all - none of tonight's two remaining games match a vetted trend. 0 new picks - baseline pick engine, trends walled off."
-  },
-  {
-   "matchup": "5:07 PM DEEP (in-window): DK lines re-pulled live off ESPN structured feed - WNBA Fire@Sparks held POR +225 / LA -278, total 174.5 (shape sane); Giants@Cubs held SF +109 / Cubs -132, total 8. No steam/RLM. Wrigley wind confirmed NE ~10mph blowing in (NWS) + 20% storms - Under 8 reaffirmed. Sky@Tempo final (TOR 85, CHI 68). Trends re-matched display-only (5 vetted map to today's MLB totals, no new match for tonight's two games). 0 new picks - baseline pick engine, trends walled off."
   }
  ],
  "picks": [
@@ -2733,7 +2797,7 @@ select:focus{outline:none;border-color:var(--blue)}
    "odds": "-117",
    "grade": "B",
    "time": "9:40 PM ET",
-   "note": "Radar lean (Path A, fundamental SP edge) - the cleanest starter gap on the board. Chase Burns (7-1, 2.05 ERA, 0.95 WHIP, 10.4 K9) is roughly a run-and-a-half better than Lucas Giolito (2-1, 4.86 ERA, 1.74 WHIP), and Cincy is the road favorite at a near-even number - exactly the SP-edge spot. My fair price is shorter than -117, so positive expected CLV. Under 7.5 at Petco supports the same thesis. Risk: Burns is a rookie who can run up pitch counts; bullpen unworked -> capped at B. Late game (9:40). Price to beat -117 DK / Padres -103, total 7.5."
+   "note": "Radar lean (Path A, fundamental SP edge) - the cleanest starter gap on the board. Chase Burns (7-1, 2.05 ERA, 0.95 WHIP, 10.4 K9) is roughly a run-and-a-half better than Lucas Giolito (2-1, 4.86 ERA, 1.74 WHIP), and Cincy is the road favorite at a near-even number - exactly the SP-edge spot. My fair price is shorter than -117, so positive expected CLV. Under 7.5 at Petco supports the same thesis. Note: latest live SAO splits correct Cincinnati to ~78% tickets / 75% money (public chalk, NO sharp tell) - this is a clean Path A SP-edge read, not contrarian. Risk: Burns is a rookie who can run up pitch counts; bullpen unworked -> capped at B. HELD: today is already at the 4-pick daily cap (Yankees, Pirates, Red Sox U7.5, Marlins logged) - radar-only, not queued. Price to beat -117 DK / Padres -103, total 7.5."
   },
   {
    "id": "wl-20260609-012",
@@ -2744,7 +2808,7 @@ select:focus{outline:none;border-color:var(--blue)}
    "odds": "-101",
    "grade": "B",
    "time": "9:45 PM ET",
-   "note": "Radar lean (Path A SP edge + Path B contrarian confirm). Andrew Alvarez (3.54 ERA, 1.23 WHIP) is the better arm tonight over Adrian Houser (5.49 ERA, 1.58 WHIP) - a clear starter gap, and Washington sits at pick'em (-101). On top of the fundamental edge: sharp/contrarian tell - 40% money on just 27% tickets (+13pt) AND reverse line movement (Giants -126 -> -120) drifting toward the minority WSH side. My fair price is shorter than the price taken -> positive expected CLV. Late game (9:45, T~170m) so off-window for now; promote inside 90 min if the number holds. Shop best WSH price; DK near pick'em."
+   "note": "Radar lean (Path A, fundamental SP edge). Andrew Alvarez (3.54 ERA, 1.23 WHIP) is the better arm tonight over Adrian Houser (5.49 ERA, 1.58 WHIP) - a clear starter gap, with Washington near pick'em. Latest authoritative live SAO splits REVISE the earlier read: WSH is ~53% tickets / 57% money - NOT a public minority, so the prior contrarian tell is withdrawn. What remains: thin value on a mild money tilt plus reverse line movement toward Washington (Giants favorite softening, DK -120 / FD -112). Edge is thin and bullpen unworked -> capped at B. HELD: today is already at the 4-pick daily cap - radar-only, not queued. Shop best WSH price; DK near pick'em."
   }
  ],
  "_ga_marker": "ga_deep_20260609_193700",
@@ -2983,8 +3047,7 @@ select:focus{outline:none;border-color:var(--blue)}
    "trendAngle": "mirror of real pick (no vetted same-day trend stacks with own-number to add an extra play)"
   }
  ]
-}
-</script>
+}</script>
 <script>
 var DATA;
 try{DATA=JSON.parse(document.getElementById("betdata").textContent);}
