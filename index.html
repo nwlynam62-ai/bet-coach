@@ -157,7 +157,7 @@ input:focus{outline:none;border-color:var(--blue)}
 .spot-right{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:2px}
 .spot-stake{font-size:12px;font-weight:800;color:var(--green)}
 .spot-row .grade{width:24px;height:24px;font-size:12px;border-radius:6px}
-.stars{position:relative;display:inline-block;font-size:11px;line-height:1;letter-spacing:1px}
+.stars{position:relative;display:inline-block;font-size:11px;line-height:1;letter-spacing:1px}.conf{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:2px 9px;border-radius:20px;border:1px solid var(--border);color:var(--muted);background:var(--card2);vertical-align:middle;white-space:nowrap}.conf .cdot{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block}.conf.high{color:#54d28a;border-color:rgba(84,210,138,.4)}.conf.med{color:var(--gold);border-color:rgba(212,175,55,.4)}.conf.low{color:var(--muted)}
 .stars .base{color:var(--faint)}
 .stars .fill{position:absolute;left:0;top:0;color:var(--gold);overflow:hidden;white-space:nowrap}
 
@@ -3150,9 +3150,9 @@ function renderHeader(){
 var s=computeStats();
 document.getElementById("hdrPills").innerHTML=
 pill("Bankroll",fmtMoney(s.bankroll),s.pl>=0?"pos":"neg")+
-pill("Net P/L",fmtUnits(s.units),s.units>=0?"pos":"neg")+
-pill("Record",s.w+"-"+s.l+(s.p?"-"+s.p:""),"neu")+
-pill("Win Rate",s.total?fmtPct(s.winRate):"--","neu");
+pill("ROI",s.total?fmtPct(s.roi):"—",s.total?(s.roi>=0?"pos":"neg"):"neu")+
+pill("CLV","—","neu")+
+pill("Record",s.w+"-"+s.l+(s.p?"-"+s.p:""),"neu");
 }
 function pill(k,v,c){return '<div class="pill"><div class="lbl">'+k+'</div><div class="val '+c+'">'+v+'</div></div>';}
 function renderMiniStats(){
@@ -3235,8 +3235,9 @@ if(g.indexOf("+")>0)base+=0.5;else if(g.indexOf("-")>0)base-=0.5;
 return Math.max(0.5,Math.min(5,base));
 }
 function starHTML(r){
-var pct=(r/5*100).toFixed(1);
-return '<span class="stars" title="'+r+' / 5 stars"><span class="base">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="fill" style="width:'+pct+'%">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span>';
+var lvl=r>=4?'high':(r>=3?'med':'low');
+var lab=r>=4?'High':(r>=3?'Medium':'Lower');
+return '<span class="conf '+lvl+'"><i class="cdot"></i>'+lab+' confidence</span>';
 }
 function hlMatchGame(hl){
   var txt=String(hl.headline||"")+" "+String(hl.story||"");
