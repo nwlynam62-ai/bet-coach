@@ -200,7 +200,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,th:focus-visible{outlin
 </style></head><body>
 <div id="app">
 <aside id="side">
-  <div class="brand"><div class="bx">V</div><div class="bt">BET COACH<small>VOLT // PREVIEW</small></div></div>
+  <div class="brand"><div class="bx">V</div><div class="bt">BET COACH<small>VOLT</small></div></div>
   <div class="snav" id="snav">
     <button data-pg="dash" class="on"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="5"/><rect x="13" y="10" width="8" height="11"/><rect x="3" y="13" width="8" height="8"/></svg>Dashboard</button>
     <button data-pg="board"><svg viewBox="0 0 24 24"><path d="M3 5h18M3 12h18M3 19h12"/></svg>The Board</button>
@@ -211,7 +211,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,th:focus-visible{outlin
     <button onclick="location.href='worldcup.html'" style="color:var(--amber)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7l3.5 2.5-1.3 4.1h-4.4L8.5 9.5z"/></svg>World Cup</button>
   </div>
   <div class="sfoot" id="sfoot"></div>
-  <a href="fantasy.html" aria-label="?" style="text-decoration:none;font-size:11px;opacity:.35;transition:opacity .4s;padding:4px 8px" onmouseover="this.style.opacity=.85" onmouseout="this.style.opacity=.35" ontouchstart="this.style.opacity=.85">&#127944;</a>
 </aside>
 <div>
   <div id="ticker"><div class="tk" id="tk"></div></div>
@@ -299,11 +298,11 @@ button:focus-visible,a:focus-visible,input:focus-visible,th:focus-visible{outlin
       <button class="vbtn" id="saveBtn">Save</button>
       <button class="vbtn gh" id="expBtn">Export picks CSV</button>
       <div class="okmsg" id="sMsg"></div>
-      <div class="note">Settings store locally in your browser. Record math uses flat 1u per pick. Paper-money validation phase — the cap is 0–3 picks a day and every pick must trace to a fire rule.</div>
+      <div class="note">Settings store locally in your browser. Record math uses flat 1u per pick. Paper-money validation phase — only high-conviction plays fire — no daily count cap — and every pick traces to a fire rule.</div>
     </div>
     <div class="cell" style="max-width:640px;margin-top:14px">
       <h3 class="bh">Side Rooms</h3>
-      <div class="rowline"><a href="fantasy.html" style="color:var(--volt);font:600 16px var(--disp);letter-spacing:.04em">&#127944; FANTASY CORNER</a><span class="ksub" style="margin-left:10px">WFL draft intel · also hides behind the faint &#127944; at the bottom of the sidebar</span></div>
+      <div class="rowline"><a href="fantasy.html" style="color:var(--volt);font:600 16px var(--disp);letter-spacing:.04em">&#127944; FANTASY CORNER</a><span class="ksub" style="margin-left:10px">WFL draft intel</span></div>
       <div class="rowline"><a href="worldcup.html" style="color:var(--amber);font:600 16px var(--disp);letter-spacing:.04em">&#9917; WORLD CUP HUB</a><span class="ksub" style="margin-left:10px">groups, fixtures, 3-way boards</span></div>
     </div>
   </section>
@@ -3892,7 +3891,7 @@ function showPage(id){
   var mlRec=(rec.byType&&rec.byType.ML)?rec.byType.ML.record:"—";
   document.getElementById("sysBox").innerHTML=
     '<div class="kv"><span class="k">BOARD</span><span class="v">'+((DATA.games||[]).length)+' games live</span></div>'+
-    '<div class="kv"><span class="k">QUEUED TODAY</span><span class="v">'+(pending.length? pending.length+' pending':'none yet · cap 0–3/day')+'</span></div>'+
+    '<div class="kv"><span class="k">QUEUED TODAY</span><span class="v">'+(pending.length? pending.length+' pending':'none yet · high-conviction')+'</span></div>'+
     '<div class="kv"><span class="k">ML RECORD</span><span class="v">'+esc(mlRec)+'</span></div>'+
     '<div class="kv"><span class="k">CLV CAPTURE</span><span class="v">'+esc(String(clv.status||"—").split(" ")[0])+'</span></div>'+
     '<div class="kv"><span class="k">LINES</span><span class="v">'+esc(String(DATA.linesSource||"").split(" ")[0]||"—")+'</span></div>';
