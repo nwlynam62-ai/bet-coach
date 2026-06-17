@@ -4,21 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fantasy Corner — Bet Coach</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0a0a;--panel:#111;--card:#1a1a1a;--border:#333;--fg:#e6e6e6;--text:#d4d4d4;--muted:#888;--faint:#555;--gold:#d4af37;--red:#c0392b}
+:root{--bg:#F4F6FA;--panel:#FFFFFF;--card:#FFFFFF;--card2:#EEF2F8;--border:#E5E9F0;--fg:#111722;--text:#1F2A3A;--muted:#5A6573;--faint:#8A93A2;--gold:#1F3A8A;--win:#0E8A57;--red:#C8323F}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.55}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.55}
 header{background:var(--panel);border-bottom:1px solid var(--border);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px;color:var(--fg)}
-.mark{width:30px;height:30px;border-radius:8px;background:var(--gold);color:#000;display:flex;align-items:center;justify-content:center;font-weight:900}
+.mark{width:30px;height:30px;border-radius:8px;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900}
 .logo small{display:block;font-size:9.5px;letter-spacing:1.6px;color:var(--muted);font-weight:700}
 .back{color:var(--gold);text-decoration:none;font-size:12.5px;font-weight:700;border:1px solid var(--border);border-radius:20px;padding:6px 14px;min-height:24px}
 .back:hover{border-color:var(--gold)}
 main{max-width:780px;margin:0 auto;padding:18px 16px 60px}
-.hero{background:linear-gradient(135deg,var(--card),#141414);border:1px solid var(--border);border-radius:13px;padding:22px 18px;margin-bottom:16px}
+.hero{background:linear-gradient(135deg,var(--card),#EEF2F8);border:1px solid var(--border);border-radius:13px;padding:22px 18px;margin-bottom:16px}
 .hero h1{font-size:21px;color:var(--fg);margin-bottom:8px}
 .hero p{font-size:13.5px;color:var(--muted)}
-.hero .tag{display:inline-block;background:rgba(212,175,55,.12);color:var(--gold);font-size:10.5px;font-weight:800;letter-spacing:1.2px;border-radius:4px;padding:3px 8px;margin-bottom:10px;text-transform:uppercase}
+.hero .tag{display:inline-block;background:rgba(31,58,138,.12);color:var(--gold);font-size:10.5px;font-weight:800;letter-spacing:1.2px;border-radius:4px;padding:3px 8px;margin-bottom:10px;text-transform:uppercase}
 .sec{font-size:12.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);margin:18px 0 9px;font-weight:700}
 .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:10px}
 .card h3{font-size:14.5px;color:var(--fg);margin-bottom:6px}
@@ -27,28 +28,28 @@ main{max-width:780px;margin:0 auto;padding:18px 16px 60px}
 .muted{color:var(--muted)}.small{font-size:11.5px}
 table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
 th{font-size:10.5px;text-transform:uppercase;letter-spacing:1px;color:var(--faint);text-align:left;padding:6px 8px;border-bottom:1px solid var(--border)}
-td{padding:8px;border-bottom:1px solid #222;font-variant-numeric:tabular-nums}
+td{padding:8px;border-bottom:1px solid #E5E9F0;font-variant-numeric:tabular-nums}
 .hi{color:var(--gold);font-weight:700}
 .lo{color:var(--red);font-weight:700}
 .roadmap li{font-size:13px;margin:0 0 8px 18px}
 .roadmap b{color:var(--fg)}
 footer{text-align:center;font-size:11px;color:var(--faint);padding:20px;border-top:1px solid var(--border)}
 .tiers{display:flex;flex-direction:column;gap:8px;margin-top:10px}
-.tier{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;background:#151515;border:1px solid #262626;border-radius:10px;padding:10px}
+.tier{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;background:#F7F9FC;border:1px solid #E5E9F0;border-radius:10px;padding:10px}
 .tval{min-width:64px;min-height:24px;font-weight:800;font-size:14px;color:var(--fg);font-variant-numeric:tabular-nums}
 .tteams{flex:1;display:flex;flex-wrap:wrap;gap:6px;min-width:200px}
-.chip{background:#222;border:1px solid #3a3a3a;border-radius:14px;padding:4px 10px;font-size:12px;color:var(--text);min-height:24px;display:inline-flex;align-items:center;gap:4px}
+.chip{background:#EFF2F7;border:1px solid #D7DDE7;border-radius:14px;padding:4px 10px;font-size:12px;color:var(--text);min-height:24px;display:inline-flex;align-items:center;gap:4px}
 .chip.split{border-style:dashed;border-color:var(--gold);color:var(--gold)}
 .chip small{font-size:9.5px;color:var(--muted)}
 .tnote{flex-basis:100%;font-size:11px;color:var(--muted);margin-top:2px}
 .pos{font-size:10px;color:var(--muted);font-weight:600;margin-left:4px;white-space:nowrap}
-.pl{padding:8px 0;border-bottom:1px solid #222;font-size:12.5px;color:var(--text)}
+.pl{padding:8px 0;border-bottom:1px solid #E5E9F0;font-size:12.5px;color:var(--text)}
 .pl:last-child{border-bottom:0}
 .pname{display:block;font-weight:800;font-size:13px;margin-bottom:2px}
 .lede{font-size:12.5px;color:var(--muted);margin-bottom:6px}
-.qr{padding:8px 0;border-bottom:1px solid #222;font-size:12.5px}
+.qr{padding:8px 0;border-bottom:1px solid #E5E9F0;font-size:12.5px}
 .qr:last-of-type{border-bottom:0}
-.qround{display:inline-block;background:rgba(212,175,55,.12);color:var(--gold);font-weight:800;font-size:10.5px;border-radius:4px;padding:3px 8px;margin-right:6px;min-height:24px;line-height:18px}
+.qround{display:inline-block;background:rgba(31,58,138,.12);color:var(--gold);font-weight:800;font-size:10.5px;border-radius:4px;padding:3px 8px;margin-right:6px;min-height:24px;line-height:18px}
 td .pos{display:block;margin-left:0}
 html{scroll-behavior:smooth}
 .sec{scroll-margin-top:70px}
@@ -57,26 +58,26 @@ html{scroll-behavior:smooth}
 .menu summary::-webkit-details-marker{display:none}
 .menu summary::after{content:' \25BE';font-size:10px}
 .menu[open] summary{border-color:var(--gold)}
-.mpanel{position:absolute;right:0;top:calc(100% + 8px);background:var(--card);border:1px solid var(--border);border-radius:12px;min-width:230px;z-index:50;box-shadow:0 10px 28px rgba(0,0,0,.55);padding:6px}
+.mpanel{position:absolute;right:0;top:calc(100% + 8px);background:var(--card);border:1px solid var(--border);border-radius:12px;min-width:230px;z-index:50;box-shadow:0 10px 28px rgba(17,23,34,.14);padding:6px}
 .mpanel a{display:block;padding:11px 13px;color:var(--text);text-decoration:none;font-size:13px;border-radius:8px;min-height:24px}
-.mpanel a:hover{background:#222;color:var(--gold)}
+.mpanel a:hover{background:#EFF2F7;color:var(--gold)}
 .ptabs{display:flex;gap:6px;margin:10px 0 4px;flex-wrap:wrap}
-.ptab{background:#222;border:1px solid #3a3a3a;color:var(--text);border-radius:8px;padding:7px 16px;font-size:13px;font-weight:700;cursor:pointer;min-height:30px}
-.ptab.active{background:rgba(212,175,55,.15);border-color:var(--gold);color:var(--gold)}
+.ptab{background:#EFF2F7;border:1px solid #D7DDE7;color:var(--text);border-radius:8px;padding:7px 16px;font-size:13px;font-weight:700;cursor:pointer;min-height:30px}
+.ptab.active{background:rgba(31,58,138,.15);border-color:var(--gold);color:var(--gold)}
 .mv{font-weight:800;font-size:11.5px;white-space:nowrap}
-.mv.up{color:#3fb46a}
+.mv.up{color:#0E8A57}
 .mv.dn{color:var(--red)}
 .mv.flat{color:var(--faint)}
 @media(max-width:480px){.hero h1{font-size:18px}main{padding:14px 12px 50px}}
-.tierbreak td{background:#141414;border-bottom:1px solid var(--border);padding:6px 8px;font-size:10px;letter-spacing:1px;text-transform:uppercase}.tierbreak b{color:var(--gold);font-weight:800}.tierbreak span{color:var(--muted);font-weight:600;text-transform:none;letter-spacing:0;margin-left:6px}
-.secnav{position:sticky;top:0;z-index:40;display:flex;gap:6px;overflow-x:auto;padding:9px 14px;background:rgba(14,17,22,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);scrollbar-width:none}.secnav::-webkit-scrollbar{display:none}.secnav a{flex:0 0 auto;font-size:12.5px;font-weight:600;color:var(--muted);padding:6px 12px;border-radius:8px;white-space:nowrap;text-decoration:none;border:1px solid transparent;transition:.12s}.secnav a:hover{color:var(--fg);background:var(--card2)}.secnav a.active{color:var(--gold);background:rgba(212,175,55,.12);border-color:rgba(212,175,55,.32)}:target{scroll-margin-top:64px}</style>
+.tierbreak td{background:#EEF2F8;border-bottom:1px solid var(--border);padding:6px 8px;font-size:10px;letter-spacing:1px;text-transform:uppercase}.tierbreak b{color:var(--gold);font-weight:800}.tierbreak span{color:var(--muted);font-weight:600;text-transform:none;letter-spacing:0;margin-left:6px}
+.secnav{position:sticky;top:0;z-index:40;display:flex;gap:6px;overflow-x:auto;padding:9px 14px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);scrollbar-width:none}.secnav::-webkit-scrollbar{display:none}.secnav a{flex:0 0 auto;font-size:12.5px;font-weight:600;color:var(--muted);padding:6px 12px;border-radius:8px;white-space:nowrap;text-decoration:none;border:1px solid transparent;transition:.12s}.secnav a:hover{color:var(--fg);background:#EEF2F8}.secnav a.active{color:var(--gold);background:rgba(31,58,138,.12);border-color:rgba(31,58,138,.32)}:target{scroll-margin-top:64px}.grd-ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.grd-ctrl select,.grd-ctrl input{background:#F7F9FC;border:1px solid #D7DDE7;border-radius:8px;color:var(--fg);font-size:13px;padding:8px 10px;min-height:36px}.grd-ctrl select{flex:1 1 150px}.grd-ctrl input{flex:0 0 96px;font-variant-numeric:tabular-nums}.grd-btn{background:var(--gold);color:#fff;border:none;border-radius:8px;font-weight:800;font-size:13px;padding:8px 14px;min-height:36px;cursor:pointer;flex:0 0 auto}.grd-btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--border);font-weight:600}.grd-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:#F7F9FC;border:1px solid #E5E9F0;border-radius:10px;padding:8px 10px;margin-bottom:6px;font-size:12.5px}.grd-row .nm{font-weight:700;color:var(--fg);flex:1 1 120px}.grd-row .dl{font-weight:800;font-variant-numeric:tabular-nums;min-width:48px;text-align:right}.grd-row .tag{font-size:9.5px;font-weight:800;letter-spacing:.6px;border-radius:4px;padding:2px 6px;text-transform:uppercase}.grd-row .x{color:var(--faint);cursor:pointer;font-weight:800;padding:2px 8px;min-height:24px}.grd-row .x:hover{color:var(--red)}.grd-grade{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,var(--card),#EEF2F8);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-top:10px}.grd-letter{font-size:38px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}.grd-sum{font-size:12px;color:var(--muted)}.grd-sum b{color:var(--fg)}.grd-empty{font-size:12px;color:var(--faint);padding:8px 0}</style>
 </head>
 <body>
 <header>
 <div class="logo"><div class="mark">F</div><div>FANTASY CORNER<small>by Bet Coach</small></div></div>
 <a class="back" href="index.html">&larr; Back to the Board</a>
 </header>
-<nav class="secnav" id="secnav"><a href="#warroom">War Room</a><a href="#cbs">CBS Room</a><a href="#survival">Survival</a><a href="#wfl">WFL Lens</a><a href="#guardrails">Guardrails</a><a href="#tiers">Win Tiers</a><a href="#board">ADP vs Vegas</a><a href="#movers">Movers</a><a href="#sleepers">Sleepers</a><a href="#landmines">Landmines</a><a href="#positions">Positions</a><a href="#vona">VONA</a><a href="#stacks">Stacks</a><a href="#quick">Quick Sheet</a></nav>
+<nav class="secnav" id="secnav"><a href="#warroom">War Room</a><a href="#cbs">CBS Room</a><a href="#survival">Survival</a><a href="#wfl">WFL Lens</a><a href="#guardrails">Guardrails</a><a href="#tiers">Win Tiers</a><a href="#board">ADP vs Vegas</a><a href="#movers">Movers</a><a href="#sleepers">Sleepers</a><a href="#landmines">Landmines</a><a href="#positions">Positions</a><a href="#vona">VONA</a><a href="#stacks">Stacks</a><a href="#grader">Grade</a><a href="#quick">Quick Sheet</a></nav>
 <main>
 <div class="hero">
 <span class="tag">2026 Draft Prep &middot; June Edition &middot; Live</span>
@@ -298,6 +299,20 @@ html{scroll-behavior:smooth}
 <p class="small muted" style="margin-top:8px">Stacking concept: Establish The Run + Underdog Network best-ball research (fetched Jun 9, 2026). Redraft-value caveat: PlayerProfiler + FanDuel Research. ADP: Underdog via FantasyPros + BestBallTeamBuilder (Jun 3&ndash;5). Win totals: DraftKings + bet365 (board above). Numbers move weekly &mdash; refreshed on later builds.</p>
 </div>
 
+<div class="sec" id="grader">Draft report card &mdash; grade the value you left on the table</div>
+<div class="card">
+<p class="lede">The market-powered version of a post-draft analyzer: add the players you drafted and the overall pick you spent on each. Every pick is scored against its <b>consensus ADP</b> &mdash; took him later than the market? That value is banked. Reached ahead of it? That value is paid out. The grade is your roster's market efficiency.</p>
+<div class="grd-ctrl">
+<select id="grdSel" aria-label="Player drafted"></select>
+<input id="grdPick" type="number" min="1" max="240" inputmode="numeric" placeholder="Pick #" aria-label="Overall pick used">
+<button class="grd-btn" id="grdAdd" type="button">Add</button>
+</div>
+<div id="grdList"></div>
+<div id="grdOut"></div>
+<div class="grd-ctrl" style="margin-top:4px"><button class="grd-btn ghost" id="grdClear" type="button">Clear all</button></div>
+<p class="small muted" style="margin-top:8px">Scored off the consensus board above (Underdog best-ball ADP &mdash; Sharp Football + BestBallTeamBuilder, as of Jun 16 2026). Value vs ADP measures market <em>efficiency</em>, not ceiling &mdash; the right reach still wins leagues. This is a self-check: it ignores what the other 11 managers took, so it is not a live draft sim.</p>
+</div>
+
 <div class="sec" id="quick">Draft-day quick sheet</div>
 <div class="card">
 <p class="lede">The market's round-by-round leans, condensed (12-team, Underdog):</p>
@@ -323,6 +338,7 @@ html{scroll-behavior:smooth}
 <li><b>Market movers</b> &mdash; <span class="hi">shipped above</span>: this week's ADP risers &amp; fallers (Sleeper draftboard-momentum UX), each filtered through whether the team's win total backs the move. Refreshed weekly as ADP shifts.</li>
 <li><b>A.J. Brown &rarr; NE on the board</b> &mdash; <span class="hi">shipped Jun 11</span>: added at Underdog ADP 22.5 / WR8 (2-sourced) after the Jun 1 trade; PHI stack note + board footnote updated.</li><li><b>Market stacks</b> &mdash; <span class="hi">shipped above</span>: the high-win-total offenses worth stacking, filtered to where the secondary pieces are still cheap (Establish The Run / Underdog correlation research, made redraft-honest).</li>
 <li><b>Draft-day war room</b> &mdash; <span class="hi">shipped above</span>: the whole page condensed to one keep-open screen (cliffs / buys / fades / stacks / roster shape), each row linking to its full section &mdash; the printable draft-day one-pager UX, market-powered.</li>
+<li><b>Draft report card</b> &mdash; <span class="hi">shipped above</span>: the post-draft analyzer idea, market-powered &mdash; add your picks, each is scored reach/value vs consensus ADP and the roster gets a market-efficiency grade (the FantasyPros Draft Analyzer "value at your slot" view, run on market data instead of staff ranks).</li>
 </ul>
 </div>
 
@@ -332,5 +348,29 @@ html{scroll-behavior:smooth}
 <script>document.querySelectorAll(".mpanel a").forEach(function(a){a.addEventListener("click",function(){document.querySelector(".menu").removeAttribute("open");});});</script>
 <script>var FC_POS_SNAPSHOT = {"asOf": "2026-06-16", "board": {"QB": [{"r": 1, "n": "Josh Allen", "t": "BUF", "a": 32.1}, {"r": 2, "n": "Lamar Jackson", "t": "BAL", "a": 56.1}, {"r": 3, "n": "Joe Burrow", "t": "CIN", "a": 64.6}, {"r": 4, "n": "Jayden Daniels", "t": "WAS", "a": 66.7}, {"r": 5, "n": "Drake Maye", "t": "NE", "a": 70.1}, {"r": 6, "n": "Caleb Williams", "t": "CHI", "a": 70.4}, {"r": 7, "n": "Jalen Hurts", "t": "PHI", "a": 70.7}, {"r": 8, "n": "Dak Prescott", "t": "DAL", "a": 79.0}, {"r": 9, "n": "Justin Herbert", "t": "LAC", "a": 82.1}, {"r": 10, "n": "Trevor Lawrence", "t": "JAX", "a": 86.1}, {"r": 11, "n": "Patrick Mahomes", "t": "KC", "a": 90.1}, {"r": 12, "n": "Jaxson Dart", "t": "NYG", "a": 95.0}], "RB": [{"r": 1, "n": "Jahmyr Gibbs", "t": "DET", "a": 1.4}, {"r": 2, "n": "Bijan Robinson", "t": "ATL", "a": 1.7}, {"r": 3, "n": "Jonathan Taylor", "t": "IND", "a": 6.9}, {"r": 4, "n": "Christian McCaffrey", "t": "SF", "a": 7.3}, {"r": 5, "n": "Ashton Jeanty", "t": "LV", "a": 11.2}, {"r": 6, "n": "James Cook", "t": "BUF", "a": 11.3}, {"r": 7, "n": "Saquon Barkley", "t": "PHI", "a": 14.0}, {"r": 8, "n": "De'Von Achane", "t": "MIA", "a": 14.8}, {"r": 9, "n": "Omarion Hampton", "t": "LAC", "a": 15.7}, {"r": 10, "n": "Kenneth Walker III", "t": "KC", "a": 16.5}, {"r": 11, "n": "Chase Brown", "t": "CIN", "a": 17.3}, {"r": 12, "n": "Derrick Henry", "t": "BAL", "a": 17.4}, {"r": 13, "n": "Jeremiyah Love", "t": "ARI", "a": 22.7}, {"r": 14, "n": "Breece Hall", "t": "NYJ", "a": 27.2}, {"r": 15, "n": "Travis Etienne Jr.", "t": "NO", "a": 29.4}, {"r": 16, "n": "Kyren Williams", "t": "LAR", "a": 32.8}, {"r": 17, "n": "Javonte Williams", "t": "DAL", "a": 35.3}, {"r": 18, "n": "Josh Jacobs", "t": "GB", "a": 36.2}, {"r": 19, "n": "Cam Skattebo", "t": "NYG", "a": 43.2}, {"r": 20, "n": "TreVeyon Henderson", "t": "NE", "a": 49.2}], "WR": [{"r": 1, "n": "Ja'Marr Chase", "t": "CIN", "a": 3.1}, {"r": 2, "n": "Puka Nacua", "t": "LAR", "a": 4.1}, {"r": 3, "n": "Jaxon Smith-Njigba", "t": "SEA", "a": 5.2}, {"r": 4, "n": "Amon-Ra St. Brown", "t": "DET", "a": 7.7}, {"r": 5, "n": "CeeDee Lamb", "t": "DAL", "a": 9.5}, {"r": 6, "n": "Justin Jefferson", "t": "MIN", "a": 9.8}, {"r": 7, "n": "Drake London", "t": "ATL", "a": 18.8}, {"r": 8, "n": "Nico Collins", "t": "HOU", "a": 22.8}, {"r": 9, "n": "George Pickens", "t": "DAL", "a": 23.1}, {"r": 10, "n": "A.J. Brown", "t": "NE", "a": 23.3}, {"r": 11, "n": "Malik Nabers", "t": "NYG", "a": 28.1}, {"r": 12, "n": "Rashee Rice", "t": "KC", "a": 29.7}, {"r": 13, "n": "DeVonta Smith", "t": "PHI", "a": 29.9}, {"r": 14, "n": "Chris Olave", "t": "NO", "a": 30.1}, {"r": 15, "n": "Zay Flowers", "t": "BAL", "a": 34.8}, {"r": 16, "n": "Tee Higgins", "t": "CIN", "a": 34.9}, {"r": 17, "n": "Tetairoa McMillan", "t": "CAR", "a": 38.1}, {"r": 18, "n": "Ladd McConkey", "t": "LAC", "a": 38.4}, {"r": 19, "n": "Garrett Wilson", "t": "NYJ", "a": 39.2}, {"r": 20, "n": "Emeka Egbuka", "t": "TB", "a": 39.5}, {"r": 21, "n": "Luther Burden", "t": "CHI", "a": 42.5}], "TE": [{"r": 1, "n": "Brock Bowers", "t": "LV", "a": 19.9}, {"r": 2, "n": "Trey McBride", "t": "ARI", "a": 26.0}, {"r": 3, "n": "Colston Loveland", "t": "CHI", "a": 46.0}, {"r": 4, "n": "Tyler Warren", "t": "IND", "a": 66.2}, {"r": 5, "n": "Tucker Kraft", "t": "GB", "a": 81.7}, {"r": 6, "n": "Harold Fannin", "t": "CLE", "a": 97.2}, {"r": 7, "n": "Sam LaPorta", "t": "DET", "a": 97.2}, {"r": 8, "n": "Kyle Pitts", "t": "ATL", "a": 105.4}, {"r": 9, "n": "George Kittle", "t": "SF", "a": 117.3}, {"r": 10, "n": "Travis Kelce", "t": "KC", "a": 120.7}]}};document.querySelectorAll(".ptab").forEach(function(b){b.addEventListener("click",function(){document.querySelectorAll(".ptab").forEach(function(x){x.classList.remove("active");});document.querySelectorAll(".ppanel").forEach(function(p){p.style.display="none";});b.classList.add("active");document.getElementById("panel-"+b.getAttribute("data-pos")).style.display="";});});</script>
 <script>(function(){var L=[].slice.call(document.querySelectorAll('.secnav a[href^="#"]'));function go(id){var s=document.getElementById(id);if(s)s.scrollIntoView({behavior:"smooth",block:"start"});}L.forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();var id=a.getAttribute("href").slice(1);if(history.replaceState)history.replaceState(null,"","#"+id);go(id);});});if(location.hash.length>1){var hid=location.hash.slice(1);setTimeout(function(){go(hid);},450);setTimeout(function(){go(hid);},1300);}var M={};L.forEach(function(a){var id=a.getAttribute("href").slice(1);var s=document.getElementById(id);if(s)M[id]=a;});var ids=Object.keys(M);if(ids.length&&"IntersectionObserver"in window){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){L.forEach(function(a){a.classList.remove("active");});if(M[e.target.id])M[e.target.id].classList.add("active");}});},{rootMargin:"-55px 0px -75% 0px",threshold:0});ids.forEach(function(id){o.observe(document.getElementById(id));});}})();</script>
+<script>(function(){
+var SNAP=window.FC_POS_SNAPSHOT||{board:{}};var b=SNAP.board||{};var pool=[];
+["QB","RB","WR","TE"].forEach(function(pos){(b[pos]||[]).forEach(function(p){pool.push({n:p.n,t:p.t,pos:pos,rk:p.r,a:p.a});});});
+pool.sort(function(x,y){return x.a-y.a;});
+var sel=document.getElementById("grdSel");
+if(sel){["QB","RB","WR","TE"].forEach(function(pos){var g=document.createElement("optgroup");g.label=pos;
+pool.filter(function(p){return p.pos===pos;}).forEach(function(p){var o=document.createElement("option");o.value=p.n;o.textContent=p.n+" ("+pos+p.rk+", ADP "+p.a+")";g.appendChild(o);});sel.appendChild(g);});}
+var picks=[];
+function find(n){for(var i=0;i<pool.length;i++){if(pool[i].n===n)return pool[i];}return null;}
+function tagFor(d){if(d>=8)return["STEAL","#0E8A57"];if(d>=2)return["VALUE","var(--gold)"];if(d>=-2)return["FAIR","var(--muted)"];return["REACH","var(--red)"];}
+function gradeFor(a){if(a>=6)return["A+","#0E8A57"];if(a>=4)return["A","#0E8A57"];if(a>=2)return["A-","#6ab46a"];if(a>=0.75)return["B+","var(--gold)"];if(a>=-0.75)return["B","var(--gold)"];if(a>=-2.5)return["B-","var(--gold)"];if(a>=-4.5)return["C+","#c9a24a"];if(a>=-7)return["C","var(--red)"];return["D","var(--red)"];}
+function render(){var list=document.getElementById("grdList");var out=document.getElementById("grdOut");if(!list||!out)return;
+if(!picks.length){list.innerHTML='<div class="grd-empty">No picks yet &mdash; add a player and the overall pick you spent.</div>';out.innerHTML="";return;}
+var html="";var tot=0;var cnt={QB:0,RB:0,WR:0,TE:0};
+picks.forEach(function(pk,i){var p=pk.p;var d=Math.round((p.a-pk.pick)*10)/10;tot+=d;cnt[p.pos]=(cnt[p.pos]||0)+1;var tg=tagFor(d);var sign=d>0?"+":"";var dcol=d>=2?"var(--gold)":(d<=-2?"var(--red)":"var(--muted)");
+html+='<div class="grd-row"><span class="nm">'+p.n+' <span class="pos">'+p.pos+p.rk+'</span></span>'+'<span class="muted small">ADP '+p.a+' &middot; you '+pk.pick+'</span>'+'<span class="tag" style="color:'+tg[1]+';background:rgba(255,255,255,.05)">'+tg[0]+'</span>'+'<span class="dl" style="color:'+dcol+'">'+sign+d+'</span>'+'<span class="x" data-i="'+i+'">&times;</span></div>';});
+list.innerHTML=html;var n=picks.length;var avg=Math.round((tot/n)*10)/10;var gr=gradeFor(avg);var stot=(tot>0?"+":"")+Math.round(tot*10)/10;
+var shape=[];["RB","WR","QB","TE"].forEach(function(po){if(cnt[po])shape.push(cnt[po]+" "+po);});
+var note="";if(n>=4&&!cnt.RB)note="Zero RB through "+n+" picks &mdash; thin at the position that breaks first.";else if(n>=4&&!cnt.WR)note="Zero WR through "+n+" picks &mdash; light on the deepest position.";else if(cnt.QB>1)note="Two QBs already &mdash; that is a one-starter spot in redraft.";else if(cnt.TE>1)note="Two TEs already &mdash; that is a one-starter spot in redraft.";else note="Build so far: "+shape.join(" / ")+".";
+out.innerHTML='<div class="grd-grade"><div class="grd-letter" style="color:'+gr[1]+'">'+gr[0]+'</div>'+'<div class="grd-sum"><b>'+stot+' picks</b> of value vs the market across '+n+' selection'+(n>1?"s":"")+' (avg '+(avg>0?"+":"")+avg+'/pick).<br>'+note+'</div></div>';}
+var addBtn=document.getElementById("grdAdd");if(addBtn)addBtn.addEventListener("click",function(){var nm=sel?sel.value:"";var pi=document.getElementById("grdPick");var pkv=pi?parseInt(pi.value,10):0;if(!nm||!pkv||pkv<1)return;var p=find(nm);if(!p)return;if(picks.some(function(x){return x.p.n===nm;}))return;picks.push({p:p,pick:pkv});if(pi)pi.value="";render();});
+var listEl=document.getElementById("grdList");if(listEl)listEl.addEventListener("click",function(e){var t=e.target;if(t&&t.className==="x"){var i=parseInt(t.getAttribute("data-i"),10);if(!isNaN(i)){picks.splice(i,1);render();}}});
+var clr=document.getElementById("grdClear");if(clr)clr.addEventListener("click",function(){picks=[];render();});
+render();})();</script>
 </body>
 </html>

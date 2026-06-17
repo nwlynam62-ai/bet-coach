@@ -4,22 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>World Cup 2026 — Bet Coach</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0a0a;--panel:#111;--card:#1a1a1a;--border:#333;--fg:#e6e6e6;--text:#d4d4d4;--muted:#888;--faint:#555;--gold:#d4af37;--red:#c0392b}
+:root{--bg:#F4F6FA;--panel:#FFFFFF;--card:#FFFFFF;--card2:#EEF2F8;--border:#E5E9F0;--fg:#111722;--text:#1F2A3A;--muted:#5A6573;--faint:#8A93A2;--gold:#1F3A8A;--win:#0E8A57;--red:#C8323F}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.55}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.55}
 header{background:var(--panel);border-bottom:1px solid var(--border);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px;color:var(--fg)}
-.mark{width:30px;height:30px;border-radius:8px;background:var(--gold);color:#000;display:flex;align-items:center;justify-content:center;font-weight:900}
+.mark{width:30px;height:30px;border-radius:8px;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900}
 .logo small{display:block;font-size:9.5px;letter-spacing:1.6px;color:var(--muted);font-weight:700}
 .back{color:var(--gold);text-decoration:none;font-size:12.5px;font-weight:700;border:1px solid var(--border);border-radius:20px;padding:6px 14px;min-height:24px}
 .back:hover{border-color:var(--gold)}
 main{max-width:780px;margin:0 auto;padding:18px 16px 60px}
-.hero{background:linear-gradient(135deg,var(--card),#141414);border:1px solid var(--border);border-radius:13px;padding:22px 18px;margin-bottom:16px;text-align:center}
+.hero{background:linear-gradient(135deg,var(--card),#EEF2F8);border:1px solid var(--border);border-radius:13px;padding:22px 18px;margin-bottom:16px;text-align:center}
 .hero h1{font-size:21px;color:var(--fg);margin-bottom:6px}
 .hero p{font-size:13px;color:var(--muted)}
 .count{display:flex;justify-content:center;gap:14px;margin:14px 0 6px}
-.count div{background:#0e0e0e;border:1px solid var(--border);border-radius:10px;padding:10px 0;width:74px}
+.count div{background:#FFFFFF;border:1px solid var(--border);border-radius:10px;padding:10px 0;width:74px}
 .count b{display:block;font-size:22px;color:var(--gold);font-variant-numeric:tabular-nums}
 .count span{font-size:9.5px;letter-spacing:1.4px;color:var(--faint);text-transform:uppercase}
 .sec{font-size:12.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);margin:18px 0 9px;font-weight:700}
@@ -39,9 +40,9 @@ footer{text-align:center;font-size:11px;color:var(--faint);padding:20px;border-t
 .gh{display:flex;align-items:center;gap:8px;margin-bottom:3px}
 .gh b{color:var(--fg);font-size:13.5px}
 .tag{font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:10px;font-weight:700;min-height:0}
-.tag.soft{background:#14361f;color:#5fd08a}
-.tag.mid{background:#3a3416;color:#d4af37}
-.tag.death{background:#3a1514;color:#e07a72}
+.tag.soft{background:rgba(14,138,87,.13);color:#0E8A57}
+.tag.mid{background:rgba(178,106,0,.13);color:#B26A00}
+.tag.death{background:rgba(200,50,63,.12);color:#C8323F}
 .gt{font-size:13px;color:var(--text);margin-bottom:3px;font-weight:600}
 .gr{font-size:12px;color:var(--muted);margin-bottom:0}
 .fnote{font-size:11px;color:var(--faint);margin:2px 0 0}
@@ -61,15 +62,17 @@ footer{text-align:center;font-size:11px;color:var(--faint);padding:20px;border-t
 <div><b id="cd-h">–</b><span>hours</span></div>
 <div><b id="cd-m">–</b><span>min</span></div>
 </div>
-<p class="small muted">Underway since Thu Jun 11 &middot; group stage through Jun 27 &middot; Round of 32 from Jun 28</p>
+<p class="small muted">Day 7 &middot; underway since Thu Jun 11 &middot; group stage through Jun 27 &middot; Round of 32 from Jun 28</p>
 </div>
 
 <div class="sec">At the Cup &middot; group stage</div>
 <div class="card" id="results">
-<p class="fnote" style="margin-bottom:10px">Verified finals via ESPN (authoritative), FOX Sports, Yahoo &amp; NBC, 16 Jun 2026. Today&rsquo;s match lines: DraftKings via ESPN, 16 Jun. Results only &mdash; match betting reads live on the board.</p>
-<p><b>Today &middot; Tue Jun 16</b> &mdash; Groups I &amp; J open</p>
-<p class="small muted">France&ndash;Senegal (Grp I) 3 PM ET, MetLife &mdash; France &minus;205, draw +350, Senegal +600 &middot; Norway&ndash;Iraq (Grp I) 6 PM ET, Gillette &mdash; Norway &minus;500, draw +600, Iraq +1300 &middot; Argentina&ndash;Algeria (Grp J) 9 PM ET, Arrowhead &mdash; Argentina &minus;245, draw +360, Algeria +750. <span class="muted small">DraftKings, 16 Jun 2026.</span></p>
-<p style="margin-top:8px"><b>Yesterday &middot; Mon Jun 15 &mdash; a clean sweep of draws</b></p>
+<p class="fnote" style="margin-bottom:10px">Verified finals via ESPN (authoritative), FOX Sports, Yahoo, NBC &amp; FIFA, 17 Jun 2026. Today&rsquo;s match lines: Bet365, cross-checked vs Oddschecker, 17 Jun. Results only &mdash; match betting reads live on the board.</p>
+<p><b>Today &middot; Wed Jun 17</b> &mdash; Groups K &amp; L open</p>
+<p class="small muted">Portugal&ndash;DR Congo (Grp K) 1 PM ET, Houston &mdash; Portugal &minus;333, draw +425, DR Congo +900 &middot; England&ndash;Croatia (Grp L) 4 PM ET, Arlington &mdash; England &minus;138, draw +280, Croatia +375 &middot; Ghana&ndash;Panama (Grp L) 7 PM ET, Toronto &middot; Uzbekistan&ndash;Colombia (Grp K) 10 PM ET, Mexico City. <span class="muted small">Bet365 / Oddschecker, 17 Jun 2026.</span></p>
+<p style="margin-top:8px"><b>Yesterday &middot; Tue Jun 16 &mdash; the headliners deliver</b></p>
+<p class="small muted">Groups I &amp; J opened and the superstars all struck. France 3&ndash;1 Senegal (Grp I) &mdash; Kylian Mbapp&eacute; scored twice, including a 29-metre rocket, becoming France&rsquo;s all-time leading scorer (58) and moving to 14 World Cup goals, third-most ever. Norway 4&ndash;1 Iraq (Grp I) &mdash; Erling Haaland marked his World Cup debut with a first-half brace; Norway lead Group I on goal difference. Argentina 3&ndash;0 Algeria (Grp J) &mdash; Lionel Messi, in a record sixth World Cup, scored his first-ever World Cup hat trick. Austria 1&ndash;0 Jordan (Grp J) &mdash; a 20th-minute goal settled a tight one.</p>
+<p style="margin-top:8px"><b>Mon Jun 15 &mdash; a clean sweep of draws</b></p>
 <p class="small muted">All four matches finished level &mdash; the first all-draw day of this World Cup. Cape Verde 0&ndash;0 Spain (Grp H) &mdash; the shock of the tournament so far; Spain piled up 27 shots and 74% possession and still couldn&rsquo;t break through. Belgium 1&ndash;1 Egypt (Grp G) &mdash; Ashour put Egypt ahead, a Mohamed Hany own goal leveled it seconds after Lukaku came off the bench. Saudi Arabia 1&ndash;1 Uruguay (Grp H) &mdash; Al-Amri&rsquo;s first-half strike canceled by Maxi Ara&uacute;jo&rsquo;s 80th-minute volley. Iran 2&ndash;2 New Zealand (Grp G) &mdash; Elijah Just&rsquo;s brace for the Kiwis answered by Rezaeian and Mohebbi.</p>
 <p style="margin-top:8px"><b>Sun Jun 14</b></p>
 <p class="small muted">Australia 2&ndash;0 T&uuml;rkiye (Grp D) &middot; Germany 7&ndash;1 Cura&ccedil;ao (Grp E) &middot; Ivory Coast 1&ndash;0 Ecuador (Grp E) &middot; Netherlands 2&ndash;2 Japan (Grp F) &middot; Sweden 5&ndash;1 Tunisia (Grp F).</p>
@@ -97,13 +100,14 @@ footer{text-align:center;font-size:11px;color:var(--faint);padding:20px;border-t
 
 <div class="sec">Futures watch</div>
 <div class="card" id="futures">
-<h3>To lift the trophy &mdash; Spain alone on top after opening day</h3>
+<h3>To lift the trophy &mdash; France take over at the top</h3>
 <p class="fnote" style="margin-bottom:10px">Sportsbook prices: ESPN, FanDuel &amp; FOX, cross-checked vs Oddschecker &amp; FanDuel consensus (9&ndash;10 Jun), with a fresh 13 Jun movement note below. Implied % is rough, before removing vig.</p>
 <p><b>Spain (+450 &middot; ~18%) edges France (+475 &middot; ~17%) at the top.</b> France lost their final warm-up 1&ndash;2 to Ivory Coast on Jun 4 with a much-changed side, yet traders barely flinched and the price held. The prediction markets back the coin-flip read: Polymarket has both at ~16%, Kalshi makes Spain a hair clear at 16.5%. No value at ~9/2, but it anchors the board &mdash; the true favorite line is a 50/50, worth remembering when their group-winner and match prices land.</p>
 <p><b>Post-opening-day moves &middot; 13 Jun.</b> France eased to +500, leaving Spain (+450) alone at the top; England (+650) and Brazil (+850) hold the next rungs. Hosts firmed on winning starts &mdash; ESPN reports USA &amp; Mexico both shortened, and the USA is the eighth-most-backed team by handle at DraftKings despite still sitting around 60/1. That&rsquo;s public backing, not value. <span class="muted small">FOX Sports / ESPN / VegasInsider, 13 Jun 2026.</span></p>
 <p><b>13&ndash;14 Jun movers.</b> Morocco are the story of the group stage so far &mdash; a 1&ndash;1 hold of Brazil sent their outright from roughly +6000 to +3000, the board&rsquo;s biggest single move, while Brazil drifted a touch (~+900 to +950). Spain (+460) and France (+470) stay locked together at the top. <span class="muted small">FOX Sports, 14 Jun 2026.</span></p>
 <p><b>15 Jun movers.</b> Germany&rsquo;s 7&ndash;1 demolition of Cura&ccedil;ao &mdash; the biggest win of the tournament so far &mdash; firmed them among the secondary contenders (around +1200&ndash;1400), and Portugal has nudged ahead of England into outright third on the prediction-market board. Spain and France stay locked together at the top. <span class="muted small">Kalshi / FOX Sports / Oddspedia, 15 Jun 2026.</span></p>
 <p><b>16 Jun read.</b> Spain&rsquo;s goalless draw with Cape Verde adds to a group stage where the European&ndash;South American chalk keeps dropping points &mdash; Brazil were held by Morocco, and now a tournament co-favorite (and the most lopsided group favorite on the board, Group H &minus;376 on 9 Jun) sits level with three teams on a single point. France open against Senegal tonight as the next test of the top tier. No verified fresh outright price to post, but a co-favorite stumbling in its opener is exactly the kind of result that softens a group-winner number. <span class="muted small">Result via ESPN, 16 Jun 2026.</span></p>
+<p><b>17 Jun read.</b> France&rsquo;s 3&ndash;1 opening win, set against Spain&rsquo;s shock Cape Verde draw, has flipped the market: France is now the sole outright favorite at +400 (~20%), with Spain easing to +500, England +700, Portugal +800 and Argentina +900. The prediction markets agree &mdash; Kalshi and Polymarket both price France clear of Spain (17.2%/17.7% vs 14.6%/14.5%). The day&rsquo;s biggest mover was Norway, shortened from +3500 to +2700 after Haaland&rsquo;s debut brace in a 4&ndash;1 rout of Iraq. <span class="muted small">FOX Sports / Oddspedia / Kalshi / Polymarket, 17 Jun 2026.</span></p>
 <p><b>England third (+650&ndash;700 &middot; ~12.5%), Portugal right behind (+850 &middot; ~10.5%).</b> England is the market&rsquo;s clearest talent-vs-temperament bet &mdash; the price already assumes they finally deliver. Portugal sits a live fourth, level with the South Americans.</p>
 <p><b>Argentina, holders, as the value angle (+900 &middot; ~10%, even with Brazil).</b> A Messi farewell, a side that wins tight knockout games, and a kinder draw than the co-favorites &mdash; the best price among proven winners. The risk is age across a month of North-American heat.</p>
 <p><b>Group winners &mdash; where the chalk is safest, and where it isn&rsquo;t.</b> <span class="muted small">Oddschecker / FOX, 9 Jun 2026.</span> Spain to win Group H (&minus;376 &middot; ~79%) is the tournament&rsquo;s most lopsided group favorite &mdash; an easy draw past a fading Uruguay. By contrast the hosts in Group D are a genuine scrap: USA only +125 (~44%) with T&uuml;rkiye +175 a live threat &mdash; a host coin-flip, not the layup casual money treats it as.</p>
@@ -131,10 +135,10 @@ footer{text-align:center;font-size:11px;color:var(--faint);padding:20px;border-t
 <div class="grp"><div class="gh"><b>Group F</b><span class="tag mid">mid</span></div><p class="gt">Netherlands &middot; Sweden &middot; Tunisia &middot; Japan</p><p class="gr">Balanced and competitive &mdash; the Netherlands favored, but Japan and Sweden make second a genuine fight.</p><p class="gr"><b>After MD1:</b> Sweden top on 3pts (+4, 5&ndash;1 Tunisia); Netherlands &amp; Japan 1pt each (2&ndash;2 draw); Tunisia 0.</p></div>
 <div class="grp"><div class="gh"><b>Group G</b><span class="tag mid">mid</span></div><p class="gt">Belgium &middot; Egypt &middot; Iran &middot; New Zealand</p><p class="gr">Belgium ahead of the pack; Salah&rsquo;s Egypt and a savvy Iran chase second, New Zealand the outsiders.</p><p class="gr"><b>After MD1:</b> all four level on 1pt &mdash; Belgium 1&ndash;1 Egypt, Iran 2&ndash;2 New Zealand; the group is wide open.</p></div>
 <div class="grp"><div class="gh"><b>Group H</b><span class="tag death">tough</span></div><p class="gt">Spain &middot; Cape Verde &middot; Saudi Arabia &middot; Uruguay</p><p class="gr">Brutal &mdash; Spain favored, but Uruguay is a heavyweight for a third seed; Cape Verde and Saudi Arabia face a steep climb.</p><p class="gr"><b>After MD1:</b> all four level on 1pt &mdash; Cape Verde 0&ndash;0 Spain (a major shock) &amp; Saudi Arabia 1&ndash;1 Uruguay; nobody separated.</p></div>
-<div class="grp"><div class="gh"><b>Group I</b><span class="tag mid">mid</span></div><p class="gt">France &middot; Senegal &middot; Iraq &middot; Norway</p><p class="gr">France comfortable on paper, but Senegal&rsquo;s athleticism and Haaland&rsquo;s Norway give this real edge.</p><p class="gr"><b>Opens today (Jun 16):</b> France&ndash;Senegal &amp; Norway&ndash;Iraq.</p></div>
-<div class="grp"><div class="gh"><b>Group J</b><span class="tag soft">soft</span></div><p class="gt">Argentina &middot; Algeria &middot; Austria &middot; Jordan</p><p class="gr">Argentina clear at the top; Austria the solid second pick, with Algeria the dark horse.</p><p class="gr"><b>Opens today (Jun 16):</b> Argentina&ndash;Algeria; Austria&ndash;Jordan to follow.</p></div>
-<div class="grp"><div class="gh"><b>Group K</b><span class="tag death">tough</span></div><p class="gt">Portugal &middot; DR Congo &middot; Uzbekistan &middot; Colombia</p><p class="gr">Loaded &mdash; Portugal vs Colombia is a marquee Pot-1/Pot-2 clash; DR Congo and Uzbekistan are no pushovers.</p></div>
-<div class="grp"><div class="gh"><b>Group L</b><span class="tag mid">mid</span></div><p class="gt">England &middot; Croatia &middot; Ghana &middot; Panama</p><p class="gr">England favored; an aging Croatia still dangerous, Ghana athletic, Panama the outsiders.</p></div>
+<div class="grp"><div class="gh"><b>Group I</b><span class="tag mid">mid</span></div><p class="gt">France &middot; Senegal &middot; Iraq &middot; Norway</p><p class="gr">France comfortable on paper, but Senegal&rsquo;s athleticism and Haaland&rsquo;s Norway give this real edge.</p><p class="gr"><b>After MD1:</b> Norway top on 3pts (+3, 4&ndash;1 Iraq), ahead of France 3pts (+2, 3&ndash;1 Senegal) on goal difference; Senegal &amp; Iraq on 0.</p></div>
+<div class="grp"><div class="gh"><b>Group J</b><span class="tag soft">soft</span></div><p class="gt">Argentina &middot; Algeria &middot; Austria &middot; Jordan</p><p class="gr">Argentina clear at the top; Austria the solid second pick, with Algeria the dark horse.</p><p class="gr"><b>After MD1:</b> Argentina top on 3pts (+3, 3&ndash;0 Algeria), ahead of Austria 3pts (+1, 1&ndash;0 Jordan); Algeria &amp; Jordan on 0.</p></div>
+<div class="grp"><div class="gh"><b>Group K</b><span class="tag death">tough</span></div><p class="gt">Portugal &middot; DR Congo &middot; Uzbekistan &middot; Colombia</p><p class="gr">Loaded &mdash; Portugal vs Colombia is a marquee Pot-1/Pot-2 clash; DR Congo and Uzbekistan are no pushovers.</p><p class="gr"><b>Opens today (Jun 17):</b> Portugal&ndash;DR Congo &amp; Uzbekistan&ndash;Colombia.</p></div>
+<div class="grp"><div class="gh"><b>Group L</b><span class="tag mid">mid</span></div><p class="gt">England &middot; Croatia &middot; Ghana &middot; Panama</p><p class="gr">England favored; an aging Croatia still dangerous, Ghana athletic, Panama the outsiders.</p><p class="gr"><b>Opens today (Jun 17):</b> England&ndash;Croatia &amp; Ghana&ndash;Panama.</p></div>
 </div>
 
 <p class="small muted" style="margin-top:14px">This hub runs separately from the Bet Coach board &mdash; tournament content never touches the picks operation.</p>
