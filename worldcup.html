@@ -11,8 +11,8 @@
 body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.55}
 header{background:var(--panel);border-bottom:1px solid var(--border);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px;color:var(--fg)}
-.mark{width:30px;height:30px;border-radius:8px;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900}
-.logo small{display:block;font-size:9.5px;letter-spacing:1.6px;color:var(--muted);font-weight:700}
+.mark{width:30px;height:30px;border-radius:0;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;clip-path:polygon(0 0,100% 0,100% 72%,72% 100%,0 100%)}
+.logo small{display:block;font-size:10px;letter-spacing:.18em;color:var(--gold);font-weight:600;font-family:ui-monospace,'IBM Plex Mono',Consolas,monospace}
 .back{color:var(--gold);text-decoration:none;font-size:12.5px;font-weight:700;border:1px solid var(--border);border-radius:20px;padding:6px 14px;min-height:24px}
 .back:hover{border-color:var(--gold)}
 main{max-width:780px;margin:0 auto;padding:18px 16px 60px}
@@ -23,7 +23,7 @@ main{max-width:780px;margin:0 auto;padding:18px 16px 60px}
 .count div{background:#FFFFFF;border:1px solid var(--border);border-radius:10px;padding:10px 0;width:74px}
 .count b{display:block;font-size:22px;color:var(--gold);font-variant-numeric:tabular-nums}
 .count span{font-size:9.5px;letter-spacing:1.4px;color:var(--faint);text-transform:uppercase}
-.sec{font-size:12.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);margin:18px 0 9px;font-weight:700}
+.sec{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:18px 0 9px;font-weight:600;font-family:ui-monospace,'IBM Plex Mono',Consolas,monospace;display:flex;align-items:center;gap:8px}.sec::before{content:'';width:7px;height:7px;background:var(--gold);clip-path:polygon(0 0,100% 0,100% 60%,60% 100%,0 100%);flex:none}
 .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:10px}
 .card h3{font-size:14.5px;color:var(--fg);margin-bottom:6px}
 .card p{font-size:13px;margin-bottom:8px}
@@ -50,7 +50,7 @@ footer{text-align:center;font-size:11px;color:var(--faint);padding:20px;border-t
 </head>
 <body>
 <header>
-<div class="logo"><div class="mark">&#9917;</div><div>WORLD CUP 2026<small>BY BET COACH</small></div></div>
+<div class="logo"><div class="mark">B</div><div>WORLD CUP 2026<small>BET COACH</small></div></div>
 <a class="back" href="index.html">&larr; Back to the Board</a>
 </header>
 <main>
@@ -84,7 +84,7 @@ footer{text-align:center;font-size:11px;color:var(--faint);padding:20px;border-t
 <div class="card">
 <div class="kd">
 <b>Jun 11–27</b><span>Group stage — 12 groups of 4, top two + best thirds advance</span>
-<b>Jun 11</b><span>Opener: Mexico–South Africa (Azteca) &middot; Korea Republic–Czechia (Guadalajara, 10 PM ET)</span>
+<b>Jun 11</b><span>Opener: Mexico–South Africa (Azteca) &middot; South Korea–Czechia (Guadalajara, 10 PM ET)</span>
 <b>Jun 12</b><span>USA and Canada open on home turf</span>
 <b>Jun 28+</b><span>Knockouts begin — Round of 32 (new this year)</span>
 <b>Jul 19</b><span>Final</span>

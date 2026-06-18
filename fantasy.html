@@ -11,8 +11,8 @@
 body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.55}
 header{background:var(--panel);border-bottom:1px solid var(--border);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px;color:var(--fg)}
-.mark{width:30px;height:30px;border-radius:8px;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900}
-.logo small{display:block;font-size:9.5px;letter-spacing:1.6px;color:var(--muted);font-weight:700}
+.mark{width:30px;height:30px;border-radius:0;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;clip-path:polygon(0 0,100% 0,100% 72%,72% 100%,0 100%)}
+.logo small{display:block;font-size:10px;letter-spacing:.18em;color:var(--gold);font-weight:600;font-family:ui-monospace,'IBM Plex Mono',Consolas,monospace}
 .back{color:var(--gold);text-decoration:none;font-size:12.5px;font-weight:700;border:1px solid var(--border);border-radius:20px;padding:6px 14px;min-height:24px}
 .back:hover{border-color:var(--gold)}
 main{max-width:780px;margin:0 auto;padding:18px 16px 60px}
@@ -20,7 +20,7 @@ main{max-width:780px;margin:0 auto;padding:18px 16px 60px}
 .hero h1{font-size:21px;color:var(--fg);margin-bottom:8px}
 .hero p{font-size:13.5px;color:var(--muted)}
 .hero .tag{display:inline-block;background:rgba(31,58,138,.12);color:var(--gold);font-size:10.5px;font-weight:800;letter-spacing:1.2px;border-radius:4px;padding:3px 8px;margin-bottom:10px;text-transform:uppercase}
-.sec{font-size:12.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);margin:18px 0 9px;font-weight:700}
+.sec{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:18px 0 9px;font-weight:600;font-family:ui-monospace,'IBM Plex Mono',Consolas,monospace;display:flex;align-items:center;gap:8px}.sec::before{content:'';width:7px;height:7px;background:var(--gold);clip-path:polygon(0 0,100% 0,100% 60%,60% 100%,0 100%);flex:none}
 .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:10px}
 .card h3{font-size:14.5px;color:var(--fg);margin-bottom:6px}
 .card p{font-size:13px;color:var(--text);margin-bottom:8px}
@@ -74,7 +74,7 @@ html{scroll-behavior:smooth}
 </head>
 <body>
 <header>
-<div class="logo"><div class="mark">F</div><div>FANTASY CORNER<small>by Bet Coach</small></div></div>
+<div class="logo"><div class="mark">B</div><div>FANTASY CORNER<small>BET COACH</small></div></div>
 <a class="back" href="index.html">&larr; Back to the Board</a>
 </header>
 <nav class="secnav" id="secnav"><a href="#newsdesk">News</a><a href="#warroom">War Room</a><a href="#cbs">CBS Room</a><a href="#survival">Survival</a><a href="#wfl">WFL Lens</a><a href="#guardrails">Guardrails</a><a href="#tiers">Win Tiers</a><a href="#board">ADP vs Vegas</a><a href="#movers">Movers</a><a href="#sleepers">Sleepers</a><a href="#landmines">Landmines</a><a href="#positions">Positions</a><a href="#vona">VONA</a><a href="#stacks">Stacks</a><a href="#grader">Grade</a><a href="#quick">Quick Sheet</a></nav>
@@ -119,7 +119,7 @@ html{scroll-behavior:smooth}
 <div class="sec" id="cbs">Your room &mdash; the CBS edge</div>
 <div class="card">
 <h3>Upgraded: real CBS room ADP + pick-survival numbers</h3>
-<p>The first edition diffed CBS's expert rank list. This one reads what CBS rooms <b>actually do</b>: CBS publishes live ADP from real CBS PPR drafts &mdash; average pick plus the earliest and latest each player has gone. That last number is the weapon. <b class="hi">&ldquo;Gone by&rdquo; = the latest pick a player has survived to in rooms like yours.</b> Wait one pick past it and you're betting against every recorded draft.</p>
+<p>The first edition diffed CBS's expert rank list. This one reads what CBS rooms <b>actually do</b>: CBS publishes live ADP from real CBS PPR drafts &mdash; average pick plus the earliest and latest each player has gone. That last number is the weapon. <b class="hi">&ldquo;Gone by&rdquo; is the latest pick a player has survived to in rooms like yours.</b> Wait one pick past it and you're betting against every recorded draft.</p>
 <p class="lede" style="margin-top:10px"><b class="hi">They'll fall to you</b> &mdash; CBS rooms draft them well after the market does:</p>
 <table>
 <thead><tr><th>Player</th><th>Room</th><th>Mkt</th><th>Gone by</th></tr></thead>
@@ -176,7 +176,7 @@ html{scroll-behavior:smooth}
 <div class="sec" id="guardrails">Roster guardrails &mdash; the anti-dogma checkpoints</div>
 <div class="card">
 <h3>What's worked in all five years: the shape, not the strategy</h3>
-<p>Zero-RB won Best Ball Mania in 2023; RB-heavy won it in 2024. No fixed draft dogma survives contact with a new season. What <b>has</b> beaten average scoring in <b class="hi">all five years</b> isn't a strategy &mdash; it's a positional <i>shape</i> at each checkpoint. Hit these counts and you're never the galaxy-brained roster that blows up; miss one and that's your signal to correct &mdash; not a reason to panic-reach past ADP.</p>
+<p>Zero-RB won Best Ball Mania in 2023; RB-heavy won it in 2024. No fixed draft dogma survives contact with a new season. What <b>has</b> beaten average scoring in <b class="hi">all five years</b> isn't a strategy &mdash; it's a positional <i>shape</i> at each checkpoint. Hit these counts and you're never the over-engineered roster that blows up; miss one and that's your signal to correct &mdash; not a reason to panic-reach past ADP.</p>
 <div class="tiers">
 <div class="tier"><div class="tval">By Rd 6</div><div class="tteams"><span class="chip">3 WR</span><span class="chip">2 RB</span><span class="chip split">+1 best value</span></div><div class="tnote">The one constant across every BBM season. Full PPR (your league) makes the 3-WR lean <i>stronger</i>, not weaker. The 6th pick is open &mdash; take the best market value (often a falling TE1, QB, or 3rd RB).</div></div>
 <div class="tier"><div class="tval">By Rd 10</div><div class="tteams"><span class="chip">4&ndash;5 WR</span><span class="chip">4 RB</span><span class="chip">TE1 in</span></div><div class="tnote">Diminishing returns kick in &mdash; you can only start 3 WR + flex. 4 RB through Rd 10 has been top-2 in 3 straight years. Have your TE1 by here unless you punted to churn (per the WFL lens).</div></div>
@@ -368,12 +368,12 @@ pool.filter(function(p){return p.pos===pos;}).forEach(function(p){var o=document
 var picks=[];
 function find(n){for(var i=0;i<pool.length;i++){if(pool[i].n===n)return pool[i];}return null;}
 function tagFor(d){if(d>=8)return["STEAL","#0E8A57"];if(d>=2)return["VALUE","var(--gold)"];if(d>=-2)return["FAIR","var(--muted)"];return["REACH","var(--red)"];}
-function gradeFor(a){if(a>=6)return["A+","#0E8A57"];if(a>=4)return["A","#0E8A57"];if(a>=2)return["A-","#6ab46a"];if(a>=0.75)return["B+","var(--gold)"];if(a>=-0.75)return["B","var(--gold)"];if(a>=-2.5)return["B-","var(--gold)"];if(a>=-4.5)return["C+","#c9a24a"];if(a>=-7)return["C","var(--red)"];return["D","var(--red)"];}
+function gradeFor(a){if(a>=6)return["A+","#0E8A57"];if(a>=4)return["A","#0E8A57"];if(a>=2)return["A-","#0E8A57"];if(a>=0.75)return["B+","var(--gold)"];if(a>=-0.75)return["B","var(--gold)"];if(a>=-2.5)return["B-","var(--gold)"];if(a>=-4.5)return["C+","#B26A00"];if(a>=-7)return["C","var(--red)"];return["D","var(--red)"];}
 function render(){var list=document.getElementById("grdList");var out=document.getElementById("grdOut");if(!list||!out)return;
 if(!picks.length){list.innerHTML='<div class="grd-empty">No picks yet &mdash; add a player and the overall pick you spent.</div>';out.innerHTML="";return;}
 var html="";var tot=0;var cnt={QB:0,RB:0,WR:0,TE:0};
 picks.forEach(function(pk,i){var p=pk.p;var d=Math.round((p.a-pk.pick)*10)/10;tot+=d;cnt[p.pos]=(cnt[p.pos]||0)+1;var tg=tagFor(d);var sign=d>0?"+":"";var dcol=d>=2?"var(--gold)":(d<=-2?"var(--red)":"var(--muted)");
-html+='<div class="grd-row"><span class="nm">'+p.n+' <span class="pos">'+p.pos+p.rk+'</span></span>'+'<span class="muted small">ADP '+p.a+' &middot; you '+pk.pick+'</span>'+'<span class="tag" style="color:'+tg[1]+';background:rgba(255,255,255,.05)">'+tg[0]+'</span>'+'<span class="dl" style="color:'+dcol+'">'+sign+d+'</span>'+'<span class="x" data-i="'+i+'">&times;</span></div>';});
+html+='<div class="grd-row"><span class="nm">'+p.n+' <span class="pos">'+p.pos+p.rk+'</span></span>'+'<span class="muted small">ADP '+p.a+' &middot; you '+pk.pick+'</span>'+'<span class="tag" style="color:'+tg[1]+';background:rgba(31,58,138,.06)">'+tg[0]+'</span>'+'<span class="dl" style="color:'+dcol+'">'+sign+d+'</span>'+'<span class="x" data-i="'+i+'">&times;</span></div>';});
 list.innerHTML=html;var n=picks.length;var avg=Math.round((tot/n)*10)/10;var gr=gradeFor(avg);var stot=(tot>0?"+":"")+Math.round(tot*10)/10;
 var shape=[];["RB","WR","QB","TE"].forEach(function(po){if(cnt[po])shape.push(cnt[po]+" "+po);});
 var note="";if(n>=4&&!cnt.RB)note="Zero RB through "+n+" picks &mdash; thin at the position that breaks first.";else if(n>=4&&!cnt.WR)note="Zero WR through "+n+" picks &mdash; light on the deepest position.";else if(cnt.QB>1)note="Two QBs already &mdash; that is a one-starter spot in redraft.";else if(cnt.TE>1)note="Two TEs already &mdash; that is a one-starter spot in redraft.";else note="Build so far: "+shape.join(" / ")+".";
