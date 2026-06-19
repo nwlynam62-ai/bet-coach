@@ -352,7 +352,7 @@ try{var s0=DATA.settings||{};if(s0.bankroll>0)settings.bankroll=s0.bankroll;if(s
 try{var ls=JSON.parse(localStorage.getItem("voltSettings")||"null");if(ls&&ls.bankroll>0&&ls.unit>0)settings=ls;}catch(e){}
 
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
-function normRes(r){r=String(r||"").toUpperCase();if(r==="W"||r==="WIN")return "W";if(r==="L"||r==="LOSS")return "L";if(r==="P"||r==="PUSH")return "P";if(r==="VOID"||r==="V")return "V";return "PD";}
+function normRes(r){r=String(r||"").toUpperCase();if(r==="W"||r==="WIN")return "W";if(r==="L"||r==="LOSS")return "L";if(r==="P"||r==="PUSH")return "P";if(r==="VOID"||r==="V")return "V";if(r===""||r==="PENDING"||r==="PD"||r==="PEND")return "PD";return "V";}
 function oddsNum(o){var n=parseFloat(String(o||"").replace(/[^\-+0-9.]/g,""));return isFinite(n)?n:null;}
 function unitsFor(p){var r=normRes(p.result);if(r==="P"||r==="V"||r==="PD")return 0;var o=oddsNum(p.odds);if(o==null)o=-110;if(r==="W")return o>0?o/100:100/(-o);return -1;}
 function wilson(w,n){if(!n)return [0,1];var z=1.96,p=w/n,d=1+z*z/n,c=p+z*z/(2*n),r=z*Math.sqrt(p*(1-p)/n+z*z/(4*n*n));return [(c-r)/d,(c+r)/d];}
