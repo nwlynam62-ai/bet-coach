@@ -640,9 +640,13 @@ function gameStory(g){
   if(s.pitchers&&(s.pitchers.away||s.pitchers.home)){h+='<p style="font-size:12.5px;color:var(--mut);margin-top:10px"><b>Starters:</b> '+esc(s.pitchers.away||'TBD')+' vs '+esc(s.pitchers.home||'TBD')+'</p>';
     if(s.pitchers.awayLast3)h+='<div style="font-size:12px;color:var(--dim);margin-top:2px">'+esc(s.pitchers.away||'')+' last 3: '+esc(s.pitchers.awayLast3)+'</div>';
     if(s.pitchers.homeLast3)h+='<div style="font-size:12px;color:var(--dim)">'+esc(s.pitchers.home||'')+' last 3: '+esc(s.pitchers.homeLast3)+'</div>';}
-  if(s.h2h)h+='<p style="font-size:12.5px;color:var(--mut);margin-top:8px"><b>Season series:</b> '+esc(s.h2h)+'</p>';
-  if(s.bullpen&&(s.bullpen.away||s.bullpen.home))h+='<p style="font-size:12.5px;color:var(--mut);margin-top:6px"><b>Bullpen:</b> '+esc(s.away?s.away.abbr:'Away')+' — '+esc(s.bullpen.away||'n/a')+'; '+esc(s.home?s.home.abbr:'Home')+' — '+esc(s.bullpen.home||'n/a')+'</p>';
-  if(s.injuries&&s.injuries.length)h+='<p style="font-size:12.5px;color:var(--amber);margin-top:6px"><b>Injuries:</b> '+s.injuries.map(esc).join('; ')+'</p>';
+  if(typeof s.form==='string')h+='<p style="font-size:12.5px;color:var(--mut);margin-top:6px"><b>Form:</b> '+esc(s.form)+'</p>';
+  if(typeof s.standings==='string')h+='<p style="font-size:12.5px;color:var(--mut);margin-top:6px"><b>Standings:</b> '+esc(s.standings)+'</p>';
+  if(s.h2h)h+='<p style="font-size:12.5px;color:var(--mut);margin-top:8px"><b>Season series:</b> '+esc(String(s.h2h))+'</p>';
+  if(s.bullpen){ if(typeof s.bullpen==='string')h+='<p style="font-size:12.5px;color:var(--mut);margin-top:6px"><b>Bullpen:</b> '+esc(s.bullpen)+'</p>';
+    else if(s.bullpen.away||s.bullpen.home)h+='<p style="font-size:12.5px;color:var(--mut);margin-top:6px"><b>Bullpen:</b> '+esc((s.away&&s.away.abbr)||'Away')+' — '+esc(s.bullpen.away||'n/a')+'; '+esc((s.home&&s.home.abbr)||'Home')+' — '+esc(s.bullpen.home||'n/a')+'</p>'; }
+  if(s.injuries){ if(Array.isArray(s.injuries)){ if(s.injuries.length)h+='<p style="font-size:12.5px;color:var(--amber);margin-top:6px"><b>Injuries:</b> '+s.injuries.map(esc).join('; ')+'</p>'; }
+    else if(String(s.injuries).trim())h+='<p style="font-size:12.5px;color:var(--amber);margin-top:6px"><b>Injuries:</b> '+esc(String(s.injuries))+'</p>'; }
   h+='</div>';
   return h;
 }
