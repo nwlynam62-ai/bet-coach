@@ -6,16 +6,11 @@
   "target": 12500,
   "maxDD": 1000,
   "minPicks": 20,
-  "updated": "4:51 PM ET Jun 24",
-  "picks": [
-    {
-      "id": 1,
-      "date": "2026-06-24",
-      "sel": "Orioles @ Angels - LAA ML",
-      "odds": -123,
-      "stake": 200,
-      "close": null,
-      "res": "pending"
-    }
-  ]
+  "stake": 200,
+  "startDate": "2026-06-24",
+  "excludeIds": [
+    "kbo-20260624-doosan-hanwha-ml"
+  ],
+  "note": "Card reads fired picks[] and auto-grades at $200 flat. excludeIds = fires NOT placed on PlayVo.",
+  "updated": "5:25 PM ET Jun 24"
 }
