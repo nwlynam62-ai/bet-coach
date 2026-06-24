@@ -4,13 +4,39 @@
   "phase": "Phase 1",
   "startingBankroll": 10000,
   "target": 12500,
-  "maxDD": 1000,
   "minPicks": 20,
-  "stake": 200,
-  "startDate": "2026-06-24",
-  "excludeIds": [
-    "kbo-20260624-doosan-hanwha-ml"
-  ],
-  "note": "Card reads fired picks[] and auto-grades at $200 flat. excludeIds = fires NOT placed on PlayVo.",
-  "updated": "5:25 PM ET Jun 24"
+  "maxDDpct": 0.1,
+  "balance": 10271.22,
+  "available": 10071.22,
+  "peak": 10271.22,
+  "graded": 2,
+  "openPicks": 1,
+  "openStake": 200,
+  "updated": "5:58 PM ET Jun 24",
+  "picks": [
+    {
+      "id": "2146397",
+      "date": "2026-06-24",
+      "sel": "BOS@COL Under 14.5",
+      "odds": -146,
+      "stake": 200,
+      "res": "W"
+    },
+    {
+      "id": "2146370",
+      "date": "2026-06-24",
+      "sel": "Rockies ML",
+      "odds": -149,
+      "stake": 200,
+      "res": "W"
+    },
+    {
+      "id": "2146179",
+      "date": "2026-06-24",
+      "sel": "Angels ML",
+      "odds": -123,
+      "stake": 200,
+      "res": "pending"
+    }
+  ]
 }
