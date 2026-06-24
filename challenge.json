@@ -1,0 +1,21 @@
+{
+  "account": "83703435",
+  "name": "10k Bankroll Blitz",
+  "phase": "Phase 1",
+  "startingBankroll": 10000,
+  "target": 12500,
+  "maxDD": 1000,
+  "minPicks": 20,
+  "updated": "4:51 PM ET Jun 24",
+  "picks": [
+    {
+      "id": 1,
+      "date": "2026-06-24",
+      "sel": "Orioles @ Angels - LAA ML",
+      "odds": -123,
+      "stake": 200,
+      "close": null,
+      "res": "pending"
+    }
+  ]
+}
