@@ -6,19 +6,19 @@
   "target": 12500,
   "minPicks": 20,
   "maxDDpct": 0.1,
-  "balance": 10261.9,
-  "available": 10061.9,
-  "peak": 10433.8,
-  "graded": 12,
+  "balance": 10479.9,
+  "available": 10279.9,
+  "peak": 10479.9,
+  "graded": 13,
   "openPicks": 1,
   "openStake": 200,
-  "updated": "11:28 AM ET Jun 25",
+  "updated": "5:53 PM ET Jun 25",
   "picks": [
     {
-      "id": "2146910",
+      "id": "2147676",
       "date": "2026-06-25",
-      "sel": "Athletics +1.5 (RL)",
-      "odds": -186,
+      "sel": "Athletics ML",
+      "odds": 113,
       "stake": 200,
       "res": "pending"
     }
