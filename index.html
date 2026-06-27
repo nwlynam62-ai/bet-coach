@@ -6077,8 +6077,9 @@
     ready(function(){
       var el=$('cEq'); if(!el)return;
       var bh=Array.isArray(DATA.bankrollHistory)?DATA.bankrollHistory:[];
-      var labels=bh.map(function(p,i){return p.date||p.d||(i+1);});
-      var vals=bh.map(function(p){return (p.bankroll!=null?p.bankroll:(p.value!=null?p.value:p.bal));});
+      var labels=bh.map(function(p,i){return p.asOf||p.date||p.d||(i+1);});
+      var vals=bh.map(function(p){return (p.end!=null?p.end:(p.bankroll!=null?p.bankroll:(p.value!=null?p.value:p.bal)));});
+      if(bh.length&&bh[0].start!=null){vals.unshift(bh[0].start);labels.unshift('start');}
       if(!vals.length){var s=DATA.settings||{};labels=['start','now'];vals=[s.bankrollStart||80,s.bankroll||80];}
       if($('eqMeta'))$('eqMeta').textContent='$'+(vals[0]||0)+' → $'+(vals[vals.length-1]||0);
       var ctx=el.getContext('2d'); var g=ctx.createLinearGradient(0,0,0,200); g.addColorStop(0,'#1f3a8a33'); g.addColorStop(1,'#1f3a8a00');
