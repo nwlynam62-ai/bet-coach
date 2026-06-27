@@ -36,6 +36,9 @@
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
   .game{margin-bottom:10px}
   .ghead{display:flex;align-items:center;gap:11px;padding:13px 16px;cursor:pointer;user-select:none} .ghead:hover{background:var(--card2)}
+.tlogo{width:22px;height:22px;object-fit:contain;vertical-align:middle;flex-shrink:0}
+  .tbadge{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;border-radius:6px;color:#fff;font:700 9px var(--mono);padding:0 4px;flex-shrink:0}
+  .teams .m{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
   .lgtag{font-size:10px;font-weight:700;color:var(--navy);background:var(--navybg);border-radius:5px;padding:2px 6px;flex-shrink:0}
   .teams{flex:1;min-width:0} .teams .m{font-weight:600;font-size:15px} .teams .s{font-size:12px;color:var(--mut);margin-top:1px}
   .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;white-space:nowrap} .pill.v{background:var(--navybg);color:var(--navy)} .pill.n{background:#eef1f6;color:var(--dim)} .pill.cal{background:var(--paperbg);color:var(--paper)}
@@ -68,6 +71,7 @@
     <button class="tab on" data-v="dash">Today</button>
     <button class="tab" data-v="board">Board</button>
     <button class="tab" data-v="record">Record</button>
+    <button class="tab" data-v="props">Props</button>
     <button class="tab" data-v="news">News</button>
   </div>
   <div class="view on" id="dash">
@@ -89,6 +93,15 @@
     <p class="seclabel">Recent settled</p>
     <div class="card" id="rRecent"></div>
   </div>
+  <div class="view" id="props">
+    <p class="sub">Paper lab — props &amp; totals, calibration only (kept out of the real record until it proves CLV).</p>
+    <p class="seclabel">Calibration record</p>
+    <div class="grid g4" id="propsTallies"></div>
+    <p class="seclabel">Current leans <span class="meta" id="propsMeta" style="font-weight:400;text-transform:none"></span></p>
+    <div class="card" id="propsLeans" style="padding:2px 16px"></div>
+    <p class="seclabel">Model notes</p>
+    <div class="panel learn" id="propsNotes" style="margin-top:0"></div>
+  </div>
   <div class="view" id="news"><div id="newsList"></div></div>
   <div class="foot">
     <a class="fbtn" href="fantasy.html">Fantasy →</a>
@@ -97,8 +110,7 @@
   </div>
 </div>
 
-<script id="betdata" type="application/json">
-{
+<script id="betdata" type="application/json">{
  "settings": {
   "bankroll": 114.02,
   "unit": 5,
@@ -106,7 +118,7 @@
   "unitFixed": true,
   "bankrollUpdated": "Sun Jun 21, 2026"
  },
- "updated": "1:10 PM ET 2026-06-27 (GA :05 sync ACTIVE): VSiN-DK live re-read 15/15 MLB + 3/3 WNBA (money%+bets%), ESPN cross-checked all 15 ML lines. Top fires already placed AM (BOS +102, ARI +119). Forward leans carded: ATL +109 dog (FIRE, +29 sharp$), CIN/WSH/TOR/MIL F5 pivots, KC +107 & PHI +109 reverse-money dogs (caution: SP conflicts). MIA@STL line posted (-137/+114). Every game graded; no NEW high-conviction fire cleared the bar this run.",
+ "updated": "2:09 PM ET 2026-06-27 (manager sweep): pruned started HOU@DET radar lean (live since 1:10 PM); board today, 15 MLB sharp bullpens+decisions, KBO/NPB all final/ppd settled, 2 fires pending (BOS,ARI).",
  "linesSource": "MLB lines = DraftKings via ESPN core odds API (both-side ML)+totals; KBO/NPB = DraftKings via The Odds API (h2h); WNBA spread/total = DK via ESPN. Records/ERA = ESPN standings; bullpen = FanGraphs RP ERA+rank; closers = statsapi saves leaders. Pulled ~12:20 AM ET Jun 27.",
  "bets": [],
  "games": [
@@ -5198,14 +5210,6 @@
    "note": "Gilbert (3.60 xFIP) + 8th pen (Munoz) over Cecconi; ~3pt own-number edge. Money 86%/83% (+3) -- public/sharp aligned, no extra tell."
   },
   {
-   "sport": "MLB",
-   "play": "HOU +117 (Astros ML)",
-   "odds": "+117",
-   "matchup": "Astros @ Tigers",
-   "grade": "B-",
-   "note": "WEAKENED / live: HOU dog 43% money on 28% bets (+15 tilt) but DET holds the money majority (57%) AND the SP edge (Valdez over Teng). Watch only."
-  },
-  {
    "sport": "WNBA",
    "play": "SEA Storm +250 (ML)",
    "odds": "+250",
@@ -5789,7 +5793,7 @@
   }
  ],
  "systemHealth": {
-  "lastManagerRun": "1:04 PM ET 2026-06-27",
+  "lastManagerRun": "2:09 PM ET 2026-06-27",
   "appGapDetected": false,
   "caughtUp": true,
   "lastPublishOk": true,
@@ -5797,8 +5801,8 @@
   "problems": [],
   "picksToday": 2,
   "bankroll": null,
-  "clvCaptured": "61/103 settled have CLV (close-backfill needs attended Chrome/ESPN-core; deferred)",
-  "note": "15 MLB scheduled w/ sharp REAL bullpens(named closer+rank+ERA+F-read)+decisions; first game 1:10pm. 2 pending picks=today unstarted MLB (NYY/BOS +102 close-captured, ARI/TB +119). 12 watchlist leans queued. KBO 5 final + NPB 3 final/3 ppd all settled+graded, radar clean. record 56-45-2 recompute-match."
+  "clvCaptured": "61/103 settled have CLV (close-backfill deferred; needs attended ESPN-core)",
+  "note": "FAST-PATH healthy; pruned 1 started radar lean; concurrent-worker write contention observed."
  },
  "totalTake": "1:10 PM ET 2026-06-27 (GA :05 ACTIVE): Cleanest total = Over 9.5 COL@MIN -- MIN pen 30th + COL 28th (two worst pens in MLB) behind Lorenzen/Paredes, 90% Over handle. Secondary: Over 9 WSH@BAL (two soft pens, WSH 29th, 73% Over handle). ML and totals weighted equal; no fired total -- own-number gaps tighter after numbers climbed to 9.5/9.",
  "leagueStatus": {
@@ -5881,9 +5885,88 @@
  "_edgeResearchStamp": "Sat Jun 27, 2026 - 1:25 AM ET",
  "updatedISO": "2026-06-27T13:10:00-04:00",
  "record": "55-45-2",
- "splits_asOf": "1:10 PM ET 2026-06-27"
-}
-</script>
+ "splits_asOf": "1:10 PM ET 2026-06-27",
+ "propsLab": {
+  "updated": "2026-06-27 14:03 ET",
+  "tallies": {
+   "totals": {
+    "w": 0,
+    "l": 0,
+    "p": 0,
+    "clvAvg": null,
+    "n": 0
+   },
+   "teamTotals": {
+    "w": 0,
+    "l": 0,
+    "p": 0,
+    "clvAvg": null,
+    "n": 0
+   },
+   "hr": {
+    "w": 0,
+    "l": 0,
+    "p": 0,
+    "clvAvg": null,
+    "n": 0
+   },
+   "k": {
+    "w": 0,
+    "l": 0,
+    "p": 0,
+    "clvAvg": null,
+    "n": 0
+   },
+   "hits": {
+    "w": 0,
+    "l": 0,
+    "p": 0,
+    "clvAvg": null,
+    "n": 0
+   },
+   "tb": {
+    "w": 0,
+    "l": 0,
+    "p": 0,
+    "clvAvg": null,
+    "n": 0
+   },
+   "rbi": {
+    "w": 0,
+    "l": 0,
+    "p": 0,
+    "clvAvg": null,
+    "n": 0
+   },
+   "runs": {
+    "w": 0,
+    "l": 0,
+    "p": 0,
+    "clvAvg": null,
+    "n": 0
+   },
+   "outs": {
+    "w": 0,
+    "l": 0,
+    "p": 0,
+    "clvAvg": null,
+    "n": 0
+   }
+  },
+  "leans": [],
+  "notes_no_lean": [
+   "RUN 14:03 ET (unattended). Chrome has no existing tab + auto-run forces interactive browser-select -> NOT triggered; web_fetch allowlist blocks statsapi/FanGraphs/Savant/DraftKings. So NO live DK prop lines, NO O/U juice, NO batter Statcast this run. Modeled totals from the board's cached slate-builder SP data (FanGraphs 2026 xFIP, real). No prop edges computable -> 0 leans (honest model over forced edge).",
+   "IN-WINDOW this run (first pitch within ~3h, after 14:03): TEX@TOR 3:07p, CIN@PIT 4:05p, PHI@NYM 4:10p, KC@CWS 4:10p.",
+   "TEX@TOR total 8.0 (Rogers Centre, DOME -> weather neutral): Cease (TOR) 2.60 xFIP elite vs Quantrill (TEX) 5.10 xFIP on a tiny 2-IP sample (regress ~4.7). Model total ~7.2-7.6 -> point estimate ~0.6-0.8 UNDER. BORDERLINE the 0.75-run bar but it leans entirely on a 2-IP Quantrill sample + pen-IP assumptions, and books price an ace's total tightly. Cannot verify O/U juice unattended to confirm a >=5-7pt de-vig edge. WATCH Under 8 (verify attended) -> NOT staged.",
+   "CIN@PIT total 8.0 (PNC, pitcher park): Burns (CIN) 3.29 xFIP vs Jones (PIT) 3.99 xFIP/5.75 ERA (20 IP). Pens weak both sides (CIN 25th 4.81, PIT 18th 4.32). Model total ~7.8 -> ~0.2 under 8.0, below 0.75 bar. No lean.",
+   "KC@CWS total 8.0 (Rate Field): Wacha (KC) 4.27 xFIP vs Martin (CHW) 3.39 xFIP. Pens KC 26th (4.97), CHW 16th (4.30). Model total ~8.1-8.2 -> ~+0.2 over, below 0.75 bar. No lean.",
+   "PHI@NYM total 9.0: Rangel (PHI) season line unconfirmed + NYM probable was TBD at build -> cannot handicap starters. SKIP/PASS until probables verified attended.",
+   "HR (priority) + Ks/hits/TB: no DK prop lines reachable unattended and no batter Statcast (barrel%/EV/xSLG) fetchable -> cannot compute any prop edge. 0 prop leans (never fabricate a price/stat). Re-run attended (or 4:45 PM lab pass with Chrome) to model the prop board.",
+   "STARTED, skip for modeling (and never staged, so nothing to settle): HOU@DET 1:10p, NYY@BOS 1:10p.",
+   "TOO-EARLY for a later run (first pitch >3h out / lineups not posted): ARI@TB 6:10p, WSH@BAL 7:05p, SEA@CLE 7:10p, COL@MIN 7:10p, CHC@MIL 7:10p, MIA@STL 7:15p, LAD@SD 8:40p, ATL@SF 9:05p, ATH@LAA 9:38p. Re-evaluate at the 4:45 PM lab run (Chrome should be reachable attended for DK prop lines + Statcast)."
+  ]
+ }
+}</script>
 <script>
   var DATA={};
   try{ DATA=JSON.parse(document.getElementById('betdata').textContent||'{}'); }catch(e){ DATA={}; }
@@ -5980,6 +6063,31 @@
     if($('learnMeta'))$('learnMeta').textContent=(L.lastUpdated?String(L.lastUpdated).replace(/\s*-\s*/,' · '):'');
   }
 
+  var TEAMS={
+    "Arizona Diamondbacks":["ari","#A71930"],"Atlanta Braves":["atl","#CE1141"],"Baltimore Orioles":["bal","#DF4601"],
+    "Boston Red Sox":["bos","#BD3039"],"Chicago Cubs":["chc","#0E3386"],"Chicago White Sox":["chw","#27251F"],
+    "Cincinnati Reds":["cin","#C6011F"],"Cleveland Guardians":["cle","#0C2340"],"Colorado Rockies":["col","#333366"],
+    "Detroit Tigers":["det","#0C2340"],"Houston Astros":["hou","#002D62"],"Kansas City Royals":["kc","#004687"],
+    "Los Angeles Angels":["laa","#BA0021"],"Los Angeles Dodgers":["lad","#005A9C"],"Miami Marlins":["mia","#00A3E0"],
+    "Milwaukee Brewers":["mil","#12284B"],"Minnesota Twins":["min","#002B5C"],"New York Mets":["nym","#002D72"],
+    "New York Yankees":["nyy","#0C2340"],"Oakland Athletics":["oak","#003831"],"Athletics":["oak","#003831"],
+    "Philadelphia Phillies":["phi","#E81828"],"Pittsburgh Pirates":["pit","#27251F"],"San Diego Padres":["sd","#2F241D"],
+    "Seattle Mariners":["sea","#0C2C56"],"San Francisco Giants":["sf","#FD5A1E"],"St. Louis Cardinals":["stl","#C41E3A"],
+    "Tampa Bay Rays":["tb","#092C5C"],"Texas Rangers":["tex","#003278"],"Toronto Blue Jays":["tor","#134A8E"],
+    "Washington Nationals":["wsh","#AB0003"]
+  };
+  function teamMark(name,sport){
+    name=String(name||'').trim(); if(!name)return '';
+    var t=TEAMS[name];
+    if(t&&String(sport).toUpperCase()==='MLB'){
+      return '<img class="tlogo" alt="" src="https://a.espncdn.com/i/teamlogos/mlb/500/'+t[0]+'.png" onerror="this.outerHTML=\'<span class=&quot;tbadge&quot; style=&quot;background:'+t[1]+'&quot;>'+esc(name.split(' ').slice(-1)[0].slice(0,3).toUpperCase())+'</span>\'">';
+    }
+    var ini=name.split(' ').slice(-1)[0].slice(0,3).toUpperCase();
+    var hue=0; for(var i=0;i<name.length;i++)hue=(hue*31+name.charCodeAt(i))%360;
+    var col=t?t[1]:('hsl('+hue+',52%,40%)');
+    return '<span class="tbadge" style="background:'+col+'">'+esc(ini)+'</span>';
+  }
+
   function renderBoard(){
     var today=DATA.date;
     var games=(DATA.games||[]).filter(function(g){return g.date===today;});
@@ -6004,7 +6112,7 @@
       if(!body&&!story)body='<div class="ln" style="color:var(--dim)">No read posted.</div>';
       body+=story;
       html+='<div class="card game" data-lg="'+esc(g.sport)+'">'+
-        '<div class="ghead"><span class="lgtag">'+esc(g.sport||'')+'</span><div class="teams"><div class="m">'+esc(g.matchup||(g.away+" @ "+g.home))+'</div><div class="s">'+esc(g.time||'')+(g.grade?' · grade '+esc(g.grade):'')+'</div></div>'+pill+'<span class="chev">▾</span></div>'+
+        '<div class="ghead"><span class="lgtag">'+esc(g.sport||'')+'</span><div class="teams"><div class="m">'+((g.away&&g.home)?(teamMark(g.away,g.sport)+'<span>'+esc(g.away)+'</span> <span style="color:var(--dim);font-weight:400">@</span> '+teamMark(g.home,g.sport)+'<span>'+esc(g.home)+'</span>'):esc(g.matchup||''))+'</div><div class="s">'+esc(g.time||'')+(g.grade?' · grade '+esc(g.grade):'')+'</div></div>'+pill+'<span class="chev">▾</span></div>'+
         '<div class="gbody">'+body+'</div></div>';
     });
     $('boardList').innerHTML=html||'<div class="empty">No games on the board yet today.</div>';
@@ -6041,6 +6149,31 @@
       rr+='<div class="row"><span class="dt">'+esc((p.date||'').slice(5))+'</span><span class="pr">'+esc(p.play||p.matchup||'')+(p.odds?' <span class="od">'+esc(p.odds)+'</span>':'')+'</span><span class="gr '+cls+'">'+esc(r)+'</span></div>';
     });
     $('rRecent').innerHTML=rr||'<div class="empty">No settled picks yet.</div>';
+  }
+
+  function renderProps(){
+    if(!$('propsTallies'))return;
+    var L=DATA.propsLab||{}; var t=L.tallies||{};
+    var labels={totals:'Totals',teamTotals:'Team totals',hr:'Home runs',k:'Strikeouts',hits:'Hits',tb:'Total bases',rbi:'RBI',runs:'Runs',outs:'Outs'};
+    var stat='';
+    Object.keys(labels).forEach(function(k){
+      var o=t[k]; if(!o)return;
+      var rec=(o.w||0)+'-'+(o.l||0)+(o.p?'-'+o.p:'');
+      var clv=(o.clvAvg!=null?((o.clvAvg>=0?'+':'')+(+o.clvAvg).toFixed(2)+' CLV'):'calibrating');
+      stat+='<div class="stat"><div class="k">'+esc(labels[k])+'</div><div class="v" style="font-size:20px">'+(o.n?esc(rec):'\u2014')+'</div><div class="x">'+(o.n?esc(clv):'no settled yet')+'</div></div>';
+    });
+    $('propsTallies').innerHTML=stat||'<div class="empty">No markets tracked yet.</div>';
+    var leans=Array.isArray(L.leans)?L.leans:[];
+    var lh='';
+    leans.forEach(function(p){
+      var play=p.play||p.lean||p.pick||((p.market||'')+' '+(p.side||p.bet||''));
+      lh+='<div class="row"><span class="dot fire"></span><span class="pr"><b style="font-weight:600">'+esc(play)+'</b>'+(p.odds?' <span class="od">'+esc(p.odds)+'</span>':'')+((p.matchup||p.game)?'<div style="font-size:12px;color:var(--dim)">'+esc(p.matchup||p.game)+'</div>':'')+'</span>'+(p.edge?'<span class="gr paper">'+esc(p.edge)+'</span>':'<span class="gr paper">lean</span>')+'</div>';
+    });
+    $('propsLeans').innerHTML=lh||'<div class="empty">No prop leans right now \u2014 the model only fires on a real edge.</div>';
+    var notes=Array.isArray(L.notes_no_lean)?L.notes_no_lean:(L.notes?[].concat(L.notes):[]);
+    var nh=''; notes.slice(0,4).forEach(function(n){nh+='<div class="r">'+esc(String(n).slice(0,280))+'</div>';});
+    $('propsNotes').innerHTML=nh||'<div class="empty">No notes this run.</div>';
+    if($('propsMeta'))$('propsMeta').textContent=L.updated?('· '+L.updated):'';
   }
 
   function renderNews(){
@@ -6087,7 +6220,7 @@
     t.classList.add('on'); $(t.dataset.v).classList.add('on');
   };});
 
-  renderDash(); renderBoard(); renderRecord(); renderNews(); renderFoot();
+  renderDash(); renderBoard(); renderRecord(); renderProps(); renderNews(); renderFoot();
 
   (function(){
     function ready(fn){ if(window.Chart) fn(); else setTimeout(function(){ready(fn)},120); }
