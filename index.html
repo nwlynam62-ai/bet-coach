@@ -145,7 +145,7 @@
   "unitFixed": true,
   "bankrollUpdated": "Sun Jun 21, 2026"
  },
- "updated": "5:07 PM ET 2026-06-27 (GA :05 ACTIVE: VSiN-DK live read 15/15 w/ money%+bets%, lines ESPN-confirmed; PROMOTE LAA -114 (money+SP agree), lead dog ATL +109 (RLM), ARI +123 softened as money flipped to TB)",
+ "updated": "5:58 PM ET 2026-06-27 (sync :50 ACTIVE: close-captured ARI +119->+123 at T-16m (adverse CLV, already locked); no new fire -- in-window slate all B-/C+ radar, strong reads LAA -114/ATL +109 QUEUED for their pre-game windows)",
  "linesSource": "MLB lines = DraftKings via ESPN core odds API (both-side ML)+totals; KBO/NPB = DraftKings via The Odds API (h2h); WNBA spread/total = DK via ESPN. Records/ERA = ESPN standings; bullpen = FanGraphs RP ERA+rank; closers = statsapi saves leaders. Pulled ~12:20 AM ET Jun 27.",
  "bets": [],
  "games": [
@@ -797,8 +797,8 @@
     "h2h": "season series not pulled this build",
     "injuries": "not pulled this build — verify vs ESPN injuries feed in-window"
    },
-   "decision": "PASS",
-   "passReason": "True pick'em = dead money per dog rule; near-even xFIPs, no own-number edge.",
+   "decision": "QUEUED",
+   "passReason": "",
    "moneyPct": {
     "away": 37,
     "home": 63
@@ -4062,7 +4062,7 @@
     "Confirm 2 (RLM): line moved ARI +135 -> +119, shortening toward the dog as money came in. Two converging confirms in an even bullpen-game matchup."
    ],
    "note": "B contrarian dog (PATH B): bullpen game both sides (web-verified Sulser/Cabrera openers) = even matchup priced as +119 dog -> value, plus the board's strongest VSiN money split (77%/19%, +58) and RLM +135->+119. No SP leg (openers) so graded B. Graduated from QUEUED radar.",
-   "close": null
+   "close": "+123"
   }
  ],
  "lessons": {
@@ -4593,14 +4593,6 @@
   },
   {
    "sport": "MLB",
-   "play": "ARI +123 (D-backs ML)",
-   "odds": "+123",
-   "matchup": "Diamondbacks @ Rays",
-   "grade": "B",
-   "note": "Extreme-fade dog (6:10p): 24% of tickets, money>tix +16 (40% money) = static sharp tell, BUT the money MAJORITY flipped to TB (60%) since 4:06 (ARI was 55%) and no RLM toward the dog. Cabrera season-debut + TB opener cap the conviction. Watch, do not harden."
-  },
-  {
-   "sport": "MLB",
    "play": "COL@MIN Over 9.5",
    "odds": null,
    "matchup": "Rockies @ Twins",
@@ -4614,14 +4606,6 @@
    "matchup": "Nationals @ Orioles",
    "grade": "B",
    "note": "Secondary total (7:05p): two soft pens (WSH ~29th) in a hitter park; 84% Over handle. Cleaner WSH-game angle than the pick'em ML (sharp ML tell evaporated, money 54/46)."
-  },
-  {
-   "sport": "MLB",
-   "play": "MIA +114 (Marlins ML)",
-   "odds": "+114",
-   "matchup": "Marlins @ Cardinals",
-   "grade": "B-",
-   "note": "Thin sharp tilt (7:15p): 39% money on 33% tix (+6) on the MIA dog while STL public-tilted (67% tix). Jun-22 STL lesson -- do NOT fire heavy-ticket STL. Sub-threshold, watch only."
   },
   {
    "sport": "WNBA",
@@ -5312,7 +5296,7 @@
   }
  ],
  "_edgeResearchStamp": "Sat Jun 27, 2026 - 1:25 AM ET",
- "updatedISO": "2026-06-27T17:07:00-04:00",
+ "updatedISO": "2026-06-27T17:58:09.428375-04:00",
  "record": "57-45-2",
  "splits_asOf": "5:07 PM ET 2026-06-27",
  "propsLab": {
@@ -5454,7 +5438,7 @@
       var toks=String(w.matchup||'').toLowerCase().split(/[^a-z]+/).filter(function(x){return x.length>3;});
       for(var i=0;i<_games.length;i++){var gm=String(_games[i].matchup||'').toLowerCase();
         if(toks.length&&toks.some(function(t){return gm.indexOf(t)>=0;})){
-          if(String(_games[i].decision||'').toUpperCase()==='PASS')return false;
+          if(['PASS','FIRED'].indexOf(String(_games[i].decision||'').toUpperCase())>=0)return false;
           var st=String(_games[i].status||'').toLowerCase();
           if(st&&st!=='scheduled')return false;
           return true;
@@ -5468,7 +5452,7 @@
       rh+='<div class="row" style="padding:9px 0"><span class="dot watch"></span><span class="pr">'+esc(play)+(w.odds?' <span class="od">'+esc(w.odds)+'</span>':'')+'</span>'+(w.grade?'<span class="gr '+gradeCls(w.grade)+'">'+esc(w.grade)+'</span>':'')+'</div>';
     });
     $('dRadar').innerHTML=rh||'<div class="empty">Radar is clear.</div>';
-    var ra=DATA.radarAsOf||'';if(!ra&&DATA.updated){var rm=String(DATA.updated).match(/\d{1,2}:\d{2}\s*[AP]M\s*ET/i);if(rm)ra=rm[0];}if($('radMeta'))$('radMeta').textContent=wl.length+' watching'+(ra?' · checked '+ra:'');
+    if($('radMeta'))$('radMeta').textContent=wl.length+' watching';
 
     renderLearn();
 
@@ -5607,29 +5591,16 @@
       var o=t[k]; if(!o)return;
       var rec=(o.w||0)+'-'+(o.l||0)+(o.p?'-'+o.p:'');
       var clv=(o.clvAvg!=null?((o.clvAvg>=0?'+':'')+(+o.clvAvg).toFixed(2)+' CLV'):'calibrating');
-      stat+='<div class="stat"><div class="k">'+esc(labels[k])+'</div><div class="v" style="font-size:20px">'+(o.n?esc(rec):'—')+'</div><div class="x">'+(o.n?esc(clv)+' · n'+o.n:'no settled yet')+'</div></div>';
+      stat+='<div class="stat"><div class="k">'+esc(labels[k])+'</div><div class="v" style="font-size:20px">'+(o.n?esc(rec):'\u2014')+'</div><div class="x">'+(o.n?esc(clv):'no settled yet')+'</div></div>';
     });
     $('propsTallies').innerHTML=stat||'<div class="empty">No markets tracked yet.</div>';
     var leans=Array.isArray(L.leans)?L.leans:[];
-    var today=new Date().toLocaleDateString('en-CA',{timeZone:'America/New_York'});
-    function pending(p){var r=(''+(p.result||'')).toLowerCase();return !r||r==='pending';}
-    function started(p){if(p.gameTime){var ti=Date.parse(p.gameTime);if(!isNaN(ti))return ti<=Date.now();}if(p.date&&(''+p.date)<today)return true;return false;}
-    function priceOf(p){var o=(p.entryOdds!=null?p.entryOdds:(p.odds!=null?p.odds:''));return (''+o).trim();}
-    function priced(p){var o=priceOf(p).toLowerCase();return o&&o.indexOf('unconfirm')<0&&o!=='null'&&o!=='nan'&&o!=='tbd';}
-    var live=leans.filter(function(p){return pending(p)&&!started(p);});
-    var active=live.filter(priced), watch=live.filter(function(p){return !priced(p);});
-    function chip(p){if(p.edge)return esc(p.edge);if(p.modelProb!=null){var mp=+p.modelProb;mp=mp<=1?mp*100:mp;return 'model '+mp.toFixed(0)+'%';}return 'lean';}
-    function sub(p){var bits=[];if(p.matchup||p.game)bits.push(esc(p.matchup||p.game));if(p.type&&labels[p.type])bits.push(esc(labels[p.type]));if(p.edgePts!=null)bits.push('edge +'+esc((+p.edgePts).toFixed(1))+' pts');return bits.join(' · ');}
     var lh='';
-    active.forEach(function(p){
-      var play=(p.player?esc(p.player)+' ':'')+esc(p.play||p.lean||p.pick||((p.market||'')+' '+(p.side||p.bet||'')));
-      var why=p.why||p.note||'';
-      lh+='<div class="row"><span class="dot fire"></span><span class="pr"><b style="font-weight:600">'+play+'</b> <span class="od">'+esc(priceOf(p))+'</span><div style="font-size:12px;color:var(--dim)">'+sub(p)+'</div>'+(why?'<div style="font-size:12px;color:var(--dim);font-style:italic;margin-top:2px">'+esc(String(why).slice(0,220))+'</div>':'')+'</span><span class="gr paper">'+chip(p)+'</span></div>';
+    leans.forEach(function(p){
+      var play=p.play||p.lean||p.pick||((p.market||'')+' '+(p.side||p.bet||''));
+      lh+='<div class="row"><span class="dot fire"></span><span class="pr"><b style="font-weight:600">'+esc(play)+'</b>'+(p.odds?' <span class="od">'+esc(p.odds)+'</span>':'')+((p.matchup||p.game)?'<div style="font-size:12px;color:var(--dim)">'+esc(p.matchup||p.game)+'</div>':'')+'</span>'+(p.edge?'<span class="gr paper">'+esc(p.edge)+'</span>':'<span class="gr paper">lean</span>')+'</div>';
     });
-    if(watch.length){
-      lh+='<div class="row" style="opacity:.72"><span class="dot" style="background:var(--dim)"></span><span class="pr"><b style="font-weight:600">'+watch.length+' model candidate'+(watch.length>1?'s':'')+' awaiting a confirmed price</b><div style="font-size:12px;color:var(--dim)">Modeled an edge but the book price isn’t locked — not tracked as a paper bet until priced.</div></span></div>';
-    }
-    $('propsLeans').innerHTML=lh||'<div class="empty">No prop leans right now — the model only fires on a real edge.</div>';
+    $('propsLeans').innerHTML=lh||'<div class="empty">No prop leans right now \u2014 the model only fires on a real edge.</div>';
     var notes=Array.isArray(L.notes_no_lean)?L.notes_no_lean:(L.notes?[].concat(L.notes):[]);
     var nh=''; notes.slice(0,4).forEach(function(n){nh+='<div class="r">'+esc(String(n).slice(0,280))+'</div>';});
     $('propsNotes').innerHTML=nh||'<div class="empty">No notes this run.</div>';
