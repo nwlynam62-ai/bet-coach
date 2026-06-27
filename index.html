@@ -98,7 +98,7 @@
     <p class="seclabel">Bankroll — month by month</p>
     <div class="panel" style="margin-top:0"><div class="ringrow" id="bankKpisD" style="margin-bottom:16px"></div><div id="bankCurveD"></div></div>
     <div class="panel"><div class="ph"><h3>Monthly P/L</h3></div><div id="bankBarsD"></div></div>
-    <div class="panel"><div class="ph"><h3>Monthly ledger</h3></div><div style="overflow-x:auto"><table class="banktbl"><thead><tr><th>Month</th><th>Bets</th><th>W-L</th><th>P/L</th><th>ROI</th><th>CLV</th></tr></thead><tbody id="bankBodyD"></tbody></table></div></div>
+    <div class="panel"><div class="ph"><h3>Monthly ledger</h3></div><div style="overflow-x:auto"><table class="banktbl"><thead><tr><th>Month</th><th>Bets</th><th>W-L</th><th>Units</th><th>P/L</th><th>ROI</th><th>CLV</th></tr></thead><tbody id="bankBodyD"></tbody></table></div></div>
     <p class="seclabel">Recent settled</p>
     <div class="card" id="rRecent"></div>
   </div>
@@ -5152,14 +5152,6 @@
   },
   {
    "sport": "MLB",
-   "play": "ARI +119 (Diamondbacks ML)",
-   "odds": "+119",
-   "matchup": "Diamondbacks @ Rays",
-   "grade": "B+",
-   "note": "FIRED AM. Massive reverse money: 67% of the money on just 24% of the bets (+43) on the ARI dog. Bullpen game caps fundamentals but the money signal is loud; line steady +119."
-  },
-  {
-   "sport": "MLB",
    "play": "CIN F5 ML (Reds first 5)",
    "odds": null,
    "matchup": "Reds @ Pirates",
@@ -5814,16 +5806,16 @@
   }
  ],
  "systemHealth": {
-  "lastManagerRun": "2:09 PM ET 2026-06-27",
+  "lastManagerRun": "3:08 PM ET 2026-06-27",
   "appGapDetected": false,
   "caughtUp": true,
-  "lastPublishOk": true,
-  "publishNote": "FAST-PATH healthy; sync 12:56 stamp newest; no user-visible change",
-  "problems": [],
+  "lastPublishOk": "pending (unattended Chrome gate)",
+  "problems": [
+   "pruned 1 fired-dup from watchlist (ARI)"
+  ],
   "picksToday": 2,
   "bankroll": null,
-  "clvCaptured": "61/103 settled have CLV (close-backfill deferred; needs attended ESPN-core)",
-  "note": "FAST-PATH healthy; pruned 1 started radar lean; concurrent-worker write contention observed."
+  "clvCaptured": "61/103"
  },
  "totalTake": "1:10 PM ET 2026-06-27 (GA :05 ACTIVE): Cleanest total = Over 9.5 COL@MIN -- MIN pen 30th + COL 28th (two worst pens in MLB) behind Lorenzen/Paredes, 90% Over handle. Secondary: Over 9 WSH@BAL (two soft pens, WSH 29th, 73% Over handle). ML and totals weighted equal; no fired total -- own-number gaps tighter after numbers climbed to 9.5/9.",
  "leagueStatus": {
@@ -5905,7 +5897,7 @@
  ],
  "_edgeResearchStamp": "Sat Jun 27, 2026 - 1:25 AM ET",
  "updatedISO": "2026-06-27T14:07:00-04:00",
- "record": "55-45-2",
+ "record": "56-45-2",
  "splits_asOf": "2:07 PM ET 2026-06-27",
  "propsLab": {
   "updated": "2026-06-27 14:03 ET",
@@ -6026,16 +6018,18 @@
   function renderDash(){
     var rec=(DATA.lessons&&DATA.lessons.record)||DATA.record||{};
     var s=DATA.settings||{};
-    var bk=s.bankroll, st=s.bankrollStart||80;
-    var roi=(bk&&st)?(((bk-st)/st)*100):null;
-    if($('bkVal')) $('bkVal').textContent=bk?('$'+bk.toFixed(2)):'—';
+    var st=s.bankrollStart||80, u=s.unit||5;
+    var U=(DATA.picks||[]).reduce(function(a,p){return a+unitsFor(p);},0);
+    var bkC=st+U*u;
+    var roi=st?((U*u)/st*100):null;
+    if($('bkVal')) $('bkVal').textContent='$'+bkC.toFixed(2);
     if($('bkSub')) $('bkSub').innerHTML='bankroll'+(roi!=null?(' · <span class="'+(roi>=0?'pos':'neg')+'">'+(roi>=0?'+':'')+roi.toFixed(0)+'%</span>'):'');
     var clv=clvObj(); var clvAvg=clvAvgVal(clv);
     var html='';
     html+=statCard('Record', rec.overall||DATA.record||'—', (rec.hitRate!=null?rec.hitRate+'% hit rate':''));
-    html+=statCard('ROI', roi!=null?((roi>=0?'+':'')+roi.toFixed(1)+'%'):'—', '$'+(s.unit||5)+' unit', roi>=0?'pos':'neg');
+    html+=statCard('Units', (U>=0?'+':'')+U.toFixed(1)+'u', (roi>=0?'+':'')+roi.toFixed(1)+'% ROI', U>=0?'pos':'neg');
     html+=statCard('Avg CLV', clvAvg!=null?((clvAvg>=0?'+':'')+clvAvg.toFixed(2)):'tracking', (clv.pctPositiveCLV!=null?clv.pctPositiveCLV+'% beat close':'the real scoreboard'), clvAvg>=0?'pos':'');
-    html+=statCard('Bankroll', bk?('$'+bk.toFixed(0)):'—', 'start $'+st);
+    html+=statCard('Bankroll', '$'+bkC.toFixed(0), 'start $'+st+' · $'+u+'/u');
     $('dStats').innerHTML=html;
 
     renderFired();
@@ -6145,16 +6139,17 @@
 
   function renderRecord(){
     var rec=(DATA.lessons&&DATA.lessons.record)||DATA.record||{};
-    var s=DATA.settings||{}; var bk=s.bankroll,st=s.bankrollStart||80;
-    var roi=(bk&&st)?(((bk-st)/st)*100):null;
+    var s=DATA.settings||{}; var st=s.bankrollStart||80, u=s.unit||5;
+    var U=(DATA.picks||[]).reduce(function(a,p){return a+unitsFor(p);},0);
+    var bkC=st+U*u; var roi=st?((U*u)/st*100):null;
     var h='';
     h+=statCard('Hit rate',(rec.hitRate!=null?rec.hitRate+'%':'—'),rec.overall||DATA.record||'');
-    h+=statCard('ROI',roi!=null?((roi>=0?'+':'')+roi.toFixed(1)+'%'):'—','$'+(s.unit||5)+' unit',roi>=0?'pos':'neg');
+    h+=statCard('Units',(U>=0?'+':'')+U.toFixed(1)+'u',(roi>=0?'+':'')+roi.toFixed(1)+'% ROI',U>=0?'pos':'neg');
     var clv=clvObj(); var clvAvg=clvAvgVal(clv);
     var clvVal=(clv.nRealCaptures!=null?clv.nRealCaptures+' captures':'tracking');
     var clvSub=(clvAvg!=null?('avg '+(clvAvg>=0?'+':'')+clvAvg.toFixed(2)):'')+(clv.pctPositiveCLV!=null?((clvAvg!=null?' · ':'')+clv.pctPositiveCLV+'% +'):'');
     h+=statCard('CLV',clvVal,clvSub);
-    h+=statCard('Bankroll',bk?('$'+bk.toFixed(0)):'—','start $'+st);
+    h+=statCard('Bankroll','$'+bkC.toFixed(0),'start $'+st);
     $('rStats').innerHTML=h;
     function barPanel(title,obj){
       if(!obj)return '';
@@ -6294,15 +6289,14 @@
   var MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   var months={},order=[];
   rows.forEach(function(p){var m=p.date.slice(0,7);if(!months[m]){months[m]={b:0,w:0,l:0,p:0,u:0,c:0,cn:0};order.push(m);}var o=months[m],r=normRes(p.result);o.b++;if(r==="W")o.w++;else if(r==="L")o.l++;else o.p++;o.u+=unitsFor(p);var c=parseFloat(p.clv);if(isFinite(c)){o.c+=c;o.cn++;}});
-  var oBR=(SET.bankroll>0?SET.bankroll:null);var rawCum=0;rows.forEach(function(p){rawCum+=unitsFor(p)*unit;});var oPL=(oBR!=null?oBR-startBR:rawCum);var SC=(rawCum!==0?oPL/rawCum:1);
   var eq=[startBR],dt=[rows[0].date],cum=0;
-  rows.forEach(function(p){cum+=unitsFor(p)*unit*SC;eq.push(startBR+cum);dt.push(p.date);});
+  rows.forEach(function(p){cum+=unitsFor(p)*unit;eq.push(startBR+cum);dt.push(p.date);});
   var curBR=startBR+cum,plD=curBR-startBR,n=eq.length;
   var peak=-1e9,dd=eq.map(function(v){if(v>peak)peak=v;return v-peak;}),maxDD=Math.min.apply(null,dd);
   var totU=0,tC=0,tCn=0,tB=0,tW=0,tL=0,tP=0;order.forEach(function(m){var o=months[m];totU+=o.u;tC+=o.c;tCn+=o.cn;tB+=o.b;tW+=o.w;tL+=o.l;tP+=o.p;});
   var avgCLV=tCn?tC/tCn:null;
   function k(lbl,val,cls){return '<div class="ringtxt" style="min-width:92px"><div class="rt1 '+(cls||"")+'">'+val+'</div><div class="rt2">'+lbl+'</div></div>';}
-  var KPIS=k("Bankroll","$"+curBR.toFixed(2),plD>=0?"pos":"neg")+k("All-time P/L",(plD>=0?"+":"")+"$"+plD.toFixed(2),plD>=0?"pos":"neg")+k("Max Drawdown","−$"+Math.abs(maxDD).toFixed(2),"neg")+k("Avg CLV",avgCLV==null?"—":((avgCLV>=0?"+":"")+avgCLV.toFixed(2)),(avgCLV||0)>=0?"pos":"neg");
+  var KPIS=k("Bankroll","$"+curBR.toFixed(2),plD>=0?"pos":"neg")+k("Units",(totU>=0?"+":"")+totU.toFixed(1)+"u",totU>=0?"pos":"neg")+k("All-time P/L",(plD>=0?"+":"")+"$"+plD.toFixed(2),plD>=0?"pos":"neg")+k("Max Drawdown","−$"+Math.abs(maxDD).toFixed(2),"neg")+k("Avg CLV",avgCLV==null?"—":((avgCLV>=0?"+":"")+avgCLV.toFixed(2)),(avgCLV||0)>=0?"pos":"neg");
   var W=720,H=300,L=54,Rt=704,aT=18,aB=196,bT=224,bB=280,xlY=296;
   var lo=Math.min(startBR,Math.min.apply(null,eq)),hi=Math.max.apply(null,eq),pad=(hi-lo)*0.12||5;lo-=pad;hi+=pad;
   function X(i){return L+i*(Rt-L)/(n-1);}
@@ -6333,11 +6327,11 @@
   var mi=dd.indexOf(maxDD);g+='<text x="'+X(mi).toFixed(1)+'" y="'+(YB(maxDD)+12).toFixed(1)+'" text-anchor="middle" font-size="13" fill="#C8323F" font-weight="800">max −$'+Math.abs(maxDD).toFixed(2)+'</text>';
   var SVG='<svg viewBox="0 0 '+W+" "+H+'" style="width:100%;height:auto;display:block;font-family:Inter,sans-serif">'+g+'</svg>';
   var mx=Math.max.apply(null,order.map(function(m){return Math.abs(months[m].u*unit);}))||1;
-  var bars=order.map(function(m){var v=months[m].u*unit*SC,h=Math.abs(v)/mx*54,c=v>=0?"#0E8A57":"#C8323F",mn=MN[parseInt(m.slice(5,7),10)-1];return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-width:30px"><div style="font:800 10px Inter;color:'+c+';margin-bottom:3px">'+(v>=0?"+":"−")+"$"+Math.abs(v).toFixed(0)+'</div><div style="width:58%;height:'+h.toFixed(0)+'px;border-radius:4px 4px 0 0;background:'+c+'"></div><div style="font:700 10px Inter;color:#5A6573;margin-top:5px">'+mn+'</div></div>';}).join("");
+  var bars=order.map(function(m){var v=months[m].u*unit,h=Math.abs(v)/mx*54,c=v>=0?"#0E8A57":"#C8323F",mn=MN[parseInt(m.slice(5,7),10)-1];return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-width:30px"><div style="font:800 10px Inter;color:'+c+';margin-bottom:3px">'+(v>=0?"+":"−")+"$"+Math.abs(v).toFixed(0)+'</div><div style="width:58%;height:'+h.toFixed(0)+'px;border-radius:4px 4px 0 0;background:'+c+'"></div><div style="font:700 10px Inter;color:#5A6573;margin-top:5px">'+mn+'</div></div>';}).join("");
   var BARS='<div style="display:flex;align-items:flex-end;gap:10px;height:98px;padding:8px 4px 0;overflow-x:auto">'+bars+'</div>';
-  var trows=order.map(function(m){var o=months[m],pl=o.u*unit*SC,r=100*pl/(o.b*unit),cv=o.cn?o.c/o.cn:null,cls=pl>=0?"pos":"neg";return '<tr><td>'+MN[parseInt(m.slice(5,7),10)-1]+" '"+m.slice(2,4)+'</td><td class="mono">'+o.b+'</td><td class="mono">'+o.w+"-"+o.l+(o.p?"-"+o.p+"P":"")+'</td><td class="mono '+cls+'">'+(pl>=0?"+":"−")+"$"+Math.abs(pl).toFixed(2)+'</td><td class="mono '+cls+'">'+(r>=0?"+":"")+r.toFixed(1)+'%</td><td class="mono '+((cv||0)>=0?"pos":"neg")+'">'+(cv==null?"—":((cv>=0?"+":"")+cv.toFixed(2)))+'</td></tr>';}).join("");
+  var trows=order.map(function(m){var o=months[m],pl=o.u*unit,r=100*o.u/o.b,cv=o.cn?o.c/o.cn:null,cls=o.u>=0?"pos":"neg";return '<tr><td>'+MN[parseInt(m.slice(5,7),10)-1]+" '"+m.slice(2,4)+'</td><td class="mono">'+o.b+'</td><td class="mono">'+o.w+"-"+o.l+(o.p?"-"+o.p+"P":"")+'</td><td class="mono '+cls+'">'+(o.u>=0?"+":"")+o.u.toFixed(1)+'u</td><td class="mono '+cls+'">'+(pl>=0?"+":"−")+"$"+Math.abs(pl).toFixed(2)+'</td><td class="mono '+cls+'">'+(r>=0?"+":"")+r.toFixed(1)+'%</td><td class="mono '+((cv||0)>=0?"pos":"neg")+'">'+(cv==null?"—":((cv>=0?"+":"")+cv.toFixed(2)))+'</td></tr>';}).join("");
   var tc=totU>=0?"pos":"neg";
-  var totPL=totU*unit*SC,totR=100*totPL/(tB*unit);var TABLE=trows+'<tr style="font-weight:800;background:rgba(31,58,138,.06)"><td>Total</td><td class="mono">'+tB+'</td><td class="mono">'+tW+"-"+tL+(tP?"-"+tP+"P":"")+'</td><td class="mono '+tc+'">'+(totPL>=0?"+":"−")+"$"+Math.abs(totPL).toFixed(2)+'</td><td class="mono '+tc+'">'+(totR>=0?"+":"")+totR.toFixed(1)+'%</td><td class="mono '+((avgCLV||0)>=0?"pos":"neg")+'">'+(avgCLV==null?"—":((avgCLV>=0?"+":"")+avgCLV.toFixed(2)))+'</td></tr>';
+  var TABLE=trows+'<tr style="font-weight:800;background:rgba(31,58,138,.06)"><td>Total</td><td class="mono">'+tB+'</td><td class="mono">'+tW+"-"+tL+(tP?"-"+tP+"P":"")+'</td><td class="mono '+tc+'">'+(totU>=0?"+":"")+totU.toFixed(1)+'u</td><td class="mono '+tc+'">'+(totU*unit>=0?"+":"−")+"$"+Math.abs(totU*unit).toFixed(2)+'</td><td class="mono '+tc+'">'+(100*totU/tB>=0?"+":"")+(100*totU/tB).toFixed(1)+'%</td><td class="mono '+((avgCLV||0)>=0?"pos":"neg")+'">'+(avgCLV==null?"—":((avgCLV>=0?"+":"")+avgCLV.toFixed(2)))+'</td></tr>';
   TG.forEach(function(t){setH(t[0],KPIS);setH(t[1],SVG);setH(t[2],BARS);setH(t[3],TABLE);});
 })();
 
