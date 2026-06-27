@@ -145,7 +145,7 @@
   "unitFixed": true,
   "bankrollUpdated": "Sun Jun 21, 2026"
  },
- "updated": "3:47 PM ET 2026-06-27 (Red Sox ML +102 settled W)",
+ "updated": "3:56 PM ET 2026-06-27 (CIN F5 unverifiable at lock -> PASS)",
  "linesSource": "MLB lines = DraftKings via ESPN core odds API (both-side ML)+totals; KBO/NPB = DraftKings via The Odds API (h2h); WNBA spread/total = DK via ESPN. Records/ERA = ESPN standings; bullpen = FanGraphs RP ERA+rank; closers = statsapi saves leaders. Pulled ~12:20 AM ET Jun 27.",
  "bets": [],
  "games": [
@@ -313,8 +313,8 @@
     "h2h": "season series not pulled this build",
     "injuries": "not pulled this build — verify vs ESPN injuries feed in-window"
    },
-   "decision": "QUEUED",
-   "passReason": "CIN 86% VSiN money + Burns SP edge real, but full-game DK price is pick'em (CIN -110, dead-money rule); F5 derivative price could not be verified this run -> held on radar pending a confirmed F5 number before 4:05 first pitch.",
+   "decision": "PASS",
+   "passReason": "CIN 86% VSiN money + Burns SP edge real, but full-game DK price is dead-money pick'em (CIN -118) and the only value path was the F5 derivative, whose real price could not be verified before the 4:05 first pitch in this unattended run (Chrome/web_fetch gated). No verified-price entry -> PASS.",
    "moneyPct": {
     "away": 86,
     "home": 14
@@ -3983,7 +3983,8 @@
     "Confirm 2 (bullpen): BOS pen 3rd vs NYY 4th -- back end is a wash that won't bail out a struggling Cole. Price +102 (devig ~0.473), inside dog cap. Two-leg contrarian: SP form edge + reverse money."
    ],
    "note": "B+ contrarian home dog: Bennett SP form edge over a struggling/injury-return Cole (5.95 ERA L4) + VSiN reverse money (BOS 45% money on 29% tickets). Graduated from QUEUED radar. SP direction web-verified (Cole NYY / Bennett BOS).",
-   "close": "+102"
+   "close": "+102",
+   "clv": 0
   },
   {
    "id": "mlb-20260627-ari-tb-ml",
@@ -4519,14 +4520,6 @@
  "watchlist": [
   {
    "sport": "MLB",
-   "play": "PHI +109 (Phillies ML)",
-   "odds": "+109",
-   "matchup": "Phillies @ Mets",
-   "grade": "A",
-   "note": "FIRE plus-money dog: 89% of the MONEY on 63% of bets (+26 SHARP$) on PHI; Phillies (46-36) far better than Mets (34-48). Superior team + heavy sharp money + plus price. Loudest A-grade dog on the board."
-  },
-  {
-   "sport": "MLB",
    "play": "ATL +113 (Braves ML)",
    "odds": "+113",
    "matchup": "Braves @ Giants",
@@ -4535,35 +4528,11 @@
   },
   {
    "sport": "MLB",
-   "play": "KC +107 (Royals ML)",
-   "odds": "+107",
-   "matchup": "Royals @ White Sox",
-   "grade": "B+",
-   "note": "Loudest SHARP$ + RLM: 64% of the MONEY on only 25% of bets (+39) and line steamed +109->+107 TOWARD the dog. Textbook contrarian sharp dog; weak KC (34-49) caps it at B+."
-  },
-  {
-   "sport": "MLB",
    "play": "WSH -106 (Nationals ML)",
    "odds": "-106",
    "matchup": "Nationals @ Orioles",
    "grade": "B+",
    "note": "SHARP$ + RLM: 74% of the money on 44% of bets (+30) with 56% of tickets on BAL -- reverse-money on WSH, RLM continues. Money side = Nationals."
-  },
-  {
-   "sport": "MLB",
-   "play": "CIN -110 (Reds ML)",
-   "odds": "-110",
-   "matchup": "Reds @ Pirates",
-   "grade": "B+",
-   "note": "SHARP$ road favorite (near pick'em): 86% of the money on 70% of bets (+16), sharpened from 80% at midday. Clean money-side lean on CIN."
-  },
-  {
-   "sport": "MLB",
-   "play": "LAA -114 (Angels ML)",
-   "odds": "-114",
-   "matchup": "Athletics @ Angels",
-   "grade": "B+",
-   "note": "SHARP$ home favorite: 74% of the money on 47% of bets (+27) with tickets split -- sharp money on LAA despite the A's grading better. Money side = Angels."
   },
   {
    "sport": "MLB",
@@ -4580,14 +4549,6 @@
    "matchup": "Nationals @ Orioles",
    "grade": "B",
    "note": "Secondary total: two soft pens (WSH 29th), 81% Over handle. Pairs with the WSH ML lean."
-  },
-  {
-   "sport": "MLB",
-   "play": "MIA +114 (Marlins ML)",
-   "odds": "+114",
-   "matchup": "Marlins @ Cardinals",
-   "grade": "B-",
-   "note": "Thin sharp tilt: 41% money on 33% bets (+8) on the MIA dog while STL public-tilted (59% money vs 67% tix). Jun-22 STL lesson says do NOT fire heavy-ticket STL. Watch only."
   },
   {
    "sport": "WNBA",
@@ -5173,16 +5134,16 @@
   }
  ],
  "systemHealth": {
-  "lastManagerRun": "3:08 PM ET 2026-06-27",
+  "lastManagerRun": "4:05 PM ET 2026-06-27",
   "appGapDetected": false,
   "caughtUp": true,
   "lastPublishOk": "pending (unattended Chrome gate)",
   "problems": [
-   "pruned 1 fired-dup from watchlist (ARI)"
+   "backfilled clv=0 on settled Red Sox ML (close==entry +102)"
   ],
   "picksToday": 2,
   "bankroll": null,
-  "clvCaptured": "61/103"
+  "clvCaptured": "62/104"
  },
  "totalTake": "3:07 PM ET 2026-06-27 (GA :05 sync ACTIVE): Cleanest total = Over 9.5 COL@MIN -- MIN pen 30th + COL pen 28th (two worst pens in MLB) behind Lorenzen/Paredes, 89% Over handle. Secondary: Over 9 WSH@BAL (two soft pens, WSH 29th, 81% Over handle). ML and totals weighted equal; no fired total -- own-number gaps below the ~0.75-run threshold, riding the bullpen-driven Overs as leans.",
  "leagueStatus": {
@@ -5263,11 +5224,11 @@
   }
  ],
  "_edgeResearchStamp": "Sat Jun 27, 2026 - 1:25 AM ET",
- "updatedISO": "2026-06-27T15:27:00-04:00",
+ "updatedISO": "2026-06-27T15:56:11.913901-04:00",
  "record": "57-45-2",
  "splits_asOf": "3:07 PM ET 2026-06-27",
  "propsLab": {
-  "updated": "2026-06-27 14:03 ET",
+  "updated": "2026-06-27 16:01 ET",
   "tallies": {
    "totals": {
     "w": 0,
@@ -5333,17 +5294,49 @@
     "n": 0
    }
   },
-  "leans": [],
+  "leans": [
+   {
+    "date": "2026-06-27",
+    "type": "k",
+    "matchup": "KC@CWS",
+    "player": "Davis Martin (CHW)",
+    "play": "Over 5.5 Ks",
+    "book": "DK",
+    "entryOdds": "unconfirmed",
+    "modelProb": 0.645,
+    "impliedProb": null,
+    "edgePts": null,
+    "line": 5.5,
+    "result": "pending",
+    "close": null,
+    "note": "Martin 3.18 ERA/3.39 xFIP, ~5.5-6 IP. My Poisson blend P(>5.5K)=0.645; JP model HIGH, proj ~6.8K (1.3 over line). Strongest K edge on the slate. Price unconfirmed unattended -> verify DK juice attended; capture close <=30 min out (first pitch 4:10p ET)."
+   },
+   {
+    "date": "2026-06-27",
+    "type": "k",
+    "matchup": "CIN@PIT",
+    "player": "Chase Burns (CIN)",
+    "play": "Over 6.5 Ks",
+    "book": "DK",
+    "entryOdds": "unconfirmed",
+    "modelProb": 0.608,
+    "impliedProb": null,
+    "edgePts": null,
+    "line": 6.5,
+    "result": "pending",
+    "close": null,
+    "note": "Burns 2.00 ERA/3.29 xFIP, high-K rookie arm, ~6 IP (CIN pen 25th -> leash extends). My Poisson blend P(>6.5K)=0.608; JP HIGH, proj ~7.6K (1.1 over line). Price unconfirmed -> verify DK juice attended; capture close <=30 min out (first pitch 4:05p ET)."
+   }
+  ],
   "notes_no_lean": [
-   "RUN 14:03 ET (unattended). Chrome has no existing tab + auto-run forces interactive browser-select -> NOT triggered; web_fetch allowlist blocks statsapi/FanGraphs/Savant/DraftKings. So NO live DK prop lines, NO O/U juice, NO batter Statcast this run. Modeled totals from the board's cached slate-builder SP data (FanGraphs 2026 xFIP, real). No prop edges computable -> 0 leans (honest model over forced edge).",
-   "IN-WINDOW this run (first pitch within ~3h, after 14:03): TEX@TOR 3:07p, CIN@PIT 4:05p, PHI@NYM 4:10p, KC@CWS 4:10p.",
-   "TEX@TOR total 8.0 (Rogers Centre, DOME -> weather neutral): Cease (TOR) 2.60 xFIP elite vs Quantrill (TEX) 5.10 xFIP on a tiny 2-IP sample (regress ~4.7). Model total ~7.2-7.6 -> point estimate ~0.6-0.8 UNDER. BORDERLINE the 0.75-run bar but it leans entirely on a 2-IP Quantrill sample + pen-IP assumptions, and books price an ace's total tightly. Cannot verify O/U juice unattended to confirm a >=5-7pt de-vig edge. WATCH Under 8 (verify attended) -> NOT staged.",
-   "CIN@PIT total 8.0 (PNC, pitcher park): Burns (CIN) 3.29 xFIP vs Jones (PIT) 3.99 xFIP/5.75 ERA (20 IP). Pens weak both sides (CIN 25th 4.81, PIT 18th 4.32). Model total ~7.8 -> ~0.2 under 8.0, below 0.75 bar. No lean.",
-   "KC@CWS total 8.0 (Rate Field): Wacha (KC) 4.27 xFIP vs Martin (CHW) 3.39 xFIP. Pens KC 26th (4.97), CHW 16th (4.30). Model total ~8.1-8.2 -> ~+0.2 over, below 0.75 bar. No lean.",
-   "PHI@NYM total 9.0: Rangel (PHI) season line unconfirmed + NYM probable was TBD at build -> cannot handicap starters. SKIP/PASS until probables verified attended.",
-   "HR (priority) + Ks/hits/TB: no DK prop lines reachable unattended and no batter Statcast (barrel%/EV/xSLG) fetchable -> cannot compute any prop edge. 0 prop leans (never fabricate a price/stat). Re-run attended (or 4:45 PM lab pass with Chrome) to model the prop board.",
-   "STARTED, skip for modeling (and never staged, so nothing to settle): HOU@DET 1:10p, NYY@BOS 1:10p.",
-   "TOO-EARLY for a later run (first pitch >3h out / lineups not posted): ARI@TB 6:10p, WSH@BAL 7:05p, SEA@CLE 7:10p, COL@MIN 7:10p, CHC@MIL 7:10p, MIA@STL 7:15p, LAD@SD 8:40p, ATL@SF 9:05p, ATH@LAA 9:38p. Re-evaluate at the 4:45 PM lab run (Chrome should be reachable attended for DK prop lines + Statcast)."
+   "RUN 16:01 ET (unattended): IDLE. No live data path — statsapi off the network allowlist + no open Chrome tab (creating one forces an interactive browser-select, gated unattended). The 2 staged K leans (Burns 6.5 @4:05p, Martin 5.5 @4:10p) are now FIRST-PITCH/just-live; close-capture needs live DK and could NOT run unattended -> close stays null, CLV unmeasurable for these two unless an attended run grabs it. Nothing final to settle. Evening games (ARI@TB 6:10p ... ATH@LAA 9:38p) still too-early/no posted lineups + unfetchable unattended. JP feed log empty -> no unstudied JP entries to process. Heartbeat only; no model changes. Next attended/networked run: capture close on Burns/Martin if still pending, settle them post-final, model the night board.",
+   "RUN 14:08 ET. User supplied JPExclusivePicks projection screenshots for the 4 in-window games -> recovered real prop LINES + a 2nd model source (DK odds/juice still unconfirmed unattended). Staged 2 paper K-over leans (Martin 5.5, Burns 6.5) supported by BOTH my xFIP/K Poisson AND the JP HIGH tag. Price unconfirmed -> CLV pending close-capture.",
+   "Christian Scott (NYM) Over 5.5K: my blend P=0.601, JP HIGH (proj ~6.5). BORDERLINE + IP-capped (JP projects only ~5.1 IP) -> WATCH, not staged. PHI@NYM pitcher correction: PHI is using Tim Mayza as an OPENER (~1.3 IP/20 pitches) then bulk; NYM starter = Christian Scott (resolves slate-builder's 'Rangel/TBD' gap).",
+   "HR (priority): NO lean clears the bar. Best JP HR edges tiny/negative on 0.5 lines: Okamoto +0.08 (LOW), Pederson +0.06, Langford +0.04, Marte +0.02, Schwarber 0.0, Marsh +0.03; Caglianone -0.31 and C.Montgomery -0.22 are FADES. JP HR projections also run hot. Honest -> 0 HR leans (matches my own no-candidate read).",
+   "TOTALS (modeled from cached FanGraphs xFIP + JP projected box scores): TEX@TOR 8.0 -> model ~7.2-7.6 (Cease ace vs Quantrill 2-IP sample; dome) = borderline Under but books price aces tight + thin sample -> WATCH only. CIN@PIT 8.0 -> ~7.8 (PNC pitcher park). KC@CWS 8.0 -> ~8.1. PHI@NYM 9.0 with an opener game -> volatile, no clean read. None clear the 0.75-run bar -> 0 totals leans.",
+   "STARTED, skip (never staged): HOU@DET 1:10p, NYY@BOS 1:10p.",
+   "TOO-EARLY for a later run: ARI@TB 6:10p, WSH@BAL 7:05p, SEA@CLE 7:10p, COL@MIN 7:10p, CHC@MIL 7:10p, MIA@STL 7:15p, LAD@SD 8:40p, ATL@SF 9:05p, ATH@LAA 9:38p. Re-run at 4:45 PM lab pass: capture close on the 2 staged K leans + model the night prop board.",
+   "Separately: today's JPExclusivePicks screenshots (HR/K props + game win%: Quantrill 45.4/Cease 54.6, Burns 49.8/Jones 50.2, Mayza-PHI 52.7/Scott-NYM 47.3, Wacha-KC 45.3/Martin 54.7) are available to log to JPExclusivePicks_Log.xlsx for model-accuracy tracking."
   ]
  }
 }</script>
@@ -5401,7 +5394,19 @@
 
     renderFired();
 
-    var wl=Array.isArray(DATA.watchlist)?DATA.watchlist:[];
+    var _games=DATA.games||[];
+    function _leanLive(w){
+      var toks=String(w.matchup||'').toLowerCase().split(/[^a-z]+/).filter(function(x){return x.length>3;});
+      for(var i=0;i<_games.length;i++){var gm=String(_games[i].matchup||'').toLowerCase();
+        if(toks.length&&toks.some(function(t){return gm.indexOf(t)>=0;})){
+          if(String(_games[i].decision||'').toUpperCase()==='PASS')return false;
+          var st=String(_games[i].status||'').toLowerCase();
+          if(st&&st!=='scheduled')return false;
+          return true;
+        }}
+      return true;
+    }
+    var wl=(Array.isArray(DATA.watchlist)?DATA.watchlist:[]).filter(_leanLive);
     var rh='';
     wl.slice(0,5).forEach(function(w){
       var play=w.play||w.matchup||(w.note?String(w.note).replace(/^(FIRE|RADAR|PROMOTED)\b[^.]*\.\s*/i,'').slice(0,90):'lean');
@@ -5697,11 +5702,10 @@
   var bars=order.map(function(m){var v=months[m].u,h=Math.abs(v)/mx*54,c=v>=0?"#0E8A57":"#C8323F",mn=MN[parseInt(m.slice(5,7),10)-1];return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-width:30px"><div style="font:800 10px Inter;color:'+c+';margin-bottom:3px">'+(v>=0?"+":"")+v.toFixed(1)+'u</div><div style="width:58%;height:'+h.toFixed(0)+'px;border-radius:4px 4px 0 0;background:'+c+'"></div><div style="font:700 10px Inter;color:#5A6573;margin-top:5px">'+mn+'</div></div>';}).join("");
   var BARS='<div style="display:flex;align-items:flex-end;gap:10px;height:98px;padding:8px 4px 0;overflow-x:auto">'+bars+'</div>';
   var trows=order.map(function(m){var o=months[m],r=100*o.u/o.b,cv=o.cn?o.c/o.cn:null,cls=o.u>=0?"pos":"neg";return '<tr><td>'+MN[parseInt(m.slice(5,7),10)-1]+" '"+m.slice(2,4)+'</td><td class="mono">'+o.b+'</td><td class="mono">'+o.w+"-"+o.l+(o.p?"-"+o.p+"P":"")+'</td><td class="mono '+cls+'">'+(o.u>=0?"+":"")+o.u.toFixed(1)+'u</td><td class="mono '+cls+'">'+(r>=0?"+":"")+r.toFixed(1)+'%</td><td class="mono '+((cv||0)>=0?"pos":"neg")+'">'+(cv==null?"—":((cv>=0?"+":"")+cv.toFixed(2)))+'</td></tr>';}).join("");
-  var tc=totU>=0?"pos":"neg";
+    var tc=totU>=0?"pos":"neg";
   var TABLE=trows+'<tr style="font-weight:800;background:rgba(31,58,138,.06)"><td>Total</td><td class="mono">'+tB+'</td><td class="mono">'+tW+"-"+tL+(tP?"-"+tP+"P":"")+'</td><td class="mono '+tc+'">'+(totU>=0?"+":"")+totU.toFixed(1)+'u</td><td class="mono '+tc+'">'+(100*totU/tB>=0?"+":"")+(100*totU/tB).toFixed(1)+'%</td><td class="mono '+((avgCLV||0)>=0?"pos":"neg")+'">'+(avgCLV==null?"—":((avgCLV>=0?"+":"")+avgCLV.toFixed(2)))+'</td></tr>';
   TG.forEach(function(t){setH(t[0],KPIS);setH(t[1],SVG);setH(t[2],BARS);setH(t[3],TABLE);});
 })();
-
 </script>
 </body>
 </html>
