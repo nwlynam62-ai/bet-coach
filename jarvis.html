@@ -247,25 +247,43 @@ function greeting(){const h=new Date().getHours();return h<12?'Good morning, sir
 
 /* ---------- VOICE IN ---------- */
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+let micReady=false;
+function tmsg(t){$('transcript').innerHTML='<span class="ph">'+t+'</span>';}
 function setupRecog(){
-  if(!SR){return null;}
+  if(!SR)return null;
   const r=new SR(); r.lang='en-US'; r.interimResults=true; r.continuous=false; r.maxAlternatives=1;
-  r.onstart=()=>{listening=true;$('mic').classList.add('on');$('reactor').classList.add('listening');setStatus('Listening');$('transcript').innerHTML='<span class="ph">Listening…</span>';};
+  r.onstart=()=>{listening=true;$('mic').classList.add('on');$('reactor').classList.add('listening');setStatus('Listening');tmsg('Listening\u2026 speak now');};
   r.onend=()=>{listening=false;$('mic').classList.remove('on');$('reactor').classList.remove('listening');setStatus('Standing by');};
-  r.onerror=(e)=>{listening=false;$('mic').classList.remove('on');$('reactor').classList.remove('listening');
-    if(e.error==='not-allowed'||e.error==='service-not-allowed'){$('transcript').innerHTML='<span class="ph">Microphone blocked — allow mic access, or use the quick buttons below.</span>';}};
-  r.onresult=(e)=>{
-    let txt='';for(let i=0;i<e.results.length;i++)txt+=e.results[i][0].transcript;
-    $('transcript').textContent=txt;
-    if(e.results[e.results.length-1].isFinal){ handle(txt); }
+  r.onerror=(e)=>{listening=false;$('mic').classList.remove('on');$('reactor').classList.remove('listening');setStatus('Standing by');
+    const er=(e&&e.error)||'';
+    if(er==='not-allowed'||er==='service-not-allowed'){tmsg('Microphone blocked \u2014 click the mic/lock icon in the address bar, set it to Allow, then tap the mic again.');}
+    else if(er==='no-speech'){tmsg('I did not hear anything, sir \u2014 tap the mic and speak.');}
+    else if(er==='audio-capture'){tmsg('No microphone detected. Check your mic and try again.');}
+    else if(er!=='aborted'){tmsg('Voice error ('+er+'). Try again, or use the quick buttons.');}
   };
+  r.onresult=(e)=>{let txt='';for(let i=0;i<e.results.length;i++)txt+=e.results[i][0].transcript;$('transcript').textContent=txt;if(e.results[e.results.length-1].isFinal){handle(txt);}};
   return r;
 }
-function toggleMic(){
+async function ensureMic(){
+  if(micReady)return true;
+  try{
+    if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
+      const s=await navigator.mediaDevices.getUserMedia({audio:true});
+      s.getTracks().forEach(t=>t.stop());
+    }
+    micReady=true; return true;
+  }catch(e){ return false; }
+}
+async function toggleMic(){
+  if(!SR){ tmsg('Voice input needs Chrome or Edge, sir. Use the quick buttons below.'); return; }
+  if(listening){ try{recog.stop();}catch(e){} return; }
+  try{speechSynthesis.cancel();}catch(e){}
+  tmsg('Requesting microphone\u2026');
+  const ok=await ensureMic();
+  if(!ok){ tmsg('Microphone blocked \u2014 click the mic/lock icon in the address bar, set it to Allow microphone, then tap the mic again.'); return; }
   if(!recog)recog=setupRecog();
-  if(!recog){ $('transcript').innerHTML='<span class="ph">Voice input isn\'t supported in this browser — try Chrome. You can still tap the quick buttons.</span>'; return; }
-  if(listening){try{recog.stop();}catch(e){}return;}
-  try{recog.start();}catch(e){}
+  try{ recog.start(); }
+  catch(e){ try{recog.stop();}catch(_){} setTimeout(()=>{try{recog.start();}catch(__){}},250); }
 }
 $('mic').onclick=toggleMic;
 
