@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#04070e"><title>Bet Coach · HUD</title>
+<style>
+:root{--cy:#46e8ff;--cy2:#1a8bb0;--gold:#ffb14e;--bg:#04070e;--card:rgba(13,28,46,.66);--line:rgba(70,232,255,.16);--dim:#5f7d92;--txt:#d7ecf7;--ok:#33e08a;--bad:#ff5d6c;--warn:#ffcf4e}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:
+  radial-gradient(1200px 600px at 80% -10%,rgba(70,232,255,.10),transparent 60%),
+  radial-gradient(900px 500px at 0% 10%,rgba(255,177,78,.07),transparent 55%),
+  var(--bg);
+  color:var(--txt);font-family:'Inter','Segoe UI',system-ui,sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased;padding-bottom:84px}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+  linear-gradient(rgba(70,232,255,.04) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(70,232,255,.04) 1px,transparent 1px);background-size:42px 42px;mask:radial-gradient(circle at 50% 0%,#000,transparent 80%);opacity:.5}
+.app{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:16px 14px 0}
+h1,.mono,.grade,.kpi b,.navlab,.tag{font-family:'Orbitron','Inter',sans-serif}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.logo{font-family:'Orbitron';font-weight:800;font-size:18px;letter-spacing:1px;color:#eafaff;text-shadow:0 0 16px rgba(70,232,255,.5)}
+.logo b{color:var(--cy)}
+.upd{font-size:11px;color:var(--dim);text-align:right;line-height:1.3}
+.upd .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok);margin-right:5px;animation:bl 2s infinite}
+@keyframes bl{50%{opacity:.35}}
+/* hero kpis */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 12px;backdrop-filter:blur(8px);position:relative;overflow:hidden}
+.kpi::after{content:"";position:absolute;inset:0;border-radius:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.06);pointer-events:none}
+.kpi .l{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim)}
+.kpi b{display:block;font-size:26px;font-weight:800;margin-top:5px;color:#fff;letter-spacing:.5px}
+.kpi .s{font-size:12px;margin-top:3px;color:var(--cy)}
+.kpi.g b{color:#fff}.kpi.g .s{color:var(--gold)}
+.kpi.green b{color:var(--ok)}
+/* sections */
+.sec{margin:18px 0}
+.sec h2{font-family:'Orbitron';font-size:12.5px;letter-spacing:2px;text-transform:uppercase;color:var(--cy);margin-bottom:11px;display:flex;justify-content:space-between;align-items:center}
+.sec h2 .m{font-family:'Inter';font-size:11.5px;color:var(--dim);text-transform:none;letter-spacing:.3px;font-weight:500}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px;backdrop-filter:blur(8px);position:relative;transition:.15s}
+.card:hover{border-color:rgba(70,232,255,.4);transform:translateY(-1px)}
+.play-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.play-row .pl{font-size:16px;font-weight:700;color:#eafaff}
+.play-row .mu{font-size:12.5px;color:var(--dim);margin-top:2px}
+.play-row .why{font-size:12.5px;color:#9fc3d6;margin-top:7px;line-height:1.45}
+.rt{text-align:right;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.odds{font-family:'Orbitron';font-size:15px;color:var(--gold);font-weight:700}
+.grade{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.5px;border:1px solid}
+.gA{color:#04110a;background:linear-gradient(90deg,#33e08a,#46e8ff);border-color:transparent}
+.gBp{color:var(--cy);border-color:rgba(70,232,255,.5);background:rgba(70,232,255,.08)}
+.gB{color:var(--cy);border-color:rgba(70,232,255,.3)}
+.gC{color:var(--dim);border-color:rgba(95,125,146,.4)}
+.tag{font-size:9.5px;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:12px;border:1px solid var(--line);color:var(--dim)}
+.tag.fire{color:var(--gold);border-color:rgba(255,177,78,.4)}
+.tag.win{color:var(--ok);border-color:rgba(51,224,138,.4)}.tag.loss{color:var(--bad);border-color:rgba(255,93,108,.4)}
+.empty{color:var(--dim);font-size:13.5px;padding:14px;text-align:center;border:1px dashed var(--line);border-radius:14px}
+.ticker{overflow:hidden;white-space:nowrap;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 0;margin-bottom:6px}
+.ticker span{display:inline-block;padding-left:100%;animation:tick 38s linear infinite;font-size:12.5px;color:#9fc3d6}
+.ticker b{color:var(--cy)}@keyframes tick{to{transform:translateX(-100%)}}
+/* board game row */
+.game{display:flex;align-items:center;gap:12px;padding:12px 14px}
+.game .gt{font-family:'Orbitron';font-size:11px;color:var(--dim);width:62px;flex-shrink:0;line-height:1.3}
+.game .gm{flex:1;min-width:0}
+.game .gm .t{font-size:14.5px;font-weight:600;color:#eafaff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.game .gm .tk{font-size:12px;color:var(--dim);margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* record */
+.curve{height:120px;width:100%;margin:4px 0 12px}
+.ledger .lr{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.ledger .lr:last-child{border:0}.ledger .lr .pos{color:var(--ok);font-weight:700}.ledger .lr .neg{color:var(--bad);font-weight:700}
+/* tallies */
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.tcell{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:11px 10px;text-align:center}
+.tcell .tn{font-size:10.5px;text-transform:uppercase;letter-spacing:1px;color:var(--dim)}
+.tcell .tv{font-family:'Orbitron';font-size:18px;color:#eafaff;margin-top:4px}
+.tcell .tx{font-size:10.5px;color:var(--cy);margin-top:2px}
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;justify-content:center;gap:4px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(4,7,14,0),rgba(4,7,14,.95) 35%);backdrop-filter:blur(10px)}
+.nav .ni{flex:1;max-width:120px;text-align:center;padding:9px 4px;border-radius:14px;cursor:pointer;border:1px solid transparent;color:var(--dim);transition:.15s}
+.nav .ni.on{color:var(--cy);background:rgba(70,232,255,.1);border-color:var(--line);box-shadow:0 0 18px rgba(70,232,255,.18)}
+.nav .ni .ic{font-size:18px;line-height:1}
+.nav .ni .navlab{font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-top:3px;display:block}
+.view{display:none;animation:fade .25s}.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+.badge-preview{display:inline-block;font-size:10px;color:var(--gold);border:1px solid rgba(255,177,78,.4);border-radius:20px;padding:2px 9px;letter-spacing:1px;text-transform:uppercase}
+</style></head>
+<body>
+<div class="app">
+  <div class="top">
+    <div><div class="logo">BET <b>COACH</b></div><span class="badge-preview">HUD Preview</span></div>
+    <div class="upd"><span class="dot"></span><span id="updTxt"></span><br><span id="radTxt"></span></div>
+  </div>
+
+  <!-- TODAY -->
+  <div class="view on" id="v-today">
+    <div class="kpis">
+      <div class="kpi"><div class="l">Record</div><b id="kRec">—</b><div class="s" id="kWin"></div></div>
+      <div class="kpi g"><div class="l">Bankroll</div><b id="kBank">—</b><div class="s" id="kPnl"></div></div>
+      <div class="kpi green"><div class="l">On Radar</div><b id="kRad">—</b><div class="s" id="kRadS">watching</div></div>
+    </div>
+    <div class="ticker"><span id="tick"></span></div>
+    <div class="sec"><h2>Today's Plays <span class="m" id="picksM"></span></h2><div id="picks"></div></div>
+    <div class="sec"><h2>On Radar — Watching <span class="m" id="radM"></span></h2><div id="radar"></div></div>
+  </div>
+
+  <!-- BOARD -->
+  <div class="view" id="v-board">
+    <div class="sec"><h2>Today's Board <span class="m" id="boardM"></span></h2><div id="board"></div></div>
+  </div>
+
+  <!-- RECORD -->
+  <div class="view" id="v-record">
+    <div class="kpis">
+      <div class="kpi"><div class="l">Season</div><b id="rRec">—</b><div class="s" id="rWin"></div></div>
+      <div class="kpi g"><div class="l">Bankroll</div><b id="rBank">—</b><div class="s" id="rPnl"></div></div>
+      <div class="kpi"><div class="l">Unit</div><b id="rUnit">—</b><div class="s">fixed $</div></div>
+    </div>
+    <div class="sec"><h2>Bankroll Curve</h2><svg class="curve" id="curve" viewBox="0 0 320 120" preserveAspectRatio="none"></svg></div>
+    <div class="sec"><h2>Ledger</h2><div class="card ledger" id="ledger"></div></div>
+  </div>
+
+  <!-- PROPS -->
+  <div class="view" id="v-props">
+    <div class="sec"><h2>Props &amp; Totals Lab <span class="m" id="propsM"></span></h2>
+      <div class="card" style="padding:12px"><div class="tg" id="tallies"></div></div>
+    </div>
+    <div class="sec"><h2>Current Leans</h2><div id="leans"></div></div>
+  </div>
+</div>
+
+<div class="nav" id="nav">
+  <div class="ni on" data-v="today"><div class="ic">◎</div><span class="navlab">Today</span></div>
+  <div class="ni" data-v="board"><div class="ic">▦</div><span class="navlab">Board</span></div>
+  <div class="ni" data-v="record"><div class="ic">▤</div><span class="navlab">Record</span></div>
+  <div class="ni" data-v="props"><div class="ic">◈</div><span class="navlab">Props</span></div>
+</div>
+
+<script id="snap" type="application/json">{"record": "57-45-2", "settings": {"bankroll": 114.02, "bankrollStart": 80, "unit": 5}, "updated": "5:58 PM ET 2026-06-27 (sync :5", "radarAsOf": "5:23 PM ET", "todaysPicks": [{"sport": "MLB", "matchup": "New York Yankees @ Boston Red Sox", "play": "Red Sox ML", "odds": "+102", "grade": "B+", "result": "W", "note": "B+ contrarian home dog: Bennett SP form edge over a struggling/injury-return Cole (5.95 ERA L4) + VSiN reverse money (BOS 45% money on 29% tickets). Graduated from QUEUED radar. SP direction web-verified (Cole NYY / Bennett BOS)."}, {"sport": "MLB", "matchup": "Arizona Diamondbacks @ Tampa Bay Rays", "play": "Diamondbacks ML", "odds": "+119", "grade": "B", "result": "pending", "note": "B contrarian dog (PATH B): bullpen game both sides (web-verified Sulser/Cabrera openers) = even matchup priced as +119 dog -> value, plus the board's strongest VSiN money split (77%/19%, +58) and RLM +135->+119. No SP leg (openers) so graded B. Graduated from QUEUED radar."}], "watchlist": [{"sport": "MLB", "matchup": "Athletics @ Angels", "play": "LAA -114 (Angels ML)", "odds": "-114", "grade": "B+", "note": "TOP PROMOTE (9:38p, near pick'em ATH -106/LAA -114): 63% of the MONEY on 46% of bets (+17 SHARP$) on the Angels AND Detmers (3.93) >> Perkins (6.26) SP edge -- own number and money AGREE. Only a non-extreme ticket split (not >=75% fade) holds it under a full fire. The sharp plus-money home side."}, {"sport": "MLB", "matchup": "Braves @ Giants", "play": "ATL +109 (Braves ML)", "odds": "+109", "grade": "B+", "note": "Lead plus-money dog (9:05p): 60% of the MONEY on 52% of bets (+8) on ATL with RLM TOWARD the dog (+113->+109). Braves (49-31) elite + MLB-best pen (Iglesias) offsets Webb's slight SP edge. Money eroded from 76% at 4:06 -> still the loudest bettable dog but softened."}, {"sport": "MLB", "matchup": "Rockies @ Twins", "play": "COL@MIN Over 9.5", "odds": null, "grade": "B", "note": "Cleanest total (7:10p): MIN pen ~30th + COL pen ~28th (two worst pens in MLB) behind Lorenzen (7.11) / Paredes (debut); 88% Over handle on VSiN-DK."}, {"sport": "MLB", "matchup": "Nationals @ Orioles", "play": "WSH@BAL Over 9", "odds": null, "grade": "B", "note": "Secondary total (7:05p): two soft pens (WSH ~29th) in a hitter park; 84% Over handle. Cleaner WSH-game angle than the pick'em ML (sharp ML tell evaporated, money 54/46)."}, {"sport": "WNBA", "matchup": "Dream @ Storm", "play": "SEA Storm +270", "odds": "+270", "grade": "B-", "note": "Reverse-money dog (9:00p): 38% of the money on just 4% of bets (+34) vs 96% tickets on ATL Dream -340. Real sharp tell but +270 is past our +220 cap -> calibration paper note only, no fire."}], "games": [{"matchup": "Houston Astros @ Detroit Tigers", "sport": "MLB", "time": "1:10 PM ET", "grade": "B-", "total": 8.5, "awayML": "+117", "homeML": "-141", "take": "Astros @ Tigers, 1:10p. Valdez (3.91 ERA/4.22 xFIP) vs Teng (5.13/4.37). DET -131 fair on the home SP edge + better pen (13th vs 23rd). No fired edge.", "status": "final", "mlTake": "FINAL: HOU won 8-6 (Paredes 2-run 2B in 8th). Pregame DET -141 home SP edge held into the 7th then HOU pen + late rally flipped it. No fired edge. Settled by sync/settler.", "decision": "PASS"}, {"matchup": "New York Yankees @ Boston Red Sox", "sport": "MLB", "time": "1:10 PM ET", "grade": "B", "total": 8.0, "awayML": "-123", "homeML": "+102", "take": "Yankees @ Red Sox, 1:10p. Bennett (3.71 ERA/3.42 xFIP) actually out-xFIPs Cole (3.62/4.42, just 32 IP back from missed time). Two elite pens (NYY 4th, BOS 3rd). BOS +104 home dog has own-number value — RADAR.", "status": "final", "mlTake": "FINAL: BOS won 4-1 (Bennett 6.1IP 1R, Yoshida leadoff HR off Cole). Pregame NYY -123 chalk lost; money was 75% NYY/25% BOS, public chalk burned. No fired edge.", "decision": "FIRED"}, {"matchup": "Texas Rangers @ Toronto Blue Jays", "sport": "MLB", "time": "3:07 PM ET", "grade": "B", "total": 8.0, "awayML": "+163", "homeML": "-199", "take": "Rangers @ Blue Jays, 3:07p. Cease (2.75 ERA/2.60 xFIP, ace) vs Quantrill (4.50/5.10, tiny 2-IP sample). Big TOR SP edge but -186 is steep. RADAR / possible F5.", "status": "in_progress", "mlTake": "LIVE (TEX 7-3, Bot 6th): TEX +163 dog leading. Pregame TOR -199 heavy chalk (82% money/84% tix) being beaten on the field. No pregame fire (TOR too steep, no dog tell). Scoreboard controls.", "decision": "PASS"}, {"matchup": "Cincinnati Reds @ Pittsburgh Pirates", "sport": "MLB", "time": "4:05 PM ET", "grade": "B+", "total": 8.0, "awayML": "-114", "homeML": "-105", "take": "Reds @ Pirates, 4:05p (in progress). Burns (2.00 ERA/3.29 xFIP) over Jones (5.75/3.99). Money FLIPPED late to PIT: 69% of the money on just 30% of bets (home dog -105) vs 70% tickets CIN -- sharp side = PIT at game time. No CIN pick fired (F5 unverifiable at lock).", "status": "in_progress", "mlTake": "LIVE (CIN 1-0, End 2nd): SHARP$ flipped to PIT pregame -- 68% money on just 30% tix on the PIT home dog (-105) vs 70% tix on CIN. Money side = PIT (minority-ticket home dog). Jun-22 STL lesson applied: never fire heavy-ticket CIN against the money.", "decision": "PASS"}, {"matchup": "Philadelphia Phillies @ New York Mets", "sport": "MLB", "time": "4:10 PM ET", "grade": "A", "total": 9.0, "awayML": "+113", "homeML": "-136", "take": "Phillies @ Mets, 4:10p. PHI's Alan Rangel ERA unconfirmed and NYM has no posted probable yet. Can't handicap the starters — PASS, RADAR until probables post.", "status": "in_progress", "mlTake": "LIVE (0-0, rain delay Top 1st): loud SHARP$ on PHI +111 road dog -- 90% of the MONEY on 63% of bets (+27) while NYM -134 draws only 10% money. Money side = PHI dog, value band. Rain delay; settle on resumption.", "decision": "PASS"}, {"matchup": "Kansas City Royals @ Chicago White Sox", "sport": "MLB", "time": "4:10 PM ET", "grade": "B+", "total": 8.0, "awayML": "+107", "homeML": "-128", "take": "Royals @ White Sox, 4:10p. Martin (3.18 ERA/3.39 xFIP) over Wacha (3.48/4.27). CHW -143 fair. Both these pens are below-average (KC 26th, CHW 16th). No fired edge.", "status": "in_progress", "mlTake": "LIVE (0-0, Bot 4th): SHARP$ on KC +107 road dog -- 53% money on just 24% tix (+29 vs tickets) while 76% of tickets sit on CHW -128. Money side = KC dog, extreme ticket fade. Scoreboard controls now.", "decision": "PASS"}, {"matchup": "Arizona Diamondbacks @ Tampa Bay Rays", "sport": "MLB", "time": "6:10 PM ET", "grade": "B", "total": 8.5, "awayML": "+123", "homeML": "-148", "take": "Diamondbacks @ Rays, 6:10p. ARI +123 road dog. J. Cabrera (ARI, season debut/0.00) vs C. Sulser (TB, opener, 5.40) -- both effectively bullpen games, Cabrera ~5-IP cap (IL/debut). VSiN-DK: ARI 24% tix / 40% money (money>tix +16) -- the sharp tell holds, but the MONEY MAJORITY FLIPPED to TB (60%) since the 4:06 read (ARI was 55%), and the line never shortened toward the dog (no RLM). Extreme ticket fade + money>tix keep it a live lean; eroding money + a debut starter cap it at B.", "status": "scheduled", "mlTake": "ARI +123: extreme public fade (24% tix) + money>tix +16 = static sharp tell, but money% on the dog fell 55->40 (now minority) and no RLM. Watch, do not harden.", "decision": "FIRED"}, {"matchup": "Washington Nationals @ Baltimore Orioles", "sport": "MLB", "time": "7:05 PM ET", "grade": "B-", "total": 9.0, "awayML": "-106", "homeML": "-114", "take": "Nationals @ Orioles, 7:05p. Juiced pick'em (DK via ESPN: WSH -101 / BAL -120, both negative -- confirmed, not a typo). F. Griffin (WSH 8-2, 3.15) vs B. Young (BAL 6-2, 3.07) -- near-even quality SPs. VSiN-DK: WSH 54% money / 46% tix (+8 mild sharp lean to WSH); the standalone ML sharp tell that flashed earlier has evaporated. No plus-money dog, even SPs -> thin lean only.", "status": "scheduled", "mlTake": "Near pick'em (WSH -101 / BAL -120). Mild WSH sharp lean (money>tix +8) but no edge to fire. The cleaner WSH-game angle is the Over (soft pens).", "decision": "QUEUED"}, {"matchup": "Seattle Mariners @ Cleveland Guardians", "sport": "MLB", "time": "7:10 PM ET", "grade": "B-", "total": 7.5, "awayML": "-148", "homeML": "+123", "take": "Mariners @ Guardians, 7:10p. SEA -148 / CLE +123. L. Gilbert (SEA 6-4, 3.29) is a clear SP edge over S. Cecconi (CLE 3-6, 4.48) -- so SEA -148 is fair-to-rich chalk, not a value. VSiN-DK: SEA 78% tix / 85% money -- public AND money both on the favorite (no dog tell), and the price is past our -135 routine-lay stop. CLE +123 has the worse arm and only 15% money -> no contrarian case. Pass.", "status": "scheduled", "mlTake": "SEA -148 priced on a real Gilbert>Cecconi edge but too steep to lay routinely and money+tickets both on the chalk = no sharp dog. No fire.", "decision": "QUEUED"}, {"matchup": "Colorado Rockies @ Minnesota Twins", "sport": "MLB", "time": "7:10 PM ET", "grade": "C+", "total": 9.5, "awayML": "+119", "homeML": "-144", "take": "Rockies @ Twins, 7:10p. COL +119 / MIN -144. M. Lorenzen (COL 2-9, 7.11) is one of the worst SPs on the board vs M. Paredes (MIN debut, 4.05). MIN -144 is fair on the SP gap. VSiN-DK: MIN 83% tix / 78% money -- chalk; COL dog 17% tix / 22% money (money>tix only +5, sub-threshold). No actionable side; the play here is the total, not the ML. Pass the ML.", "status": "scheduled", "mlTake": "MIN -144 chalk fairly priced on the Lorenzen-vs-Paredes gap; COL dog signal sub-threshold (+5). No fire.", "decision": "QUEUED"}, {"matchup": "Chicago Cubs @ Milwaukee Brewers", "sport": "MLB", "time": "7:10 PM ET", "grade": "C+", "total": 8.0, "awayML": "+135", "homeML": "-163", "take": "Cubs @ Brewers, 7:10p. CHC +130 / MIL -157. D. Peterson (CHC 3-6, 6.09) vs K. Harrison (MIL 8-1, 2.50) -- a huge MIL starting-pitcher edge, so MIL -157 is fairly priced chalk. VSiN-DK: MIL 86% tix / 89% money -- public and money agree on the favorite, no divergence; CHC dog only 11% money. Line ticked CHC +135->+130 (toward the dog) but with no money behind it that's noise. Pass.", "status": "scheduled", "mlTake": "MIL -157 justified by the Harrison>>Peterson gap; no dog tell (CHC 11% money). Too steep to lay, nothing to back. No fire.", "decision": "QUEUED"}, {"matchup": "Miami Marlins @ St. Louis Cardinals", "sport": "MLB", "time": "7:15 PM ET", "grade": "B-", "total": 8.5, "awayML": "+114", "homeML": "-137", "take": "Marlins @ Cardinals, 7:15p. MIA +114 / STL -137. R. Gusto (MIA 0-2, 6.00) vs A. Pallante (STL 9-4, 3.59) -- clear STL SP edge, so STL -137 is fair chalk. VSiN-DK: STL 67% tix / 61% money; MIA dog 33% tix / 39% money (money>tix +6, a thin sharp tilt onto the dog). Jun-22 STL lesson: do NOT fire the heavy-ticket STL side. Dog tell is real but sub-threshold -> watch only.", "status": "scheduled", "mlTake": "Thin sharp tilt onto MIA +114 (money>tix +6) against a public-tilted STL; sub-threshold + Gusto is a weak arm. Watch, no fire.", "decision": "PASS"}, {"matchup": "Los Angeles Dodgers @ San Diego Padres", "sport": "MLB", "time": "8:40 PM ET", "grade": "C+", "total": 8.0, "awayML": "-205", "homeML": "+168", "take": "Dodgers @ Padres, 8:40p (radar). LAD -205 / SD +168. Yamamoto (LAD 7-5, 2.65) is a big SP edge over K. Hart (SD 0-1, 4.13), but -205 is past our -200 hard stop and needs ~67% to break even. VSiN-DK: LAD 92% tix / 95% money -- public+money piled on unbettable chalk; SD +168 dog only 5% money, no contrarian case. Pass.", "status": "scheduled", "mlTake": "LAD -205 past the hard stop; SD dog has the worse arm and 5% money. No playable side.", "decision": "PASS"}, {"matchup": "Atlanta Braves @ San Francisco Giants", "sport": "MLB", "time": "9:05 PM ET", "grade": "B+", "total": 8.0, "awayML": "+109", "homeML": "-132", "take": "Braves @ Giants, 9:05p (radar). ATL +109 road dog. B. Elder (ATL 5-5, 3.71) vs L. Webb (SF 4-5, 3.35) -- Webb is a slight SP edge to SF, but ATL (49-31) is the far better team with MLB's best bullpen (Iglesias), which offsets the starter gap. VSiN-DK: ATL 52% tix / 60% money (money>tix +8, money MAJORITY on the dog) and the line drifted +113->+109 = RLM TOWARD the dog. Sharp money fell from 76% at 4:06 to 60% now, so it softened from a loud A to a solid B+ lead-dog lean. Carded.", "status": "scheduled", "mlTake": "ATL +109: money majority on the dog (60/52, +8) + RLM toward the dog + elite team/pen offsetting Webb. Loudest still-bettable plus-money dog, though money eroded from the 4:06 read.", "decision": "QUEUED"}], "propsLab": {"updated": "2026-06-27 16:32 ET", "leans": [], "tallies": {"totals": {"w": 0, "l": 0, "p": 0, "clvAvg": null, "n": 0}, "teamTotals": {"w": 0, "l": 0, "p": 0, "clvAvg": null, "n": 0}, "hr": {"w": 0, "l": 0, "p": 0, "clvAvg": null, "n": 0}, "k": {"w": 0, "l": 0, "p": 0, "clvAvg": null, "n": 0}, "hits": {"w": 0, "l": 0, "p": 0, "clvAvg": null, "n": 0}, "tb": {"w": 0, "l": 0, "p": 0, "clvAvg": null, "n": 0}, "rbi": {"w": 0, "l": 0, "p": 0, "clvAvg": null, "n": 0}, "runs": {"w": 0, "l": 0, "p": 0, "clvAvg": null, "n": 0}, "outs": {"w": 0, "l": 0, "p": 0, "clvAvg": null, "n": 0}}}, "headlines": ["Caitlin Clark OUT vs Sparks (back), no return timeline", "Sparks' Cameron Brink out indefinitely, left ankle sprain", "Acuna Jr. out vs Giants tonight; ~Jun 30 return target", "Dodgers-Padres SP gap: Yamamoto 2.65 vs Vasquez 4.17", "Yankees-Red Sox 1:10 ET: Cole vs lefty Bennett (1-3)", "Alyssa Thomas one-game suspension, Flagrant 2 on Clark", "Blue Jays call up Keys, option slumping Schneider (.153)"], "bankrollHistory": [{"asOf": "2026-06-15", "start": 80, "pnl": 20.02, "end": 100.02, "record": "36-32-2", "unit": 5, "note": "baseline from all settled picks to date"}, {"asOf": "2026-06-21", "start": 100.02, "pnl": 14, "end": 114.02, "record": "6-3-0 (week)", "clv": -0.22, "unit": 5}]}</script>
+<script>
+const $=s=>document.querySelector(s),D=JSON.parse(document.getElementById('snap').textContent);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function gcls(g){g=(g||'').trim();if(g==='A'||g==='A+')return'gA';if(g==='B+')return'gBp';if(g[0]==='B')return'gB';return'gC';}
+function pnl(){const b=+((D.settings||{}).bankroll),s=+((D.settings||{}).bankrollStart);if(isNaN(b)||isNaN(s))return'';const d=b-s;return(d>=0?'+$':'-$')+Math.abs(d).toFixed(2);}
+function winpct(){const m=(D.record||'').match(/(\d+)-(\d+)/);if(!m)return'';const w=+m[1],l=+m[2];return w+l?Math.round(w/(w+l)*100)+'% win':'';}
+function pendg(p){const r=(p.result||'').toLowerCase();return!r||r==='pending';}
+
+function render(){
+  $('#updTxt').textContent='Updated '+(D.updated||'');
+  $('#radTxt').textContent='Radar checked '+(D.radarAsOf||'—');
+  // KPIs
+  $('#kRec').textContent=D.record||'—';$('#kWin').textContent=winpct();
+  $('#kBank').textContent='$'+(+((D.settings||{}).bankroll)).toFixed(0);$('#kPnl').textContent=pnl()+' P&L';
+  const w=D.watchlist||[];$('#kRad').textContent=w.length;$('#kRadS').textContent='checked '+(D.radarAsOf||'—');
+  // ticker
+  const h=D.headlines||[];$('#tick').innerHTML=(h.map(x=>'<b>›</b> '+esc(x)).join('   '))+'   <b>›</b> Record '+esc(D.record)+'   <b>›</b> Bankroll $'+(+((D.settings||{}).bankroll)).toFixed(2);
+  // today picks
+  const p=(D.todaysPicks||[]).filter(pendg);
+  $('#picksM').textContent=p.length+' locked';
+  $('#picks').innerHTML=p.length?p.map(x=>card(x,true)).join(''):'<div class="empty">No plays locked yet — the board only fires on a real edge.</div>';
+  // radar
+  $('#radM').textContent='checked '+(D.radarAsOf||'—');
+  $('#radar').innerHTML=w.length?w.map(x=>card(x,false)).join(''):'<div class="empty">Radar clear.</div>';
+  // board
+  const g=D.games||[];$('#boardM').textContent=g.length+' games';
+  $('#board').innerHTML=g.length?g.map(gameRow).join(''):'<div class="empty">No games.</div>';
+  // record tab
+  $('#rRec').textContent=D.record||'—';$('#rWin').textContent=winpct();
+  $('#rBank').textContent='$'+(+((D.settings||{}).bankroll)).toFixed(2);$('#rPnl').textContent=pnl();
+  $('#rUnit').textContent='$'+((D.settings||{}).unit||'');
+  drawCurve(); ledger();
+  // props
+  const pl=D.propsLab||{};$('#propsM').textContent=pl.updated||'';
+  tallies(pl.tallies||{});
+  const ls=pl.leans||[];
+  $('#leans').innerHTML=ls.length?ls.map(x=>card({play:(x.player?x.player+' ':'')+x.play,matchup:x.matchup,odds:x.entryOdds,grade:'',note:x.why||x.note},true)).join(''):'<div class="empty">No prop leans right now — paper calibration, fires only on a real edge.</div>';
+}
+function card(x,fire){
+  const g=x.grade?'<span class="grade '+gcls(x.grade)+'">'+esc(x.grade)+'</span>':'';
+  const rtag=x.result&&x.result.toLowerCase()!=='pending'?'<span class="tag '+(x.result[0].toLowerCase()==='w'?'win':'loss')+'">'+esc(x.result)+'</span>':(fire?'<span class="tag fire">paper</span>':'');
+  const why=x.note?'<div class="why">'+esc(String(x.note).slice(0,180))+'</div>':'';
+  return '<div class="card"><div class="play-row"><div><div class="pl">'+esc(x.play)+'</div><div class="mu">'+esc(x.matchup||x.sport||'')+'</div>'+why+'</div><div class="rt">'+(x.odds?'<span class="odds">'+esc(x.odds)+'</span>':'')+g+'</div></div></div>';
+}
+function gameRow(x){
+  return '<div class="card game"><div class="gt">'+esc(x.time||'')+'</div><div class="gm"><div class="t">'+esc(x.matchup||'')+'</div><div class="tk">'+esc(String(x.take||x.mlTake||'').slice(0,160))+'</div></div><div class="rt">'+(x.grade?'<span class="grade '+gcls(x.grade)+'">'+esc(x.grade)+'</span>':'')+(x.total?'<span class="tag">O/U '+esc(x.total)+'</span>':'')+'</div></div>';
+}
+function ledger(){
+  const bh=D.bankrollHistory||[];
+  $('#ledger').innerHTML=bh.length?bh.map(r=>{const p=+r.pnl;return '<div class="lr"><span>'+esc(r.asOf||'')+' · '+esc(r.record||'')+'</span><span class="'+(p>=0?'pos':'neg')+'">'+(p>=0?'+$':'-$')+Math.abs(p).toFixed(2)+' → $'+(+r.end).toFixed(2)+'</span></div>';}).join(''):'<div class="empty">No ledger yet.</div>';
+}
+function drawCurve(){
+  const bh=D.bankrollHistory||[];const pts=[];let xs=0;
+  const start=(D.settings||{}).bankrollStart||80;
+  const seq=[{end:start}].concat(bh);
+  const vals=seq.map(r=>+r.end);
+  const min=Math.min.apply(0,vals)*.985,max=Math.max.apply(0,vals)*1.015,rng=(max-min)||1;
+  const n=vals.length;const W=320,H=120;
+  const xy=vals.map((v,i)=>[ (n>1? i/(n-1)*W:W), H-((v-min)/rng)*H ]);
+  const line=xy.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+  const area=line+' L'+W+' '+H+' L0 '+H+' Z';
+  $('#curve').innerHTML='<defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#46e8ff" stop-opacity=".35"/><stop offset="1" stop-color="#46e8ff" stop-opacity="0"/></linearGradient></defs>'+
+    '<path d="'+area+'" fill="url(#ag)"/><path d="'+line+'" fill="none" stroke="#46e8ff" stroke-width="2.2" vector-effect="non-scaling-stroke"/>'+
+    xy.map(p=>'<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="3" fill="#04070e" stroke="#46e8ff" stroke-width="2"/>').join('');
+}
+function tallies(t){
+  const lab={hr:'Home Runs',k:'Strikeouts',totals:'Totals',teamTotals:'Team Tot',hits:'Hits',tb:'Total Bases',rbi:'RBI',runs:'Runs',outs:'Outs'};
+  $('#tallies').innerHTML=Object.keys(lab).map(k=>{const o=t[k]||{};const rec=(o.n? (o.w||0)+'-'+(o.l||0)+(o.p?'-'+o.p:'') : '—');const clv=(o.clvAvg!=null?((o.clvAvg>=0?'+':'')+(+o.clvAvg).toFixed(2)+' CLV'):(o.n?'':'calibrating'));return '<div class="tcell"><div class="tn">'+lab[k]+'</div><div class="tv">'+rec+'</div><div class="tx">'+(clv||'n'+(o.n||0))+'</div></div>';}).join('');
+}
+// nav
+document.querySelectorAll('.ni').forEach(n=>n.onclick=()=>{
+  document.querySelectorAll('.ni').forEach(x=>x.classList.remove('on'));n.classList.add('on');
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
+  document.getElementById('v-'+n.dataset.v).classList.add('on');window.scrollTo(0,0);
+});
+render();
+</script>
+</body></html>
