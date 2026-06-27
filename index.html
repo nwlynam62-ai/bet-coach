@@ -72,6 +72,7 @@
   </div>
   <div class="view on" id="dash">
     <div class="grid g4" id="dStats"></div>
+    <div class="panel"><div class="ph"><h3>Today's plays</h3><span class="meta" id="firedMeta"></span></div><div id="dFired"></div></div>
     <div class="panel"><div class="ph"><h3>Bankroll</h3><span class="meta" id="eqMeta"></span></div><div class="chartbox"><canvas id="cEq"></canvas></div></div>
     <div class="panel"><div class="ph"><h3>On radar — watching</h3><span class="meta" id="radMeta"></span></div><div id="dRadar"></div></div>
     <div class="panel"><div class="ph"><h3>What we're learning</h3><span class="meta" id="learnMeta"></span></div><div id="dLearn" class="learn"></div></div>
@@ -5930,6 +5931,8 @@
     html+=statCard('Bankroll', bk?('$'+bk.toFixed(0)):'—', 'start $'+st);
     $('dStats').innerHTML=html;
 
+    renderFired();
+
     var wl=Array.isArray(DATA.watchlist)?DATA.watchlist:[];
     var rh='';
     wl.slice(0,5).forEach(function(w){
@@ -5948,6 +5951,20 @@
     sys+='<div class="row" style="padding:8px 0"><span class="dot '+(sh.lastPublishOk?'ok':'watch')+'"></span><span class="pr">Publish</span><span class="clv">'+(sh.lastPublishOk?'ok':'pending')+'</span></div>';
     if(sh.clvCaptured)sys+='<div class="row" style="padding:8px 0"><span class="dot ok"></span><span class="pr">CLV captured</span><span class="clv">'+esc(sh.clvCaptured)+'</span></div>';
     $('dSys').innerHTML=sys;
+  }
+
+  function renderFired(){
+    if(!$('dFired'))return;
+    var today=DATA.date;
+    var ps=(DATA.picks||[]).filter(function(p){return p.date===today;});
+    var h='';
+    ps.forEach(function(p){
+      var r=String(p.result||'').toUpperCase();
+      var rlabel=r==='W'?'<span class="gr win">W</span>':r==='L'?'<span class="gr loss">L</span>':r==='P'?'<span class="gr none">push</span>':'<span class="gr paper">live</span>';
+      h+='<div class="row" style="padding:10px 0"><span class="dot fire"></span><span class="pr"><b style="font-weight:600">'+esc(p.play||'')+'</b>'+(p.odds?' <span class="od">'+esc(p.odds)+'</span>':'')+'<div style="font-size:12px;color:var(--dim)">'+esc(p.matchup||'')+(p.grade?' \u00b7 grade '+esc(p.grade):'')+'</div></span>'+rlabel+'</div>';
+    });
+    $('dFired').innerHTML=h||'<div class="empty">No plays fired today yet.</div>';
+    if($('firedMeta'))$('firedMeta').textContent=ps.length+(ps.length===1?' play':' plays');
   }
 
   function renderLearn(){
