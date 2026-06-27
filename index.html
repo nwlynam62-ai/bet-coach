@@ -82,7 +82,7 @@
   <div class="view on" id="dash">
     <div class="grid g4" id="dStats"></div>
     <div class="panel"><div class="ph"><h3>Today's plays</h3><span class="meta" id="firedMeta"></span></div><div id="dFired"></div></div>
-    <div class="panel"><div class="ph"><h3>Bankroll</h3></div><div class="ringrow" id="bankKpis" style="margin-bottom:14px"></div><div id="bankCurve"></div></div>
+    <div class="panel"><div class="ph"><h3>Units won</h3></div><div class="ringrow" id="bankKpis" style="margin-bottom:14px"></div><div id="bankCurve"></div></div>
     <div class="panel"><div class="ph"><h3>On radar — watching</h3><span class="meta" id="radMeta"></span></div><div id="dRadar"></div></div>
     <div class="panel"><div class="ph"><h3>What we're learning</h3><span class="meta" id="learnMeta"></span></div><div id="dLearn" class="learn"></div></div>
     <div class="panel"><div class="ph"><h3>System status</h3></div><div id="dSys"></div></div>
@@ -95,10 +95,10 @@
   <div class="view" id="record">
     <div class="grid g4" id="rStats"></div>
     <div class="grid g2" id="rBreak"></div>
-    <p class="seclabel">Bankroll — month by month</p>
+    <p class="seclabel">Units — month by month</p>
     <div class="panel" style="margin-top:0"><div class="ringrow" id="bankKpisD" style="margin-bottom:16px"></div><div id="bankCurveD"></div></div>
-    <div class="panel"><div class="ph"><h3>Monthly P/L</h3></div><div id="bankBarsD"></div></div>
-    <div class="panel"><div class="ph"><h3>Monthly ledger</h3></div><div style="overflow-x:auto"><table class="banktbl"><thead><tr><th>Month</th><th>Bets</th><th>W-L</th><th>Units</th><th>P/L</th><th>ROI</th><th>CLV</th></tr></thead><tbody id="bankBodyD"></tbody></table></div></div>
+    <div class="panel"><div class="ph"><h3>Monthly units</h3></div><div id="bankBarsD"></div></div>
+    <div class="panel"><div class="ph"><h3>Monthly ledger</h3></div><div style="overflow-x:auto"><table class="banktbl"><thead><tr><th>Month</th><th>Bets</th><th>W-L</th><th>Units</th><th>ROI</th><th>CLV</th></tr></thead><tbody id="bankBodyD"></tbody></table></div></div>
     <p class="seclabel">Recent settled</p>
     <div class="card" id="rRecent"></div>
   </div>
@@ -138,7 +138,7 @@
   "unitFixed": true,
   "bankrollUpdated": "Sun Jun 21, 2026"
  },
- "updated": "2:07 PM ET 2026-06-27 (GA :05 sync ACTIVE): VSiN-DK live re-read 15/15 MLB + 3/3 WNBA (money%+bets%), ESPN cross-checked all 15 ML lines. Moves: TOR & SEA steamed, WSH RLM continues (-106, +29 sharp$), CIN/PIT tightened. Top fires placed AM (BOS +102 leading 4-0, ARI +119). Forward leans carded: ATL +109 dog (FIRE, +25 sharp$), CIN/WSH/TOR/MIL F5 pivots, KC +107 & PHI +109 reverse-money dogs (SP conflicts, caution). Every game graded; no NEW high-conviction fire cleared this run.",
+ "updated": "3:07 PM ET 2026-06-27 (GA :05 sync ACTIVE): VSiN-DK live re-read 18/18 today (15 MLB + 3 WNBA, money%+bets%), ESPN cross-check confirmed all 13 pregame DK MLs. Signals: PHI +109 (89% money) & ATL +113 (77% money) FIRE sharp dogs; KC +107 loudest (+39, RLM); WSH -106 +30 RLM; ARI/SF lines drifted vs money. Grades set on all 18; watchlist rebuilt (11 cards).",
  "linesSource": "MLB lines = DraftKings via ESPN core odds API (both-side ML)+totals; KBO/NPB = DraftKings via The Odds API (h2h); WNBA spread/total = DK via ESPN. Records/ERA = ESPN standings; bullpen = FanGraphs RP ERA+rank; closers = statsapi saves leaders. Pulled ~12:20 AM ET Jun 27.",
  "bets": [],
  "games": [
@@ -159,7 +159,7 @@
    "rank": 9,
    "grade": "B-",
    "take": "Astros @ Tigers, 1:10p. Valdez (3.91 ERA/4.22 xFIP) vs Teng (5.13/4.37). DET -131 fair on the home SP edge + better pen (13th vs 23rd). No fired edge.",
-   "mlTake": "HOU +117 reverse-tilt WEAKENING (B-): at 12:09 ET money flipped -- DET now 52% money on 69% bets, HOU 48% money on 33% bets (+15 dog tilt but money is the MINORITY now). DK still drifted to DET (-141), NO RLM toward the dog. Tilt softened from this morning; downgrade-hold. No fire.",
+   "mlTake": "LIVE (DET 6-4, Top 7): pregame mild HOU dog tilt weakened; 57% money / 72% tix DET = public chalk, money lighter than tickets. No fire; scoreboard controls.",
    "totalTake": "Total 8.5: Teng homer-prone but Valdez steady; two mid pens. No fired total.",
    "note": "Lines: DraftKings via ESPN core odds API (both-side ML)+totals. Times statsapi. Records/ERA/xFIP via ESPN standings + FanGraphs 2026. Bullpen ranks FanGraphs RP ERA; closers = statsapi saves leaders. Built 12:20a ET Jun 27 slate-builder.",
    "story": {
@@ -201,9 +201,9 @@
    "total": 8.0,
    "status": "scheduled",
    "rank": 4,
-   "grade": "B+",
+   "grade": "B",
    "take": "Yankees @ Red Sox, 1:10p. Bennett (3.71 ERA/3.42 xFIP) actually out-xFIPs Cole (3.62/4.42, just 32 IP back from missed time). Two elite pens (NYY 4th, BOS 3rd). BOS +104 home dog has own-number value — RADAR.",
-   "mlTake": "BOS +102 FIRE-grade lean (B+): Bennett 3.42 xFIP tops Cole 4.42 (32-IP name premium) + BOS pen 3rd vs NYY 4th -> own number ~even/BOS -105. VSiN money confirms the dog: BOS 45% money on just 29% bets while NYY draws 71% tickets but only 55% money -- the money lags the public NYY chalk. Plus-money side with the better number.",
+   "mlTake": "LIVE (BOS 4-1, Bot 7): NYY -123 had 75% money / 69% tix (+6 mild) but trailing late; pregame lean underwater. Hold.",
    "totalTake": "Total 8.5: two top-4 pens cap the back end; lean Under is live but thin, no fire.",
    "note": "Lines: DraftKings via ESPN core odds API (both-side ML)+totals. Times statsapi. Records/ERA/xFIP via ESPN standings + FanGraphs 2026. Bullpen ranks FanGraphs RP ERA; closers = statsapi saves leaders. Built 12:20a ET Jun 27 slate-builder.",
    "story": {
@@ -240,14 +240,14 @@
    "matchup": "Texas Rangers @ Toronto Blue Jays",
    "awayPitcher": "Cal Quantrill (4.50 ERA)",
    "homePitcher": "Dylan Cease (2.75 ERA)",
-   "awayML": "+162",
-   "homeML": "-198",
+   "awayML": "+163",
+   "homeML": "-199",
    "total": 8.0,
    "status": "scheduled",
    "rank": 7,
    "grade": "B",
    "take": "Rangers @ Blue Jays, 3:07p. Cease (2.75 ERA/2.60 xFIP, ace) vs Quantrill (4.50/5.10, tiny 2-IP sample). Big TOR SP edge but -186 is steep. RADAR / possible F5.",
-   "mlTake": "TOR F5 lean (B): Cease 2.60 xFIP elite vs thin Quantrill = real SP mismatch. Full -192 too steep + leans on TOR pen (11th) -> F5 ML. Money 71%/tickets 83% TOR is mild public chalk, not a sharp tell. Verify real F5 price; else odds:null.",
+   "mlTake": "LIVE (Top 1): TOR -199, 82% money / 84% tix = public chalk (money~=tickets). Cease F5 SP-edge was the pregame angle; F5 window closed. Hold.",
    "totalTake": "Total 8: Cease suppresses; lean Under thin, no fire.",
    "note": "Lines: DraftKings via ESPN core odds API (both-side ML)+totals. Times statsapi. Records/ERA/xFIP via ESPN standings + FanGraphs 2026. Bullpen ranks FanGraphs RP ERA; closers = statsapi saves leaders. Built 12:20a ET Jun 27 slate-builder.",
    "story": {
@@ -265,8 +265,8 @@
    "decision": "QUEUED",
    "passReason": "Real Cease SP edge but full price -186 is steep; queue as TOR F5 pending verified derivative price in-window.",
    "moneyPct": {
-    "away": 25,
-    "home": 75
+    "away": 18,
+    "home": 82
    },
    "publicTicketPct": {
     "away": 16,
@@ -291,7 +291,7 @@
    "rank": 6,
    "grade": "B+",
    "take": "Reds @ Pirates, 4:05p. Burns (2.00 ERA/3.29 xFIP) clearly over Jones (5.75/3.99, 20 IP). Near pick'em (CIN -118). CIN pen is weak (25th) — leans CIN F5. RADAR.",
-   "mlTake": "CIN F5 lean (B+): Burns (2.00 ERA/3.29 xFIP) dominates Jones (5.75). VSiN money 80% CIN on 69% bets (+11) confirms the SP side. CIN pen 25th caps the full game -> take it to F5. Line CIN -118 full / PIT -102.",
+   "mlTake": "SHARP$ CIN: Reds -110 (near pick'em) drawing 86% of the money on 70% of bets (+16), sharpened from 80% at 2:07p. Money side = CIN. Clean B+ road-fav lean.",
    "totalTake": "Total 8: Burns suppresses but CIN pen leaks; no fired total.",
    "note": "Lines: DraftKings via ESPN core odds API (both-side ML)+totals. Times statsapi. Records/ERA/xFIP via ESPN standings + FanGraphs 2026. Bullpen ranks FanGraphs RP ERA; closers = statsapi saves leaders. Built 12:20a ET Jun 27 slate-builder.",
    "story": {
@@ -309,8 +309,8 @@
    "decision": "QUEUED",
    "passReason": "SP edge real but CIN pen 25th caps full game; queue as F5 pending money/price confirm.",
    "moneyPct": {
-    "away": 80,
-    "home": 20
+    "away": 86,
+    "home": 14
    },
    "publicTicketPct": {
     "away": 70,
@@ -333,9 +333,9 @@
    "total": 9.0,
    "status": "scheduled",
    "rank": 13,
-   "grade": "B+",
+   "grade": "A",
    "take": "Phillies @ Mets, 4:10p. PHI's Alan Rangel ERA unconfirmed and NYM has no posted probable yet. Can't handicap the starters — PASS, RADAR until probables post.",
-   "mlTake": "PHI +109 FIRE-grade lean (B+): NYM probable now POSTED (Christian Scott, TJ-return arm, likely IP-capped) vs Phillies' Alan Rangel. Phillies dog draws 97% of the money on 63% bets (+34) WITH RLM (+119->+109). Money is pricing a PHI edge -- own number now buildable with Scott confirmed; the plus-money dog is the play.",
+   "mlTake": "FIRE plus-money dog: PHI +109 with 89% of the MONEY on 63% of bets (+26 SHARP$); Phillies (46-36) far better than Mets (34-48). Superior team + heavy sharp money + plus price = A. Sharp side = PHI.",
    "totalTake": "Total 8.5: unset without starters; no lean.",
    "note": "Lines: DraftKings via ESPN core odds API (both-side ML)+totals. Times statsapi. Records/ERA/xFIP via ESPN standings + FanGraphs 2026. Bullpen ranks FanGraphs RP ERA; closers = statsapi saves leaders. Built 12:20a ET Jun 27 slate-builder.",
    "story": {
@@ -353,8 +353,8 @@
    "decision": "PASS",
    "passReason": "INVERTED/UNCONFIRMED-SP CATCH: 97% money on PHI +109, but NYM's Christian Scott (3.10, established, 40+ IP) out-classes PHI rookie bulk-reliever Rangel (web-verified). Money on the side without the SP edge + bullpen-game risk -> radar, not fire.",
    "moneyPct": {
-    "away": 94,
-    "home": 6
+    "away": 89,
+    "home": 11
    },
    "publicTicketPct": {
     "away": 63,
@@ -379,7 +379,7 @@
    "rank": 11,
    "grade": "B+",
    "take": "Royals @ White Sox, 4:10p. Martin (3.18 ERA/3.39 xFIP) over Wacha (3.48/4.27). CHW -143 fair. Both these pens are below-average (KC 26th, CHW 16th). No fired edge.",
-   "mlTake": "KC +102 strong-money sharp dog (B+): Royals dog 79% money on just 20% bets (+59, huge) AND fresh RLM toward the dog (+109->+102 since this morning) -- textbook sharp plus-money tell. Caveat: xFIP slightly favors CWS (Martin 3.18) so it's money/RLM-driven, not own-number. Plus-money side the money backs.",
+   "mlTake": "Loudest SHARP$ + RLM: KC +107 has 64% of the MONEY on just 25% of bets (+39) and the line steamed +109->+107 TOWARD the minority-ticket dog. Textbook contrarian sharp dog; weak KC (34-49) caps grade at B+. Money side = KC.",
    "totalTake": "Total 8: KC pen 26th leaks; mild Over lean but no fire.",
    "note": "Lines: DraftKings via ESPN core odds API (both-side ML)+totals. Times statsapi. Records/ERA/xFIP via ESPN standings + FanGraphs 2026. Bullpen ranks FanGraphs RP ERA; closers = statsapi saves leaders. Built 12:20a ET Jun 27 slate-builder.",
    "story": {
@@ -397,12 +397,12 @@
    "decision": "PASS",
    "passReason": "INVERTED-SP CATCH: sharp money/RLM on KC +102, but the SP edge is the White Sox's -- Davis Martin (9-3, 3.18) is CHICAGO's starter, not KC's. Won't fire a dog into the better starter; radar only.",
    "moneyPct": {
-    "away": 65,
-    "home": 35
+    "away": 64,
+    "home": 36
    },
    "publicTicketPct": {
-    "away": 26,
-    "home": 74
+    "away": 25,
+    "home": 75
    },
    "finalScore": null
   },
@@ -416,14 +416,14 @@
    "matchup": "Arizona Diamondbacks @ Tampa Bay Rays",
    "awayPitcher": "Jose Cabrera (0.00 ERA)",
    "homePitcher": "Cole Sulser (0.00 ERA)",
-   "awayML": "+119",
-   "homeML": "-143",
+   "awayML": "+123",
+   "homeML": "-148",
    "total": 8.5,
    "status": "scheduled",
    "rank": 14,
    "grade": "B+",
    "take": "Diamondbacks @ Rays, 6:10p. Both listed starters are tiny-sample/opener types (J.Cabrera 5 IP, Sulser 2 IP) — likely bullpen games. Hard to handicap. PASS.",
-   "mlTake": "ARI +119 FIRE-grade lean (B+): cleanest plus-money sharp dog on the board -- 77% money on 19% bets (+58) AND strong RLM (+135->+119). Bullpen game (both openers) so no opposing SP chalk; money + RLM + own-number-not-opposed all align.",
+   "mlTake": "Sharp plus-money dog: ARI +123, 60% money on 25% bets (+35). CAUTION: line drifted +119->+123 / TB -143->-148 toward the favorite, so money and line disagree -- not clean RLM, conditional. Money side = ARI.",
    "totalTake": "Total 8: two bullpen games raise variance; no fired total.",
    "note": "Lines: DraftKings via ESPN core odds API (both-side ML)+totals. Times statsapi. Records/ERA/xFIP via ESPN standings + FanGraphs 2026. Bullpen ranks FanGraphs RP ERA; closers = statsapi saves leaders. Built 12:20a ET Jun 27 slate-builder.",
    "story": {
@@ -441,12 +441,12 @@
    "decision": "FIRED",
    "passReason": "FIRED ARI +119: even bullpen-game matchup (both openers, web-verified) + board-best VSiN money split (77%/19%, +58) + RLM +135->+119.",
    "moneyPct": {
-    "away": 67,
-    "home": 33
+    "away": 60,
+    "home": 40
    },
    "publicTicketPct": {
-    "away": 24,
-    "home": 76
+    "away": 25,
+    "home": 75
    },
    "finalScore": null
   },
@@ -467,7 +467,7 @@
    "rank": 12,
    "grade": "B+",
    "take": "Nationals @ Orioles, 7:05p. Griffin (3.15 ERA/3.65 xFIP) out-xFIPs Young (3.07/4.72). RLM: WSH moved to favorite (-108) with 67% of the money on just 44% of the bets (+23 = SHARP$). WSH pen 29th (5.05) caps the full game -> WSH F5 ML is the lean. Total 9 also live (two soft pens).",
-   "mlTake": "WSH F5 lean (B): line moved Nats +102 -> -108 (became the fav) = RLM/price confirm with 72% money on 45% bets (+27 sharp). Griffin 3.65 xFIP edges Young 4.72; BAL pen edge caps full -> F5. WSH -108 / BAL -111.",
+   "mlTake": "SHARP$ + RLM: WSH -106 holds 74% of the money on only 44% of bets (+30) while 56% of tickets sit on BAL -- reverse-money on the Nationals, RLM continues. Money side = WSH. Also Over 9 secondary total (soft pens, 81% Over handle).",
    "totalTake": "Total 9 (lean Over): WSH pen 29th + BAL 21st, two below-average pens behind shaky starters — Over 9 is a defensible lean, no fire without confirm.",
    "note": "Lines: DraftKings via ESPN core odds API (both-side ML)+totals. Times statsapi. Records/ERA/xFIP via ESPN standings + FanGraphs 2026. Bullpen ranks FanGraphs RP ERA; closers = statsapi saves leaders. Built 12:20a ET Jun 27 slate-builder.",
    "story": {
@@ -485,8 +485,8 @@
    "decision": "QUEUED",
    "passReason": "Griffin F5 / Over 9 radar leans; WSH 29th pen blocks a full-game fire, no money read at build.",
    "moneyPct": {
-    "away": 73,
-    "home": 27
+    "away": 74,
+    "home": 26
    },
    "publicTicketPct": {
     "away": 44,
@@ -511,7 +511,7 @@
    "rank": 5,
    "grade": "B-",
    "take": "Mariners @ Guardians, 7:10p. Gilbert (3.29 ERA/3.60 xFIP) clearly over Cecconi (4.48/4.28). SEA -149 road. SEA pen 8th (Muñoz). Modest own-number lean SEA — RADAR.",
-   "mlTake": "SEA -149 thin lean (B-): Gilbert 3.60 xFIP over Cecconi + SEA pen 8th (Munoz) > CLE 14th -> ~3pt edge. Money 88%/tickets 84% (+4) only mild confirm. Total dropped to 7.5. Thin, watch.",
+   "mlTake": "SEA -148 heavy both ways (85% money / 80% tix) -- chalk steamed earlier but money~=tickets, no sharp separation. Thin lean / watch.",
    "totalTake": "Total 8: Gilbert + good SEA pen suppress; lean Under thin.",
    "note": "Lines: DraftKings via ESPN core odds API (both-side ML)+totals. Times statsapi. Records/ERA/xFIP via ESPN standings + FanGraphs 2026. Bullpen ranks FanGraphs RP ERA; closers = statsapi saves leaders. Built 12:20a ET Jun 27 slate-builder.",
    "story": {
@@ -529,12 +529,12 @@
    "decision": "QUEUED",
    "passReason": "Slim ~3pt SEA own-number edge at -149; queue for VSiN money confirm in-window.",
    "moneyPct": {
-    "away": 87,
-    "home": 13
+    "away": 85,
+    "home": 15
    },
    "publicTicketPct": {
-    "away": 81,
-    "home": 19
+    "away": 80,
+    "home": 20
    },
    "finalScore": null
   },
@@ -555,7 +555,7 @@
    "rank": 10,
    "grade": "B",
    "take": "Rockies @ Twins, 7:10p. Lorenzen (7.20 ERA but 4.33 xFIP) vs Paredes (3.55 ERA/5.08 xFIP, 12 IP). MIN -144. The story is the bullpens: MIN 30th (5.30) and COL 28th (5.02) are the two WORST in MLB — Over 9 lean.",
-   "mlTake": "COL +119 reverse-money tilt EMERGED (B): at 12:09 ET COL draws 50% of the money on just 16% of bets (+34 sharp tilt to the dog) vs MIN 84% tickets/50% money -- a real money-vs-tickets divergence on the plus-money side. xFIP also leans Lorenzen over Paredes, undercutting MIN -144. Co-primary with the TOTAL: Over 9.5 (now the posted number; MIN pen 30th + COL 28th, 91% Over handle).",
+   "mlTake": "No ML edge (MIN -144, 75% money / 81% tix, money firmed). Play is the TOTAL: cleanest card Over 9.5 -- MIN pen 30th + COL pen 28th (two worst in MLB), 89% Over handle.",
    "totalTake": "Total 9 (lean Over): MIN pen 30th + COL pen 28th — the two worst bullpens in baseball behind shaky starters. Over 9 is the strongest non-fire lean on the board.",
    "note": "Lines: DraftKings via ESPN core odds API (both-side ML)+totals. Times statsapi. Records/ERA/xFIP via ESPN standings + FanGraphs 2026. Bullpen ranks FanGraphs RP ERA; closers = statsapi saves leaders. Built 12:20a ET Jun 27 slate-builder.",
    "story": {
@@ -573,8 +573,8 @@
    "decision": "QUEUED",
    "passReason": "Over 9 radar lean (two worst pens in MLB); no side edge, no fire without confirm.",
    "moneyPct": {
-    "away": 36,
-    "home": 64
+    "away": 25,
+    "home": 75
    },
    "publicTicketPct": {
     "away": 19,
@@ -597,9 +597,9 @@
    "total": 8.0,
    "status": "scheduled",
    "rank": 8,
-   "grade": "B-",
+   "grade": "C+",
    "take": "Cubs @ Brewers, 7:10p. Harrison (2.50 ERA/3.14 xFIP) clearly over Peterson (7.71 ERA but 3.84 xFIP). MIL -168 home with the 7th pen (Megill) vs CHC 12th. Real SP edge but -168 steep — RADAR.",
-   "mlTake": "MIL F5 lean (B-): Harrison 3.14 xFIP > Peterson + MIL pen 7th > CHC 12th. Money 97%/88% all MIL but steep -163 full -> MIL F5; slim edge.",
+   "mlTake": "MIL -163 public chalk both sides (89% money / 87% tix) -- no edge, no separation. Pass.",
    "totalTake": "Total 8: Harrison suppresses, MIL pen 7th — lean Under thin, no fire.",
    "note": "Lines: DraftKings via ESPN core odds API (both-side ML)+totals. Times statsapi. Records/ERA/xFIP via ESPN standings + FanGraphs 2026. Bullpen ranks FanGraphs RP ERA; closers = statsapi saves leaders. Built 12:20a ET Jun 27 slate-builder.",
    "story": {
@@ -617,12 +617,12 @@
    "decision": "QUEUED",
    "passReason": "Slim MIL edge at steep -168; queue MIL/F5 for money confirm in-window.",
    "moneyPct": {
-    "away": 6,
-    "home": 94
+    "away": 11,
+    "home": 89
    },
    "publicTicketPct": {
-    "away": 12,
-    "home": 88
+    "away": 13,
+    "home": 87
    },
    "finalScore": null
   },
@@ -643,7 +643,7 @@
    "rank": 15,
    "grade": "B-",
    "take": "Marlins @ Cardinals, 7:15p. Gusto (5.40 ERA/4.70 xFIP) vs Pallante (3.59/4.08). DK line now posted: STL -137 / MIA +114. Modest STL own-number edge; splits flat (STL 72% money on 69% bets, +3) -- no sharp tell. Thin STL lean / watch.",
-   "mlTake": "MIA@STL no edge (C+): MIA +119 / STL -143, total posted 8.5. Pallante 4.08 xFIP tops Gusto 4.70 and MIA pen 6th > STL 19th -- roughly offsetting. Splits balanced (STL 66% money/69% bets) = no sharp tell. Pass.",
+   "mlTake": "Thin sharp tilt to MIA +114 dog (41% money on 33% bets, +8) while STL public-tilted (59% money vs 67% tix). Jun-22 STL lesson: do NOT fire heavy-ticket STL; small money edge is on Miami. Watch only, B-.",
    "totalTake": "Total pending: no number posted; no lean until line opens.",
    "note": "Lines: DraftKings via ESPN core odds API (both-side ML)+totals. Times statsapi. Records/ERA/xFIP via ESPN standings + FanGraphs 2026. Bullpen ranks FanGraphs RP ERA; closers = statsapi saves leaders. Built 12:20a ET Jun 27 slate-builder.",
    "story": {
@@ -661,8 +661,8 @@
    "decision": "PASS",
    "passReason": "No DraftKings line posted at build; revisit when the market opens in-window.",
    "moneyPct": {
-    "away": 28,
-    "home": 72
+    "away": 41,
+    "home": 59
    },
    "publicTicketPct": {
     "away": 33,
@@ -687,7 +687,7 @@
    "rank": 3,
    "grade": "C+",
    "take": "Dodgers @ Padres, 8:40p. Yamamoto (2.65 ERA/3.19 xFIP, ace) vs Vásquez (4.17/4.83). LAD -198 road. SD pen is elite (2nd, Mason Miller) but Yamamoto's edge is large. Market looks fair — PASS.",
-   "mlTake": "LAD@SD no value (C+): Yamamoto 3.19 xFIP dominates Vasquez 4.83 -- real ace edge, but LAD -205 is past our -200 cap and SD +168 dog is dead (5% money/6% bets). No bet.",
+   "mlTake": "LAD -205 heavy chalk both ways (95% money / 93% tix), too steep, no edge. Hold/pass.",
    "totalTake": "Total 8 (lean Under): Yamamoto + both good pens (LAD 10th, SD 2nd) at pitcher-friendly Petco — Under 8 is a live lean, no fire.",
    "note": "Lines: DraftKings via ESPN core odds API (both-side ML)+totals. Times statsapi. Records/ERA/xFIP via ESPN standings + FanGraphs 2026. Bullpen ranks FanGraphs RP ERA; closers = statsapi saves leaders. Built 12:20a ET Jun 27 slate-builder.",
    "story": {
@@ -705,12 +705,12 @@
    "decision": "PASS",
    "passReason": "Ace edge fairly priced at -198; SD pen keeps dog live but no plus value — PASS, Under is the only lean.",
    "moneyPct": {
-    "away": 97,
-    "home": 3
+    "away": 95,
+    "home": 5
    },
    "publicTicketPct": {
-    "away": 94,
-    "home": 6
+    "away": 93,
+    "home": 7
    },
    "finalScore": null
   },
@@ -724,14 +724,14 @@
    "matchup": "Atlanta Braves @ San Francisco Giants",
    "awayPitcher": "Bryce Elder (3.71 ERA)",
    "homePitcher": "Logan Webb (3.35 ERA)",
-   "awayML": "+109",
-   "homeML": "-131",
+   "awayML": "+113",
+   "homeML": "-136",
    "total": 8.0,
    "status": "scheduled",
    "rank": 2,
-   "grade": "B+",
+   "grade": "A",
    "take": "Braves @ Giants, 9:05p. Webb (3.35 ERA/3.51 xFIP, ace workhorse) over Elder (3.71/4.02). SF -136 home. But ATL has the BEST pen in MLB (1st, 2.85, Iglesias) vs SF 20th — that closes the gap. ATL +113 dog has value — RADAR.",
-   "mlTake": "ATL +109 FIRE-grade lean (B+): Webb 3.51 xFIP edges Elder 4.02, but ATL's MLB-best pen (1st, 2.85) vs SF 20th flips the late math -> own number ~ATL +105. VSiN money 87% ATL on 53% bets (+34) confirms the plus-money side.",
+   "mlTake": "FIRE plus-money dog: ATL +113 with 77% of the MONEY on 53% of bets (+24 SHARP$); Braves (49-31) elite, MLB-best pen (1st, 2.85) offsets the Webb SP edge. Line drifted +109->+113 (better price for backers). Money side = ATL.",
    "totalTake": "Total 7.5: Webb + ATL elite pen suppress; lean Under live, no fire.",
    "note": "Lines: DraftKings via ESPN core odds API (both-side ML)+totals. Times statsapi. Records/ERA/xFIP via ESPN standings + FanGraphs 2026. Bullpen ranks FanGraphs RP ERA; closers = statsapi saves leaders. Built 12:20a ET Jun 27 slate-builder.",
    "story": {
@@ -749,8 +749,8 @@
    "decision": "QUEUED",
    "passReason": "ATL +113 dog value from the MLB-best pen vs Webb's SP edge; single-angle, queue for VSiN money confirm.",
    "moneyPct": {
-    "away": 78,
-    "home": 22
+    "away": 77,
+    "home": 23
    },
    "publicTicketPct": {
     "away": 53,
@@ -773,9 +773,9 @@
    "total": 8.5,
    "status": "scheduled",
    "rank": 15,
-   "grade": "B",
+   "grade": "B+",
    "take": "Athletics @ Angels, 9:38p. Perkins (7.50 ERA/3.69 xFIP, 18 IP) vs Detmers (3.93/3.63). Pick'em (LAA -114/ATH -106). Recurring Angels reverse-money: LAA 83% of the money on 47% of the bets (+36 = SHARP$) while A's get 53% tickets on 17% money. SP edge also LAA. Two weak pens (ATH 27th, LAA 24th) cap it -> B lean LAA -114.",
-   "mlTake": "LAA -114 money-only WATCH (B-): recurring Angels reverse-money -- 80% money on 46% bets (+34), A's 54% tickets/20% money. But xFIP is pick'em (Perkins 3.69 vs Detmers) so no own-number edge; money-only, watch not fire.",
+   "mlTake": "SHARP$ LAA: Angels -114 hold 74% of the money on 47% of bets (+27) with tickets split -- sharp money on the home side despite the A's grading better. Money side = LAA, B+.",
    "totalTake": "Total 8.5 (lean Over): ATH pen 27th + LAA 24th, two weak pens behind volatile starters — Over 8.5 is the mild lean, no fire.",
    "note": "Lines: DraftKings via ESPN core odds API (both-side ML)+totals. Times statsapi. Records/ERA/xFIP via ESPN standings + FanGraphs 2026. Bullpen ranks FanGraphs RP ERA; closers = statsapi saves leaders. Built 12:20a ET Jun 27 slate-builder.",
    "story": {
@@ -793,12 +793,12 @@
    "decision": "PASS",
    "passReason": "True pick'em = dead money per dog rule; near-even xFIPs, no own-number edge.",
    "moneyPct": {
-    "away": 19,
-    "home": 81
+    "away": 26,
+    "home": 74
    },
    "publicTicketPct": {
-    "away": 51,
-    "home": 49
+    "away": 53,
+    "home": 47
    },
    "finalScore": null
   },
@@ -985,7 +985,7 @@
    "rank": 99,
    "grade": "C+",
    "take": "WNBA Mercury@Tempo (calib/watch): TOR -225 chalk (88% money/81% bets), PHX +185 dog dead (12m/19b). Total 176.5 Over 67% money/82% bets = public Over. No plus-money edge; calibration-only.",
-   "mlTake": "TOR -205 public chalk (C+): Tempo 89% money/80% bets, no divergence. Lean is the TOTAL: Over 177.5 (67% Over handle). Side pass.",
+   "mlTake": "TOR Tempo -218, 59% money / 69% tix -- mild public chalk, money lighter than tickets. No edge.",
    "totalTake": "Total 177.5 (DK via ESPN). Calibration-only.",
    "note": "WNBA spread/total = DraftKings via ESPN. Calibration/watchlist sport — picks go to calibrationPicks, never the record.",
    "story": null,
@@ -1018,7 +1018,7 @@
    "rank": 99,
    "grade": "C",
    "take": "WNBA Sparks@Fever (calib/watch): IND -270 heavy chalk (99% money/84% bets); LAS +220 dead. No edge; calibration-only.",
-   "mlTake": "IND -270 heavy chalk (C): Fever 98% money/83% bets, priced. Sparks +220 dead. Pass; secondary Over 179.5 watch.",
+   "mlTake": "IND -270 heavy chalk (96% money / 85% tix). No edge, price too steep. Pass.",
    "totalTake": "Total 178.5 (DK via ESPN). Calibration-only.",
    "note": "WNBA spread/total = DraftKings via ESPN. Calibration/watchlist sport — picks go to calibrationPicks, never the record.",
    "story": null,
@@ -1029,8 +1029,8 @@
     "home": 96
    },
    "publicTicketPct": {
-    "away": 13,
-    "home": 87
+    "away": 15,
+    "home": 85
    },
    "finalScore": null
   },
@@ -1044,22 +1044,22 @@
    "matchup": "Atlanta Dream @ Seattle Storm",
    "awayPitcher": null,
    "homePitcher": null,
-   "awayML": "-360",
-   "homeML": "+285",
+   "awayML": "-355",
+   "homeML": "+280",
    "total": 168.5,
    "status": "scheduled",
    "rank": 99,
    "grade": "B-",
    "take": "WNBA Dream@Storm (calib/watch): ATL -325 huge chalk (82% money on 97% bets -- tickets outrun money), SEA +260 dog 18% money on 3% bets (+15) but a +260 longshot is past any value band. Over 168.5 100% handle. No actionable edge; calibration-only.",
-   "mlTake": "SEA Storm +230 reverse-money DOG (B-): Storm draw 67% of the money on just 4% of the bets (+63, extreme) while ATL Dream get 96% tickets but only 33% money -- a loud sharp tell on a big plus-money home dog. Card it.",
+   "mlTake": "Reverse-money dog: Seattle Storm +280 holds 50% of the MONEY on just 4% of bets vs 96% tickets on Dream -355. Tell weakened from 67% money at midday and line lengthened +230->+280 -- watch, not fire. Money side proportionally = Storm.",
    "totalTake": "Total 166.5 (DK via ESPN). Calibration-only.",
    "note": "WNBA spread/total = DraftKings via ESPN. Calibration/watchlist sport — picks go to calibrationPicks, never the record.",
    "story": null,
    "decision": "PASS",
    "passReason": "WNBA is calibration/watchlist-only — no real-money fire.",
    "moneyPct": {
-    "away": 48,
-    "home": 52
+    "away": 50,
+    "home": 50
    },
    "publicTicketPct": {
     "away": 96,
@@ -1131,6 +1131,7 @@
   }
  ],
  "lineMovement": [
+  "3:07 PM ET 2026-06-27 (GA :05 sync ACTIVE, VSiN-DK live Chrome read, ESPN cross-check confirmed all 13 pregame DK MLs match VSiN exactly): moves since 2:07p -- Arizona Diamondbacks@Tampa Bay Rays: +119/-143 -> +123/-148 (line drift TOWARD the TB favorite even though 60% of the money is on the ARI dog -- money/line disagreement, conditional). Atlanta Braves@San Francisco Giants: +109/-131 -> +113/-136 (ATL dog LENGTHENED to +113 while still drawing 77% money -- better price for the sharp side). CIN money sharpened 80%->86% on Reds -110. MIA money 28%->41% (sharp tilt onto the +114 dog; STL public-tilted 67% tix). MIN money 64%->75% (chalk firmed). In-progress: NYY@BOS Bot 7 BOS 4-1; HOU@DET Top 7 DET 6-4; TEX@TOR Top 1 0-0 (TOR -199, F5 window closed). WNBA SEA Storm reverse-money tell weakened 52%->50% money on 4% bets, line +285->+280. No postponements.",
   "12:07 PM ET 2026-06-27 (GA :35 ACTIVE, VSiN-DK live Chrome read, ESPN cross-check): moves since 11:07a -- Kansas City Royals@Chicago White Sox: +109/-131 -> +102/-123 (steam toward KC dog, sharp money came in). Totals corrected to current DK posted: NYY@BOS 8.5->8.0; PHI@NYM 8.5->9.0; SEA@CLE 8.0->7.5; COL@MIN 9.0->9.5; ATL@SF 7.5->8.0; MIA@STL now posted 8.5. Other MLB MLs steady vs 11:07a. HOU@DET money flipped to DET (52% money) -- HOU dog tilt weakened, no RLM. WNBA SEA Storm +230 drawing 67% money on 4% bets (reverse-money dog).",
   "11:07 AM ET 2026-06-27 (GA :05 ACTIVE deep + radar, VSiN-DK live Chrome read, 15 MLB ML splits w/ money% AND bets%): Overnight->now DK moves: Houston Astros@Detroit Tigers: +109/-131 -> +117/-141; New York Yankees@Boston Red Sox: -126/+104 -> -123/+102; Texas Rangers@Toronto Blue Jays: +153/-186 -> +158/-193; Philadelphia Phillies@New York Mets: +119/-143 -> +109/-132; Kansas City Royals@Chicago White Sox: +119/-143 -> +109/-131; Arizona Diamondbacks@Tampa Bay Rays: +135/-163 -> +119/-144; Washington Nationals@Baltimore Orioles: +102/-123 -> -103/-117; Seattle Mariners@Cleveland Guardians: -149/+124 -> -149/+123; Chicago Cubs@Milwaukee Brewers: +139/-168 -> +135/-163; Miami Marlins@St. Louis Cardinals: None/None -> +119/-143; Los Angeles Dodgers@San Diego Padres: -198/+162 -> -205/+168; Atlanta Braves@San Francisco Giants: +113/-136 -> +109/-132. Key RLM toward DOGS: ARI +135->+119 (79% money), KC +119->+109 (83% money), PHI +119->+109 (97% money). WSH +102->-103 (sharp money flipped Nats to fav). No real picks pending; no close-capture needed. Graded all 15 MLB + 3 WNBA; rebuilt watchlist (14 cards).",
   "8:39 PM ET 2026-06-26 (GA :35 ACTIVE deep, VSiN-DK re-read 15 MLB + 3 WNBA via Chrome): Lines steady vs 8:09 (ATL -125/SF +104; LAD -156/SD +129; ATH -114/LAA -105). SPLITS moves: A's/LAA reverse-money RE-WIDENED -- LAA home dog 52->58% money on 41% bets (+17); SD +129 holds 46% money/21% bets (+25, strong, FIRED B+); ATL chalk 94% money/81% bets steady. 5 MLB fires (WSH/MIA/TEX/KC/SD) confirmed; MIA & STL/WSH/etc in progress. Close-capture pending: A's/LAA 9:38, LAD/SD 9:45, ATL/SF 10:15. No new fires this pass.",
@@ -1153,640 +1154,7 @@
   "12:15 AM ET 2026-06-25 (slate-builder ROLLOVER): opened 37 games -- MLB 9, KBO 5, NPB 4, LMB 10, WNBA 3, WC 6. MLB lines = DK via ESPN core odds (both-side ML + totals); KBO/NPB = DK via The Odds API; LMB null. Key opens: SEA -143/PIT +119, NYY -162/BOS +134, STL -136/ARI +113, DET -125/HOU +104, PHI -186/WSH +153.",
   "9:08 PM ET Jun 24 (GA :05 ACTIVE): VSiN-DK re-read via Chrome (money%HND+bets%BET 16/16 MLB+4 WNBA), lines cross-checked vs ESPN-DK. KEY: ATH -114 money HELD/ticked 89->90% on 73% tix (+17) -- strongest pregame confirm, fire intact, locks 9:45 (T~37m); grade A. WNBA GS reverse money strengthened: +110 29->34% on 20% tix (+14), GS +1.5 59/24 (+35) -- still no catalyst (both teams healthy per ESPN), watch only. All other MLB now live/final; STL -118 (77/67), PIT -115 (60/45), DET -132 (65/51), Mets G2 (48/36 dog money) hold. Every game graded; watchlist refreshed.",
   "8:36 PM ET Jun 24 (GA :35 ACTIVE): VSiN-DK re-read via Chrome (money%HND+bets%BET 16/16 MLB+4 WNBA), lines cross-checked vs ESPN-DK. KEY: ATH -114 money STRENGTHENED 79->89% on 73% tix (+16, was +5) -- strongest pregame confirm, fired/queued locks 9:45 -> game upgraded B+->A. ATL@SD firmed to -117 (95/83) locking 8:40 (fav now, no value). STL -118 (77/67,+10), PIT -115 (60/45,+15), DET -132 (65/51,+14) hold live. MIA +101 dog CASHED final (78/33,+45 pre-game tell). Fixed POR@CHI inverted moneyPct -> 65/38 (matches VSiN). No new sharp emergence; slate ~all live except ATH@SF + WNBA 10pm.",
-  "7:37 PM ET Jun 24 (GA :35 ACTIVE): VSiN-DK 30-min re-read via Chrome (money%HND+bets%BET 16/16 MLB + 4 WNBA), lines cross-checked vs ESPN-DK. STABLE vs 7:07 -- no signal flips: PIT -115 money 60/45 (+15) holds, STL -118 75/67 (+8) eased-but-holds, NYM G2 +105 dog money 48/36 (+12) holds, DET -132 65/51 (+14), ATH -114 money firmed 78->80/74 (queued for 9:45). HOU +120 dog tell still faded (26/22, +4; money on TOR 74/78). Past-cap money: TB -155 (95/71), LAD -164 (88/90 aligned), ATL -119 (94/83). WNBA Over 172.5 POR@CHI 88% handle on 47% tix; GS +1.5 sharp spread money (44/21). No new fire -- strong leans already fired, ATH queued.",
-  "7:07 PM ET Jun 24 (GA :05 ACTIVE, evening slate first pitches): VSiN-DK splits re-read live via Chrome (money%HND+bets%BET 16/16 MLB+4 WNBA); lines cross-checked vs ESPN-DK. KEY REVERSAL: HOU +120 contrarian-dog sharp tell FADED by close -- money 44%->26% (now +4 vs tix), money fled to TOR fav (74/78); FIRED pick locked +120 before the fade, close +119. PIT -115 money FIRMED 57->60 (+15, strongest live confirm). NYM G2 +105 dog money RE-EMERGED 28->48 (+12 divergence) -> new watch card. STL sharp fav eased 79->76 (+9). Line moves: LAD -163->-164, ATL -114->-119 (chalk), HOU +120->+119/TOR -145->-144, AZ@STL STL -119->-118, NYY +108->+109/DET -131->-132, MIL -132->-131. Status->live: PHI@WSH, HOU@TOR, SEA@PIT, NYY@DET, KC@TB. Grades set on every game; watchlist rebuilt (NYM G2 dog added).",
-  "4:38 PM ET Jun 24 (GA :35 ACTIVE, evening slate T-120m): VSiN-DK splits re-read live via Chrome (money%HND+bets%BET 16/16 MLB+4 WNBA); LINES cross-checked vs ESPN-DK core odds - ALL DK favorites/prices match VSiN exactly. Moves since :05: SEA@PIT PIT -118->-115 (SEA -102->-105, ticked toward SEA but money still 78% PIT); ARI@STL STL -118->-124 (ARI -102->+103, line moved toward the STL money side, reinforces STL sharp). Splits shifts: NYM G2 sharp softened 75->61 money (+23); DET money ticked 52->57 (still thin); ATH money LAGS (65/74, SP-edge only). TEX@MIA Final + BOS@COL/CLE@CWS/CHC@NYM1/BAL@LAA live - dropped from watchlist. 42/42 graded, watchlist rebuilt (11 cards).",
-  "4:10 PM ET Jun 24 (GA :05 ACTIVE, BAL@LAA underway): VSiN-DK splits re-read live (money%HND+bets%BET 16/16 MLB+4 WNBA); LINES cross-checked vs ESPN-DK core odds. Favorites eased since overnight: LAD -180->-162, DET -132->-126, MIL -140->-132, TB -156->-149, ATH stable -117. PIT -118 fav HOLDS (VSiN sign glitch corrected via ESPN-DK; not a dog). Splits shifted vs 3:38: MIA +101 dog now 78/33 money (+45, top divergence); PIT -118 78/46 (+32); HOU +120 41/23 (+18) as TOR fav money lags (59/77); NYM G2 flipped to 75/42 sharp; ARI 'contrarian' KILLED (money 90% STL); ATH faded 65/74; CIN now aligned 18/18. Grades re-set 42/42.",
-  "3:38 PM ET Jun 24 (GA :35 ACTIVE, BAL@LAA in-window T-30m): VSiN-DK splits re-read live via Chrome (money%HND + bets%BET 16/16 MLB + 4 WNBA), grades re-verified 42/42 intact. Lines STABLE vs :05/:35 reads: LAA -123 (BAL +102), PIT -118, ATH -117, ARI -102, MIL -140/CIN +116, ATL -122, TB -156, TOR -145, PHI -125, LAD -180. Splits steady: PIT 78/44(+34), ATH 93/74(+19), ARI dog 37/28 vs public STL 73 tix, CHC G2 +100 88/59, CIN +116 28/19. Drift corrected: CLE@CWS money 79->64/36 (now LIVE, rain delay cleared), MIN@WSH money 69->75, BAL@LAA 29->27. MIA +101 sharp dog (78/33) FINAL CASHED 4-2. sync FIRED LAA -123 holds. No new actionable +money dog this run.",
-  "2:12 PM ET Jun 24 (GA :35 ACTIVE, 5 in-window): VSiN-DK splits re-read live via Chrome (money%HND + bets%BET 16 MLB + 4 WNBA), ESPN-DK core cross-check. Lines moved since :05: BAL@LAA LAA -126 to -121 (BAL +104 to +100); MIL@CIN MIL -148 to -140 (CIN +118 to +116). Splits stable: PIT -118 78/44(+34), ATH -117 91/73(+18), LAA -121 77/60(+17), TB -156 97/70(+27), TOR -145 93/79(+14), PHI -131 94/75(+19). Steam ATL -120 99/84 holds. Soft ARI -102 40/29 vs public STL 71% tix. No actionable +money dog (MIA +101 sharp dog 78/33 is LIVE, Bot7 MIA 2-1). LIVE: CHC@NYM g1 0-0 Top4, CLE@CWS rain delay Top1.",
-  "1:18 PM ET Jun 24 (GA :05 ACTIVE, 5 in-window): VSiN-DK splits re-read live via Chrome (money%HND + bets%BET 16 MLB + 4 WNBA); lines cross-checked vs ESPN-DK core. BIG MOVE: ATL@SD flipped ATL +114(open)->-120(now), 34c steam, money 99%/tickets 84% — overnight 'pen-fatigue dog' tell overwhelmed; sharp confirmed ATL, value captured. ATH@SF DK price now live ATH -117/SF -103 (was null) — sharp 91/72 + Jump 2.37 vs Mahle 6.04. CHC@NYM nightcap filled NYM -121. Sharp holds: PIT -118 78/44(+34), CLE -112 80/61(+19), LAA -126 77/61(+16), TB -156 97/71(+26), TOR -145 94/81(+13), PHI -126 94/76(+18). Soft contrarian ARI -102 41/30 vs public STL 71% tickets (Jun-22 pattern; rookie SP -> watch). LIVE close-capture: MIA +101 sharp dog 78/33(+45), TEX@MIA + CHC@NYM g1 underway.",
-  "12:18 AM ET Jun 24 (ROLLOVER slate build): opening DK lines pulled via The Odds API for 16 MLB + 5 KBO + 5 NPB; LMB (6, statsapi probables, odds null); WNBA (4) + WC (6) via ESPN, calibration. Notable: LAD -185 (Ohtani), BOS -175 at Coors (Suarez/Freeland 7.36), ATL +114 dog at SD despite Perez 2.78 (pen-fatigue tell), NYY+119/DET-143 (Skubal). ATH@SF feed garbled -> nulled. Jun23 ATL ML still live at build (6-6 8th) -> pending.",
-  "9:07 PM ET Jun 23 (GA :05 ACTIVE): VSiN-DK splits re-read 16/16 MLB+WNBA via Chrome (money%HND+bets%BET). KEY MOVES vs 8:37: ATH/SF line drifted ATH +119->+123 / SF -144->-148, ATH dog money cooled 59->55 (+9 -> +4). WNBA money COOLED hard: LV 93->62% money, NY road dog now 38% money on 27% tix (+11) -- consensus-lay on LV gone, NY +114 now a small reverse-money tell. ATL -112 holds 80/75 (+5, fired). Live sharp board steady: ARI 94/56(+38), CIN 62/31(+31), NYM 64/28(+36), PIT +108 dog 60/33(+27). No DK line overwritten with a soft number.",
-  "8:37 PM ET Jun 23 (GA :35 ACTIVE): VSiN-DK splits re-read 16/16 MLB+WNBA via Chrome (money%HND+bets%BET); statuses cross-confirmed vs ESPN scoreboard API. RESULT: HOU +109 DOG (sharp, +21) WON 9-7/11. Lines essentially flat vs 8:06. ATL money cooled 90->78 (+14 -> +3 SHARP$) but still majority money+tickets, ATL -112 stays FIRED. ATH +119 dog firmed 56/48 -> 59/50 (+9). WNBA LV 91/72 -> 93/73 (+20). 11 MLB games now LIVE; 4 still pregame (BOS@COL,BAL@LAA,ATL@SD,ATH@SF). No DK line overwritten with a soft number.",
-  "5:37 PM ET Jun 23 (GA :35 ACTIVE): VSiN-DK splits re-read 15/15 MLB + WNBA via Chrome (money%HND+bets%BET); DK lines cross-confirmed via ESPN core odds. KEY MOVES vs 5:07: CLE money COLLAPSED 77->54 (now below 67% tix) -> CLE -115 lean DEAD, sharp flipped to CWS; SEA -126->-130 / PIT +105->+108 (line moved AWAY from PIT dog = no RLM, PIT A->B+ though money still 61/31); MIA -163->-168; CLE -115->-114. HOLDS: ARI -107 96/59 (+37 top sharp, RLM -105->-107) FIRE-A; ATL -114 98/78 (+20) FIRE-B+; MIL@CIN Over 9.0 99/57 strongest total. HOU@TOR LIVE Mid 5th 4-2. Every game graded; watchlist rebuilt.",
-  "3:37 PM ET Jun 23 (GA :35 ACTIVE): VSiN-DK splits re-read 15/15 MLB + WNBA via Chrome (money%HND + bets%BET). DK line moves vs prior: CLE -114->-118; SEA -131->-126 / PIT +108->+105; CHC FLIPPED -105->-114 fav, NYM -114->-105; PHI -173->-175; BAL -144->-143; MIL@CIN total 10->9.5. SHARP$ board: ARI 97/57 (+40 top); PIT +105 DOG 60/31 (+29, FIRE); HOU +109 DOG 61/38 (+23, money firmed from 57, FIRED/pending); ATL 99/77 (+22); CLE 83/65 (+18); DET 32/22 (+10 diff-only, NYY money-majority 68). NYM sharp GONE (line flipped, money even 52/48) -> grade B->B-. MIN +149 dog still faded (11/7). TOTAL: MIL@CIN Over 9.5 money 97/56 (+41). All 41 graded; watchlist rebuilt (14).",
-  "12:37 PM ET Jun 23 (GA :35 ACTIVE): VSiN-DK splits re-read 15/15 MLB + WNBA via Chrome (money%HND + bets%BET). Minor DK line moves: HOU +109->+105 / TOR -131->-126 (RLM toward Astros dog, money 42/31); SEA -126->-131 / PIT +105->+108 (RLM toward Pirates dog, money 61/30 = FIRE-grade); CHC -102->-105 / NYM -119->-114. SHARP$ board: ARI 97/60 (+37 top); PIT +108 DOG 61/30 (+31); NYM 55/30 (+25); ATL 99/78 (+21); CLE 87/68 (+19); DET 35/18 (+17); HOU +105 DOG 42/31 (+11)+RLM. CIN sharp edge SHRANK 48/25 -> 38/25 (+13) as money drifted to MIL (now 62/38) -- downgraded CIN watch (chase risk). MIN +149 dog still faded (14/5). In-window: WC Portugal@Uzbekistan 1:00 PM (soccer splits N/A). All 41 graded; watchlist rebuilt (13).",
-  "12:14 PM ET Jun 23 (GA :35 ACTIVE): VSiN-DK splits re-read 15/15 MLB + WNBA via Chrome (money%HND + bets%BET). Lines STABLE vs 11:40 capture (no MLB ML moved). Only in-window game = WC Portugal@Uzbekistan 1:00 PM (soccer splits N/A on VSiN). SHARP$ refresh: ARI 97/61 (+36 top); PIT +105 DOG 62/29 (+33, FIRE-grade, public 71% SEA); NYM 55/31 (+24); CIN 48/25 (+23, move done); ATL 99/79 (+20); CLE 86/67 (+19); DET 35/18 (+17); HOU +109 DOG 44/31 (+13)+RLM. MIN +149 dog money FADED 24->14 (+8, thinned, grade B->B-). TOTAL: MIL@CIN Over 10 money 98/62. Promoted PIT & HOU dogs to B+; all 15 graded; watchlist rebuilt (13).",
-  "11:40 AM ET Jun 23 (GA :05 ACTIVE): VSiN-DK splits re-read 15/15 MLB via Chrome (money%HND + bets%BET). KEY SHARP$: ARI -105 97/62 (+35, top, w/ SP ace edge); PIT +105 home DOG 62/31 (+31, public 69% SEA); NYM -119 55/30 (+25); CIN -110 49/25 (+24) +RLM from +101; ATL -114 100/79 (+21); MIN +149 DOG 24/6 (+18); CLE -114 85/68 (+17). LINE MOVES: HOU dog +119->+109 (TOR -143->-131, RLM to dog), CIN +101->-110, BAL -163->-144, LAD -168->-181, ATH +104->+118; ATL@SD lines were null -> filled -114/-105 from VSiN-DK. All 15 graded; watchlist rebuilt.",
-  "12:25 AM ET Jun 23 (ROLLOVER opens): New 6/23 slate built -- 15 MLB + 5 KBO + 6 NPB + 10 LMB + 1 WNBA + 4 WC = 41 cards. Settled Jun 22 Twins +128 -> L (LAD 2, MIN 1), close +129, CLV -0.002. ZERO fires this run: all MLB outside the <=90-min promotion window at 12 AM, KBO/NPB starters unconfirmed. Radar leans carded for in-window analyst/sync: CLE -115, ARI -105, HOU +119 (Bieber risk), BAL F5, MIL over 10. Lines DK via ESPN core odds API; KBO/NPB DK via Odds API; LMB null (no overnight odds source).",
-  "8:41 PM ET Jun 22 (GA :35 ACTIVE): Chrome attended, VSiN-DK splits re-read 12/12 active MLB + 4/4 WNBA vs 8:08p - all stable, no material move. Boston -137 firmed +16 (84/68, pending 8:40). Astros +109 FIRED dog holds +44 (82/38, LIVE down 2-1). Twins +129 FIRED sharp tell still gone +3 (LIVE 1-1). Nationals -127 (69/46,+24, LIVE up 1-0). Cleveland -110 (81/58,+23). Marlins -136 (88/74,+14). Braves -107/SD -112 money on ATL +6 (pending 10p). Angels +131 thin/RLM-against, BAL -158 (pending 9:38). D-backs +119 DEAD. KC +158 no-value dog leads 2-1 live. No NEW fire.",
-  "7:43 PM ET Jun 22 (GA :35 ACTIVE): Chrome attended, VSiN-DK splits re-read 13/13 MLB + 4/4 WNBA fresh vs 7:13p. KEY: Astros +109 FIRED dog strongest 82money/38tix (+44, holds). Twins +129 FIRED, sharp tell now GONE 15/12 (+3, was +17) -> SP/own-number lean only; close-captured +129 (game underway). Cleveland -110 SHARP$ eased +30->+23 (81/58). Boston -137 firmed +15 (84/69). Reds +129 dog VETO holds (MIL 75% money/86% tix, inverted SP). ARI dog DEAD (17 money LAGS 23 tix), STL -144 chalk. Nationals -127 (70/46,+24). Braves money 73/64 (+9) but line eased SD -117. WNBA: Storm +9.5 reverse-money 74/20 (+54) calibration lean holds. No lines nulled; DK book of record. Every game graded; watchlist rebuilt.",
-  "6:08 PM ET Jun 22 (GA :05 ACTIVE): Chrome attended, VSiN-DK splits re-read all 13 MLB + 4 WNBA, stable vs 5:38p. KEY: MIL POSTED Woodruff (3.60) vs Singer (5.32) -> Reds +129 dog FAILS inverted-SP veto (SHARP$ +29 / 45% money 16% tix + RLM MIL -168->-156 still present but no play). TOR posts D. Cease - HOU +108 fire holds (Brown 1.10 + 82% money/37% tix, +45). TEX SP now T. Alexander (was Rocker), MIA -136 chalk +16 holds. ESPN core-odds corroborates CHC -126/NYM +105 (VSiN -131/+108 NOT adopted). Twins +129 fired stable (29/12,+17). Nationals -126 (72/46,+26), Cleveland -110 (94/62,+32), Atlanta -109 (86/68,+18). Boston steam -137 (80/70,+10). 2 live picks (HOU/MIN) hold; none within 30m -> no close-capture due. No lines nulled.",
-  "5:09 PM ET Jun 22 (GA :05 ACTIVE): Chrome attended, VSiN-DK splits re-read all 13 MLB + 4 WNBA. ALL DK lines stable vs board/4:38p (no line nulls). KEY: Reds +129 DEVELOPING DOG now carries BOTH money (48% on 16% tix, +32) AND confirmed RLM (MIL -168->-156, ~12c toward CIN) - promoted to FIRE-grade lean, gated only by MIL SP unposted. Mets +105 sharp dog holds 54/20 (+34). Cleveland -112 sharp chalk 94/63 (+31). Atlanta -109 86/70 (+16)+RLM. Red Sox tell cooled 85->79 money (+5). Tigers dog faded to +2 (dead). Fired picks HOU +108 / MIN +129 hold.",
-  "4:38 PM ET Jun 22 (GA :35 ACTIVE): Chrome attended, VSiN-DK splits re-read all 13 MLB + 4 WNBA. DK lines stable vs 4:09 EXCEPT CHC -125->-126 / NYM +104->+105 and CWS -108->-107 (cosmetic). KEY MONEY MOVE w/o a line move: Brewers@Reds money flipped - MIL -156 money 92%->53%, CIN +129 money 8%->47% (47% money/17% tix) while DK held MIL -156 = sharp money on the dog ahead of the number (RLM setup). Nationals -126 money rebuilt 65%->71%; Twins +129 fired-dog eased 43%->31% money (holds). 2 live MLB picks hold (Astros +108, Twins +129). No pending pick within 30m -> no close-capture due.",
-  "1:05 PM ET Jun 22 (GA :05 ACTIVE): Chrome attended, VSiN-DK splits + ESPN core odds re-pulled. All 13 MLB lines stable vs 12:40p EXCEPT PHI@WSH ticked DK +102/-123 -> +104/-125 (WSH 87% money on 41% tix = sharp money on home fav, mild move toward WSH). No other DK line moved. Astros +104 SHARP$ holds +52 (87/35) = strongest sharp-dog; Nationals SHARP$ +46. All MLB 5-7h out (radar). No pending pick <30m -> no close-capture.",
-  "11:38 AM ET Jun 22 (GA :35 ACTIVE): Chrome attended. DK lines re-pulled via ESPN core odds + AN current cross-check. CONFIRMED DK RLM: Brewers -168->-157 (11c toward Reds +133 dog) vs 82% tix MIL = the run's cleanest sharp-dog signal. Twins 'RLM' SOFT: DK LAD held -155 (AN best-odds -144 = cross-book shopping, NOT used to overwrite DK). Astros SHARP$ holds +18% (money 59/tix 41, 4,008 bets). RedSox/Rockies money 60/40 BOS = +8% tilt toward COL dog. PHI@WSH posted: DK WSH -123, total 10. Totals to DK: DET 8.0->8.5, MIN 9.0->9.5, COL 12.0->11.5, SD 7.0->7.5. STL -144 + TB -194 + TOR -126 confirmed exact on DK. All 13 MLB pre (no ppd).",
-  "12:35 AM ET Jun 22 (ROLLOVER open): Opening DK lines via ESPN core odds - 13 MLB games (PHI@WSH unposted). STL -144 (FIRED, Pallante>>Kelly), TB -181 (Rasmussen elite), MIN +130 (SP-edge home dog), LAD -157, MIL -168 (starter unposted), BAL -167, ATL/SD pick'em, BOS -126 @COL (tot 12). KBO off (Mon); NPB 1 (Seibu -185, Odds API); LMB 1 (no market). 4 WNBA + 4 WC watchlist-only.",
-  "7:37 PM ET Jun 21 (GA :35 ACTIVE): Chrome splits pass — Action Network MLB+WNBA bets% re-read. Mets@PHI now LIVE (Mid 1st, PHI 3-2); bets% NYM 9% / PHI 91% (was 8/92), AN % OF MONEY PRO-locked -> carried 18/82 from 5:36 verified (not-re-verified, sharp$ +10 to the NYM dog). DK-core Mets +153 / PHI -186 HELD (no move; AN open NYM +155 -> best +163 = dog drifting LONGER, anti-RLM, cross-book soft NOT used). Mets contrarian-dog PASS now MOOT — game started, no pregame action. WNBA Liberty@Sparks (8p, lone un-started): bets 58% NY / 42% LAS; spread NY -7.5 -> -5.5 = RLM toward the Sparks dog; money% null -> SHARP$ can't compute; hold C+ watch. WNBA Valkyries@Aces FINAL (23/77), Mystics@Lynx LIVE (50/50). All MLB FINAL except Mets; TOR@CHC PPD.",
-  "6:36 PM ET Jun 21 (GA :35 ACTIVE): Chrome splits pass — Action Network bets% re-read; Mets@PHI NYM 8% / PHI 92% tickets (was 7/93). AN % OF MONEY PRO-locked for live/upcoming this session (Brewers 41/59 FINAL, Blue Jays 48/52 PPD free, zero-drift) -> Mets@PHI money% carried 18/82 from 5:36 verified, not-re-verified. DK-core Mets +153 / PHI -186 RE-CONFIRMED via ESPN-DK (home -186 exact); no DK move, no RLM to the dog (AN cross-book best +163/-170 noted but soft, NOT used). Mets contrarian-dog held PASS (public-fade 92% PHI; money 82% PHI; ace fade against). WNBA Liberty@Sparks DK NY -5.5 / O/U 180.5 confirmed, hold C+. Afternoon MLB FINAL (await sync settlement); LAA +113 lone pending pick still live earlier.",
-  "6:06 PM ET Jun 21 (GA :05 ACTIVE): Chrome splits pass — Action Network bets% 15/15 ZERO drift vs board; AN % OF MONEY PRO-locked for live/upcoming games this session (only Brewers 41/59 & Blue Jays 48/52 free, both zero-drift) -> money% carried from 5:36 verified read, flagged not-re-verified. Mets@PHI line CONFIRMED Mets +153 / Phillies -186 via scoresandodds (open PHI -199->-186, Mets +155->+153) — no DK-core move, no RLM to the dog. Mets contrarian-dog held PASS (public-fade 93% PHI only; money 82% PHI; Wheeler 2.01 vs Peterson 5.91 ace fade against). Status: most afternoon MLB now FINAL (await sync settlement); LAA +113 still live (lone pending pick).",
-  "5:07 PM ET Jun 21 (GA :05 ACTIVE): splits re-verified Chrome 15/15 ZERO drift on bets%+money% (Action Network + scoresandodds). Mets@PHI (only un-started) re-read NYM 6%tix/19%money vs PHI 94/81 = public-fade 94% PHI; sharp +13 toward NYM but majority money (81%) on PHI -> PASS/watch (Wheeler ace vs Peterson 5.91 the counter). Mets market drifted to best +160/+163 (Fanatics/AN); DK-core +152 preserved, no confirmed DK move. Status flips to FINAL: Brewers/Reds/Giants/Nationals/White Sox/Guardians (settle via sync). All 36 games graded, no blanks.",
-  "12:40 PM ET Jun 21 (GA): live splits re-verified scoresandodds 15/15 ticket%+money%. SHARP$ plus-money dogs: ANGELS +21 (62/41, promoted->fire/A), WHITE SOX +20 (77/57), REDS +19 (58/39, pickem), PADRES +18 (54/36, ->B+), RED SOX +16 (48/32, +RLM SEA -140->-125), GUARDIANS +13 (56/43), CUBS +8 (52/48, +RLM TOR -125->-104). Public fades: PHI 90%, LAD 86%, TB 79%. METS +158 contrarian (RLM +163->+153 vs 90% PHI). TWINS RLM (ARI -161->-127) NOT confirmed by money (64% ARI). Two LMB games graded C (no posted line). DK board MLs preserved, none overwritten/nulled.",
-  "12:13 PM ET Jun 21 (GA): live splits re-verified scoresandodds 15/15 ticket%+money%; AN free-PRO cross-check matches (MIL 43/57, CHC 60). SHARP$ plus-money dogs: ANGELS +21, WHITE SOX +20, REDS +18(near pickem), PADRES +18, RED SOX +16(+RLM SEA -140->-125), CUBS +16(+RLM TOR -125->-104), GUARDIANS +13. Public-fade RLM: METS +163->+153 vs 90% PHI. TWINS line RLM ARI -161->-127 but money% (64% ARI) does NOT confirm. DK board MLs preserved, none overwritten/nulled.",
-  "11:46 AM ET Jun 21 (GA): full money% captured via scoresandodds - sharp plus-money dogs REDS +20 (58/38), ANGELS +21 (62/41), WHITE SOX +20 (77/57), PADRES +17 (54/37), RED SOX +16 (48/32); CUBS +16 & BREWERS +8 confirmed-sharp PASS (SP opposes). DK lines re-verified vs ESPN core (no change). MIN@ARI added.",
-  "11:18 AM ET Jun 21: DK refresh - BREWERS steamed +110->-102 (sharp), CUBS steamed +104->-108 (sharp $65%), METS RLM +163->+153 vs 90% public, REDS bet to near pick'em (NYY -126->-114), SD@TEX corrected to TEX -157 fav, chalk hardened BAL@LAD -219->-238.",
-  {
-   "id": "kbo-20260616-01",
-   "sport": "KBO",
-   "ts": "2026-06-16T02:55 ET",
-   "awayML": "-160",
-   "homeML": "+130",
-   "total": 8.5,
-   "snapshot": "close"
-  },
-  {
-   "id": "kbo-20260616-02",
-   "sport": "KBO",
-   "ts": "2026-06-16T02:55 ET",
-   "awayML": "-110",
-   "homeML": "-115",
-   "total": 9.5,
-   "snapshot": "close"
-  },
-  {
-   "id": "kbo-20260616-03",
-   "sport": "KBO",
-   "ts": "2026-06-16T02:55 ET",
-   "awayML": "-215",
-   "homeML": "+175",
-   "total": 9.5,
-   "snapshot": "close"
-  },
-  {
-   "id": "kbo-20260616-04",
-   "sport": "KBO",
-   "ts": "2026-06-16T02:55 ET",
-   "awayML": "+245",
-   "homeML": "-320",
-   "total": 10.5,
-   "snapshot": "close"
-  },
-  {
-   "id": "kbo-20260616-05",
-   "sport": "KBO",
-   "ts": "2026-06-16T02:55 ET",
-   "awayML": "-130",
-   "homeML": "+105",
-   "total": 9.5,
-   "snapshot": "close"
-  },
-  {
-   "id": "npb-20260616-01",
-   "sport": "NPB",
-   "ts": "2026-06-16T02:55 ET",
-   "awayML": "+100",
-   "homeML": "-125",
-   "total": 6,
-   "snapshot": "close"
-  },
-  {
-   "id": "npb-20260616-02",
-   "sport": "NPB",
-   "ts": "2026-06-16T02:55 ET",
-   "awayML": "-215",
-   "homeML": "+175",
-   "total": 6,
-   "snapshot": "close"
-  },
-  {
-   "id": "g-20260616-mia-phi",
-   "sport": "MLB",
-   "ts": "2026-06-16T11:08 ET",
-   "awayML": "+160",
-   "homeML": "-190",
-   "total": null,
-   "snapshot": "open",
-   "note": "radar open (consensus 2-book)"
-  },
-  {
-   "id": "g-20260616-nym-cin",
-   "sport": "MLB",
-   "ts": "2026-06-16T11:08 ET",
-   "awayML": "-122",
-   "homeML": "+104",
-   "total": null,
-   "snapshot": "open",
-   "note": "radar open (consensus 2-book)"
-  },
-  {
-   "id": "g-20260616-pit-ath",
-   "sport": "MLB",
-   "ts": "2026-06-16T11:08 ET",
-   "awayML": "+112",
-   "homeML": "-132",
-   "total": 10.5,
-   "snapshot": "open",
-   "note": "radar open (consensus 2-book)"
-  },
-  {
-   "id": "g-20260616-wc-fra-sen",
-   "sport": "WC",
-   "ts": "2026-06-16T11:36 ET",
-   "awayML": "-220",
-   "homeML": "+600",
-   "drawML": "+360",
-   "total": null,
-   "snapshot": "open",
-   "note": "radar open (consensus); watch-only"
-  },
-  {
-   "id": "g-20260616-wc-ira-nor",
-   "sport": "WC",
-   "ts": "2026-06-16T11:36 ET",
-   "awayML": "+1200",
-   "homeML": "-500",
-   "drawML": "+600",
-   "total": null,
-   "snapshot": "open",
-   "note": "radar open (consensus); watch-only"
-  },
-  {
-   "id": "g-20260616-wc-arg-alg",
-   "sport": "WC",
-   "ts": "2026-06-16T11:36 ET",
-   "awayML": "-264",
-   "homeML": "+700",
-   "drawML": "+375",
-   "total": null,
-   "snapshot": "open",
-   "note": "radar open (consensus); watch-only"
-  },
-  {
-   "id": "g-20260616-cws-nyy",
-   "sport": "MLB",
-   "ts": "2026-06-16T12:12 ET",
-   "awayML": "+122",
-   "homeML": "-144",
-   "total": 7.5,
-   "snapshot": "open",
-   "note": "radar open (consensus) — DK latest -149/+123, money ~79% NYY"
-  },
-  {
-   "id": "g-20260616-det-hou",
-   "sport": "MLB",
-   "ts": "2026-06-16T12:12 ET",
-   "awayML": "+130",
-   "homeML": "-154",
-   "total": null,
-   "snapshot": "open",
-   "note": "radar open (consensus)"
-  },
-  {
-   "id": "g-20260616-sd-stl",
-   "sport": "MLB",
-   "ts": "2026-06-16T12:12 ET",
-   "awayML": "-104",
-   "homeML": "-112",
-   "total": null,
-   "snapshot": "open",
-   "note": "radar open (consensus) near pick'em"
-  },
-  {
-   "id": "g-20260616-kc-wsh",
-   "sport": "MLB",
-   "ts": "2026-06-16T12:12 ET",
-   "awayML": "+108",
-   "homeML": "-131",
-   "total": null,
-   "snapshot": "open",
-   "note": "radar open (consensus)"
-  },
-  {
-   "id": "g-20260616-tor-bos",
-   "sport": "MLB",
-   "ts": "2026-06-16T12:12 ET",
-   "awayML": "-120",
-   "homeML": "+100",
-   "total": null,
-   "snapshot": "open",
-   "note": "radar open (consensus)"
-  },
-  {
-   "id": "g-20260616-nym-cin",
-   "sport": "MLB",
-   "ts": "2026-06-16T12:53 ET",
-   "awayML": "-122",
-   "homeML": "+101",
-   "total": 10,
-   "snapshot": "current",
-   "note": "Reds dog shortened +112->+101 vs our lean; total up 9.5->10.0."
-  },
-  {
-   "id": "g-20260616-mia-phi",
-   "sport": "MLB",
-   "ts": "2026-06-16T12:53 ET",
-   "awayML": "+148",
-   "homeML": "-180",
-   "total": 8,
-   "snapshot": "current",
-   "note": "line monitor refresh (DK via ESPN feed)"
-  },
-  {
-   "id": "g-20260616-cws-nyy",
-   "sport": "MLB",
-   "ts": "2026-06-16T12:53 ET",
-   "awayML": "+119",
-   "homeML": "-144",
-   "total": 8,
-   "snapshot": "current",
-   "note": "Yankees ~79% money (retained reading); total 7.5->8.0, NYY -144."
-  },
-  {
-   "id": "g-20260616-sd-stl",
-   "sport": "MLB",
-   "ts": "2026-06-16T12:53 ET",
-   "awayML": "-101",
-   "homeML": "-120",
-   "total": 8,
-   "snapshot": "current",
-   "note": "Cardinals firmed -112->-120; Padres -104->-101 (our +Padres lean ~flat)."
-  },
-  {
-   "id": "g-20260616-det-hou",
-   "sport": "MLB",
-   "ts": "2026-06-16T12:53 ET",
-   "awayML": "+152",
-   "homeML": "-184",
-   "total": 8.5,
-   "snapshot": "current",
-   "note": "Astros steam: HOU firmed -154->-184 (~30c) since late AM, total up to 8.5. Confirms our Astros F5 lean (Tigers' Skubal on a first-start-back IP cap) - not a fade."
-  },
-  {
-   "id": "g-20260616-kc-wsh",
-   "sport": "MLB",
-   "ts": "2026-06-16T12:53 ET",
-   "awayML": "+119",
-   "homeML": "-144",
-   "total": 8.5,
-   "snapshot": "current",
-   "note": "Line moving INTO our Nationals pick: WSH -131->-144 (we hold Nats ~-130 - positive CLV building)."
-  },
-  {
-   "id": "g-20260616-tor-bos",
-   "sport": "MLB",
-   "ts": "2026-06-16T12:53 ET",
-   "awayML": "-119",
-   "homeML": "-102",
-   "total": 7.5,
-   "snapshot": "current",
-   "note": "Red Sox shortened +100->-102; Blue Jays flat at -119 (our Jays lean intact)."
-  },
-  {
-   "id": "g-20260616-sf-atl",
-   "sport": "MLB",
-   "ts": "2026-06-16T12:53 ET",
-   "awayML": "+144",
-   "homeML": "-175",
-   "total": 9,
-   "snapshot": "current",
-   "note": "line monitor refresh (DK via ESPN feed)"
-  },
-  {
-   "id": "g-20260616-cle-mil",
-   "sport": "MLB",
-   "ts": "2026-06-16T12:53 ET",
-   "awayML": "+130",
-   "homeML": "-157",
-   "total": 8,
-   "snapshot": "current",
-   "note": "line monitor refresh (DK via ESPN feed)"
-  },
-  {
-   "id": "g-20260616-min-tex",
-   "sport": "MLB",
-   "ts": "2026-06-16T12:53 ET",
-   "awayML": "+109",
-   "homeML": "-132",
-   "total": 8.5,
-   "snapshot": "current",
-   "note": "line monitor refresh (DK via ESPN feed)"
-  },
-  {
-   "id": "mlb-20260624-ath-sf",
-   "sport": "MLB",
-   "ts": "2026-06-24T22:08 ET",
-   "awayML": "-117",
-   "homeML": "+103",
-   "total": 8.5,
-   "snapshot": "close-capture",
-   "note": "VSiN-DK close re-read: ATH -114(fired)->-117, money 90% on 73% tix (+17). Locked 9:45."
-  },
-  {
-   "id": "mlb-20260625-ath-sf",
-   "sport": "MLB",
-   "ts": "2026-06-25T11:40 ET",
-   "awayML": "+109",
-   "homeML": "-132",
-   "total": 8.5,
-   "snapshot": "current",
-   "note": "VSiN-DK refresh: juice off SF -136->-132 toward ATH dog; ATH money 49% on 42% tix (mild RLM)."
-  },
-  {
-   "id": "mlb-20260625-phi-wsh",
-   "sport": "MLB",
-   "ts": "2026-06-25T11:40 ET",
-   "awayML": "-168",
-   "homeML": "+139",
-   "total": 8,
-   "snapshot": "current",
-   "note": "VSiN-DK refresh: PHI -174->-168 (slight off chalk); 97/86 money."
-  },
-  {
-   "id": "mlb-20260625-nyy-bos",
-   "sport": "MLB",
-   "ts": "2026-06-25T11:40 ET",
-   "awayML": "-149",
-   "homeML": "+123",
-   "total": 8,
-   "snapshot": "current",
-   "note": "VSiN-DK refresh: NYY -151->-149; 97/76 money -> F5 pivot."
-  },
-  {
-   "id": "mlb-20260625-chc-nym",
-   "sport": "MLB",
-   "ts": "2026-06-25T11:40 ET",
-   "awayML": "-110",
-   "homeML": "-109",
-   "total": 8.5,
-   "snapshot": "current",
-   "note": "VSiN-DK refresh: market flipped CHC fav->NYM fav (CHC -108/NYM -112 -> CHC -110/NYM -109); RLM toward NYM sharp side, 90/42 money."
-  },
-  {
-   "id": "mlb-20260625-nyy-bos-1237",
-   "sport": "MLB",
-   "ts": "2026-06-25T12:37 ET",
-   "awayML": "-149",
-   "homeML": "+123",
-   "total": 8,
-   "snapshot": "current",
-   "note": "VSiN-DK 12:37: NYY juice back UP -141->-149; 97/77 money holds (+20) -> F5 pivot."
-  },
-  {
-   "id": "mlb-20260625-sea-pit-1237",
-   "sport": "MLB",
-   "ts": "2026-06-25T12:37 ET",
-   "awayML": "-144",
-   "homeML": "+119",
-   "total": 8.5,
-   "snapshot": "close-capture",
-   "note": "VSiN-DK 12:37: PIT +119 dog money FADED 53%->40% (now minority), 29% tix. Contrarian-dog signal dissipated; game live 12:35 ET."
-  },
-  {
-   "id": "mlb-20260625-chc-nym-1237",
-   "sport": "MLB",
-   "ts": "2026-06-25T12:37 ET",
-   "awayML": "-109",
-   "homeML": "-110",
-   "total": 8.5,
-   "snapshot": "current",
-   "note": "VSiN-DK 12:37: NYM holds fav (CHC -109/NYM -110); NYM 86/43 money (+43) FIRE."
-  },
-  {
-   "id": "mlb-20260625-phi-wsh-1237",
-   "sport": "MLB",
-   "ts": "2026-06-25T12:37 ET",
-   "awayML": "-171",
-   "homeML": "+141",
-   "total": 8,
-   "snapshot": "current",
-   "note": "VSiN-DK 12:37: PHI -168->-171 steepened; 96/85 money."
-  },
-  {
-   "id": "mlb-20260625-ari-stl-1237",
-   "sport": "MLB",
-   "ts": "2026-06-25T12:37 ET",
-   "awayML": "+113",
-   "homeML": "-136",
-   "total": 9,
-   "snapshot": "current",
-   "note": "VSiN-DK 12:37: STL -136 money softened to 73/66 (+7)."
-  },
-  {
-   "id": "mlb-20260625-ath-sf-1237",
-   "sport": "MLB",
-   "ts": "2026-06-25T12:37 ET",
-   "awayML": "+109",
-   "homeML": "-131",
-   "total": 8.5,
-   "snapshot": "current",
-   "note": "VSiN-DK 12:37: SF -132->-131; ATH dog 45/41 thin (+4)."
-  },
-  {
-   "id": "mlb-20260625-ath-sf-1541",
-   "sport": "MLB",
-   "ts": "2026-06-25T15:41 ET",
-   "awayML": "+118",
-   "homeML": "-142",
-   "snapshot": "current",
-   "note": "VSiN-DK 3:41: +114/-137 -> +118/-142. FIRED DOG: ATH +118 sharp dog 56 money/42 tix (+14)+RLM continues +114->+118; entry +113 intact"
-  },
-  {
-   "id": "mlb-20260625-tex-tor-1541",
-   "sport": "MLB",
-   "ts": "2026-06-25T15:41 ET",
-   "awayML": "+119",
-   "homeML": "-144",
-   "snapshot": "current",
-   "note": "VSiN-DK 3:41: +129/-156 -> +119/-144. no edge: TOR -144 79/78 (+1); juice softened -156->-144, money still TOR"
-  },
-  {
-   "id": "mlb-20260625-chc-nym-1541",
-   "sport": "MLB",
-   "ts": "2026-06-25T15:41 ET",
-   "awayML": "-112",
-   "homeML": "-108",
-   "snapshot": "current",
-   "note": "VSiN-DK 3:41: NYM -108 holds FIRE 82 money/41 tix (+41), strongest tell; CHC fav by tickets (59%)."
-  },
-  {
-   "id": "mlb-20260625-hou-det-1541",
-   "sport": "MLB",
-   "ts": "2026-06-25T15:41 ET",
-   "awayML": "-105",
-   "homeML": "-115",
-   "snapshot": "current",
-   "note": "VSiN-DK 3:41: DET -115 80 money/62 tix (+18, softened from +28); still SHARP$ + Melton SP edge."
-  },
-  {
-   "id": "mlb-20260625-ath-sf-1637",
-   "sport": "MLB",
-   "ts": "2026-06-25T16:37 ET",
-   "awayML": "+113",
-   "homeML": "-136",
-   "total": 8.5,
-   "snapshot": "current",
-   "note": "ESPN-DK re-verify 4:37 ET: ATH +113 / SF -136 / O8.5 held vs 4:08; our fired live ATH +113 dog, close +114 already captured, no re-entry."
-  },
-  {
-   "id": "mlb-20260625-hou-det-1808",
-   "sport": "MLB",
-   "ts": "2026-06-25T18:08 ET",
-   "awayML": "+100",
-   "homeML": "-121",
-   "total": 9,
-   "snapshot": "current",
-   "note": "FRESH VSiN-DK 6:08 ET: HOU +100 / DET -121 -- steamed toward DET from -105/-115 at midday. Money on HOU 56% but line + SP edge favor DET; STAND DOWN."
-  },
-  {
-   "id": "mlb-20260625-chc-nym-1808",
-   "sport": "MLB",
-   "ts": "2026-06-25T18:08 ET",
-   "awayML": "-102",
-   "homeML": "-118",
-   "total": 8.5,
-   "snapshot": "current",
-   "note": "FRESH VSiN-DK 6:08 ET: NYM steamed -108 -> -118 (RLM toward the 70% money side); CHC -102. Confirms FIRE on NYM."
-  },
-  {
-   "id": "mlb-20260625-ari-stl-1808",
-   "sport": "MLB",
-   "ts": "2026-06-25T18:08 ET",
-   "awayML": "+109",
-   "homeML": "-132",
-   "total": 9,
-   "snapshot": "current",
-   "note": "FRESH VSiN-DK 6:08 ET: STL -136 -> -132 (juice eased), ARI +113 -> +109; STL money 83/71 (+12) now clears sharp threshold."
-  },
-  {
-   "id": "mlb-20260625-nyy-bos-1808",
-   "sport": "MLB",
-   "ts": "2026-06-25T18:08 ET",
-   "awayML": "-148",
-   "homeML": "+123",
-   "total": 7.5,
-   "snapshot": "current",
-   "note": "FRESH VSiN-DK 6:08 ET: NYY -148 / BOS +123 held; SHARP$ 91/79 (+12)."
-  },
-  {
-   "id": "mlb-20260625-phi-wsh-1808",
-   "sport": "MLB",
-   "ts": "2026-06-25T18:08 ET",
-   "awayML": "-179",
-   "homeML": "+148",
-   "total": 8,
-   "snapshot": "current",
-   "note": "FRESH VSiN-DK 6:08 ET: PHI -179 / WSH +148 held; money 96/87 (+9)."
-  },
-  {
-   "id": "mlb-20260625-ari-stl-1940",
-   "sport": "MLB",
-   "ts": "2026-06-25T19:40 ET",
-   "awayML": "+109",
-   "homeML": "-132",
-   "total": 9,
-   "snapshot": "current",
-   "note": "FRESH VSiN-DK 7:40 ET: STL -132/ARI +109 price held, but STL ML money COOLED 81->62 (now money<tix 62/69); ARI +109 dog money 38 on 31 tix (+7 emerging reverse). Sharp tell on STL faded; SP edge (McGreevy>>Gallen) unchanged. Pick fired & live (rain delay)."
-  },
-  {
-   "id": "mlb-20260625-ari-stl-1940",
-   "sport": "MLB",
-   "ts": "2026-06-25T19:40 ET",
-   "awayML": "+109",
-   "homeML": "-132",
-   "total": 9,
-   "snapshot": "current",
-   "note": "FRESH VSiN-DK 7:40 ET: STL -132/ARI +109 price held, but STL ML money COOLED 81->62 (now money<tix 62/69); ARI +109 dog money 38 on 31 tix (+7 emerging reverse). Sharp tell on STL faded; SP edge (McGreevy>>Gallen) unchanged. Pick fired & live (rain delay)."
-  },
-  {
-   "id": "mlb-20260625-ari-stl-2008",
-   "sport": "MLB",
-   "ts": "2026-06-25T20:08 ET",
-   "awayML": "+109",
-   "homeML": "-132",
-   "total": 9,
-   "snapshot": "current",
-   "note": "FRESH VSiN-DK 8:08 ET (LIVE): STL -132/ARI +109 price held; ARI dog reverse money STRENGTHENED 38/31->48/33 (+15, money now on the +109 dog), STL money 52 on 67 tix (money<tix). Textbook Jun-22-STL public trap, but game already live -- close-capture only, STL -132 pending."
-  },
-  {
-   "id": "wnba-20260625-dal-lv-2008",
-   "sport": "WNBA",
-   "ts": "2026-06-25T20:08 ET",
-   "awayML": "+195",
-   "homeML": "-238",
-   "total": 178.5,
-   "snapshot": "current",
-   "note": "FRESH VSiN-DK 8:08 ET: DAL +195/LV -238 held; DAL ML reverse money 62/11 (+51, in-band dog) but conflicts with LV -5.5 spread money (78%) & DAL more depleted (Smith/Sims out) -> calibration paper only. Over 178.5 89% handle/61 tix."
-  },
-  {
-   "id": "run-ga-20260625-2037",
-   "sport": "ALL",
-   "ts": "2026-06-25T20:37 ET",
-   "snapshot": "current",
-   "note": "GA :35 ACTIVE VSiN-DK refresh. ARI@STL POSTPONED (rain). MLB lines held; NYM -118 (70/39, +31) board-strongest live 0-0. WNBA DAL +195/LV -238 & NYL -355/SEA +280 held; DAL ML money softened 63->47/11 (+36 in-band reverse); SEA +280 65/7 (+58 OOB). LA@TOR LIVE Tempo -102 88/62 sharp money cashing (95-66 End3)."
-  },
-  {
-   "id": "run-ga-20260625-2208",
-   "sport": "ALL",
-   "ts": "2026-06-25T22:08 ET",
-   "snapshot": "current",
-   "note": "GA :05 ACTIVE VSiN-DK refresh 10:08 PM. MLB: 7 final, ARI@STL ppd (rain, makeup Jul 23), 2 live -- NYY@BOS Top9 BOS 6-3 (BOS +123 dog leading), CHC@NYM extras tied 3-3 (NYM -118 70h/39b pending). MLB ML splits held vs 9:41. WNBA 10PM now LIVE: DAL +195/LV -238 held (DAL ML 47/13 +34 reverse, conflicts LV -6.5 82h); Over moved 178.5->179.5 (93h/57b). NYL -355/SEA +280 held; SEA +8.5 69h/39b (+30 reverse fire, carded); Under moved 168.5->167.5 (79h/40b sharp +39). LA@TOR FINAL Tempo 125-97 (sharp Tempo -102 88h cashed)."
-  },
-  {
-   "id": "run-ga-20260626-1140",
-   "sport": "ALL",
-   "ts": "2026-06-26T11:40 ET",
-   "snapshot": "current",
-   "note": "GA :35 run (gate=RADAR_ONLY, MLB pre-radar but VSiN posted full slate). Captured 15/15 MLB ML money%+bets% (VSiN-DK 11:40a). New lines posted: KC@CWS CWS -136 / KC +113; ATL@SF ATL -120 / SF +100 (both off NR). Moves: CIN +179->+159 (toward sharp dog, RLM); ARI@TB -143->-137 (toward ARI). Sharp plus-money dogs CIN/WSH/LAA + MIA 97% money flagged. Early 8h-out money=provisional."
-  },
-  "12:12 PM ET 2026-06-26 (GA :05 ACTIVE re-verify): NO MLB line moves off 11:40a (VSiN-DK cross-check; ARI+114/TB-137, WSH+119/BAL-143, MIA-108/STL+112, ATH-131/LAA+109, ATL-120/SF+100 all steady). Movement was in MONEY not price: CIN dog handle receded +55%->+27% (sharp dog tell faded); WSH dog handle surged +67%->+89% (now top plus-money dog). No new news; lineups not yet posted (6:40p first pitch ~6.5h out).",
-  "12:36 PM ET 2026-06-26 (GA :35 ACTIVE): VSiN-DK re-read 15/15 MLB -- no material pre-game line moves vs 12:12 (ARI+114/TB-137, WSH+119/BAL-143, MIA-108/STL-112, TEX-112/TOR-107, LAD-148/SD+123 all steady). Splits stable; WSH dog held +52 money edge, CIN dog stayed faded, LAD sharp money emerged (93h/76b) but non-contrarian. No RLM triggers since open.",
-  {
-   "id": "run-ga-20260626-1306",
-   "sport": "ALL",
-   "ts": "2026-06-26T13:06 ET",
-   "snapshot": "current",
-   "note": "GA :05 ACTIVE VSiN-DK re-read 1:06 PM, cross-checked ESPN-DK core odds (15/15 confirmed). Moves vs 12:36: CHC@MIL MIL -267->-245 / CHC +215->+198 (toward CHC dog, but 99% money still MIL -> NOT RLM, juice normalization); HOU@DET DET -115->-114, CIN@PIT PIT -194->-193 (cosmetic). MIA@STL pick'em wobbling around even (VSiN +112 vs ESPN-DK -112; kept -108/-112). All others steady. Splits stable: WSH dog held +53 money edge (top dog), MIA +37 (A), ATL +25, BOS +21, TEX +16, CLE +12; CIN dog mild re-tell +10. Every game graded (no NR). Watchlist=11 (9 MLB+2 WC)."
-  },
-  "1:36 PM ET 2026-06-26 (GA :35 ACTIVE): VSiN-DK re-read 15/15 MLB + 3/3 WNBA. One pre-game drift -- COL/MIN ticked toward MIN fav (COL +143->+148, MIN -174->-180). All other MLB ML steady vs 1:06 (ARI+114/TB-137, WSH+119/BAL-143, MIA-108/STL+112, TEX-112/TOR-107, NYY-115/BOS-105, ATH-131/LAA+109, ATL-120/SF+100). Money% stable; ticket% drift <=4pts. No new RLM beyond standing WSH/LAA dog tells. ~5h pre-game, provisional.",
-  {
-   "id": "run-ga-20260626-1512",
-   "sport": "ALL",
-   "ts": "2026-06-26T15:12 ET",
-   "snapshot": "current",
-   "note": "GA :05 ACTIVE VSiN-DK live Chrome re-read 3:08 PM (15/15 MLB + 3/3 WNBA). TWO money flips vs 2:40: SEA/CLE money off CLE->SEA 69h/46b (conflict w/ own-number CLE -> stand down); KC/CWS money off CWS->KC +113 60h/31b (+29, fresh sharp dog but SP TBD). TEX money cooled 79->71 (still +17). Line nudges: ARI+119/TB-143, PHI-163/NYM+135, COL+141/MIN-171, HOU-105/DET-114, MIA&STL both -110. Tops held: MIA -110 (+29, A), WSH +119 (+51), LAA +109 (+23), ATL -120 (+15), BOS -105 (+14). Grades: sea-cle B->C+, kc-cws C+->B-; all others held. Watchlist rebuilt (12 cards)."
-  },
-  {
-   "id": "run-ga-20260626-1608",
-   "sport": "ALL",
-   "ts": "2026-06-26T16:08 ET",
-   "snapshot": "current",
-   "note": "GA :05 ACTIVE VSiN-DK live Chrome re-read 4:08 PM (15/15 MLB + 3/3 WNBA). 2 games now IN-WINDOW. KEY MOVE: HOU -105 money 58->68 (+15) -- fresh sharp money onto Arrighetti -> hou-det C+->B. Line nudges toward dogs: CIN +158->+153 (PIT -193->-187, money 27>18 held), KC +113->+108 (CWS -136->-130). TEX -112->-108 (off TEX, money 68 held). ARI +114->+118 toward TB. WSH dog held +50 (top), MIA +29 (A), LAA +109 (+24), SEA +21 conflict, BOS +10 cooled. All 34 graded; one grade change (hou-det). Watchlist rebuilt (13)."
-  },
-  {
-   "id": "run-ga-20260626-1637",
-   "sport": "ALL",
-   "ts": "2026-06-26T16:37 ET",
-   "snapshot": "current",
-   "note": "GA :35 ACTIVE VSiN-DK live Chrome re-read 4:37 PM (15/15 MLB + 3/3 WNBA). KEY MOVE: NYY@BOS money FLIPPED to BOS -- BOS -109 now 65% money on 32% bets (+33), NYY 68% tickets/35% money (was 42% at 4:08) -> nyy-bos B->B+. Lines: ARI +118->+114 (money fled to TB -137); NYY -115->-110 / BOS -105->-109. WNBA POR/CHI -192->-205 (CHI firmed). HOU steady -105, money 68->70 (+16). CIN +153 held. WSH +50 dog & MIA +27 fav held (top leans). All 34 graded; watchlist rebuilt (15)."
-  },
-  {
-   "id": "run-ga-20260626-1709",
-   "sport": "ALL",
-   "ts": "2026-06-26T17:09 ET",
-   "snapshot": "current",
-   "note": "GA :05 ACTIVE VSiN-DK live Chrome re-read 5:09 PM (15/15 MLB + 3/3 WNBA) vs 4:37. KEY MOVE: SEA@CLE money FLIPPED back to CLE -110 70h/53b (+17) -- now AGREES own-number CLE -> conflict RESOLVED, sea-cle C+->B- CLE lean. CIN +153 dog money faded 27->21 (+3) -> cin-pit B-->C+. Tops held: MIA -110 89h/62b (+27, A), WSH +118 88h/39b (+49, B+, FIRED), BOS -109 63h/31b (+32, B+), LAA +109 59h/40b (+19 dog), KC +109 57h/32b (+25 dog), ATL -120 93h/78b. Lines steady vs 4:37. All 34 graded; watchlist rebuilt (13)."
-  },
-  {
-   "id": "run-ga-20260626-2208",
-   "sport": "ALL",
-   "ts": "2026-06-26T22:08 ET",
-   "snapshot": "current",
-   "note": "GA :05 ACTIVE VSiN-DK live Chrome re-read 10:08 PM (15/15 MLB ML + 3/3 WNBA) -- entire MLB slate now in progress, closing splits captured. SD +124 home-dog FIRE closed 50%money/21%bets (+29). ATL/SF (last bettable, 10:15 fp) closed ATL -125 89/80 sharp chalk, SF +104 dead -- no fire. No NEW plus-money sharp dog at the close. Late trio close lines stamped."
-  },
-  {
-   "id": "run-ga-20260627-1310",
-   "sport": "ALL",
-   "ts": "2026-06-27T13:10 ET",
-   "snapshot": "current",
-   "note": "GA :05 ACTIVE VSiN-DK live Chrome re-read 1:10 PM (15/15 MLB ML money%+bets%, 3/3 WNBA), ESPN-DK cross-check. Moves since 12:07p: TEX@TOR +157/-192 -> +153/-186 (toward TEX dog); CIN@PIT -118/-102 -> -115/-105; KC@CHW +102/-123 -> +107/-128 (more steam to KC dog, money 66% on 23% bets); SEA@CLE -149/+123 -> -144/+119; MIA@STL line now POSTED -137/+114 (was null). NYY@BOS money flipped to NYY 75% (was 55%) as first pitch hit. WNBA SEA +250 dog money surged 18% -> 57% (+52). Sharpest plus-money dogs: ATL +109 (+29), ARI +119 (+50, fired)."
-  },
-  {
-   "id": "run-ga-20260627-1407",
-   "sport": "ALL",
-   "ts": "2026-06-27T14:07 ET",
-   "snapshot": "current",
-   "note": "GA :05 ACTIVE VSiN-DK live Chrome re-read 2:07 PM (15/15 MLB ML money%+bets%, 3/3 WNBA), ESPN-DK cross-check all 15. Moves since 1:10p: TEX@TOR +153/-186 -> +162/-198 (more steam to TOR fav, TEX dog drifts); CIN@PIT -115/-105 -> -110/-109; WSH@BAL -108/-111 -> -106/-114 (WSH RLM continues, 73% money on 44% bets +29); SEA@CLE -144/+119 -> -148/+123 (SEA steam). Others flat. WNBA: Dream steamed -285 -> -360 while Storm dog holds 52% money on 4% bets (+48 reverse). In-progress: BOS 4-0 NYY (BOS +102 fired, leading); HOU 3-4 DET. Sharpest plus-money dogs: ATL +109 (+25), ARI +119 (+43, fired), KC +107 (+39, SP-conflict). All 29 graded; watchlist rebuilt (12). No NEW high-conviction fire cleared."
-  }
+  "7:37 PM ET Jun 24 (GA :35 ACTIVE): VSiN-DK 30-min re-read via Chrome (money%HND+bets%BET 16/16 MLB + 4 WNBA), lines cross-checked vs ESPN-DK. STABLE vs 7:07 -- no signal flips: PIT -115 money 60/45 (+15) holds, STL -118 75/67 (+8) eased-but-holds, NYM G2 +105 dog money 48/36 (+12) holds, DET -132 65/51 (+14), ATH -114 money firmed 78->80/74 (queued for 9:45). HOU +120 dog tell still faded (26/22, +4; money on TOR 74/78). Past-cap money: TB -155 (95/71), LAD -164 (88/90 aligned), ATL -119 (94/83). WNBA Over 172.5 POR@CHI 88% handle on 47% tix; GS +1.5 sharp spread money (44/21). No new fire -- strong leans already fired, ATH queued."
  ],
  "research": {
   "lastRun": "2:07 PM ET 2026-06-27",
@@ -5144,35 +4512,19 @@
  "watchlist": [
   {
    "sport": "MLB",
-   "play": "ATL +109 (Braves ML)",
+   "play": "PHI +109 (Phillies ML)",
    "odds": "+109",
+   "matchup": "Phillies @ Mets",
+   "grade": "A",
+   "note": "FIRE plus-money dog: 89% of the MONEY on 63% of bets (+26 SHARP$) on PHI; Phillies (46-36) far better than Mets (34-48). Superior team + heavy sharp money + plus price. Loudest A-grade dog on the board."
+  },
+  {
+   "sport": "MLB",
+   "play": "ATL +113 (Braves ML)",
+   "odds": "+113",
    "matchup": "Braves @ Giants",
-   "grade": "B+",
-   "note": "FIRE plus-money dog: 78% of the money on 53% of the bets (+25 SHARP$) on the ATL dog. MLB-best ATL pen (1st, 2.85) offsets Webb SP edge over Elder. Loudest plus-money dog of the slate; line steady +109."
-  },
-  {
-   "sport": "MLB",
-   "play": "CIN F5 ML (Reds first 5)",
-   "odds": null,
-   "matchup": "Reds @ Pirates",
-   "grade": "B+",
-   "note": "Burns (2.00 ERA/3.29 xFIP) dominates Jones (5.75). SHARP$: 80% money on 70% bets (+10). CIN pen 25th -> take it to F5. Full now near pick'em CIN -110."
-  },
-  {
-   "sport": "MLB",
-   "play": "WSH F5 ML (Nationals first 5)",
-   "odds": null,
-   "matchup": "Nationals @ Orioles",
-   "grade": "B+",
-   "note": "RLM continues (WSH steamed -108 -> -106 fav) + 73% money on 44% bets (+29 SHARP$) + Griffin xFIP edge over Young. WSH pen 29th caps full -> F5 ML."
-  },
-  {
-   "sport": "MLB",
-   "play": "TOR F5 ML (Blue Jays first 5)",
-   "odds": null,
-   "matchup": "Rangers @ Blue Jays",
-   "grade": "B",
-   "note": "Cease (2.60 xFIP, ace) vs thin Quantrill = real SP mismatch; full -198 too steep (steamed from -186) and TOR pen mid. Mild reverse-money tilt to TEX dog (25% money on 16% bets). Pivot to F5."
+   "grade": "A",
+   "note": "FIRE plus-money dog: 77% of the MONEY on 53% of bets (+24 SHARP$) on ATL; Braves (49-31) elite, MLB-best pen (1st, 2.85) offsets Webb's SP edge. Line drifted +109->+113 (better price for backers)."
   },
   {
    "sport": "MLB",
@@ -5180,58 +4532,74 @@
    "odds": "+107",
    "matchup": "Royals @ White Sox",
    "grade": "B+",
-   "note": "CAUTION inverted-SP: huge sharp/reverse money on the KC dog (65% money on 26% bets, +39) BUT the SP edge belongs to CHW (Martin 3.39 xFIP > Wacha 4.27). Money vs fundamentals conflict -- monitor, not a clean fire."
+   "note": "Loudest SHARP$ + RLM: 64% of the MONEY on only 25% of bets (+39) and line steamed +109->+107 TOWARD the dog. Textbook contrarian sharp dog; weak KC (34-49) caps it at B+."
   },
   {
    "sport": "MLB",
-   "play": "PHI +109 (Phillies ML)",
-   "odds": "+109",
-   "matchup": "Phillies @ Mets",
+   "play": "ARI +123 (D-backs ML)",
+   "odds": "+123",
+   "matchup": "D-backs @ Rays",
    "grade": "B+",
-   "note": "CAUTION SP-against: 94% money on 63% bets (+31) + RLM on the PHI dog, but NYM Christian Scott out-projects PHI Alan Rangel (ERA unconfirmed). Loud money, murky SP -- watch."
+   "note": "Sharp plus-money dog: 60% money on 25% bets (+35 SHARP$). CAUTION: line drifted +119->+123 toward the TB favorite, so money and line disagree -- conditional, not clean RLM."
   },
   {
    "sport": "MLB",
-   "play": "COL Over 9.5 (COL@MIN total)",
-   "odds": "-",
-   "matchup": "Rockies @ Twins",
-   "grade": "B",
-   "note": "Total is the play: MIN pen 30th + COL 28th (two worst in MLB) behind Lorenzen/Paredes, 90% Over handle. COL dog also a mild reverse-money tilt (36% money on 19% bets, +17)."
+   "play": "WSH -106 (Nationals ML)",
+   "odds": "-106",
+   "matchup": "Nationals @ Orioles",
+   "grade": "B+",
+   "note": "SHARP$ + RLM: 74% of the money on 44% of bets (+30) with 56% of tickets on BAL -- reverse-money on WSH, RLM continues. Money side = Nationals."
+  },
+  {
+   "sport": "MLB",
+   "play": "CIN -110 (Reds ML)",
+   "odds": "-110",
+   "matchup": "Reds @ Pirates",
+   "grade": "B+",
+   "note": "SHARP$ road favorite (near pick'em): 86% of the money on 70% of bets (+16), sharpened from 80% at midday. Clean money-side lean on CIN."
   },
   {
    "sport": "MLB",
    "play": "LAA -114 (Angels ML)",
    "odds": "-114",
    "matchup": "Athletics @ Angels",
-   "grade": "B",
-   "note": "Recurring Angels reverse-money: 81% of the money on 49% of the bets (+32 SHARP$) + Detmers SP edge over Perkins. Pick'em; two weak pens (ATH 27th, LAA 24th) cap conviction."
+   "grade": "B+",
+   "note": "SHARP$ home favorite: 74% of the money on 47% of bets (+27) with tickets split -- sharp money on LAA despite the A's grading better. Money side = Angels."
   },
   {
    "sport": "MLB",
-   "play": "MIL F5 ML (Brewers first 5)",
+   "play": "COL@MIN Over 9.5",
    "odds": null,
-   "matchup": "Cubs @ Brewers",
-   "grade": "B-",
-   "note": "Harrison (3.14 xFIP) > Peterson + MIL pen 7th (Megill). Money 94% MIL but = tickets 88% (no reverse signal). Steep -163 full -> F5. Slim edge."
+   "matchup": "Rockies @ Twins",
+   "grade": "B",
+   "note": "Cleanest total on the board: MIN pen 30th + COL pen 28th (two worst pens in MLB) behind Lorenzen/Paredes, 89% Over handle."
   },
   {
    "sport": "MLB",
-   "play": "SEA -148 (Mariners ML)",
-   "odds": "-148",
-   "matchup": "Mariners @ Guardians",
+   "play": "WSH@BAL Over 9",
+   "odds": null,
+   "matchup": "Nationals @ Orioles",
+   "grade": "B",
+   "note": "Secondary total: two soft pens (WSH 29th), 81% Over handle. Pairs with the WSH ML lean."
+  },
+  {
+   "sport": "MLB",
+   "play": "MIA +114 (Marlins ML)",
+   "odds": "+114",
+   "matchup": "Marlins @ Cardinals",
    "grade": "B-",
-   "note": "Gilbert (3.60 xFIP) + 8th pen (Munoz) over Cecconi; ~3pt own-number edge. Steamed -144 -> -148. Money 87%/bets 81% (+6) -- public/sharp aligned, no extra tell."
+   "note": "Thin sharp tilt: 41% money on 33% bets (+8) on the MIA dog while STL public-tilted (59% money vs 67% tix). Jun-22 STL lesson says do NOT fire heavy-ticket STL. Watch only."
   },
   {
    "sport": "WNBA",
-   "play": "SEA Storm +285 (ML)",
-   "odds": "+285",
+   "play": "SEA Storm +280",
+   "odds": "+280",
    "matchup": "Dream @ Storm",
    "grade": "B-",
-   "note": "EXTREME reverse-money dog: Storm 52% of the money on just 4% of the bets (+48) while Dream steamed -285 -> -360. Strong sharp tilt but +285 longshot -- calibration park, not a fire."
+   "note": "Reverse-money dog: 50% of the money on just 4% of bets vs 96% tickets on Dream -355. Tell weakened from 67% money at midday and line lengthened +230->+280 -- watch, not fire."
   }
  ],
- "_ga_marker": "ga_20260627_1407",
+ "_ga_marker": "GA :05 sync ACTIVE 3:07 PM ET 2026-06-27",
  "_marker": "ga-0609pm-20260614",
  "trends": {
   "updated": "Sat Jun 27, 2026 - 1:25 AM ET",
@@ -5704,9 +5072,9 @@
   }
  ],
  "splits": {
-  "asOf": "2:07 PM ET 2026-06-27 (live Chrome VSiN-DK)",
+  "asOf": "3:07 PM ET 2026-06-27 (live Chrome VSiN-DK)",
   "source": "VSiN DraftKings (live Chrome read; book of record)",
-  "coverage": "MLB 15/15 ML splits w/ money% (HND) AND bets% (BET); WNBA 3/3. ESPN-DK cross-check on all 15 ML lines. NYY@BOS + HOU@DET in progress; rest pre-game. KBO/NPB final or ppd."
+  "coverage": "MLB 15/15 ML splits w/ money% (HND) AND bets% (BET); WNBA 3/3. ESPN-DK cross-check confirmed all 13 pregame ML lines match VSiN exactly. NYY@BOS, HOU@DET, TEX@TOR in progress; rest pre-game. KBO/NPB final or next-day."
  },
  "date": "2026-06-27",
  "bankrollHistory": [
@@ -5817,7 +5185,7 @@
   "bankroll": null,
   "clvCaptured": "61/103"
  },
- "totalTake": "1:10 PM ET 2026-06-27 (GA :05 ACTIVE): Cleanest total = Over 9.5 COL@MIN -- MIN pen 30th + COL 28th (two worst pens in MLB) behind Lorenzen/Paredes, 90% Over handle. Secondary: Over 9 WSH@BAL (two soft pens, WSH 29th, 73% Over handle). ML and totals weighted equal; no fired total -- own-number gaps tighter after numbers climbed to 9.5/9.",
+ "totalTake": "3:07 PM ET 2026-06-27 (GA :05 sync ACTIVE): Cleanest total = Over 9.5 COL@MIN -- MIN pen 30th + COL pen 28th (two worst pens in MLB) behind Lorenzen/Paredes, 89% Over handle. Secondary: Over 9 WSH@BAL (two soft pens, WSH 29th, 81% Over handle). ML and totals weighted equal; no fired total -- own-number gaps below the ~0.75-run threshold, riding the bullpen-driven Overs as leans.",
  "leagueStatus": {
   "LMB": "DROPPED (Jun 25, 2026) -- user cannot bet LMB on PlayVo; no LMB cards/picks.",
   "KBO": "in season",
@@ -5896,9 +5264,9 @@
   }
  ],
  "_edgeResearchStamp": "Sat Jun 27, 2026 - 1:25 AM ET",
- "updatedISO": "2026-06-27T14:07:00-04:00",
+ "updatedISO": "2026-06-27T15:07:00-04:00",
  "record": "56-45-2",
- "splits_asOf": "2:07 PM ET 2026-06-27",
+ "splits_asOf": "3:07 PM ET 2026-06-27",
  "propsLab": {
   "updated": "2026-06-27 14:03 ET",
   "tallies": {
@@ -6018,18 +5386,18 @@
   function renderDash(){
     var rec=(DATA.lessons&&DATA.lessons.record)||DATA.record||{};
     var s=DATA.settings||{};
-    var st=s.bankrollStart||80, u=s.unit||5;
+    var u=s.unit||5;
     var U=(DATA.picks||[]).reduce(function(a,p){return a+unitsFor(p);},0);
-    var bkC=st+U*u;
-    var roi=st?((U*u)/st*100):null;
-    if($('bkVal')) $('bkVal').textContent='$'+bkC.toFixed(2);
-    if($('bkSub')) $('bkSub').innerHTML='bankroll'+(roi!=null?(' · <span class="'+(roi>=0?'pos':'neg')+'">'+(roi>=0?'+':'')+roi.toFixed(0)+'%</span>'):'');
+    var Ns=(DATA.picks||[]).filter(function(p){var r=String(p.result||'').toUpperCase();return r==='W'||r==='L'||r==='P'||r==='PUSH';}).length;
+    var roi=Ns?(100*U/Ns):null;
+    if($('bkVal')) $('bkVal').textContent=(U>=0?'+':'')+U.toFixed(1)+'u';
+    if($('bkSub')) $('bkSub').innerHTML='units'+(roi!=null?(' · <span class="'+(roi>=0?'pos':'neg')+'">'+(roi>=0?'+':'')+roi.toFixed(1)+'% ROI</span>'):'');
     var clv=clvObj(); var clvAvg=clvAvgVal(clv);
     var html='';
     html+=statCard('Record', rec.overall||DATA.record||'—', (rec.hitRate!=null?rec.hitRate+'% hit rate':''));
-    html+=statCard('Units', (U>=0?'+':'')+U.toFixed(1)+'u', (roi>=0?'+':'')+roi.toFixed(1)+'% ROI', U>=0?'pos':'neg');
+    html+=statCard('Units', (U>=0?'+':'')+U.toFixed(1)+'u', Ns+' bets', U>=0?'pos':'neg');
+    html+=statCard('ROI', roi!=null?((roi>=0?'+':'')+roi.toFixed(1)+'%'):'—', 'units / bet', (roi||0)>=0?'pos':'neg');
     html+=statCard('Avg CLV', clvAvg!=null?((clvAvg>=0?'+':'')+clvAvg.toFixed(2)):'tracking', (clv.pctPositiveCLV!=null?clv.pctPositiveCLV+'% beat close':'the real scoreboard'), clvAvg>=0?'pos':'');
-    html+=statCard('Bankroll', '$'+bkC.toFixed(0), 'start $'+st+' · $'+u+'/u');
     $('dStats').innerHTML=html;
 
     renderFired();
@@ -6139,17 +5507,18 @@
 
   function renderRecord(){
     var rec=(DATA.lessons&&DATA.lessons.record)||DATA.record||{};
-    var s=DATA.settings||{}; var st=s.bankrollStart||80, u=s.unit||5;
+    var s=DATA.settings||{};
     var U=(DATA.picks||[]).reduce(function(a,p){return a+unitsFor(p);},0);
-    var bkC=st+U*u; var roi=st?((U*u)/st*100):null;
+    var Ns=(DATA.picks||[]).filter(function(p){var r=String(p.result||'').toUpperCase();return r==='W'||r==='L'||r==='P'||r==='PUSH';}).length;
+    var roi=Ns?(100*U/Ns):null;
     var h='';
     h+=statCard('Hit rate',(rec.hitRate!=null?rec.hitRate+'%':'—'),rec.overall||DATA.record||'');
-    h+=statCard('Units',(U>=0?'+':'')+U.toFixed(1)+'u',(roi>=0?'+':'')+roi.toFixed(1)+'% ROI',U>=0?'pos':'neg');
+    h+=statCard('Units',(U>=0?'+':'')+U.toFixed(1)+'u',Ns+' bets',U>=0?'pos':'neg');
     var clv=clvObj(); var clvAvg=clvAvgVal(clv);
     var clvVal=(clv.nRealCaptures!=null?clv.nRealCaptures+' captures':'tracking');
     var clvSub=(clvAvg!=null?('avg '+(clvAvg>=0?'+':'')+clvAvg.toFixed(2)):'')+(clv.pctPositiveCLV!=null?((clvAvg!=null?' · ':'')+clv.pctPositiveCLV+'% +'):'');
     h+=statCard('CLV',clvVal,clvSub);
-    h+=statCard('Bankroll','$'+bkC.toFixed(0),'start $'+st);
+    h+=statCard('ROI',roi!=null?((roi>=0?'+':'')+roi.toFixed(1)+'%'):'—','units / bet',(roi||0)>=0?'pos':'neg');
     $('rStats').innerHTML=h;
     function barPanel(title,obj){
       if(!obj)return '';
@@ -6267,7 +5636,7 @@
 
   function renderFoot(){
     var s=DATA.settings||{};
-    if($('footMeta'))$('footMeta').textContent='Bankroll $'+(s.bankroll!=null?s.bankroll:'—')+' · $'+(s.unit||5)+' unit'+(DATA.updated?' · updated '+DATA.updated:'');
+    if($('footMeta'))$('footMeta').textContent='$'+(s.unit||5)+'/unit'+(DATA.updated?' · updated '+DATA.updated:'');
     var b=$('expCsv'); if(b)b.onclick=exportCsv;
   }
 
@@ -6283,55 +5652,54 @@
   if(typeof DATA==="undefined"||!Array.isArray(DATA.picks))return;
   function setH(id,h){var el=document.getElementById(id);if(el)el.innerHTML=h;}
   var TG=[["bankKpis","bankCurve","",""],["bankKpisD","bankCurveD","bankBarsD","bankBodyD"]];
-  var SET=DATA.settings||{},unit=(SET.unit>0?SET.unit:5),startBR=(SET.bankrollStart>0?SET.bankrollStart:80);
   var rows=DATA.picks.filter(function(p){var r=normRes(p.result);return (r==="W"||r==="L"||r==="P")&&p.date;}).slice().sort(function(a,b){return a.date<b.date?-1:(a.date>b.date?1:0);});
-  if(rows.length<2){TG.forEach(function(t){setH(t[1],'<div class="empty">Not enough settled picks to chart the bankroll yet.</div>');});return;}
+  if(rows.length<2){TG.forEach(function(t){setH(t[1],'<div class="empty">Not enough settled picks to chart units yet.</div>');});return;}
   var MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   var months={},order=[];
   rows.forEach(function(p){var m=p.date.slice(0,7);if(!months[m]){months[m]={b:0,w:0,l:0,p:0,u:0,c:0,cn:0};order.push(m);}var o=months[m],r=normRes(p.result);o.b++;if(r==="W")o.w++;else if(r==="L")o.l++;else o.p++;o.u+=unitsFor(p);var c=parseFloat(p.clv);if(isFinite(c)){o.c+=c;o.cn++;}});
-  var eq=[startBR],dt=[rows[0].date],cum=0;
-  rows.forEach(function(p){cum+=unitsFor(p)*unit;eq.push(startBR+cum);dt.push(p.date);});
-  var curBR=startBR+cum,plD=curBR-startBR,n=eq.length;
+  var eq=[0],dt=[rows[0].date],cum=0;
+  rows.forEach(function(p){cum+=unitsFor(p);eq.push(cum);dt.push(p.date);});
+  var curU=cum,n=eq.length;
   var peak=-1e9,dd=eq.map(function(v){if(v>peak)peak=v;return v-peak;}),maxDD=Math.min.apply(null,dd);
   var totU=0,tC=0,tCn=0,tB=0,tW=0,tL=0,tP=0;order.forEach(function(m){var o=months[m];totU+=o.u;tC+=o.c;tCn+=o.cn;tB+=o.b;tW+=o.w;tL+=o.l;tP+=o.p;});
-  var avgCLV=tCn?tC/tCn:null;
+  var avgCLV=tCn?tC/tCn:null,roi=tB?100*totU/tB:0;
+  function uu(v){return (v>=0?"+":"")+v.toFixed(1)+"u";}
   function k(lbl,val,cls){return '<div class="ringtxt" style="min-width:92px"><div class="rt1 '+(cls||"")+'">'+val+'</div><div class="rt2">'+lbl+'</div></div>';}
-  var KPIS=k("Bankroll","$"+curBR.toFixed(2),plD>=0?"pos":"neg")+k("Units",(totU>=0?"+":"")+totU.toFixed(1)+"u",totU>=0?"pos":"neg")+k("All-time P/L",(plD>=0?"+":"")+"$"+plD.toFixed(2),plD>=0?"pos":"neg")+k("Max Drawdown","−$"+Math.abs(maxDD).toFixed(2),"neg")+k("Avg CLV",avgCLV==null?"—":((avgCLV>=0?"+":"")+avgCLV.toFixed(2)),(avgCLV||0)>=0?"pos":"neg");
+  var KPIS=k("Units",uu(curU),curU>=0?"pos":"neg")+k("ROI",(roi>=0?"+":"")+roi.toFixed(1)+"%",roi>=0?"pos":"neg")+k("Max drawdown",maxDD.toFixed(1)+"u","neg")+k("Avg CLV",avgCLV==null?"—":((avgCLV>=0?"+":"")+avgCLV.toFixed(2)),(avgCLV||0)>=0?"pos":"neg");
   var W=720,H=300,L=54,Rt=704,aT=18,aB=196,bT=224,bB=280,xlY=296;
-  var lo=Math.min(startBR,Math.min.apply(null,eq)),hi=Math.max.apply(null,eq),pad=(hi-lo)*0.12||5;lo-=pad;hi+=pad;
+  var lo=Math.min(0,Math.min.apply(null,eq)),hi=Math.max(0,Math.max.apply(null,eq)),pad=(hi-lo)*0.12||1;lo-=pad;hi+=pad;
   function X(i){return L+i*(Rt-L)/(n-1);}
   function YA(v){return aB-(v-lo)/(hi-lo)*(aB-aT);}
   var ddMin=Math.min(maxDD*1.25,-1);function YB(v){return bT+(-v/(-ddMin))*(bB-bT);}
-  function ticksF(a,b,m){var span=b-a,step=Math.pow(10,Math.floor(Math.log(span/m)/Math.LN10)),err=(m*step)/span;if(err<.15)step*=10;else if(err<.35)step*=5;else if(err<.75)step*=2;var t=[],s=Math.ceil(a/step)*step;for(;s<b;s+=step)t.push(Math.round(s*100)/100);return t;}
+  function ticksF(a,b,m){var span=b-a,step=Math.pow(10,Math.floor(Math.log(span/m)/Math.LN10)),err=(m*step)/span;if(err<.15)step*=10;else if(err<.35)step*=5;else if(err<.75)step*=2;var t=[],x=Math.ceil(a/step)*step;for(;x<b;x+=step)t.push(Math.round(x*100)/100);return t;}
   var g="";
-  ticksF(lo,hi,4).forEach(function(t){var y=YA(t).toFixed(1);g+='<line x1="'+L+'" y1="'+y+'" x2="'+Rt+'" y2="'+y+'" stroke="#111722" opacity=".08"/>';g+='<text x="'+(L-7)+'" y="'+(parseFloat(y)+3.5)+'" text-anchor="end" font-size="14" fill="#8A93A2" font-weight="600">$'+t+'</text>';});
+  ticksF(lo,hi,4).forEach(function(t){var y=YA(t).toFixed(1);g+='<line x1="'+L+'" y1="'+y+'" x2="'+Rt+'" y2="'+y+'" stroke="#111722" opacity=".08"/>';g+='<text x="'+(L-7)+'" y="'+(parseFloat(y)+3.5)+'" text-anchor="end" font-size="14" fill="#8A93A2" font-weight="600">'+(t>=0?"+":"")+t+'u</text>';});
   var monIdx={};dt.forEach(function(d,i){var m=d.slice(0,7);if(monIdx[m]===undefined)monIdx[m]=i;});
   var mkeys=Object.keys(monIdx);
   mkeys.forEach(function(m,j){var i=monIdx[m];if(i>0){var x=X(i).toFixed(1);g+='<line x1="'+x+'" y1="'+aT+'" x2="'+x+'" y2="'+bB+'" stroke="#111722" opacity=".05"/>';}var i2=(j+1<mkeys.length)?monIdx[mkeys[j+1]]:n-1;var cx=((X(i)+X(i2))/2).toFixed(1);g+='<text x="'+cx+'" y="'+xlY+'" text-anchor="middle" font-size="14" fill="#5A6573" font-weight="700">'+MN[parseInt(m.slice(5,7),10)-1]+'</text>';});
   var ln=eq.map(function(v,i){return (i?"L":"M")+X(i).toFixed(1)+" "+YA(v).toFixed(1);}).join(" ");
   g+='<defs><linearGradient id="beq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1F3A8A" stop-opacity=".16"/><stop offset="1" stop-color="#1F3A8A" stop-opacity="0"/></linearGradient></defs>';
   g+='<path d="'+ln+" L"+X(n-1).toFixed(1)+" "+aB+" L"+X(0).toFixed(1)+" "+aB+' Z" fill="url(#beq)"/>';
-  var yb=YA(startBR).toFixed(1);
+  var yb=YA(0).toFixed(1);
   g+='<line x1="'+L+'" y1="'+yb+'" x2="'+Rt+'" y2="'+yb+'" stroke="#5A6573" stroke-dasharray="4 4" opacity=".6"/>';
-  g+='<text x="'+Rt+'" y="'+(parseFloat(yb)-5)+'" text-anchor="end" font-size="13" fill="#8A93A2" font-weight="700">break-even · start $'+startBR+'</text>';
+  g+='<text x="'+Rt+'" y="'+(parseFloat(yb)-5)+'" text-anchor="end" font-size="13" fill="#8A93A2" font-weight="700">break-even (0u)</text>';
   g+='<path d="'+ln+'" fill="none" stroke="#1F3A8A" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>';
   var lx=X(n-1),ly=YA(eq[n-1]);
   g+='<circle cx="'+lx.toFixed(1)+'" cy="'+ly.toFixed(1)+'" r="4.2" fill="#1F3A8A" stroke="#fff" stroke-width="2"/>';
-  var pill=(plD>=0?"▲ +":"▼ −")+"$"+Math.abs(plD).toFixed(2);
-  g+='<g transform="translate('+(lx-170).toFixed(1)+","+Math.max(ly-32,2).toFixed(1)+')"><rect width="170" height="24" rx="6" fill="'+(plD>=0?"#0E8A57":"#C8323F")+'"/><text x="10" y="16" font-size="14" fill="#fff" font-weight="800">$'+curBR.toFixed(2)+"  "+pill+'</text></g>';
-  g+='<text x="'+L+'" y="'+(bT-7)+'" font-size="13" fill="#8A93A2" font-weight="700" letter-spacing=".4">DRAWDOWN FROM PEAK</text>';
+  g+='<g transform="translate('+(lx-150).toFixed(1)+","+Math.max(ly-32,2).toFixed(1)+')"><rect width="150" height="24" rx="6" fill="'+(curU>=0?"#0E8A57":"#C8323F")+'"/><text x="10" y="16" font-size="14" fill="#fff" font-weight="800">'+uu(curU)+"  "+(roi>=0?"+":"")+roi.toFixed(1)+'%</text></g>';
+  g+='<text x="'+L+'" y="'+(bT-7)+'" font-size="13" fill="#8A93A2" font-weight="700" letter-spacing=".4">DRAWDOWN FROM PEAK (units)</text>';
   g+='<line x1="'+L+'" y1="'+bT+'" x2="'+Rt+'" y2="'+bT+'" stroke="#111722" opacity=".08"/>';
   var ddp=dd.map(function(v,i){return (i?"L":"M")+X(i).toFixed(1)+" "+YB(v).toFixed(1);}).join(" ");
   g+='<path d="'+ddp+" L"+X(n-1).toFixed(1)+" "+bT+" L"+X(0).toFixed(1)+" "+bT+' Z" fill="#C8323F" opacity=".13"/>';
   g+='<path d="'+ddp+'" fill="none" stroke="#C8323F" stroke-width="1.5" opacity=".75"/>';
-  var mi=dd.indexOf(maxDD);g+='<text x="'+X(mi).toFixed(1)+'" y="'+(YB(maxDD)+12).toFixed(1)+'" text-anchor="middle" font-size="13" fill="#C8323F" font-weight="800">max −$'+Math.abs(maxDD).toFixed(2)+'</text>';
+  var mi=dd.indexOf(maxDD);g+='<text x="'+X(mi).toFixed(1)+'" y="'+(YB(maxDD)+12).toFixed(1)+'" text-anchor="middle" font-size="13" fill="#C8323F" font-weight="800">max '+maxDD.toFixed(1)+'u</text>';
   var SVG='<svg viewBox="0 0 '+W+" "+H+'" style="width:100%;height:auto;display:block;font-family:Inter,sans-serif">'+g+'</svg>';
-  var mx=Math.max.apply(null,order.map(function(m){return Math.abs(months[m].u*unit);}))||1;
-  var bars=order.map(function(m){var v=months[m].u*unit,h=Math.abs(v)/mx*54,c=v>=0?"#0E8A57":"#C8323F",mn=MN[parseInt(m.slice(5,7),10)-1];return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-width:30px"><div style="font:800 10px Inter;color:'+c+';margin-bottom:3px">'+(v>=0?"+":"−")+"$"+Math.abs(v).toFixed(0)+'</div><div style="width:58%;height:'+h.toFixed(0)+'px;border-radius:4px 4px 0 0;background:'+c+'"></div><div style="font:700 10px Inter;color:#5A6573;margin-top:5px">'+mn+'</div></div>';}).join("");
+  var mx=Math.max.apply(null,order.map(function(m){return Math.abs(months[m].u);}))||1;
+  var bars=order.map(function(m){var v=months[m].u,h=Math.abs(v)/mx*54,c=v>=0?"#0E8A57":"#C8323F",mn=MN[parseInt(m.slice(5,7),10)-1];return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-width:30px"><div style="font:800 10px Inter;color:'+c+';margin-bottom:3px">'+(v>=0?"+":"")+v.toFixed(1)+'u</div><div style="width:58%;height:'+h.toFixed(0)+'px;border-radius:4px 4px 0 0;background:'+c+'"></div><div style="font:700 10px Inter;color:#5A6573;margin-top:5px">'+mn+'</div></div>';}).join("");
   var BARS='<div style="display:flex;align-items:flex-end;gap:10px;height:98px;padding:8px 4px 0;overflow-x:auto">'+bars+'</div>';
-  var trows=order.map(function(m){var o=months[m],pl=o.u*unit,r=100*o.u/o.b,cv=o.cn?o.c/o.cn:null,cls=o.u>=0?"pos":"neg";return '<tr><td>'+MN[parseInt(m.slice(5,7),10)-1]+" '"+m.slice(2,4)+'</td><td class="mono">'+o.b+'</td><td class="mono">'+o.w+"-"+o.l+(o.p?"-"+o.p+"P":"")+'</td><td class="mono '+cls+'">'+(o.u>=0?"+":"")+o.u.toFixed(1)+'u</td><td class="mono '+cls+'">'+(pl>=0?"+":"−")+"$"+Math.abs(pl).toFixed(2)+'</td><td class="mono '+cls+'">'+(r>=0?"+":"")+r.toFixed(1)+'%</td><td class="mono '+((cv||0)>=0?"pos":"neg")+'">'+(cv==null?"—":((cv>=0?"+":"")+cv.toFixed(2)))+'</td></tr>';}).join("");
+  var trows=order.map(function(m){var o=months[m],r=100*o.u/o.b,cv=o.cn?o.c/o.cn:null,cls=o.u>=0?"pos":"neg";return '<tr><td>'+MN[parseInt(m.slice(5,7),10)-1]+" '"+m.slice(2,4)+'</td><td class="mono">'+o.b+'</td><td class="mono">'+o.w+"-"+o.l+(o.p?"-"+o.p+"P":"")+'</td><td class="mono '+cls+'">'+(o.u>=0?"+":"")+o.u.toFixed(1)+'u</td><td class="mono '+cls+'">'+(r>=0?"+":"")+r.toFixed(1)+'%</td><td class="mono '+((cv||0)>=0?"pos":"neg")+'">'+(cv==null?"—":((cv>=0?"+":"")+cv.toFixed(2)))+'</td></tr>';}).join("");
   var tc=totU>=0?"pos":"neg";
-  var TABLE=trows+'<tr style="font-weight:800;background:rgba(31,58,138,.06)"><td>Total</td><td class="mono">'+tB+'</td><td class="mono">'+tW+"-"+tL+(tP?"-"+tP+"P":"")+'</td><td class="mono '+tc+'">'+(totU>=0?"+":"")+totU.toFixed(1)+'u</td><td class="mono '+tc+'">'+(totU*unit>=0?"+":"−")+"$"+Math.abs(totU*unit).toFixed(2)+'</td><td class="mono '+tc+'">'+(100*totU/tB>=0?"+":"")+(100*totU/tB).toFixed(1)+'%</td><td class="mono '+((avgCLV||0)>=0?"pos":"neg")+'">'+(avgCLV==null?"—":((avgCLV>=0?"+":"")+avgCLV.toFixed(2)))+'</td></tr>';
+  var TABLE=trows+'<tr style="font-weight:800;background:rgba(31,58,138,.06)"><td>Total</td><td class="mono">'+tB+'</td><td class="mono">'+tW+"-"+tL+(tP?"-"+tP+"P":"")+'</td><td class="mono '+tc+'">'+(totU>=0?"+":"")+totU.toFixed(1)+'u</td><td class="mono '+tc+'">'+(100*totU/tB>=0?"+":"")+(100*totU/tB).toFixed(1)+'%</td><td class="mono '+((avgCLV||0)>=0?"pos":"neg")+'">'+(avgCLV==null?"—":((avgCLV>=0?"+":"")+avgCLV.toFixed(2)))+'</td></tr>';
   TG.forEach(function(t){setH(t[0],KPIS);setH(t[1],SVG);setH(t[2],BARS);setH(t[3],TABLE);});
 })();
 
