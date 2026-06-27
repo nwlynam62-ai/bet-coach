@@ -20,6 +20,13 @@
   .tabs{display:flex;gap:2px;margin:16px 0 18px;border-bottom:1px solid var(--line);overflow-x:auto}
   .tab{appearance:none;border:0;background:none;font:inherit;color:var(--mut);padding:9px 13px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;font-weight:500;white-space:nowrap}
   .tab:hover{color:var(--ink)} .tab.on{color:var(--navy);border-bottom-color:var(--navy)}
+  @media (max-width:640px){
+    .tabs{position:fixed;left:0;right:0;bottom:0;z-index:60;margin:0;gap:2px;background:var(--panel);border-top:1px solid var(--line2);border-bottom:0;overflow-x:visible;padding:4px 4px calc(4px + env(safe-area-inset-bottom));box-shadow:0 -3px 12px rgba(15,26,43,.07)}
+    .tab{flex:1;min-width:0;text-align:center;padding:0 2px;min-height:50px;font-size:11px;font-weight:600;border-bottom:0;margin-bottom:0;display:flex;align-items:center;justify-content:center;border-radius:9px}
+    .tab.on{color:var(--navy);background:var(--navybg);border-bottom:0}
+    .wrap{padding:14px 14px 78px}
+    .stat .v{font-size:23px} .ringtxt .rt1{font-size:22px}
+  }
   .view{display:none} .view.on{display:block}
   .sub{font-size:13px;color:var(--mut);margin:0 0 14px}
   .grid{display:grid;gap:11px} .g4{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))} .g2{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
@@ -4533,14 +4540,6 @@
    "matchup": "Royals @ White Sox",
    "grade": "B+",
    "note": "Loudest SHARP$ + RLM: 64% of the MONEY on only 25% of bets (+39) and line steamed +109->+107 TOWARD the dog. Textbook contrarian sharp dog; weak KC (34-49) caps it at B+."
-  },
-  {
-   "sport": "MLB",
-   "play": "ARI +123 (D-backs ML)",
-   "odds": "+123",
-   "matchup": "D-backs @ Rays",
-   "grade": "B+",
-   "note": "Sharp plus-money dog: 60% money on 25% bets (+35 SHARP$). CAUTION: line drifted +119->+123 toward the TB favorite, so money and line disagree -- conditional, not clean RLM."
   },
   {
    "sport": "MLB",
