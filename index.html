@@ -59,6 +59,8 @@
   .foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:13px}
   .fbtn{appearance:none;border:1px solid var(--line2);background:#fff;color:var(--navy);font:inherit;font-size:13px;text-decoration:none;border-radius:20px;padding:6px 14px;cursor:pointer;font-weight:500} .fbtn:hover{background:var(--navybg)}
   .fmut{color:var(--dim);margin-left:auto}
+  .pininp{width:100%;padding:10px 12px;border:1px solid var(--line2);border-radius:10px;font:inherit;font-size:16px;text-align:center;letter-spacing:.3em}
+  .lockwrap{max-width:300px;margin:40px auto;text-align:center}
 </style>
 </head>
 <body>
@@ -73,6 +75,7 @@
     <button class="tab" data-v="record">Record</button>
     <button class="tab" data-v="props">Props</button>
     <button class="tab" data-v="news">News</button>
+    <button class="tab" data-v="creator">Creator</button>
   </div>
   <div class="view on" id="dash">
     <div class="grid g4" id="dStats"></div>
@@ -103,6 +106,17 @@
     <div class="panel learn" id="propsNotes" style="margin-top:0"></div>
   </div>
   <div class="view" id="news"><div id="newsList"></div></div>
+  <div class="view" id="creator">
+    <div id="creatorLock"><div class="panel lockwrap"><h3 style="margin:0 0 4px">Private</h3><p class="sub" style="margin:0 0 12px">Enter PIN to view your real-money challenge + fantasy.</p><input id="pinInput" class="pininp" type="password" inputmode="numeric" placeholder="••" autocomplete="off"><button class="fbtn" id="pinBtn" style="margin-top:12px;width:100%">Unlock</button><div id="pinMsg" style="color:var(--loss);font-size:12px;margin-top:8px;height:14px"></div></div></div>
+    <div id="creatorBody" style="display:none">
+      <p class="sub">PlayVo 10k Bankroll Blitz — real money, walled off from the public record.</p>
+      <div class="grid g4" id="pvStats"></div>
+      <div class="panel"><div class="ph"><h3>Progress &amp; drawdown</h3><span class="meta" id="pvMeta"></span></div><div id="pvBars"></div></div>
+      <p class="seclabel">Recent challenge picks</p>
+      <div class="card" id="pvPicks"></div>
+      <div class="foot"><a class="fbtn" href="fantasy.html">Open Fantasy hub →</a><button class="fbtn" id="lockBtn">Lock</button></div>
+    </div>
+  </div>
   <div class="foot">
     <a class="fbtn" href="fantasy.html">Fantasy →</a>
     <button class="fbtn" id="expCsv">Export picks CSV</button>
@@ -118,7 +132,7 @@
   "unitFixed": true,
   "bankrollUpdated": "Sun Jun 21, 2026"
  },
- "updated": "2:09 PM ET 2026-06-27 (manager sweep): pruned started HOU@DET radar lean (live since 1:10 PM); board today, 15 MLB sharp bullpens+decisions, KBO/NPB all final/ppd settled, 2 fires pending (BOS,ARI).",
+ "updated": "2:07 PM ET 2026-06-27 (GA :05 sync ACTIVE): VSiN-DK live re-read 15/15 MLB + 3/3 WNBA (money%+bets%), ESPN cross-checked all 15 ML lines. Moves: TOR & SEA steamed, WSH RLM continues (-106, +29 sharp$), CIN/PIT tightened. Top fires placed AM (BOS +102 leading 4-0, ARI +119). Forward leans carded: ATL +109 dog (FIRE, +25 sharp$), CIN/WSH/TOR/MIL F5 pivots, KC +107 & PHI +109 reverse-money dogs (SP conflicts, caution). Every game graded; no NEW high-conviction fire cleared this run.",
  "linesSource": "MLB lines = DraftKings via ESPN core odds API (both-side ML)+totals; KBO/NPB = DraftKings via The Odds API (h2h); WNBA spread/total = DK via ESPN. Records/ERA = ESPN standings; bullpen = FanGraphs RP ERA+rank; closers = statsapi saves leaders. Pulled ~12:20 AM ET Jun 27.",
  "bets": [],
  "games": [
@@ -220,8 +234,8 @@
    "matchup": "Texas Rangers @ Toronto Blue Jays",
    "awayPitcher": "Cal Quantrill (4.50 ERA)",
    "homePitcher": "Dylan Cease (2.75 ERA)",
-   "awayML": "+153",
-   "homeML": "-186",
+   "awayML": "+162",
+   "homeML": "-198",
    "total": 8.0,
    "status": "scheduled",
    "rank": 7,
@@ -245,8 +259,8 @@
    "decision": "QUEUED",
    "passReason": "Real Cease SP edge but full price -186 is steep; queue as TOR F5 pending verified derivative price in-window.",
    "moneyPct": {
-    "away": 28,
-    "home": 72
+    "away": 25,
+    "home": 75
    },
    "publicTicketPct": {
     "away": 16,
@@ -264,8 +278,8 @@
    "matchup": "Cincinnati Reds @ Pittsburgh Pirates",
    "awayPitcher": "Chase Burns (2.00 ERA)",
    "homePitcher": "Jared Jones (5.75 ERA)",
-   "awayML": "-115",
-   "homeML": "-105",
+   "awayML": "-110",
+   "homeML": "-109",
    "total": 8.0,
    "status": "scheduled",
    "rank": 6,
@@ -289,8 +303,8 @@
    "decision": "QUEUED",
    "passReason": "SP edge real but CIN pen 25th caps full game; queue as F5 pending money/price confirm.",
    "moneyPct": {
-    "away": 79,
-    "home": 21
+    "away": 80,
+    "home": 20
    },
    "publicTicketPct": {
     "away": 70,
@@ -309,7 +323,7 @@
    "awayPitcher": "Alan Rangel (ERA unconfirmed)",
    "homePitcher": "Christian Scott (TJ-return, IP-capped)",
    "awayML": "+109",
-   "homeML": "-132",
+   "homeML": "-131",
    "total": 9.0,
    "status": "scheduled",
    "rank": 13,
@@ -333,8 +347,8 @@
    "decision": "PASS",
    "passReason": "INVERTED/UNCONFIRMED-SP CATCH: 97% money on PHI +109, but NYM's Christian Scott (3.10, established, 40+ IP) out-classes PHI rookie bulk-reliever Rangel (web-verified). Money on the side without the SP edge + bullpen-game risk -> radar, not fire.",
    "moneyPct": {
-    "away": 96,
-    "home": 4
+    "away": 94,
+    "home": 6
    },
    "publicTicketPct": {
     "away": 63,
@@ -377,12 +391,12 @@
    "decision": "PASS",
    "passReason": "INVERTED-SP CATCH: sharp money/RLM on KC +102, but the SP edge is the White Sox's -- Davis Martin (9-3, 3.18) is CHICAGO's starter, not KC's. Won't fire a dog into the better starter; radar only.",
    "moneyPct": {
-    "away": 66,
-    "home": 34
+    "away": 65,
+    "home": 35
    },
    "publicTicketPct": {
-    "away": 23,
-    "home": 77
+    "away": 26,
+    "home": 74
    },
    "finalScore": null
   },
@@ -397,7 +411,7 @@
    "awayPitcher": "Jose Cabrera (0.00 ERA)",
    "homePitcher": "Cole Sulser (0.00 ERA)",
    "awayML": "+119",
-   "homeML": "-144",
+   "homeML": "-143",
    "total": 8.5,
    "status": "scheduled",
    "rank": 14,
@@ -421,12 +435,12 @@
    "decision": "FIRED",
    "passReason": "FIRED ARI +119: even bullpen-game matchup (both openers, web-verified) + board-best VSiN money split (77%/19%, +58) + RLM +135->+119.",
    "moneyPct": {
-    "away": 69,
-    "home": 31
+    "away": 67,
+    "home": 33
    },
    "publicTicketPct": {
-    "away": 19,
-    "home": 81
+    "away": 24,
+    "home": 76
    },
    "finalScore": null
   },
@@ -440,8 +454,8 @@
    "matchup": "Washington Nationals @ Baltimore Orioles",
    "awayPitcher": "Foster Griffin (3.15 ERA)",
    "homePitcher": "Brandon Young (3.07 ERA)",
-   "awayML": "-108",
-   "homeML": "-111",
+   "awayML": "-106",
+   "homeML": "-114",
    "total": 9.0,
    "status": "scheduled",
    "rank": 12,
@@ -465,8 +479,8 @@
    "decision": "QUEUED",
    "passReason": "Griffin F5 / Over 9 radar leans; WSH 29th pen blocks a full-game fire, no money read at build.",
    "moneyPct": {
-    "away": 67,
-    "home": 33
+    "away": 73,
+    "home": 27
    },
    "publicTicketPct": {
     "away": 44,
@@ -484,8 +498,8 @@
    "matchup": "Seattle Mariners @ Cleveland Guardians",
    "awayPitcher": "Logan Gilbert (3.29 ERA)",
    "homePitcher": "Slade Cecconi (4.48 ERA)",
-   "awayML": "-144",
-   "homeML": "+119",
+   "awayML": "-148",
+   "homeML": "+123",
    "total": 7.5,
    "status": "scheduled",
    "rank": 5,
@@ -509,12 +523,12 @@
    "decision": "QUEUED",
    "passReason": "Slim ~3pt SEA own-number edge at -149; queue for VSiN money confirm in-window.",
    "moneyPct": {
-    "away": 86,
-    "home": 14
+    "away": 87,
+    "home": 13
    },
    "publicTicketPct": {
-    "away": 83,
-    "home": 17
+    "away": 81,
+    "home": 19
    },
    "finalScore": null
   },
@@ -553,12 +567,12 @@
    "decision": "QUEUED",
    "passReason": "Over 9 radar lean (two worst pens in MLB); no side edge, no fire without confirm.",
    "moneyPct": {
-    "away": 40,
-    "home": 60
+    "away": 36,
+    "home": 64
    },
    "publicTicketPct": {
-    "away": 16,
-    "home": 84
+    "away": 19,
+    "home": 81
    },
    "finalScore": null
   },
@@ -597,8 +611,8 @@
    "decision": "QUEUED",
    "passReason": "Slim MIL edge at steep -168; queue MIL/F5 for money confirm in-window.",
    "moneyPct": {
-    "away": 7,
-    "home": 93
+    "away": 6,
+    "home": 94
    },
    "publicTicketPct": {
     "away": 12,
@@ -645,8 +659,8 @@
     "home": 72
    },
    "publicTicketPct": {
-    "away": 31,
-    "home": 69
+    "away": 33,
+    "home": 67
    },
    "finalScore": null
   },
@@ -685,12 +699,12 @@
    "decision": "PASS",
    "passReason": "Ace edge fairly priced at -198; SD pen keeps dog live but no plus value — PASS, Under is the only lean.",
    "moneyPct": {
-    "away": 96,
-    "home": 4
+    "away": 97,
+    "home": 3
    },
    "publicTicketPct": {
-    "away": 95,
-    "home": 5
+    "away": 94,
+    "home": 6
    },
    "finalScore": null
   },
@@ -729,12 +743,12 @@
    "decision": "QUEUED",
    "passReason": "ATL +113 dog value from the MLB-best pen vs Webb's SP edge; single-angle, queue for VSiN money confirm.",
    "moneyPct": {
-    "away": 83,
-    "home": 17
+    "away": 78,
+    "home": 22
    },
    "publicTicketPct": {
-    "away": 54,
-    "home": 46
+    "away": 53,
+    "home": 47
    },
    "finalScore": null
   },
@@ -773,12 +787,12 @@
    "decision": "PASS",
    "passReason": "True pick'em = dead money per dog rule; near-even xFIPs, no own-number edge.",
    "moneyPct": {
-    "away": 17,
-    "home": 83
+    "away": 19,
+    "home": 81
    },
    "publicTicketPct": {
-    "away": 53,
-    "home": 47
+    "away": 51,
+    "home": 49
    },
    "finalScore": null
   },
@@ -958,8 +972,8 @@
    "matchup": "Phoenix Mercury @ Toronto Tempo",
    "awayPitcher": null,
    "homePitcher": null,
-   "awayML": "+170",
-   "homeML": "-205",
+   "awayML": "+180",
+   "homeML": "-218",
    "total": 177.5,
    "status": "scheduled",
    "rank": 99,
@@ -972,12 +986,12 @@
    "decision": "PASS",
    "passReason": "WNBA is calibration/watchlist-only — no real-money fire.",
    "moneyPct": {
-    "away": 48,
-    "home": 52
+    "away": 41,
+    "home": 59
    },
    "publicTicketPct": {
-    "away": 26,
-    "home": 74
+    "away": 31,
+    "home": 69
    },
    "finalScore": null
   },
@@ -1005,12 +1019,12 @@
    "decision": "PASS",
    "passReason": "WNBA is calibration/watchlist-only — no real-money fire.",
    "moneyPct": {
-    "away": 2,
-    "home": 98
+    "away": 4,
+    "home": 96
    },
    "publicTicketPct": {
-    "away": 15,
-    "home": 85
+    "away": 13,
+    "home": 87
    },
    "finalScore": null
   },
@@ -1024,8 +1038,8 @@
    "matchup": "Atlanta Dream @ Seattle Storm",
    "awayPitcher": null,
    "homePitcher": null,
-   "awayML": "-285",
-   "homeML": "+230",
+   "awayML": "-360",
+   "homeML": "+285",
    "total": 168.5,
    "status": "scheduled",
    "rank": 99,
@@ -1038,12 +1052,12 @@
    "decision": "PASS",
    "passReason": "WNBA is calibration/watchlist-only — no real-money fire.",
    "moneyPct": {
-    "away": 43,
-    "home": 57
+    "away": 48,
+    "home": 52
    },
    "publicTicketPct": {
-    "away": 95,
-    "home": 5
+    "away": 96,
+    "home": 4
    },
    "finalScore": null
   },
@@ -1759,10 +1773,17 @@
    "ts": "2026-06-27T13:10 ET",
    "snapshot": "current",
    "note": "GA :05 ACTIVE VSiN-DK live Chrome re-read 1:10 PM (15/15 MLB ML money%+bets%, 3/3 WNBA), ESPN-DK cross-check. Moves since 12:07p: TEX@TOR +157/-192 -> +153/-186 (toward TEX dog); CIN@PIT -118/-102 -> -115/-105; KC@CHW +102/-123 -> +107/-128 (more steam to KC dog, money 66% on 23% bets); SEA@CLE -149/+123 -> -144/+119; MIA@STL line now POSTED -137/+114 (was null). NYY@BOS money flipped to NYY 75% (was 55%) as first pitch hit. WNBA SEA +250 dog money surged 18% -> 57% (+52). Sharpest plus-money dogs: ATL +109 (+29), ARI +119 (+50, fired)."
+  },
+  {
+   "id": "run-ga-20260627-1407",
+   "sport": "ALL",
+   "ts": "2026-06-27T14:07 ET",
+   "snapshot": "current",
+   "note": "GA :05 ACTIVE VSiN-DK live Chrome re-read 2:07 PM (15/15 MLB ML money%+bets%, 3/3 WNBA), ESPN-DK cross-check all 15. Moves since 1:10p: TEX@TOR +153/-186 -> +162/-198 (more steam to TOR fav, TEX dog drifts); CIN@PIT -115/-105 -> -110/-109; WSH@BAL -108/-111 -> -106/-114 (WSH RLM continues, 73% money on 44% bets +29); SEA@CLE -144/+119 -> -148/+123 (SEA steam). Others flat. WNBA: Dream steamed -285 -> -360 while Storm dog holds 52% money on 4% bets (+48 reverse). In-progress: BOS 4-0 NYY (BOS +102 fired, leading); HOU 3-4 DET. Sharpest plus-money dogs: ATL +109 (+25), ARI +119 (+43, fired), KC +107 (+39, SP-conflict). All 29 graded; watchlist rebuilt (12). No NEW high-conviction fire cleared."
   }
  ],
  "research": {
-  "lastRun": "11:07 AM ET 2026-06-27",
+  "lastRun": "2:07 PM ET 2026-06-27",
   "lastRun_ts": "2026-06-27T11:07:00-04:00",
   "_ga_5_37": {
    "run": "Mon Jun 15, 2026 - 1:37 PM ET",
@@ -1827,7 +1848,7 @@
    "totalTake": "Over angle at GAB given Gallen 5.43; no posted total captured.",
    "line": "Not captured."
   },
-  "_ga_window": "2:54 PM ET Jun 23 ACTIVE deep pass",
+  "_ga_window": "2:07 PM ET Jun 27 ACTIVE deep pass",
   "MLB_SDvBAL_0614": {
    "matchup": "Padres @ Orioles",
    "time": "1:35 PM ET",
@@ -5071,55 +5092,49 @@
  },
  "headlines": [
   {
-   "headline": "Caitlin Clark (back) out vs Sparks, set to miss 1+ week",
+   "headline": "Caitlin Clark OUT vs Sparks (back), no return timeline",
    "sport": "WNBA",
-   "source": "CBS Sports / Fever",
+   "source": "NBC Sports / CBS Sports",
    "timestamp": "Jun 26"
   },
   {
-   "headline": "Phillies' Adolis Garcia done for season, lat surgery",
+   "headline": "Sparks' Cameron Brink out indefinitely, left ankle sprain",
+   "sport": "WNBA",
+   "source": "SI / CBS Sports",
+   "timestamp": "Jun 27"
+  },
+  {
+   "headline": "Acuna Jr. out vs Giants tonight; ~Jun 30 return target",
    "sport": "MLB",
-   "source": "MLB.com",
+   "source": "Heavy / Athlon",
+   "timestamp": "Jun 23 (out thru Jun 28)"
+  },
+  {
+   "headline": "Dodgers-Padres SP gap: Yamamoto 2.65 vs Vasquez 4.17",
+   "sport": "MLB",
+   "source": "FanDuel Research",
+   "timestamp": "Jun 27"
+  },
+  {
+   "headline": "Yankees-Red Sox 1:10 ET: Cole vs lefty Bennett (1-3)",
+   "sport": "MLB",
+   "source": "Bleacher Nation",
+   "timestamp": "Jun 27"
+  },
+  {
+   "headline": "Alyssa Thomas one-game suspension, Flagrant 2 on Clark",
+   "sport": "WNBA",
+   "source": "CBS Sports / Yahoo",
    "timestamp": "Jun 26"
   },
   {
-   "headline": "Witt Jr. back vs White Sox but DH-only, Rojas at SS",
+   "headline": "Blue Jays call up Keys, option slumping Schneider (.153)",
    "sport": "MLB",
-   "source": "MLB.com / KCTV5",
-   "timestamp": "Jun 26"
-  },
-  {
-   "headline": "Yankees place Ryan McMahon on IL (throat infection)",
-   "sport": "MLB",
-   "source": "MLB.com",
-   "timestamp": "Jun 24"
-  },
-  {
-   "headline": "Sparks also without Kelsey Plum, Cameron Brink at Indiana",
-   "sport": "WNBA",
-   "source": "Covers injury report",
-   "timestamp": "Jun 27"
-  },
-  {
-   "headline": "Mercury missing suspended Alyssa Thomas at Toronto",
-   "sport": "WNBA",
-   "source": "Covers / WNBA",
-   "timestamp": "Jun 27"
-  },
-  {
-   "headline": "Tempo without Brittney Sykes, Kiki Rice vs Phoenix",
-   "sport": "WNBA",
-   "source": "Covers injury report",
-   "timestamp": "Jun 27"
-  },
-  {
-   "headline": "Storm down Magbegor, Horston; Dream lose Brionna Jones",
-   "sport": "WNBA",
-   "source": "Covers injury report",
+   "source": "MLB Trade Rumors",
    "timestamp": "Jun 27"
   }
  ],
- "headlinesUpdated": "Jun 27, 8:16 AM ET",
+ "headlinesUpdated": "Jun 27, 2:14 PM ET",
  "watchlist": [
   {
    "sport": "MLB",
@@ -5127,7 +5142,7 @@
    "odds": "+109",
    "matchup": "Braves @ Giants",
    "grade": "B+",
-   "note": "FIRE plus-money dog: MLB-best ATL pen (1st, 2.85) offsets Webb's SP edge over Elder. Money loud -- 83% of the money on 54% of the bets (+29 = SHARP$). Top dog lean of the slate."
+   "note": "FIRE plus-money dog: 78% of the money on 53% of the bets (+25 SHARP$) on the ATL dog. MLB-best ATL pen (1st, 2.85) offsets Webb SP edge over Elder. Loudest plus-money dog of the slate; line steady +109."
   },
   {
    "sport": "MLB",
@@ -5135,7 +5150,7 @@
    "odds": "+119",
    "matchup": "Diamondbacks @ Rays",
    "grade": "B+",
-   "note": "FIRED AM. Massive reverse money: 69% of the money on just 19% of the bets (+50) on the ARI dog. Bullpen game caps fundamentals but the money signal is the loudest on the board."
+   "note": "FIRED AM. Massive reverse money: 67% of the money on just 24% of the bets (+43) on the ARI dog. Bullpen game caps fundamentals but the money signal is loud; line steady +119."
   },
   {
    "sport": "MLB",
@@ -5143,7 +5158,7 @@
    "odds": null,
    "matchup": "Reds @ Pirates",
    "grade": "B+",
-   "note": "Burns (2.00 ERA/3.29 xFIP) dominates Jones (5.75). SHARP$: 79% money on 70% bets (+9). CIN pen 25th -> take it to F5. Near pick'em full (CIN -115)."
+   "note": "Burns (2.00 ERA/3.29 xFIP) dominates Jones (5.75). SHARP$: 80% money on 70% bets (+10). CIN pen 25th -> take it to F5. Full now near pick'em CIN -110."
   },
   {
    "sport": "MLB",
@@ -5151,7 +5166,7 @@
    "odds": null,
    "matchup": "Nationals @ Orioles",
    "grade": "B+",
-   "note": "RLM (WSH moved to fav -108) + 67% money on 44% bets (+23 SHARP$) + Griffin xFIP edge over Young. WSH pen 29th caps full game -> F5 ML."
+   "note": "RLM continues (WSH steamed -108 -> -106 fav) + 73% money on 44% bets (+29 SHARP$) + Griffin xFIP edge over Young. WSH pen 29th caps full -> F5 ML."
   },
   {
    "sport": "MLB",
@@ -5159,7 +5174,7 @@
    "odds": null,
    "matchup": "Rangers @ Blue Jays",
    "grade": "B",
-   "note": "Cease (2.60 xFIP, ace) vs thin Quantrill = real SP mismatch; full -186 too steep and TOR pen mid. Caution: mild reverse-money tilt to TEX dog (28% money on 16% bets). Pivot to F5."
+   "note": "Cease (2.60 xFIP, ace) vs thin Quantrill = real SP mismatch; full -198 too steep (steamed from -186) and TOR pen mid. Mild reverse-money tilt to TEX dog (25% money on 16% bets). Pivot to F5."
   },
   {
    "sport": "MLB",
@@ -5167,7 +5182,7 @@
    "odds": "+107",
    "matchup": "Royals @ White Sox",
    "grade": "B+",
-   "note": "CAUTION inverted-SP: huge sharp/reverse money on the KC dog (66% money on 23% bets, +43) BUT the SP edge belongs to CHW (Martin 3.39 xFIP > Wacha 4.27). Money vs fundamentals conflict -- watch, don't fire blind."
+   "note": "CAUTION inverted-SP: huge sharp/reverse money on the KC dog (65% money on 26% bets, +39) BUT the SP edge belongs to CHW (Martin 3.39 xFIP > Wacha 4.27). Money vs fundamentals conflict -- monitor, not a clean fire."
   },
   {
    "sport": "MLB",
@@ -5175,7 +5190,7 @@
    "odds": "+109",
    "matchup": "Phillies @ Mets",
    "grade": "B+",
-   "note": "CAUTION SP-against: 96% money on 63% bets (+33) + RLM on the PHI dog, but NYM's Christian Scott (established) out-projects PHI's Alan Rangel (ERA unconfirmed). Loud money, murky SP -- watch."
+   "note": "CAUTION SP-against: 94% money on 63% bets (+31) + RLM on the PHI dog, but NYM Christian Scott out-projects PHI Alan Rangel (ERA unconfirmed). Loud money, murky SP -- watch."
   },
   {
    "sport": "MLB",
@@ -5183,7 +5198,7 @@
    "odds": "-",
    "matchup": "Rockies @ Twins",
    "grade": "B",
-   "note": "Total is the play: MIN pen 30th + COL 28th (two worst in MLB) behind Lorenzen/Paredes, 90% Over handle. COL dog also a mild reverse-money tilt (40% money on 16% bets, +24)."
+   "note": "Total is the play: MIN pen 30th + COL 28th (two worst in MLB) behind Lorenzen/Paredes, 90% Over handle. COL dog also a mild reverse-money tilt (36% money on 19% bets, +17)."
   },
   {
    "sport": "MLB",
@@ -5191,7 +5206,7 @@
    "odds": "-114",
    "matchup": "Athletics @ Angels",
    "grade": "B",
-   "note": "Recurring Angels reverse-money: 83% of the money on 47% of the bets (+36 SHARP$) + Detmers SP edge over Perkins. Pick'em; two weak pens (ATH 27th, LAA 24th) cap conviction."
+   "note": "Recurring Angels reverse-money: 81% of the money on 49% of the bets (+32 SHARP$) + Detmers SP edge over Perkins. Pick'em; two weak pens (ATH 27th, LAA 24th) cap conviction."
   },
   {
    "sport": "MLB",
@@ -5199,26 +5214,26 @@
    "odds": null,
    "matchup": "Cubs @ Brewers",
    "grade": "B-",
-   "note": "Harrison (3.14 xFIP) > Peterson + MIL pen 7th (Megill). Money 93% MIL but =tickets (no reverse signal). Steep -163 full -> F5. Slim edge."
+   "note": "Harrison (3.14 xFIP) > Peterson + MIL pen 7th (Megill). Money 94% MIL but = tickets 88% (no reverse signal). Steep -163 full -> F5. Slim edge."
   },
   {
    "sport": "MLB",
-   "play": "SEA -144 (Mariners ML)",
-   "odds": "-144",
+   "play": "SEA -148 (Mariners ML)",
+   "odds": "-148",
    "matchup": "Mariners @ Guardians",
    "grade": "B-",
-   "note": "Gilbert (3.60 xFIP) + 8th pen (Munoz) over Cecconi; ~3pt own-number edge. Money 86%/83% (+3) -- public/sharp aligned, no extra tell."
+   "note": "Gilbert (3.60 xFIP) + 8th pen (Munoz) over Cecconi; ~3pt own-number edge. Steamed -144 -> -148. Money 87%/bets 81% (+6) -- public/sharp aligned, no extra tell."
   },
   {
    "sport": "WNBA",
-   "play": "SEA Storm +250 (ML)",
-   "odds": "+250",
+   "play": "SEA Storm +285 (ML)",
+   "odds": "+285",
    "matchup": "Dream @ Storm",
    "grade": "B-",
-   "note": "EXTREME reverse-money dog: Storm now 57% of the money on just 5% of the bets (+52, up from +15 earlier) vs Dream 95% tickets on 43% money. Strong sharp tilt but +250 longshot -- calib/watch."
+   "note": "EXTREME reverse-money dog: Storm 52% of the money on just 4% of the bets (+48) while Dream steamed -285 -> -360. Strong sharp tilt but +285 longshot -- calibration park, not a fire."
   }
  ],
- "_ga_marker": "ga_20260627_1310",
+ "_ga_marker": "ga_20260627_1407",
  "_marker": "ga-0609pm-20260614",
  "trends": {
   "updated": "Sat Jun 27, 2026 - 1:25 AM ET",
@@ -5691,9 +5706,9 @@
   }
  ],
  "splits": {
-  "asOf": "1:10 PM ET 2026-06-27 (live Chrome VSiN-DK)",
+  "asOf": "2:07 PM ET 2026-06-27 (live Chrome VSiN-DK)",
   "source": "VSiN DraftKings (live Chrome read; book of record)",
-  "coverage": "MLB 15/15 ML splits w/ money% (HND) AND bets% (BET); WNBA 3/3. ESPN-DK cross-check on all 15 ML lines. NYY@BOS + HOU@DET first pitch ~now; rest pre-game. KBO/NPB final or ppd."
+  "coverage": "MLB 15/15 ML splits w/ money% (HND) AND bets% (BET); WNBA 3/3. ESPN-DK cross-check on all 15 ML lines. NYY@BOS + HOU@DET in progress; rest pre-game. KBO/NPB final or ppd."
  },
  "date": "2026-06-27",
  "bankrollHistory": [
@@ -5883,9 +5898,9 @@
   }
  ],
  "_edgeResearchStamp": "Sat Jun 27, 2026 - 1:25 AM ET",
- "updatedISO": "2026-06-27T13:10:00-04:00",
+ "updatedISO": "2026-06-27T14:07:00-04:00",
  "record": "55-45-2",
- "splits_asOf": "1:10 PM ET 2026-06-27",
+ "splits_asOf": "2:07 PM ET 2026-06-27",
  "propsLab": {
   "updated": "2026-06-27 14:03 ET",
   "tallies": {
@@ -6208,6 +6223,44 @@
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
   }
 
+  function renderPlayvo(c){
+    if(!$('pvStats'))return;
+    var bal=c.balance,start=c.startingBankroll||10000,tgt=c.target||12500;
+    var pnl=(bal!=null?bal-start:0);
+    var prog=Math.max(0,Math.min(100,((bal-start)/(tgt-start))*100));
+    var ddRoom=c.ddUntilLimit,ddLimit=c.ddLimit;
+    var h='';
+    h+=statCard('Balance',bal!=null?('$'+bal.toFixed(2)):'—',(pnl>=0?'+':'')+'$'+pnl.toFixed(0)+' P/L',pnl>=0?'pos':'neg');
+    h+=statCard('Target','$'+tgt,prog.toFixed(0)+'% there');
+    h+=statCard('DD room',ddRoom!=null?('$'+ddRoom.toFixed(0)):'—','of $'+(ddLimit!=null?ddLimit.toFixed(0):'—'));
+    h+=statCard('Picks',(c.graded||0)+'/'+(c.minPicks||0),'$'+(c.stakeUnit||0)+'/pick');
+    $('pvStats').innerHTML=h;
+    var ddPct=ddLimit?Math.max(0,Math.min(100,(ddRoom/ddLimit)*100)):0;
+    var bars='<div class="bars">';
+    bars+='<div class="b"><span class="lab">To target</span><span class="track"><i style="width:'+prog.toFixed(0)+'%"></i></span><span class="val">'+prog.toFixed(0)+'%</span></div>';
+    bars+='<div class="b"><span class="lab">DD cushion</span><span class="track"><i style="width:'+ddPct.toFixed(0)+'%;background:var(--amber)"></i></span><span class="val">$'+(ddRoom!=null?ddRoom.toFixed(0):'-')+'</span></div>';
+    bars+='</div>';
+    $('pvBars').innerHTML=bars;
+    if($('pvMeta'))$('pvMeta').textContent=c.updated||'';
+    var ps=Array.isArray(c.picks)?c.picks:[]; var ph='';
+    ps.slice(0,15).forEach(function(p){
+      var r=String(p.res||'').toUpperCase(); var cls=r==='W'?'win':r==='L'?'loss':'none';
+      ph+='<div class="row"><span class="dt">'+esc((p.date||'').slice(5))+'</span><span class="pr">'+esc(p.sel||'')+(p.odds!=null?' <span class="od">'+(p.odds>0?'+':'')+esc(p.odds)+'</span>':'')+'</span><span class="gr '+cls+'">'+esc(r||'\u00b7')+'</span></div>';
+    });
+    $('pvPicks').innerHTML=ph||'<div class="empty">No challenge picks yet.</div>';
+  }
+  function loadPlayvo(){
+    if(DATA.challenge){renderPlayvo(DATA.challenge);return;}
+    fetch('challenge.json?cb='+Date.now()).then(function(r){return r.json();}).then(renderPlayvo).catch(function(){ if($('pvStats'))$('pvStats').innerHTML='<div class="empty">Could not load challenge data.</div>'; });
+  }
+  function unlockCreator(){ if($('creatorLock'))$('creatorLock').style.display='none'; if($('creatorBody'))$('creatorBody').style.display='block'; loadPlayvo(); }
+  function bindCreator(){
+    var b=$('pinBtn'); if(b)b.onclick=function(){ var v=(($('pinInput')||{}).value||'').trim(); if(v==='62'){ try{localStorage.setItem('bc_creator','1');}catch(e){} unlockCreator(); } else if($('pinMsg')){$('pinMsg').textContent='Wrong PIN.';} };
+    var pi=$('pinInput'); if(pi)pi.onkeydown=function(e){ if(e.key==='Enter'&&$('pinBtn'))$('pinBtn').click(); };
+    var lb=$('lockBtn'); if(lb)lb.onclick=function(){ try{localStorage.removeItem('bc_creator');}catch(e){} if($('creatorBody'))$('creatorBody').style.display='none'; if($('creatorLock'))$('creatorLock').style.display='block'; };
+    try{ if(localStorage.getItem('bc_creator')==='1') unlockCreator(); }catch(e){}
+  }
+
   function renderFoot(){
     var s=DATA.settings||{};
     if($('footMeta'))$('footMeta').textContent='Bankroll $'+(s.bankroll!=null?s.bankroll:'—')+' · $'+(s.unit||5)+' unit'+(DATA.updated?' · updated '+DATA.updated:'');
@@ -6220,7 +6273,7 @@
     t.classList.add('on'); $(t.dataset.v).classList.add('on');
   };});
 
-  renderDash(); renderBoard(); renderRecord(); renderProps(); renderNews(); renderFoot();
+  renderDash(); renderBoard(); renderRecord(); renderProps(); renderNews(); renderFoot(); bindCreator();
 
   (function(){
     function ready(fn){ if(window.Chart) fn(); else setTimeout(function(){ready(fn)},120); }
