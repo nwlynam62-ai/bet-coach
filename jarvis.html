@@ -151,7 +151,7 @@ h1,.mono{font-family:'Orbitron','Rajdhani',monospace}
 <script>
 const $=id=>document.getElementById(id);
 let DATA=JSON.parse($('snapshot').textContent);
-let voices=[],jvoice=null,listening=false,recog=null;
+let voices=[],jvoice=null,listening=false,recog=null,wantListen=false,speakingNow=false,restarts=0;
 
 /* ---------- VOICE OUT ---------- */
 function pickVoice(){
@@ -167,8 +167,10 @@ function speak(t){
   const u=new SpeechSynthesisUtterance(t.replace(/[*_#]/g,''));
   if(jvoice)u.voice=jvoice; u.rate=.98; u.pitch=.92; u.volume=1;
   const r=$('reactor'); r.classList.add('speaking'); setStatus('Speaking');
-  u.onend=()=>{r.classList.remove('speaking');setStatus(listening?'Listening':'Standing by');};
-  try{speechSynthesis.speak(u);}catch(e){}
+  speakingNow=true;
+  if(recog&&listening){try{recog.stop();}catch(e){}}
+  u.onend=()=>{r.classList.remove('speaking');speakingNow=false;if(wantListen){try{recog.start();}catch(e){}}setStatus(wantListen?'Listening':'Standing by');};
+  try{speechSynthesis.speak(u);}catch(e){speakingNow=false;}
 }
 function setStatus(s){$('statusTxt').textContent=s;}
 
@@ -251,17 +253,26 @@ let micReady=false;
 function tmsg(t){$('transcript').innerHTML='<span class="ph">'+t+'</span>';}
 function setupRecog(){
   if(!SR)return null;
-  const r=new SR(); r.lang='en-US'; r.interimResults=true; r.continuous=false; r.maxAlternatives=1;
-  r.onstart=()=>{listening=true;$('mic').classList.add('on');$('reactor').classList.add('listening');setStatus('Listening');tmsg('Listening\u2026 speak now');};
-  r.onend=()=>{listening=false;$('mic').classList.remove('on');$('reactor').classList.remove('listening');setStatus('Standing by');};
-  r.onerror=(e)=>{listening=false;$('mic').classList.remove('on');$('reactor').classList.remove('listening');setStatus('Standing by');
-    const er=(e&&e.error)||'';
-    if(er==='not-allowed'||er==='service-not-allowed'){tmsg('Microphone blocked \u2014 click the mic/lock icon in the address bar, set it to Allow, then tap the mic again.');}
-    else if(er==='no-speech'){tmsg('I did not hear anything, sir \u2014 tap the mic and speak.');}
-    else if(er==='audio-capture'){tmsg('No microphone detected. Check your mic and try again.');}
-    else if(er!=='aborted'){tmsg('Voice error ('+er+'). Try again, or use the quick buttons.');}
+  const r=new SR(); r.lang='en-US'; r.interimResults=true; r.continuous=true; r.maxAlternatives=1;
+  r.onstart=()=>{listening=true;restarts=0;$('mic').classList.add('on');$('reactor').classList.add('listening');setStatus('Listening');tmsg('Listening\u2026 speak now, sir.');};
+  r.onend=()=>{
+    listening=false;$('mic').classList.remove('on');$('reactor').classList.remove('listening');
+    if(wantListen&&!speakingNow){
+      if(restarts<12){restarts++;setTimeout(()=>{try{recog.start();}catch(e){}},250);}
+      else{wantListen=false;setStatus('Standing by');tmsg('The voice service keeps dropping \u2014 your network may block Google speech, or try a normal Chrome tab. The buttons below still work.');}
+    } else { setStatus('Standing by'); }
   };
-  r.onresult=(e)=>{let txt='';for(let i=0;i<e.results.length;i++)txt+=e.results[i][0].transcript;$('transcript').textContent=txt;if(e.results[e.results.length-1].isFinal){handle(txt);}};
+  r.onerror=(e)=>{
+    const er=(e&&e.error)||'';
+    if(er==='not-allowed'||er==='service-not-allowed'){wantListen=false;tmsg('Microphone blocked \u2014 allow it in the address bar / Windows mic settings, then tap the mic again.');}
+    else if(er==='audio-capture'){wantListen=false;tmsg('No microphone detected, sir.');}
+    /* 'no-speech','aborted','network' -> let onend auto-restart keep the session alive */
+  };
+  r.onresult=(e)=>{
+    let txt='';for(let i=e.resultIndex;i<e.results.length;i++)txt+=e.results[i][0].transcript;
+    $('transcript').textContent=txt;
+    if(e.results[e.results.length-1].isFinal&&txt.trim()){handle(txt.trim());}
+  };
   return r;
 }
 async function ensureMic(){
@@ -276,14 +287,15 @@ async function ensureMic(){
 }
 async function toggleMic(){
   if(!SR){ tmsg('Voice input needs Chrome or Edge, sir. Use the quick buttons below.'); return; }
-  if(listening){ try{recog.stop();}catch(e){} return; }
+  if(wantListen){ wantListen=false; try{recog.stop();}catch(e){} setStatus('Standing by'); tmsg('Stopped. Tap the mic to talk again.'); return; }
   try{speechSynthesis.cancel();}catch(e){}
   tmsg('Requesting microphone\u2026');
   const ok=await ensureMic();
-  if(!ok){ tmsg('Microphone blocked \u2014 click the mic/lock icon in the address bar, set it to Allow microphone, then tap the mic again.'); return; }
+  if(!ok){ tmsg('Microphone blocked \u2014 allow it in the address bar / Windows mic settings, then tap the mic again.'); return; }
   if(!recog)recog=setupRecog();
+  wantListen=true; restarts=0;
   try{ recog.start(); }
-  catch(e){ try{recog.stop();}catch(_){} setTimeout(()=>{try{recog.start();}catch(__){}},250); }
+  catch(err){ try{recog.stop();}catch(_){} setTimeout(()=>{try{recog.start();}catch(__){}} ,300); }
 }
 $('mic').onclick=toggleMic;
 
