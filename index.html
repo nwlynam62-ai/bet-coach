@@ -5309,7 +5309,7 @@
  "record": "57-45-2",
  "splits_asOf": "6:12 PM ET 2026-06-27",
  "propsLab": {
-  "updated": "2026-06-27 18:01 ET",
+  "updated": "2026-06-27 18:40 ET",
   "tallies": {
    "totals": {
     "w": 0,
@@ -5373,11 +5373,18 @@
     "p": 0,
     "clvAvg": null,
     "n": 0
+   },
+   "nrfi": {
+    "w": 0,
+    "l": 0,
+    "p": 0,
+    "clvAvg": null,
+    "n": 0
    }
   },
   "leans": [],
   "notes_no_lean": [
-   "HEARTBEAT 18:01 ET: unattended-gated, no actionable change. Live data path unavailable this run — statsapi off egress allowlist (empty), web_fetch egress blocks ESPN, and NO Chrome tab exists (tabs_context returned no group; creating one forces interactive browser-select, no user present). Nothing to settle/expire (leans=[] since the 16:32 expire). JP_Props_Study FEED LOG has no logged entries -> no cheap STUDY JP pass available. Evening MLB slate (ARI@TB 6:10p first, ~10 min out; WSH@BAL/SEA@CLE/COL@MIN/CHC@MIL/MIA@STL later) cannot be modeled honestly without lineups + park/weather + DK price, all gated -> 0 leans (honest zero, no padded noise). Next real pass needs either an open Chrome tab or restored web_fetch egress to pull the slate; until then the lab stays idle.",
+   "RUN 18:40 ET — JP batch 2 received (rest of the afternoon slate) + logged to JP_Props_Study.md: 7 props (Paredes K-U3.5 HIGH, Peterson K-U4.5 HIGH, Gilbert K-O6.5 HIGH, Buxton/Brooks Lee/Contreras/J.Walker HR dark-horses) + 4 game projections (COL@MIN, CHC@MIL, SEA@CLE, MIA@STL). ENTIRE today MLB slate is afternoon (1:10-4:15pm) and ALL games have STARTED (now ~6:37pm ET) -> FORWARD-LOOKING gate fails on every game, 0 paper leans stageable today. JP calls held settle-pending (screenshots are JP projections, not finals; settle when box scores reachable). Study signal: JP's K market looks leash-aware (K-overs only on high-IP aces like Gilbert; K-unders on short-leash arms) = the cleaner JP signal; JP's HR market is mostly tiny-edge dark-horses (not real fires). Only JP total clearing the 0.75 bar = MIA@STL ~1.5 under 8.5. Tallies unchanged (no finals to settle). No forward-looking MLB games remain on today's board -> lab is done for today barring a late game or user-supplied finals to settle the JP set.",
    "EXPIRE 2026-06-27 16:32 ET: the 2 staged K leans (Burns 6.5 @4:05p, Martin 5.5 @4:10p) reached first pitch UNPRICED (DK juice never confirmed unattended, no close captured) -> dropped per the lab quality gate (a started, never-priced lean was never a real paper bet; the board does not carry post-first-pitch noise). Tallies unchanged (nothing settled). Next forward-looking window: evening slate -> model HR(priority)/totals/Ks for games not yet started, stage only priced edges.",
    "RUN 14:08 ET. User supplied JPExclusivePicks projection screenshots for the 4 in-window games -> recovered real prop LINES + a 2nd model source (DK odds/juice still unconfirmed unattended). Staged 2 paper K-over leans (Martin 5.5, Burns 6.5) supported by BOTH my xFIP/K Poisson AND the JP HIGH tag. Price unconfirmed -> CLV pending close-capture.",
    "Christian Scott (NYM) Over 5.5K: my blend P=0.601, JP HIGH (proj ~6.5). BORDERLINE + IP-capped (JP projects only ~5.1 IP) -> WATCH, not staged. PHI@NYM pitcher correction: PHI is using Tim Mayza as an OPENER (~1.3 IP/20 pitches) then bulk; NYM starter = Christian Scott (resolves slate-builder's 'Rangel/TBD' gap).",
@@ -5594,7 +5601,7 @@
   function renderProps(){
     if(!$('propsTallies'))return;
     var L=DATA.propsLab||{}; var t=L.tallies||{};
-    var labels={totals:'Totals',teamTotals:'Team totals',hr:'Home runs',k:'Strikeouts',hits:'Hits',tb:'Total bases',rbi:'RBI',runs:'Runs',outs:'Outs'};
+    var labels={totals:'Totals',teamTotals:'Team totals',hr:'Home runs',k:'Strikeouts',hits:'Hits',tb:'Total bases',rbi:'RBI',runs:'Runs',outs:'Outs',nrfi:'1st inning (NRFI)'};
     var stat='';
     Object.keys(labels).forEach(function(k){
       var o=t[k]; if(!o)return;
