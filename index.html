@@ -209,7 +209,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,th:focus-visible{outlin
     <button data-pg="intel"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Intel</button>
     <button data-pg="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.2 2.2M16.9 16.9l2.1 2.1M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.1"/></svg>Settings</button>
     <button onclick="location.href='fantasy.html'" style="color:var(--volt)"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="9" ry="6"/><path d="M8.5 12h7M11 9.5v5M13 9.5v5"/></svg>Fantasy</button>
-    <button onclick="location.href='worldcup.html'" style="color:var(--volt)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7l3.5 2.5-1.3 4.1h-4.4L8.5 9.5z"/></svg>World Cup</button>
   </div>
   <div class="sfoot" id="sfoot"></div>
 </aside>
@@ -324,7 +323,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,th:focus-visible{outlin
     <div class="cell" style="max-width:640px;margin-top:14px">
       <h3 class="bh">Side Rooms</h3>
       <div class="rowline"><a href="fantasy.html" style="color:var(--volt);font:600 16px var(--disp);letter-spacing:.04em">&#127944; FANTASY CORNER</a><span class="ksub" style="margin-left:10px">WFL draft intel</span></div>
-      <div class="rowline"><a href="worldcup.html" style="color:var(--volt);font:600 16px var(--disp);letter-spacing:.04em">&#9917; WORLD CUP HUB</a><span class="ksub" style="margin-left:10px">groups, fixtures, 3-way boards</span></div>
     </div>
   </section>
 
@@ -337,7 +335,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,th:focus-visible{outlin
   <button data-pg="record"><svg viewBox="0 0 24 24"><path d="M4 20V9M10 20V4M16 20v-7M21 20H3"/></svg>Record</button>
   <button data-pg="intel"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Intel</button>
   <button onclick="location.href='fantasy.html'" style="color:var(--volt)"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="9" ry="6"/><path d="M8.5 12h7M11 9.5v5M13 9.5v5"/></svg>Fantasy</button>
-  <button onclick="location.href='worldcup.html'" style="color:var(--volt)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7l3.5 2.5-1.3 4.1h-4.4L8.5 9.5z"/></svg>W.CUP</button>
   <button data-pg="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>More</button>
 </nav>
 <div id="dbg"></div><aside id="drawer" aria-label="Game detail"></aside>
@@ -648,7 +645,7 @@ function renderBoard(){
   })(rows[i]);
 }
 (function(){
-  var sports=["ALL","MLB","NBA","NHL","WNBA","PLL","WC"];(DATA.games||[]).forEach(function(g){if(sports.indexOf(g.sport)<0)sports.push(g.sport);});
+  var sports=["ALL","MLB","NBA","NHL","WNBA","PLL"];(DATA.games||[]).forEach(function(g){if(sports.indexOf(g.sport)<0)sports.push(g.sport);});
   var _cnt={};(DATA.games||[]).forEach(function(g){_cnt[g.sport]=(_cnt[g.sport]||0)+1;});
   document.getElementById("boardChips").innerHTML=sports.map(function(s){
     var n=s==="ALL"?(DATA.games||[]).length:(_cnt[s]||0);
