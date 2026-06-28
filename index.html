@@ -1,3 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bet Coach</title>
+<style>
+  :root{
+    --bg:#f5f7fb;--panel:#fff;--card:#fff;--card2:#eef2f8;--ink:#111a2b;--mut:#5a6573;--dim:#8a93a2;
+    --line:#e5e9f0;--line2:#d7dde7;--navy:#1f3a8a;--navybg:#e8edf8;--win:#0e8a57;--winbg:#e3f3ec;
+    --loss:#c8323f;--lossbg:#fbe9eb;--amber:#b26a00;--amberbg:#f7efdd;--paper:#5b4bc4;--paperbg:#ece9fb;
+    --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:840px;margin:0 auto;padding:18px 16px 84px}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{font-size:19px;font-weight:700;letter-spacing:-.02em} .brand span{color:var(--navy)}
+  .bk{text-align:right;line-height:1.15} .bk .v{font-size:17px;font-weight:700} .bk .s{font-size:11px;color:var(--mut)}
+  .tabs{display:flex;gap:2px;margin:16px 0 18px;border-bottom:1px solid var(--line);overflow-x:auto}
+  .tab{appearance:none;border:0;background:none;font:inherit;color:var(--mut);padding:9px 13px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;font-weight:500;white-space:nowrap}
+  .tab:hover{color:var(--ink)} .tab.on{color:var(--navy);border-bottom-color:var(--navy)}
+  @media (max-width:640px){
+    .tabs{position:fixed;left:0;right:0;bottom:0;z-index:60;margin:0;gap:2px;background:var(--panel);border-top:1px solid var(--line2);border-bottom:0;overflow-x:visible;padding:4px 4px calc(4px + env(safe-area-inset-bottom));box-shadow:0 -3px 12px rgba(15,26,43,.07)}
+    .tab{flex:1;min-width:0;text-align:center;padding:0 2px;min-height:50px;font-size:11px;font-weight:600;border-bottom:0;margin-bottom:0;display:flex;align-items:center;justify-content:center;border-radius:9px}
+    .tab.on{color:var(--navy);background:var(--navybg);border-bottom:0}
+    .wrap{padding:14px 14px 78px}
+    .stat .v{font-size:23px} .ringtxt .rt1{font-size:22px}
+  }
+  .view{display:none} .view.on{display:block}
+  .sub{font-size:13px;color:var(--mut);margin:0 0 14px}
+  .grid{display:grid;gap:11px} .g4{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))} .g2{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 15px}
+  .stat .k{font-size:12.5px;color:var(--mut)} .stat .v{font-size:25px;font-weight:700;margin-top:3px;letter-spacing:-.02em} .stat .x{font-size:12px;color:var(--dim);margin-top:2px}
+  .pos{color:var(--win)} .neg{color:var(--loss)}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px 16px;margin-top:14px}
+  .ph{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+  .ph h3{margin:0;font-size:15px;font-weight:600} .ph .meta{font-size:12px;color:var(--dim)}
+  .chartbox{position:relative;height:200px} .chartbox.sm{height:150px}
+  .lgfilter{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px}
+  .lg{font-size:12px;color:var(--mut);border:1px solid var(--line2);background:#fff;border-radius:20px;padding:4px 12px;cursor:pointer} .lg.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .game{margin-bottom:10px}
+  .ghead{display:flex;align-items:center;gap:11px;padding:13px 16px;cursor:pointer;user-select:none} .ghead:hover{background:var(--card2)}
+.tlogo{width:22px;height:22px;object-fit:contain;vertical-align:middle;flex-shrink:0}
+  .tbadge{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;border-radius:6px;color:#fff;font:700 9px var(--mono);padding:0 4px;flex-shrink:0}
+  .teams .m{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .lgtag{font-size:10px;font-weight:700;color:var(--navy);background:var(--navybg);border-radius:5px;padding:2px 6px;flex-shrink:0}
+  .teams{flex:1;min-width:0} .teams .m{font-weight:600;font-size:15px} .teams .s{font-size:12px;color:var(--mut);margin-top:1px}
+  .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;white-space:nowrap} .pill.v{background:var(--navybg);color:var(--navy)} .pill.n{background:#eef1f6;color:var(--dim)} .pill.cal{background:var(--paperbg);color:var(--paper)}
+  .chev{color:var(--dim);transition:transform .15s;font-size:16px} .game.open .chev{transform:rotate(180deg)}
+  .gbody{display:none;border-top:1px solid var(--line);padding:10px 16px 14px} .game.open .gbody{display:block}
+  .gbody .ln{font-size:13.5px;color:var(--ink);margin:7px 0} .gbody .ln b{color:var(--mut);font-weight:600;font-size:12px;display:block;margin-bottom:1px}
+  .dsec{margin-top:12px;padding-top:11px;border-top:1px dashed var(--line2)} .dsec h4{margin:0 0 6px;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.05em} .dsec p{margin:6px 0;font-size:13px;color:var(--mut);line-height:1.45}
+  .gr{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px} .gr.win{background:var(--winbg);color:var(--win)} .gr.amber{background:var(--amberbg);color:var(--amber)} .gr.paper{background:var(--paperbg);color:var(--paper)} .gr.none{background:#eef1f6;color:var(--dim)} .gr.loss{background:var(--lossbg);color:var(--loss)}
+  .row{display:flex;align-items:center;gap:10px;padding:11px 15px;border-bottom:1px solid var(--line);font-size:14px} .row:last-child{border-bottom:0}
+  .row .dt{width:52px;flex-shrink:0;font-size:12px;color:var(--dim);font-family:var(--mono)} .row .pr{flex:1;min-width:0} .row .clv{font-size:11px;color:var(--dim)}
+  .seclabel{font-size:13px;color:var(--mut);margin:18px 0 9px;font-weight:500}
+  .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0} .dot.ok{background:var(--win);box-shadow:0 0 0 3px var(--winbg)} .dot.fire{background:var(--navy);box-shadow:0 0 0 3px var(--navybg)} .dot.watch{background:var(--amber);box-shadow:0 0 0 3px var(--amberbg)}
+  .bars .b{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:13px} .bars .lab{width:120px;flex-shrink:0;color:var(--mut)} .bars .track{flex:1;height:9px;background:#e9edf3;border-radius:6px;overflow:hidden} .bars .track>i{display:block;height:100%;background:var(--navy)} .bars .val{width:62px;text-align:right;font-family:var(--mono);font-size:12px}
+  .od{font-family:var(--mono);font-size:13px;color:var(--mut)}
+  .empty{color:var(--dim);font-size:14px;padding:18px;text-align:center}
+  .why{font-size:13px;color:var(--mut);margin-top:3px}
+  .ringrow{display:flex;gap:20px;flex-wrap:wrap}
+  .ringtxt{min-width:90px} .ringtxt .rt1{font-size:25px;font-weight:700;letter-spacing:-.02em;line-height:1.05} .ringtxt .rt2{font-size:11px;font-family:var(--mono);color:var(--mut);margin-top:5px}
+  .banktbl{width:100%;border-collapse:collapse;font-size:13px} .banktbl th{text-align:left;font-size:11px;color:var(--mut);font-weight:600;padding:8px 7px;border-bottom:1px solid var(--line);white-space:nowrap} .banktbl td{padding:9px 7px;border-bottom:1px solid var(--line)} .banktbl tr:last-child td{border-bottom:0} .mono{font-family:var(--mono);font-size:12px}
+  .learn{font-size:13px;color:var(--mut)} .learn .v{color:var(--ink);font-weight:600;margin-bottom:6px} .learn .r{padding:6px 0;border-top:1px solid var(--line);line-height:1.4}
+  .foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:13px}
+  .fbtn{appearance:none;border:1px solid var(--line2);background:#fff;color:var(--navy);font:inherit;font-size:13px;text-decoration:none;border-radius:20px;padding:6px 14px;cursor:pointer;font-weight:500} .fbtn:hover{background:var(--navybg)}
+  .fmut{color:var(--dim);margin-left:auto}
+  .pininp{width:100%;padding:10px 12px;border:1px solid var(--line2);border-radius:10px;font:inherit;font-size:16px;text-align:center;letter-spacing:.3em}
+  .lockwrap{max-width:300px;margin:40px auto;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">Bet <span>Coach</span></div>
+    <div class="bk"><div class="v" id="bkVal">—</div><div class="s" id="bkSub"></div></div>
+  </div>
+  <div class="tabs">
+    <button class="tab on" data-v="dash">Today</button>
+    <button class="tab" data-v="board">Board</button>
+    <button class="tab" data-v="record">Record</button>
+    <button class="tab" data-v="props">Props</button>
+    <button class="tab" data-v="news">News</button>
+    <button class="tab" data-v="creator">Creator</button>
+  </div>
+  <div class="view on" id="dash">
+    <div class="grid g4" id="dStats"></div>
+    <div class="panel"><div class="ph"><h3>Today's plays</h3><span class="meta" id="firedMeta"></span></div><div id="dFired"></div></div>
+    <div class="panel"><div class="ph"><h3>Units won</h3></div><div class="ringrow" id="bankKpis" style="margin-bottom:14px"></div><div id="bankCurve"></div></div>
+    <div class="panel"><div class="ph"><h3>On radar — watching</h3><span class="meta" id="radMeta"></span></div><div id="dRadar"></div></div>
+    <div class="panel"><div class="ph"><h3>What we're learning</h3><span class="meta" id="learnMeta"></span></div><div id="dLearn" class="learn"></div></div>
+    <div class="panel"><div class="ph"><h3>System status</h3></div><div id="dSys"></div></div>
+  </div>
+  <div class="view" id="board">
+    <p class="sub" id="boardSub"></p>
+    <div class="lgfilter" id="lgFilter"></div>
+    <div id="boardList"></div>
+  </div>
+  <div class="view" id="record">
+    <div class="grid g4" id="rStats"></div>
+    <div class="grid g2" id="rBreak"></div>
+    <p class="seclabel">Units — month by month</p>
+    <div class="panel" style="margin-top:0"><div class="ringrow" id="bankKpisD" style="margin-bottom:16px"></div><div id="bankCurveD"></div></div>
+    <div class="panel"><div class="ph"><h3>Monthly units</h3></div><div id="bankBarsD"></div></div>
+    <div class="panel"><div class="ph"><h3>Monthly ledger</h3></div><div style="overflow-x:auto"><table class="banktbl"><thead><tr><th>Month</th><th>Bets</th><th>W-L</th><th>Units</th><th>ROI</th><th>CLV</th></tr></thead><tbody id="bankBodyD"></tbody></table></div></div>
+    <p class="seclabel">Recent settled</p>
+    <div class="card" id="rRecent"></div>
+  </div>
+  <div class="view" id="props">
+    <p class="sub">Paper lab — props &amp; totals, calibration only (kept out of the real record until it proves CLV).</p>
+    <p class="seclabel">Calibration record</p>
+    <div class="grid g4" id="propsTallies"></div>
+    <p class="seclabel">Current leans <span class="meta" id="propsMeta" style="font-weight:400;text-transform:none"></span></p>
+    <div class="card" id="propsLeans" style="padding:2px 16px"></div>
+    <p class="seclabel">Model notes</p>
+    <div class="panel learn" id="propsNotes" style="margin-top:0"></div>
+  </div>
+  <div class="view" id="news"><div id="newsList"></div></div>
+  <div class="view" id="creator">
+    <div id="creatorLock"><div class="panel lockwrap"><h3 style="margin:0 0 4px">Private</h3><p class="sub" style="margin:0 0 12px">Enter PIN to view your real-money challenge + fantasy.</p><input id="pinInput" class="pininp" type="password" inputmode="numeric" placeholder="••" autocomplete="off"><button class="fbtn" id="pinBtn" style="margin-top:12px;width:100%">Unlock</button><div id="pinMsg" style="color:var(--loss);font-size:12px;margin-top:8px;height:14px"></div></div></div>
+    <div id="creatorBody" style="display:none">
+      <p class="sub">PlayVo 10k Bankroll Blitz — real money, walled off from the public record.</p>
+      <div class="grid g4" id="pvStats"></div>
+      <div class="panel"><div class="ph"><h3>Progress &amp; drawdown</h3><span class="meta" id="pvMeta"></span></div><div id="pvBars"></div></div>
+      <p class="seclabel">Recent challenge picks</p>
+      <div class="card" id="pvPicks"></div>
+      <div class="foot"><a class="fbtn" href="fantasy.html">Open Fantasy hub →</a><button class="fbtn" id="lockBtn">Lock</button></div>
+    </div>
+  </div>
+  <div class="foot">
+    <a class="fbtn" href="fantasy.html">Fantasy →</a>
+    <button class="fbtn" id="expCsv">Export picks CSV</button>
+    <span class="fmut" id="footMeta"></span>
+  </div>
+</div>
+
 <script id="betdata" type="application/json">{
  "settings": {
   "bankroll": 114.02,
@@ -6,7 +145,7 @@
   "unitFixed": true,
   "bankrollUpdated": "Sun Jun 21, 2026"
  },
- "updated": "6:08 PM ET 2026-06-28 (manager sweep): Settled Royals ML +119 -> W (KC 5-4). 12 MLB afternoon games stamped FINAL (were stale 'scheduled'). Padres ML +118 still live (LAD 4-1 SD, 6th) -- settle next run. NYY@BOS pre-game, held on radar.",
+ "updated": "6:12 PM ET 2026-06-28 (manager sweep): Settled Royals ML +119 -> W (KC 5-4). 12 MLB afternoon games stamped FINAL (were stale 'scheduled'). Padres ML +118 still live (LAD 4-1 SD) -- settle next run. NYY@BOS pre-game, held on radar.",
  "linesSource": "MLB lines = DraftKings via ESPN core odds API (both-side ML)+totals; KBO/NPB = DraftKings via The Odds API (h2h); WNBA spread/total = DK via ESPN. Records/ERA = ESPN standings; bullpen = FanGraphs RP ERA+rank; closers = statsapi saves leaders. Pulled ~12:20 AM ET Jun 27.",
  "bets": [],
  "games": [
@@ -5348,13 +5487,13 @@
   }
  ],
  "systemHealth": {
-  "lastManagerRun": "6:08 PM ET 2026-06-28",
+  "lastManagerRun": "6:12 PM ET 2026-06-28",
   "appGapDetected": false,
   "caughtUp": true,
   "lastPublishOk": true,
   "problems": [],
   "picksToday": 2,
-  "bankroll": null,
+  "bankroll": 114.02,
   "clvCaptured": "65/119"
  },
  "totalTake": "2:08 PM ET 2026-06-28 (GA :05 ACTIVE, fresh VSiN-DK + Pinnacle trap-filter): Two FIRED sharp plus-money dogs hold and PASS the trap filter -- SD +118 @ LAD (68% money/21% tix, +47 STRONGEST; Pinnacle SD +125 confirms; RLM +123->+118) and KC +119 @ CWS (57% money/22% tix, +35; Pinnacle KC +119 confirms; RLM +119->+114, no head-fake). COL +143 @ MIN dog-money SOFTENED to 45/24 and Pinnacle FLAT (+145) -> WATCH not fire. ATH -112 queued DOWNGRADED: money 86/65 but Pinnacle ATH -103 = pick-em, thin edge. ATL F5 (Sale) B+ and MIL F5 (Woodruff) B remain the top fav-money F5 watches. AI models: KC divergence (models like CWS SP edge, already priced; sharp money backs +119 value) resolved to FIRE; HOU Model_2 DET 75% an outlier vs market+money.",
