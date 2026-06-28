@@ -1,24 +1,20 @@
 {
-  "account": "83703435",
+  "account": "99599206",
   "name": "10k Bankroll Blitz",
   "phase": "Phase 1",
   "startingBankroll": 10000,
   "target": 12500,
   "minPicks": 20,
   "maxDDpct": 0.1,
-  "balance": 10344.07,
-  "available": 10344.07,
-  "peak": 10705.9,
-  "ddLimit": 1070.59,
-  "ddUntilLimit": 708.76,
-  "graded": 22,
+  "balance": 10000,
+  "available": 10000,
+  "peak": 10000,
+  "ddLimit": 1000,
+  "ddUntilLimit": 1000,
+  "graded": 0,
   "openPicks": 0,
   "openStake": 0,
   "stakeUnit": 100,
-  "updated": "11:45 AM ET Jun 26 (reconciled vs live dashboard)",
-  "picks": [
-    {"date":"2026-06-26","sel":"Hanwha Eagles ML (vs SSG)","odds":-115,"stake":100,"res":"W","payout":186.96,"profit":86.96,"id":"2148573"},
-    {"date":"2026-06-26","sel":"Hanwha Eagles -1.5 RL (vs SSG)","odds":130,"stake":100,"res":"W","payout":230.00,"profit":130.00,"id":"2148597"},
-    {"date":"2026-06-26","sel":"KT Wiz ML (vs Samsung)","odds":-120,"stake":100,"res":"L","payout":0,"profit":-100.00,"id":"2148607"}
-  ]
+  "updated": "11:33 AM ET Jun 28 (NEW challenge acct 99599206 — fresh reset, prior acct 83703435 no longer on dashboard)",
+  "picks": []
 }
