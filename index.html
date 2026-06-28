@@ -145,7 +145,7 @@
   "unitFixed": true,
   "bankrollUpdated": "Sun Jun 21, 2026"
  },
- "updated": "6:12 PM ET 2026-06-28 (manager sweep): Settled Royals ML +119 -> W (KC 5-4). 12 MLB afternoon games stamped FINAL (were stale 'scheduled'). Padres ML +118 still live (LAD 4-1 SD) -- settle next run. NYY@BOS pre-game, held on radar.",
+ "updated": "6:13 PM ET 2026-06-28 (:05 ACTIVE GA sync): reached Pinnacle via browser (sandbox/Odds-API blocked). NYY@BOS -- supplied the missing sharp anchor: Pinnacle BOS -107/NYY -101 (fair NYY 49.3%), +19 SHARP$ on NYY (widened 12->19, no head-fake), Pinnacle confirms NYY direction; but DK -105 = 4c worse than Pinnacle -> no value -> NYY -105 HELD as B lean/watch (no fire). Settlements (KC W, Padres live) preserved from prior sweep.",
  "linesSource": "MLB lines = DraftKings via ESPN core odds API (both-side ML)+totals; KBO/NPB = DraftKings via The Odds API (h2h); WNBA spread/total = DK via ESPN. Records/ERA = ESPN standings; bullpen = FanGraphs RP ERA+rank; closers = statsapi saves leaders. Pulled ~12:20 AM ET Jun 27.",
  "bets": [],
  "games": [
@@ -780,8 +780,8 @@
    "status": "scheduled",
    "rank": 8,
    "grade": "B",
-   "take": "Yankees @ Red Sox, 7:20p (ESPN SNB). Near pick'em -- NYY -105 / BOS -114. Gray (3.69 xFIP) edges Rodon (3.96) on the SP own-number, but VSiN money FLIPPED to NYY this run: NYY 53% money / 41% tix (+12 SHARP$) while public tix sit on BOS (59%). Reverse-money tell toward the road side. Both pens top-4. Lean NYY, B.",
-   "mlTake": "NYY -105 / BOS -114 (7:20p, only pre-game card). VSiN 5:11p LIVE: money FLIPPED to NYY -- NYY 53% money / 41% tix = +12 divergence (clears SHARP$ +8-10 bar); BOS 47% money / 59% tix (public on home). One hour ago (4:10p) money read BOS 67% -- a full intraday swing, so treat as real-but-unconfirmed. Line stable at pick'em (NO RLM -- price didn't move toward NYY), so this is a money/ticket SHARP$ tell, not classic RLM. Pattern-010 watch (don't auto-veto reverse money at near-pickem on a thin SP note) applies -- but here the SP own-number leans BOS (Gray 3.69 < Rodon 3.96 xFIP), partly offsetting. Pinnacle/Circa UNREACHABLE (Odds API 403 from host) -- cannot de-vig the true price or confirm the move with the sharp anchor, so capped at B not B+. DK two-way de-vig fair ~= NYY 49% / BOS 51%; tight ~4.5% hold, neither side heavily DK-inflated. Lean NYY -105 (steadiest small-fav band), watchlist card, NOT a fire (anchor missing + SP counter).",
+   "take": "Yankees @ Red Sox, 7:20p (ESPN SNB). Only pre-game MLB card left. Sharp money on NYY (+19 SHARP$, Pinnacle confirms NYY +100->-101), but DK -105 = no value vs Pinnacle fair +103 -> B lean, no fire.",
+   "mlTake": "NYY -105 / BOS -114 (7:20p, only pre-game card). VSiN 6:11p LIVE: money WIDENED to NYY -- NYY 62% money / 43% tix = +19 SHARP$ (was +12 at 5:11p; tell HELD & widened, no head-fake); BOS 38% money / 57% tix (public on home). ANCHOR NOW REACHED (Pinnacle via browser): Pinnacle BOS -107 / NYY -101, de-vig FAIR NYY 49.3% / BOS 50.7% (~pickem, BOS a hair). Pinnacle moved NYY +100->-101 = sharp confirms the NYY direction (RLM/steam toward NYY). VALUE CHECK: fair NYY ~+103, but DK pays NYY -105 = 4c WORSE than Pinnacle -101 and ~8c worse than fair -> NO value at DK; you'd pay a premium to follow the sharp side. So: signal real & Pinnacle-confirmed, price not there -> stays B LEAN/watch, NOT a fire. BOS -114 is the public-inflated side (DK 7c over Pin -107, 57% tix).",
    "totalTake": "Total 8: two good starters, two strong pens -> lean Under leans neutral; no fired total.",
    "note": "Lines: DraftKings via VSiN DK splits (live Chrome 5:11p ET) + ESPN core odds. Splits VSiN DK (HND=money / BET=tickets). Pinnacle/Circa UNREACHABLE this run (Odds API 403 from host) -- sharp anchor missing; DK de-vig used as fair proxy. SP ERA/xFIP + pen ERA/rank FanGraphs/statsapi 2026. AI projections file has NO NYY@BOS entry (truncated/unverified) -- no model confirm this run.",
    "decision": "QUEUED",
@@ -796,15 +796,36 @@
      "home": "Boston Red Sox pen 3.26 ERA (#3); closer Aroldis Chapman 1.99 (15sv). Last-1-2-game usage not pulled this run (unconfirmed)."
     },
     "h2h": "not pulled this run",
-    "injuries": "not pulled this run"
+    "injuries": "not pulled this run",
+    "splitsRead": {
+     "asOf": "6:13 PM ET",
+     "source": "VSiN DraftKings",
+     "NYY": {
+      "moneyPct": 62,
+      "ticketPct": 43,
+      "sharp$": "+19"
+     },
+     "BOS": {
+      "moneyPct": 38,
+      "ticketPct": 57
+     },
+     "pinnacle": {
+      "BOS": "-107",
+      "NYY": "-101",
+      "fairNYY": "49.3%",
+      "fairBOS": "50.7%",
+      "dkVsPin_NYY": "DK -105 = 4c worse than Pin -101 (no value)",
+      "publicInflatedSide": "BOS -114"
+     }
+    }
    },
    "moneyPct": {
-    "away": 53,
-    "home": 47
+    "away": 62,
+    "home": 38
    },
    "publicTicketPct": {
-    "away": 41,
-    "home": 59
+    "away": 43,
+    "home": 57
    },
    "lean": "NYY -105 (SHARP$ +12 reverse-money; B, watch -- Pinnacle anchor missing, SP leans BOS)"
   },
@@ -4902,17 +4923,14 @@
   {
    "id": "wl-nyy-bos-20260628",
    "sport": "MLB",
-   "game": "New York Yankees @ Boston Red Sox",
-   "time": "7:20 PM ET",
-   "side": "NYY -105",
-   "type": "reverse-money / SHARP$ (small-fav pickem)",
+   "matchup": "New York Yankees @ Boston Red Sox",
+   "play": "Yankees -105 ML",
+   "odds": "-105",
    "grade": "B",
-   "trigger": "VSiN 5:11p: NYY 53% money / 41% tix = +12 SHARP$ (clears +8-10 bar); public tix on BOS (59%). Money flipped from BOS->NYY since 4:10p. Line stable at pickem (no RLM).",
-   "watchFor": "CONFIRM bar (not yet a fire): (1) Pinnacle/Circa de-vig -- currently UNREACHABLE, the missing anchor caps this at B; (2) the +12 money tell holds/widens into first pitch (not a head-fake reversal back to BOS); (3) any move of the DK line toward NYY = RLM confirm. SP own-number leans BOS (Gray>Rodon), so needs the money tell to persist. Promote only if anchor confirms NYY value or the money divergence strengthens.",
-   "status": "watching"
+   "note": "VSiN 6:11p: NYY 62% money / 43% tix = +19 SHARP$ (widened from +12 at 5:11p; held, no head-fake; public tix on BOS 57%). ANCHOR REACHED this run (Pinnacle via browser): Pinnacle BOS -107/NYY -101, de-vig fair NYY 49.3%/BOS 50.7%; Pinnacle moved NYY +100->-101 = sharp confirms NYY direction. TRAP-FILTER PASSES on signal. BUT value: fair NYY ~+103 and DK -105 is 4c worse than Pinnacle -101 -> NO DK value, neg/flat CLV -> stays a B LEAN, NOT a fire. PROMOTE only if DK drifts to NYY value (approx +even or better) while Pinnacle holds NYY favored. BOS -114 = public-inflated side."
   }
  ],
- "_ga_marker": "GA :05 ACTIVE 5:13 PM ET 2026-06-28 | Pinnacle MISSING (Odds API 403); VSiN live-refreshed; NYY@BOS money flipped to NYY (+12 SHARP$) -> B lean + card; no fires (anchor missing)",
+ "_ga_marker": "GA :05 ACTIVE 6:13 PM ET 2026-06-28 | Pinnacle REACHED via browser (Odds API blocked in sandbox): NYY@BOS Pin BOS -107/NYY -101, fair NYY 49.3%; +19 SHARP$ on NYY, Pinnacle confirms NYY direction (+100->-101) BUT DK -105 = 4c worse than Pin -> no value -> B lean held (not promoted to fire). 12 afternoon games FINAL; only NYY@BOS pre-game.",
  "_marker": "ga-0609pm-20260614",
  "trends": {
   "updated": "Sun Jun 28, 2026 - 1:32 AM ET",
@@ -5578,7 +5596,7 @@
  "_edgeResearchStamp": "Sun Jun 28, 2026 - 1:32 AM ET",
  "updatedISO": "2026-06-28T17:24:00-04:00",
  "record": "57-47-2",
- "splits_asOf": "5:13 PM ET 2026-06-28",
+ "splits_asOf": "6:13 PM ET 2026-06-28",
  "propsLab": {
   "updated": "2026-06-28 18:05 ET",
   "tallies": {
@@ -5702,7 +5720,7 @@
    "NEXT RUN: settle the remaining JP K-overs + Sale K6.5 + the evening totals vs JP unders; if attended/Chrome available, PRICE the JP K market on DK and capture a real CLOSE on any night-game lean within 30 min of FP (first real CLV)."
   ]
  },
- "radarAsOf": "5:13 PM ET"
+ "radarAsOf": "6:13 PM ET"
 }</script>
 <script>
   var DATA={};
