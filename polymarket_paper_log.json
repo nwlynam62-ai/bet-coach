@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "name": "Polymarket Copy-Trade Paper Log",
+    "purpose": "Paper-track copied positions to prove the copy edge beats slippage BEFORE real money. Separate from sports betting picks/CLV.",
+    "paperUnit": 50,
+    "unitNote": "Each paper play = $50 stake. Shares bought = stake / entryPrice. Win pays $1/share; loss = -stake.",
+    "started": "2026-06-29",
+    "updated": "2026-06-29",
+    "rules": "Only log plays still copyable near the trader's entry. Flag plays where current price already moved >5c against the copy (slippage). Grade on whether copying at OUR entry was +EV, not just W/L."
+  },
+  "record": { "open": 2, "won": 0, "lost": 0, "paperPnl": 0 },
+  "plays": [
+    {
+      "id": "pm-20260629-01",
+      "loggedAt": "2026-06-29",
+      "market": "LoL: T1 vs Karmine Corp - Game 3 Winner",
+      "side": "T1",
+      "entryPrice": 0.835,
+      "paperStake": 50,
+      "shares": 59.9,
+      "potentialPayout": 59.9,
+      "potentialProfit": 9.9,
+      "copiedFrom": ["ferrariChampions2026", "needheal", "0xF201A1...e527e"],
+      "consensus": 3,
+      "traderAvgEntry": 0.835,
+      "slippageVsTrader": 0.0,
+      "copyable": "YES - still at their exact entry price",
+      "resolves": "2026-06-29",
+      "status": "open",
+      "result": null,
+      "note": "STRONGEST SIGNAL: 3 of the top-12 wallets all hold T1 at ~83.5c, and price hasn't moved off their entry. Clean copy. eSports (not your MLB lane) and resolves today, so it's a fast read on whether consensus-copy works."
+    },
+    {
+      "id": "pm-20260629-02",
+      "loggedAt": "2026-06-29",
+      "market": "Arizona Diamondbacks vs. St. Louis Cardinals (MLB)",
+      "side": "Arizona Diamondbacks ML",
+      "entryPrice": 0.525,
+      "paperStake": 50,
+      "shares": 95.2,
+      "potentialPayout": 95.2,
+      "potentialProfit": 45.2,
+      "copiedFrom": ["ferrariChampions2026", "RN1"],
+      "consensus": 2,
+      "traderAvgEntry": 0.43,
+      "slippageVsTrader": 0.095,
+      "copyable": "PARTIAL - they got 43c, price now 52.5c (9.5c worse)",
+      "resolves": "2026-07-02",
+      "status": "open",
+      "result": null,
+      "note": "MLB, your wheelhouse: 2 top wallets on the D-backs. BUT this is the slippage trap in action - they entered at 43c and the market already ran to 52.5c, so copying now means a meaningfully worse price. Logged to test whether late copy entries still pay. Verify with your own SP/bullpen read before any real money."
+    }
+  ],
+  "watchWallets": [
+    { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "Running a systematic 'favorites WON'T reach the World Cup final' short book (Mexico/Brazil/France/Norway/Netherlands/USA/Belgium = No). Consistent strategy. You dropped WC, so watch-only - but a clean wallet to study." },
+    { "name": "ferrariChampions2026", "wallet": "0xfe787d2da716d60e8acff57fb87eb13cd4d10319", "note": "#2 on the board, +$115k. Active across LoL + MLB. Shows up in both consensus plays above." }
+  ]
+}

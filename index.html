@@ -84,6 +84,7 @@
     <button class="tab" data-v="record">Record</button>
     <button class="tab" data-v="props">Props</button>
     <button class="tab" data-v="news">News</button>
+    <button class="tab" data-v="poly">Poly</button>
     <button class="tab" data-v="creator">Creator</button>
   </div>
   <div class="view on" id="dash">
@@ -129,6 +130,17 @@
       <div class="card" id="pvPicks"></div>
       <div class="foot"><a class="fbtn" href="fantasy.html">Open Fantasy hub →</a><button class="fbtn" id="lockBtn">Lock</button></div>
     </div>
+  </div>
+  <div class="view" id="poly">
+    <p class="sub">Polymarket copy-trade lab — paper only. Mirrors what top wallets hold so you can copy with your own funds. You're always seconds late (expect 1–10¢ worse entry); past PnL ≠ future. Prove the edge here before real money.</p>
+    <p class="seclabel">Paper record</p>
+    <div class="grid g4" id="polyTallies"></div>
+    <p class="seclabel">Copy plays — paper <span class="meta" id="polyLogMeta" style="font-weight:400;text-transform:none"></span></p>
+    <div class="card" id="polyLog" style="padding:2px 16px"></div>
+    <p class="seclabel">Top traders — live <span class="meta" id="polyLbMeta" style="font-weight:400;text-transform:none"></span></p>
+    <div class="card" id="polyBoard" style="padding:2px 16px"></div>
+    <p class="seclabel">Wallets we're watching</p>
+    <div class="panel learn" id="polyWatch" style="margin-top:0"></div>
   </div>
   <div class="foot">
     <a class="fbtn" href="fantasy.html">Fantasy →</a>
@@ -449,13 +461,45 @@
     var b=$('expCsv'); if(b)b.onclick=exportCsv;
   }
 
+  function renderPoly(){
+    if(typeof fetch!=='function')return;
+    var LB="https://data-api.polymarket.com/v1/leaderboard?window=all&limit=8";
+    var WIN='var(--win,#2ec27e)',LOSS='var(--loss,#ff5a6a)',MUT='var(--muted,#94a8d0)';
+    var elB=document.getElementById('polyBoard'),elL=document.getElementById('polyLog'),
+        elT=document.getElementById('polyTallies'),elW=document.getElementById('polyWatch');
+    function usd(n){n=+n||0;var s=n<0?'-':'';n=Math.abs(n);
+      if(n>=1e6)return s+'$'+(n/1e6).toFixed(2)+'M';if(n>=1e3)return s+'$'+(n/1e3).toFixed(1)+'k';return s+'$'+n.toFixed(0);}
+    function shrt(w){return w.slice(0,6)+'…'+w.slice(-4);}
+    function rowcss(){return 'display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line,#27375f)';}
+    if(elB){elB.innerHTML='<div class="empty" style="padding:12px;color:'+MUT+'">Loading top traders…</div>';
+      fetch(LB).then(function(r){return r.json();}).then(function(d){
+        var m=document.getElementById('polyLbMeta');if(m)m.textContent='top by PnL · live';
+        elB.innerHTML=d.map(function(u,i){var nm=u.userName||'(anon)';
+          return '<div style="'+rowcss()+'"><b style="width:20px;color:'+MUT+'">'+(i+1)+'</b><div style="flex:1;min-width:0"><div style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+nm+'</div><div style="font-size:11px;color:'+MUT+'">'+shrt(u.proxyWallet)+'</div></div><b style="color:'+(u.pnl>=0?WIN:LOSS)+'">'+usd(u.pnl)+'</b></div>';
+        }).join('');
+      }).catch(function(){elB.innerHTML='<div class="empty" style="padding:12px;color:'+MUT+'">Couldn\'t reach Polymarket — open the tab again to retry.</div>';});
+    }
+    fetch('polymarket_paper_log.json?cb='+Date.now()).then(function(r){return r.json();}).then(function(j){
+      var rec=j.record||{};
+      if(elT)elT.innerHTML=[['Open',rec.open||0,MUT],['Won',rec.won||0,WIN],['Lost',rec.lost||0,LOSS],['Paper PnL',usd(rec.paperPnl||0),(rec.paperPnl>=0?WIN:LOSS)]].map(function(k){
+        return '<div class="kpi" style="text-align:center"><div style="font-size:20px;font-weight:800;color:'+k[2]+'">'+k[1]+'</div><div style="font-size:11px;color:'+MUT+'">'+k[0]+'</div></div>';}).join('');
+      var m=document.getElementById('polyLogMeta');if(m)m.textContent=(j.plays||[]).length+' logged · $'+((j.meta&&j.meta.paperUnit)||50)+'/play';
+      if(elL)elL.innerHTML=(j.plays||[]).map(function(p){
+        var st=(p.status==='open')?'<span style="font-size:10px;font-weight:800;padding:1px 7px;border-radius:10px;background:rgba(148,168,208,.18);color:'+MUT+'">OPEN</span>':'<span style="font-size:10px;font-weight:800;padding:1px 7px;border-radius:10px;color:'+(p.result==='W'?WIN:LOSS)+'">'+(p.result||'?')+'</span>';
+        var late=(p.slippageVsTrader>0.04)?' · <span style="color:'+LOSS+'">⚠ '+Math.round(p.slippageVsTrader*100)+'¢ late</span>':'';
+        return '<div style="padding:11px 0;border-bottom:1px solid var(--line,#27375f)"><div style="font-weight:700">'+p.side+' &nbsp;'+st+'</div><div style="font-size:13px;margin:2px 0">'+p.market+'</div><div style="font-size:11.5px;color:'+MUT+'">entry '+Math.round(p.entryPrice*100)+'¢ · copy of '+((p.copiedFrom||[]).slice(0,2).join(', '))+late+'</div><div style="font-size:11.5px;color:'+MUT+';margin-top:3px">'+(p.note||'')+'</div></div>';
+      }).join('')||'<div class="empty" style="padding:12px;color:'+MUT+'">No plays logged yet.</div>';
+      if(elW)elW.innerHTML=(j.watchWallets||[]).map(function(w){return '<p style="margin:0 0 8px"><b>'+w.name+'</b> — '+w.note+'</p>';}).join('')||'—';
+    }).catch(function(){if(elL)elL.innerHTML='<div class="empty" style="padding:12px;color:'+MUT+'">Paper log not published yet — the daily worker will fill this in.</div>';});
+  }
+
   document.querySelectorAll('.tab').forEach(function(t){ t.onclick=function(){
     document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on')});
     document.querySelectorAll('.view').forEach(function(x){x.classList.remove('on')});
     t.classList.add('on'); $(t.dataset.v).classList.add('on');
   };});
 
-  renderDash(); renderBoard(); renderRecord(); renderProps(); renderNews(); renderFoot(); bindCreator();
+  renderDash(); renderBoard(); renderRecord(); renderProps(); renderNews(); renderFoot(); bindCreator(); renderPoly();
 
   (function(){
   if(typeof DATA==="undefined"||!Array.isArray(DATA.picks))return;
