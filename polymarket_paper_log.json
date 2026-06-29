@@ -9,7 +9,7 @@
     "updated": "2026-06-29",
     "rules": "Curated slate: copy consensus (2+ top wallets) OR high-conviction positions from the strongest wallets, still copyable near entry. VERIFY sports matchups + dates against the real league schedule before logging (skip stale/old markets). Skip coin-flips and late entries. Grade on CLV-style edge, not just W/L."
   },
-  "record": { "open": 5, "won": 2, "lost": 0, "unitsPnl": 0.68 },
+  "record": { "open": 6, "won": 3, "lost": 0, "unitsPnl": 2.42 },
   "plays": [
     {
       "id": "pm-20260629-01",
@@ -46,9 +46,10 @@
       "traderAvgEntry": 0.35,
       "slippageVsTrader": 0.015,
       "resolves": "2026-06-29",
-      "status": "open",
-      "result": null,
-      "note": "Consensus-2 eSports handicap. needheal + 0xF201 both still hold (now ~61c, up from ~35c entry). Risk 1u to win 1.74u; awaiting series margin resolution."
+      "status": "settled",
+      "result": "W",
+      "resultUnits": 1.74,
+      "note": "WON. Consensus-2 eSports handicap (needheal + 0xF201, both held to resolution). TL covered -2.5 and the market settled to 1. Copied at 36.5c (1c above the sharps' 35c), risk 1u to win 1.74u — biggest single-play return of the lab so far. Best evidence yet that consensus-of-2 conviction holds."
     },
     {
       "id": "pm-20260629-04",
@@ -145,12 +146,50 @@
       "status": "open",
       "result": null,
       "note": "S-Works fade on a strong contender ($48k) - the most balanced payout in the book (risk 1u to win 0.57u). Copied at 63.5c, fractionally BELOW their entry. Less of a sure thing than the 90c+ fades, so the price pays more."
+    },
+    {
+      "id": "pm-20260629-09",
+      "loggedAt": "2026-06-29",
+      "market": "Wimbledon ATP R1: Shintaro Mochizuki vs Max Basing",
+      "link": "https://polymarket.com/event/atp-mochizu-basing-2026-06-29",
+      "side": "Shintaro Mochizuki",
+      "entryPrice": 0.675,
+      "stakeUnits": 1,
+      "toWinUnits": 0.48,
+      "traderSize": 6008,
+      "copiedFrom": ["ferrariChampions2026"],
+      "consensus": 1,
+      "traderAvgEntry": 0.685,
+      "slippageVsTrader": -0.01,
+      "resolves": "2026-06-29",
+      "status": "open",
+      "result": null,
+      "note": "ferrari (#2 wallet, +$110k) single-wallet conviction on Mochizuki ($6k). Wimbledon Day 1 first-round verified on the real order of play (Centre Court vs Basing). Copyable at 67.5c, 1c BELOW their 68.5c entry. Tennis = a new category for the lab."
+    },
+    {
+      "id": "pm-20260629-10",
+      "loggedAt": "2026-06-29",
+      "market": "Wimbledon WTA R1: Jaqueline Cristian vs Iva Jovic",
+      "link": "https://polymarket.com/event/wta-cristia-jovic-2026-06-29",
+      "side": "Iva Jovic",
+      "entryPrice": 0.815,
+      "stakeUnits": 1,
+      "toWinUnits": 0.23,
+      "traderSize": 8579,
+      "copiedFrom": ["ferrariChampions2026"],
+      "consensus": 1,
+      "traderAvgEntry": 0.824,
+      "slippageVsTrader": -0.009,
+      "resolves": "2026-06-29",
+      "status": "open",
+      "result": null,
+      "note": "ferrari single-wallet conviction on Iva Jovic [16] ($8.6k), the seed/favorite vs Cristian. Wimbledon Day 1 R1 verified on the real order of play (Court 15, 11:00). Copyable at 81.5c, ~1c BELOW their 82.4c entry."
     }
   ],
   "watchWallets": [
-    { "name": "anon (#1, +$167k)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "TOP of the board. Active MLB intraday trader — enters during games, ends the day flat (empty overnight). Your wheelhouse; the every-30-min worker checks it and will surface its MLB plays while games are live. Best wallet for you to copy when baseball is on." },
-    { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "Most disciplined book on the board: a portfolio of high-probability World Cup favorite-fades (Argentina/USA/Mexico/France-to-final No, Mbappe golden-boot No). Low payout, high hit-rate, patient. The wallet to study." },
-    { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "Top-3 (+$59k). eSports specialist - hit T1 G3 (won) and TL G1 (won); still holds the TL -2.5 handicap. Sharp, fast." },
-    { "name": "ferrariChampions2026", "wallet": "0xfe787d2da716d60e8acff57fb87eb13cd4d10319", "note": "#2 board (+$98k). Active eSports + MLB. In the T1 and TL G1 wins; carries open MLB favorite positions too." }
+    { "name": "anon (#1, +$168k)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "TOP of the board. Active MLB intraday trader — enters during games, ends the day flat. CURRENTLY FLAT/EMPTY this run (no live positions). The every-30-min worker re-checks it; will surface its MLB plays once baseball is live. Your wheelhouse when games are on." },
+    { "name": "ferrariChampions2026", "wallet": "0xfe787d2da716d60e8acff57fb87eb13cd4d10319", "note": "#2 board (+$110k). Most active right now: heavy Wimbledon Day-1 tennis book (Mochizuki, Jovic, several first-rounders) plus a live MLB ARI position. Copied 2 of its tennis plays this run." },
+    { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "Most disciplined book on the board: a portfolio of high-probability World Cup favorite-fades (Argentina/USA/Mexico/France/Colombia-to-final No, Mbappe golden-boot No). Low payout, high hit-rate, patient. The wallet to study." },
+    { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "Top-3 (+$86k). eSports specialist — went 3-for-3 this cycle (T1 G3, TL G1, TL -2.5 handicap, all won). Book now fully resolved/cashed; no new live positions this run. Sharp, fast — watch for its next eSports slate." }
   ]
 }
