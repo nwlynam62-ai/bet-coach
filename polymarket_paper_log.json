@@ -4,7 +4,7 @@
     "purpose": "Separate system from sports betting. Paper-track copied positions (ALL market types) in UNITS to prove the copy edge beats slippage BEFORE real money.",
     "unitDollars": 5,
     "stakeUnits": 1,
-    "unitNote": "1 unit = $5 (same as the main board). Each play risks a flat 1 unit. Win returns (1/entryPrice - 1) units; loss = -1 unit.",
+    "unitNote": "1 unit = $5. You COPY THE SIDE AND PRICE, not the dollar amount. The trader bets their whole bankroll (often $10k-$200k); you stake a flat 1 unit. traderSize = the copied wallet's position size, shown only for context.",
     "started": "2026-06-29",
     "updated": "2026-06-29",
     "rules": "Curated slate: copy consensus (2+ top wallets) OR high-conviction positions from the strongest wallets, still copyable near entry. Skip coin-flips and stale/late entries. Grade on CLV-style edge (copying at OUR entry was +EV), not just W/L."
@@ -19,6 +19,7 @@
       "entryPrice": 0.835,
       "stakeUnits": 1,
       "toWinUnits": 0.2,
+      "traderSize": 14000,
       "copiedFrom": ["ferrariChampions2026", "needheal", "0xF201A1...e527e"],
       "consensus": 3,
       "traderAvgEntry": 0.835,
@@ -27,7 +28,7 @@
       "status": "settled",
       "result": "W",
       "resultUnits": 0.2,
-      "note": "WON. 3 top wallets all on T1 at ~83.5c, copied at the same price and it hit. First data point that consensus-copy can work. One win proves nothing."
+      "note": "WON. 3 top wallets all on T1 at ~83.5c, copied at the same price and it hit. First data point that consensus-copy can work."
     },
     {
       "id": "pm-20260629-03",
@@ -37,6 +38,7 @@
       "entryPrice": 0.365,
       "stakeUnits": 1,
       "toWinUnits": 1.74,
+      "traderSize": 12000,
       "copiedFrom": ["needheal", "0xF201A1...e527e"],
       "consensus": 2,
       "traderAvgEntry": 0.35,
@@ -54,6 +56,7 @@
       "entryPrice": 0.675,
       "stakeUnits": 1,
       "toWinUnits": 0.48,
+      "traderSize": 5800,
       "copiedFrom": ["needheal"],
       "consensus": 1,
       "traderAvgEntry": 0.68,
@@ -71,6 +74,7 @@
       "entryPrice": 0.525,
       "stakeUnits": 1,
       "toWinUnits": 0.9,
+      "traderSize": 9200,
       "copiedFrom": ["ferrariChampions2026", "RN1"],
       "consensus": 2,
       "traderAvgEntry": 0.43,
@@ -88,6 +92,7 @@
       "entryPrice": 0.79,
       "stakeUnits": 1,
       "toWinUnits": 0.27,
+      "traderSize": 198000,
       "copiedFrom": ["S-Works"],
       "consensus": 1,
       "traderAvgEntry": 0.88,
@@ -105,6 +110,7 @@
       "entryPrice": 0.935,
       "stakeUnits": 1,
       "toWinUnits": 0.07,
+      "traderSize": 61000,
       "copiedFrom": ["S-Works"],
       "consensus": 1,
       "traderAvgEntry": 0.934,
@@ -112,7 +118,7 @@
       "resolves": "2026-07-20",
       "status": "open",
       "result": null,
-      "note": "The S-Works grind: buy No at 93.5c on a longshot favorite. ~0.07u return, very high hit rate. Shows the risk profile honestly - you risk 1u to make a sliver, one upset erases many wins."
+      "note": "The S-Works grind: buy No at 93.5c on a longshot favorite. ~0.07u return, very high hit rate. Shows the risk profile honestly - risk 1u to make a sliver, one upset erases many wins."
     }
   ],
   "watchWallets": [
