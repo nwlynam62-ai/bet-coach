@@ -9,7 +9,7 @@
     "updated": "2026-07-01",
     "rules": "Curated slate: copy consensus (2+ top wallets) OR high-conviction positions from the strongest wallets, still copyable near entry. VERIFY sports matchups + dates against the real league schedule before logging (skip stale/old markets). Skip coin-flips and late entries. Grade on CLV-style edge, not just W/L."
   },
-  "record": { "open": 8, "won": 5, "lost": 0, "unitsPnl": 3.13 },
+  "record": { "open": 10, "won": 5, "lost": 0, "unitsPnl": 3.13 },
   "plays": [
     {
       "id": "pm-20260629-01",
@@ -262,12 +262,51 @@
       "status": "open",
       "result": null,
       "note": "CONSENSUS: needheal ($19k) and ferrari ($8.6k) both hold Under 2.5. Verified real match via ESPN World Cup scoreboard (Bosnia-Herzegovina at United States) - game live at HALFTIME, score 1-0 USA, so this is an in-game entry not pre-game (needs ≤1 more goal for Under). First World Cup totals market in the lab."
+    },
+    {
+      "id": "pm-20260701-05",
+      "loggedAt": "2026-07-01",
+      "market": "Cincinnati Reds vs. Milwaukee Brewers: O/U 8.5",
+      "link": "https://polymarket.com/event/mlb-cin-mil-2026-07-01",
+      "side": "Over",
+      "entryPrice": 0.49,
+      "stakeUnits": 1,
+      "toWinUnits": 1.041,
+      "traderSize": 97000,
+      "copiedFrom": ["anon", "S-Works"],
+      "consensus": 2,
+      "traderAvgEntry": 0.555,
+      "slippageVsTrader": -0.065,
+      "resolves": "2026-07-01",
+      "status": "open",
+      "result": null,
+      "note": "CONSENSUS: anon (MLB intraday specialist, $7.8k) AND S-Works ($97k) both hold Over 8.5 - unusual since S-Works is normally a pre-game World Cup favorite-fader, not an MLB totals player. Verified live via MLB statsapi (Reds 2, Brewers 2 through 5 innings - 4 runs already on the board tracks toward Over). Copied at 49c, 6.5c BELOW the wallets' 55.5c blended avg entry (price cooled off mid-game, a better copy price than they got). Last run this same market was skipped as badly slipped (73c) - it has since cooled back into range."
+    },
+    {
+      "id": "pm-20260701-06",
+      "loggedAt": "2026-07-01",
+      "market": "Will United States win on 2026-07-01? (vs. Bosnia and Herzegovina, moneyline)",
+      "link": "https://polymarket.com/event/fifwc-usa-bih-2026-07-01",
+      "side": "United States (Yes)",
+      "entryPrice": 0.715,
+      "stakeUnits": 1,
+      "toWinUnits": 0.399,
+      "traderSize": 250000,
+      "copiedFrom": ["GoalLineGhost", "mooseborzoi"],
+      "consensus": 2,
+      "traderAvgEntry": 0.7409,
+      "slippageVsTrader": -0.026,
+      "resolves": "2026-07-01",
+      "status": "open",
+      "result": null,
+      "note": "CONSENSUS: two newly-surfaced wallets now atop the all-time leaderboard (GoalLineGhost #1 +$127k pnl, mooseborzoi #2 +$113k) both hold USA moneyline Yes at ~72-76c ($250k / $231k positions). Verified live via ESPN World Cup scoreboard - USA leading Bosnia-Herzegovina 1-0, second half. Copied at 71.5c, ~2.6c below their blended avg entry. Second bet on this same match (alongside the Under 2.5 total already logged) but a different market - flagged for concentration awareness. FIRST plays copying wallets outside the four originally-tracked (anon/ferrari/S-Works/needheal); no track record yet for this pair's style, watch closely before scaling."
     }
   ],
   "watchWallets": [
-    { "name": "anon (#1, +$168k)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "TOP of the board. 7 positions live this run (PIT@PHI, MIA@COL, MIN@HOU, CIN@MIL O/U8.5, LAD@OAK Under10.5 + Under11.5, TB@KC). All 3 already-copied plays (COL, HOU, LAD/OAK Under10.5) remain open/unresolved. No new anon plays qualified — rest were already-copied or too slipped (TB@KC Royals slipped to 9.5c, PIT@PHI Phillies to 94c, CIN@MIL Over to 73c)." },
-    { "name": "ferrariChampions2026", "wallet": "0xfe787d2da716d60e8acff57fb87eb13cd4d10319", "note": "#2 board (+$110k). Overlaps anon on HOU Astros (consensus, copied) and adds World Cup USA-Bosnia markets — Under 2.5 matches needheal's side (new consensus play logged this run). Also holds Bosnia-win No (too late, 97c+) and a resolved-against PIT-PHI spread. Wimbledon Mochizuki/Jovic from 6/29 both settled WON." },
-    { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "Most disciplined book: World Cup favorite-fade portfolio (Argentina/Mexico/France/Mbappe No) still open, drifting with the tournament (Mbappe No down to 60c, France No down to 45c — normal in-play noise, not a settle signal). New this run: a $145k CIN/MIL Over 8.5 position, but already slipped to 73c from a 56c entry — skipped as a badly-slipped late entry. Also holds a long tail of tiny longshot goalscorer bets (<$300 each) — not conviction plays." },
-    { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "Top-3 (+$86k). eSports specialist, 3-for-3 in the lab so far (all settled WON), but currently has no live eSports positions. Only 2 live positions this run: Argentina No (already covered via S-Works) and USA-Bosnia Under 2.5 ($19k) — new consensus play logged with ferrari, game live at halftime 1-0." }
+    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. Fell out of the all-time top-20 leaderboard this run (pnl-based board reshuffled) but still the most useful live-MLB signal - 7 positions active today (PIT@PHI, MIA@COL, MIN@HOU, CIN@MIL O/U8.5, LAD@OAK Under10.5 + Under11.5, TB@KC). Astros and Rockies copies are both underwater in-game (Twins up 5-1, Marlins up 2-1 through 4) but unresolved - not settled yet. New this run: CIN/MIL Over 8.5 re-entered range (55c→49c) and was consensus-copied with S-Works." },
+    { "name": "ferrariChampions2026", "wallet": "0xfe787d2da716d60e8acff57fb87eb13cd4d10319", "note": "No new plays this run. Notable: ferrari is currently holding BOTH sides of two live Wimbledon ATP matches (Jodar/Busta, Nakashima/Struff) simultaneously - looks like active hedging/trading rather than a directional conviction bet, so skip copying either side of a match where ferrari holds both outcomes. USA-Bosnia spread and Under 2.5 both already too-late/already-logged. Wimbledon Mochizuki/Jovic from 6/29 remain settled WON." },
+    { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade portfolio (Argentina/Mexico/France/Mbappe No) still open, drifting with the tournament - normal in-play noise, not a settle signal. New this run: the $97k CIN/MIL Over 8.5 position that was skipped last run as badly-slipped (73c) has cooled back to 48.5c - consensus-copied with anon. Long tail of tiny longshot World Cup goalscorer/finalist 'No' bets across ~15 nations - same thesis repeated, not treated as separate new plays (avoids padding)." },
+    { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "eSports specialist, still 3-for-3 settled WON, but no live eSports positions this run. Only 2 live plays: Argentina No (covered via S-Works) and USA-Bosnia Under 2.5 (already logged, now 78.5c mid-game, up from 42c entry)." },
+    { "name": "GoalLineGhost + mooseborzoi (NEW - now #1 and #2 all-time pnl)", "wallet": "0x0346afae2603313d2bbee96b628536c8cbe352a5 / 0x84cfffc3f16dcc353094de30d4a45226eccd2f63", "note": "Newly surfaced at the top of the leaderboard this run, replacing the prior #1-#3. Both are loaded almost entirely into live in-game USA-Bosnia World Cup derivative markets (halftime winner, draw, spread, moneyline) - looks like a live-trading style similar to anon but for soccer. Consensus USA-moneyline play copied this run as a first test; several of their other in-game derivatives were already ~0.9995 (effectively decided) by the time we looked, so entry timing matters a lot for this pair. No track record yet in the lab." }
   ]
 }
