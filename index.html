@@ -202,11 +202,11 @@
 
 <script id="betdata" type="application/json">{
  "settings": {
-  "bankroll": 121.92,
+  "bankroll": 140.58,
   "unit": 5,
   "bankrollStart": 80,
   "unitFixed": true,
-  "bankrollUpdated": "Sun Jun 28, 2026"
+  "bankrollUpdated": "Wed Jul 01, 2026"
  },
  "updated": "Wed Jul 01, 2026 - 9:55 PM ET (repair): restored specialist leagues + game stories after the 9:12 PM skeleton rollover. 14 MLB games refreshed live (7 final, 5 in-progress, 2 pre-game w/ DK lines + bullpen reads); Jul 2 KBO (5 games) + NPB (4 games) merged with 2 pending fires: Kia Tigers ML -160 (B+), SoftBank Hawks ML -165 (B). Record unchanged 62-49-2.",
  "linesSource": "DraftKings Sportsbook",
@@ -5812,7 +5812,13 @@
   var avgCLV=tCn?tC/tCn:null,roi=tB?100*totU/tB:0;
   function uu(v){return (v>=0?"+":"")+v.toFixed(1)+"u";}
   function k(lbl,val,cls){return '<div class="ringtxt" style="min-width:92px"><div class="rt1 '+(cls||"")+'">'+val+'</div><div class="rt2">'+lbl+'</div></div>';}
-  var KPIS=k("Units",uu(curU),curU>=0?"pos":"neg")+k("ROI",(roi>=0?"+":"")+roi.toFixed(1)+"%",roi>=0?"pos":"neg")+k("Max drawdown",maxDD.toFixed(1)+"u","neg")+k("Avg CLV",avgCLV==null?"—":((avgCLV>=0?"+":"")+avgCLV.toFixed(2)),(avgCLV||0)>=0?"pos":"neg");
+  var _ad=(DATA.picks||[]).map(function(p){return p.date;}).filter(Boolean).sort();
+  var cmK=_ad.length?_ad[_ad.length-1].slice(0,7):(order.length?order[order.length-1]:"");
+  var cm=months[cmK]||{b:0,w:0,l:0,p:0,u:0,c:0,cn:0};
+  var cmNm=cmK?(MN[parseInt(cmK.slice(5,7),10)-1]+" '"+cmK.slice(2,4)):"—";
+  var cmRoi=cm.b?100*cm.u/cm.b:0;
+  var cmCard=k(cmNm+"  "+cm.w+"-"+cm.l+(cm.p?"-"+cm.p+"P":"")+(cm.b?("  "+(cmRoi>=0?"+":"")+cmRoi.toFixed(1)+"%"):"  no settled yet"),uu(cm.u),cm.u>=0?"pos":"neg");
+  var KPIS=cmCard+k("Units (all-time)",uu(curU),curU>=0?"pos":"neg")+k("ROI",(roi>=0?"+":"")+roi.toFixed(1)+"%",roi>=0?"pos":"neg")+k("Max drawdown",maxDD.toFixed(1)+"u","neg")+k("Avg CLV",avgCLV==null?"—":((avgCLV>=0?"+":"")+avgCLV.toFixed(2)),(avgCLV||0)>=0?"pos":"neg");
   var W=720,H=300,L=54,Rt=704,aT=18,aB=196,bT=224,bB=280,xlY=296;
   var lo=Math.min(0,Math.min.apply(null,eq)),hi=Math.max(0,Math.max.apply(null,eq)),pad=(hi-lo)*0.12||1;lo-=pad;hi+=pad;
   function X(i){return L+i*(Rt-L)/(n-1);}
