@@ -9,7 +9,7 @@
     "updated": "2026-07-02",
     "rules": "Curated slate: copy consensus (2+ top wallets) OR high-conviction positions from the strongest wallets, still copyable near entry. VERIFY sports matchups + dates against the real league schedule before logging (skip stale/old markets). Skip coin-flips and late entries. Grade on CLV-style edge, not just W/L."
   },
-  "record": { "open": 17, "won": 9, "lost": 2, "unitsPnl": 5.13 },
+  "record": { "open": 20, "won": 9, "lost": 2, "unitsPnl": 5.13 },
   "plays": [
     {
       "id": "pm-20260629-01",
@@ -554,14 +554,71 @@
       "status": "open",
       "result": null,
       "note": "Longshot outright-winner consensus: suntori ($57.7k) + mooseborzoi ($90.2k) both hold Spain Yes to win the whole tournament, and current price (10.05c) is actually BELOW both their entries (14.3c/14.5c) - a better price than either sharp got. High payout (8.95u) / low hit-rate style, diversification test alongside S-Works' opposite (fade-the-field) book on the same World Cup event."
+    },
+    {
+      "id": "pm-20260702-14",
+      "loggedAt": "2026-07-02",
+      "market": "Portugal vs. Croatia: O/U 2.5",
+      "link": "https://polymarket.com/event/fifwc-prt-hrv-2026-07-02-more-markets",
+      "side": "Under",
+      "entryPrice": 0.4587,
+      "stakeUnits": 1,
+      "toWinUnits": 1.1801,
+      "traderSize": 23305,
+      "copiedFrom": ["GoalLineGhost", "suntori"],
+      "consensus": 2,
+      "traderAvgEntry": 0.4817,
+      "slippageVsTrader": -0.023,
+      "resolves": "2026-07-02",
+      "status": "open",
+      "result": null,
+      "note": "NEW consensus: GoalLineGhost ($8.2k) + suntori ($15.1k) both hold Under 2.5 total goals, current price 4c BELOW their avg entry (better than the sharps got). Fixture verified via ESPN World Cup scoreboard: 'Croatia at Portugal', Scheduled 2026-07-02T23:00Z - clean pre-game entry."
+    },
+    {
+      "id": "pm-20260702-15",
+      "loggedAt": "2026-07-02",
+      "market": "Will Switzerland win on 2026-07-02? (vs. Algeria, moneyline)",
+      "link": "https://polymarket.com/event/fifwc-che-alg-2026-07-02",
+      "side": "Switzerland (Yes)",
+      "entryPrice": 0.4787,
+      "stakeUnits": 1,
+      "toWinUnits": 1.089,
+      "traderSize": 28929,
+      "copiedFrom": ["GoalLineGhost", "suntori"],
+      "consensus": 2,
+      "traderAvgEntry": 0.4742,
+      "slippageVsTrader": 0.0045,
+      "resolves": "2026-07-03",
+      "status": "open",
+      "result": null,
+      "note": "NEW consensus: GoalLineGhost ($15.3k) + suntori ($13.6k) both on Switzerland ML Yes at essentially the same price (47-47.8c entries vs 47.9c current), near-zero slippage. Fixture verified via ESPN World Cup scoreboard: 'Algeria at Switzerland', Scheduled 2026-07-03T03:00Z (kickoff crosses into July 3 UTC, market labeled 07-02 slate)."
+    },
+    {
+      "id": "pm-20260702-16",
+      "loggedAt": "2026-07-02",
+      "market": "Australia vs. Egypt: O/U 2.5",
+      "link": "https://polymarket.com/event/fifwc-aus-egy-2026-07-03-more-markets",
+      "side": "Under",
+      "entryPrice": 0.665,
+      "stakeUnits": 1,
+      "toWinUnits": 0.5038,
+      "traderSize": 18183,
+      "copiedFrom": ["GoalLineGhost", "suntori"],
+      "consensus": 2,
+      "traderAvgEntry": 0.669,
+      "slippageVsTrader": -0.004,
+      "resolves": "2026-07-03",
+      "status": "open",
+      "result": null,
+      "note": "NEW consensus: GoalLineGhost ($3.9k) + suntori ($14.3k) both hold Under 2.5 total goals, tight entry (0.4c below avg). Fixture verified via ESPN World Cup scoreboard: 'Egypt at Australia', Scheduled 2026-07-03T18:00Z - clean pre-game entry."
     }
   ],
   "watchWallets": [
-    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. Flat again this run (0 positions above threshold) - true to its flat-outside-live-game-windows profile. Re-check once today's MLB slate is live." },
-    { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book, all 13 open fades still unresolved (4-96c range). Mbappe No golden-boot fade has drifted hardest: curPrice down to 61.5c vs their 78.5c entry (market now thinks Mbappe MORE likely to top-score) - bigger move than France No's earlier drift to 46.5c. Nothing resolved yet; both worth watching for a real settle next run." },
+    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. Flat again this run (0 positions above threshold) - true to its flat-outside-live-game-windows profile. Dropped to leaderboard rank #10 today (was #1) as other wallets' all-time pnl passed it; doesn't affect the intraday-MLB thesis. Re-check once today's MLB slate is live." },
+    { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book now 17 open fades, all still unresolved (0.4-99.95c range). Haaland No (96.75c), Belgium No (96.05c) and Cape Verde No (99.8c) are now past the integrity gate - can't copy. Messi golden-boot Yes still badly slipped (1.25c entry vs 44.1c now). Nothing settled this run." },
     { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "Argentina No World Cup winner position unchanged (81.65c), still the same consensus as S-Works backing pm-20260629-05. Rest of book stale/resolved to $0. No live eSports slate this run." },
-    { "name": "GoalLineGhost + mooseborzoi + suntori (Spain/Austria slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Cross-wallet consensus found this run: suntori+GoalLineGhost both on Spain ML Yes (~74.8c, copied as pm-20260702-11), suntori+mooseborzoi on Spain-to-Advance (~88c, pm-20260702-12) and on Spain-to-win-World-Cup-outright (~10c, pm-20260702-13, priced even better than their entries). GoalLineGhost appears to have exited the O/U1.5 Over leg (only mooseborzoi still shows it). Spread Spain(-1.5) consensus skipped as a ~51c coin-flip. Argentina ML vs Cabo Verde still open/unresolved (84.5c)." },
-    { "name": "suntori (#3 leaderboard)", "wallet": "0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "~$160k all-time pnl. Holds our Fed 'no change' play plus a big World Cup longshot-winner book (Argentina/Spain/Portugal/England/France Yes at 6-35c) alongside mooseborzoi - see consensus entry above. France Yes and Messi-golden-boot Yes still too slipped (10-13pp) to copy." },
+    { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Spain-Austria kickoff (19:00Z 07-02) still hasn't started per ESPN - all 3 Spain/Austria plays (pm-702-02/11/12) unresolved, prices near entry. Added 3 fresh consensus finds this run, all pre-game verified vs ESPN schedule: Portugal-Croatia Under 2.5 (pm-702-14), Switzerland ML Yes vs Algeria (pm-702-15), Australia-Egypt Under 2.5 (pm-702-16). Also holds a longshot outright-winner book together (Mexico 3.5c, Portugal 6c, USA 2.65c, France 35c) - skipped as too-thin edge/low conviction for now. Spread Spain(-1.5) still a ~52c coin-flip, skipped." },
+    { "name": "suntori (#3 leaderboard)", "wallet": "0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "~$150k all-time pnl. Fed 'no change' play has moved further in our favor (77c entry, now 86.5c, still open, resolves 07-29). Rest per consensus entry above." },
     { "name": "ferrariChampions2026", "wallet": "0xfe787d2da716d60e8acff57fb87eb13cd4d10319", "note": "Still holding BOTH sides of the Jodar/Busta Wimbledon match (active trading, not conviction). MLB entries show endDate already passed (May) with no resolution reflected in curPrice - likely a stale/cached position, not eligible regardless. Nothing new." }
   ]
 }
