@@ -133,7 +133,7 @@
     <div class="dhead"><div class="dh1">Today</div><div class="dh2" id="dashDate"></div></div>
     <div class="grid g4" id="dStats"></div>
     <div class="panel"><div class="ph"><h3>Today's plays</h3><span class="meta" id="firedMeta"></span></div><div id="dFired"></div></div>
-    <div class="panel"><div class="ph"><h3>Units won</h3></div><div class="ringrow" id="bankKpis" style="margin-bottom:14px"></div><div id="bankCurve"></div></div>
+    <div class="panel"><div class="ph"><h3>Units won</h3></div><div class="ringrow" id="bankKpis" style="margin-bottom:14px"></div><div id="bankCurve"></div><p class="seclabel" style="margin:14px 0 6px">Month by month</p><div id="bankBars"></div></div>
     <div class="panel"><div class="ph"><h3>On radar — watching</h3><span class="meta" id="radMeta"></span></div><div id="dRadar"></div></div>
     <div class="panel"><div class="ph"><h3>What we're learning</h3><span class="meta" id="learnMeta"></span></div><div id="dLearn" class="learn"></div></div>
     <div class="panel"><div class="ph"><h3>System status</h3></div><div id="dSys"></div></div>
@@ -6243,7 +6243,7 @@
   (function(){
   if(typeof DATA==="undefined"||!Array.isArray(DATA.picks))return;
   function setH(id,h){var el=document.getElementById(id);if(el)el.innerHTML=h;}
-  var TG=[["bankKpis","bankCurve","",""],["bankKpisD","bankCurveD","bankBarsD","bankBodyD"]];
+  var TG=[["bankKpis","bankCurve","bankBars",""],["bankKpisD","bankCurveD","bankBarsD","bankBodyD"]];
   var rows=DATA.picks.filter(function(p){var r=normRes(p.result);return (r==="W"||r==="L"||r==="P")&&p.date;}).slice().sort(function(a,b){return a.date<b.date?-1:(a.date>b.date?1:0);});
   if(rows.length<2){TG.forEach(function(t){setH(t[1],'<div class="empty">Not enough settled picks to chart units yet.</div>');});return;}
   var MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -6257,7 +6257,10 @@
   var avgCLV=tCn?tC/tCn:null,roi=tB?100*totU/tB:0;
   function uu(v){return (v>=0?"+":"")+v.toFixed(1)+"u";}
   function k(lbl,val,cls){return '<div class="ringtxt" style="min-width:92px"><div class="rt1 '+(cls||"")+'">'+val+'</div><div class="rt2">'+lbl+'</div></div>';}
-  var KPIS=k("Units",uu(curU),curU>=0?"pos":"neg")+k("ROI",(roi>=0?"+":"")+roi.toFixed(1)+"%",roi>=0?"pos":"neg")+k("Max drawdown",maxDD.toFixed(1)+"u","neg")+k("Avg CLV",avgCLV==null?"—":((avgCLV>=0?"+":"")+avgCLV.toFixed(2)),(avgCLV||0)>=0?"pos":"neg");
+  var curM=((DATA.date||new Date().toISOString().slice(0,10))).slice(0,7);
+  var moCur=months[curM],mU=moCur?moCur.u:0,mB=moCur?moCur.b:0;
+  var mLbl=MN[parseInt(curM.slice(5,7),10)-1]+" units"+(mB?" ("+mB+" bet"+(mB>1?"s":"")+")":"");
+  var KPIS=k("Overall units",uu(curU),curU>=0?"pos":"neg")+k(mLbl,uu(mU),mU>=0?"pos":"neg")+k("ROI",(roi>=0?"+":"")+roi.toFixed(1)+"%",roi>=0?"pos":"neg")+k("Max drawdown",maxDD.toFixed(1)+"u","neg")+k("Avg CLV",avgCLV==null?"—":((avgCLV>=0?"+":"")+avgCLV.toFixed(2)),(avgCLV||0)>=0?"pos":"neg");
   var W=720,H=300,L=54,Rt=704,aT=18,aB=196,bT=224,bB=280,xlY=296;
   var lo=Math.min(0,Math.min.apply(null,eq)),hi=Math.max(0,Math.max.apply(null,eq)),pad=(hi-lo)*0.12||1;lo-=pad;hi+=pad;
   function X(i){return L+i*(Rt-L)/(n-1);}
