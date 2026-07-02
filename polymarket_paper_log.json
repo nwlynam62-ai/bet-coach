@@ -9,7 +9,7 @@
     "updated": "2026-07-02",
     "rules": "Curated slate: copy consensus (2+ top wallets) OR high-conviction positions from the strongest wallets, still copyable near entry. VERIFY sports matchups + dates against the real league schedule before logging (skip stale/old markets). Skip coin-flips and late entries. Grade on CLV-style edge, not just W/L."
   },
-  "record": { "open": 20, "won": 9, "lost": 2, "unitsPnl": 5.13 },
+  "record": { "open": 23, "won": 9, "lost": 2, "unitsPnl": 5.13 },
   "plays": [
     {
       "id": "pm-20260629-01",
@@ -344,8 +344,7 @@
       "status": "open",
       "result": null,
       "note": "CONSENSUS: GoalLineGhost + mooseborzoi both hold Over 1.5 total goals on Austria-Spain. Verified real fixture via ESPN World Cup scoreboard: 'Austria at Spain', Scheduled 2026-07-02T19:00Z - copied pre-game. Smaller positions ($2.3k/$4.1k) than this pair's usual size, first totals market copied from them."
-    }
-    ,
+    },
     {
       "id": "pm-20260702-03",
       "loggedAt": "2026-07-02",
@@ -611,14 +610,71 @@
       "status": "open",
       "result": null,
       "note": "NEW consensus: GoalLineGhost ($3.9k) + suntori ($14.3k) both hold Under 2.5 total goals, tight entry (0.4c below avg). Fixture verified via ESPN World Cup scoreboard: 'Egypt at Australia', Scheduled 2026-07-03T18:00Z - clean pre-game entry."
+    },
+    {
+      "id": "pm-20260702-17",
+      "loggedAt": "2026-07-02",
+      "market": "Will Morocco win on 2026-07-04? (vs. Canada, moneyline)",
+      "link": "https://polymarket.com/event/fifwc-can-mar-2026-07-04",
+      "side": "Morocco (Yes)",
+      "entryPrice": 0.545,
+      "stakeUnits": 1,
+      "toWinUnits": 0.8349,
+      "traderSize": 42158,
+      "copiedFrom": ["GoalLineGhost", "suntori"],
+      "consensus": 2,
+      "traderAvgEntry": 0.5327,
+      "slippageVsTrader": 0.0123,
+      "resolves": "2026-07-04",
+      "status": "open",
+      "result": null,
+      "note": "NEW consensus: GoalLineGhost ($42.2k) + suntori ($4.5k) both hold Morocco ML Yes vs Canada, both tight to their own entries (2.2c and 0.3c slippage). Fixture verified via ESPN World Cup scoreboard: 'Morocco at Canada', Scheduled 2026-07-04T17:00Z."
+    },
+    {
+      "id": "pm-20260702-18",
+      "loggedAt": "2026-07-02",
+      "market": "Will Portugal win the 2026 FIFA World Cup?",
+      "link": "https://polymarket.com/event/world-cup-winner",
+      "side": "Portugal (Yes)",
+      "entryPrice": 0.0605,
+      "stakeUnits": 1,
+      "toWinUnits": 15.5289,
+      "traderSize": 78980,
+      "copiedFrom": ["mooseborzoi", "suntori"],
+      "consensus": 2,
+      "traderAvgEntry": 0.0832,
+      "slippageVsTrader": -0.0227,
+      "resolves": "2026-07-20",
+      "status": "open",
+      "result": null,
+      "note": "Longshot outright-winner consensus: mooseborzoi ($79k) + suntori ($49k) both hold Portugal Yes to win the whole tournament, current price (6.05c) BELOW both their entries (8.58c/8.05c) - a better price than either sharp got. High payout (15.53u) / low hit-rate style, third outright-winner diversification play alongside the Spain-Yes and S-Works fade-the-field books."
+    },
+    {
+      "id": "pm-20260702-19",
+      "loggedAt": "2026-07-02",
+      "market": "Portugal vs. Croatia: Both Teams to Score",
+      "link": "https://polymarket.com/event/fifwc-prt-hrv-2026-07-02-more-markets",
+      "side": "Yes",
+      "entryPrice": 0.575,
+      "stakeUnits": 1,
+      "toWinUnits": 0.7391,
+      "traderSize": 25097,
+      "copiedFrom": ["mooseborzoi", "suntori"],
+      "consensus": 2,
+      "traderAvgEntry": 0.5674,
+      "slippageVsTrader": 0.0076,
+      "resolves": "2026-07-02",
+      "status": "open",
+      "result": null,
+      "note": "NEW consensus: mooseborzoi ($25.1k) + suntori ($12.8k) both hold BTTS Yes on Portugal-Croatia, very tight entries (1.1c/0.5c slippage). Same fixture already verified for the O/U 2.5 Under play (pm-20260702-14) - a second, different market type on today's Portugal-Croatia game."
     }
   ],
   "watchWallets": [
-    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. Flat again this run (0 positions above threshold) - true to its flat-outside-live-game-windows profile. Dropped to leaderboard rank #10 today (was #1) as other wallets' all-time pnl passed it; doesn't affect the intraday-MLB thesis. Re-check once today's MLB slate is live." },
-    { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book now 17 open fades, all still unresolved (0.4-99.95c range). Haaland No (96.75c), Belgium No (96.05c) and Cape Verde No (99.8c) are now past the integrity gate - can't copy. Messi golden-boot Yes still badly slipped (1.25c entry vs 44.1c now). Nothing settled this run." },
+    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. Still flat this run (0 positions above threshold) - true to its flat-outside-live-game-windows profile. Re-check once today's MLB slate is live (afternoon/evening ET)." },
+    { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book unchanged in size, still all unresolved. Messi golden-boot Yes position now shows 44.15c (was 44.1c) vs 1.25c entry - still badly slipped, not copyable. Nothing new/settled this run." },
     { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "Argentina No World Cup winner position unchanged (81.65c), still the same consensus as S-Works backing pm-20260629-05. Rest of book stale/resolved to $0. No live eSports slate this run." },
-    { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Spain-Austria kickoff (19:00Z 07-02) still hasn't started per ESPN - all 3 Spain/Austria plays (pm-702-02/11/12) unresolved, prices near entry. Added 3 fresh consensus finds this run, all pre-game verified vs ESPN schedule: Portugal-Croatia Under 2.5 (pm-702-14), Switzerland ML Yes vs Algeria (pm-702-15), Australia-Egypt Under 2.5 (pm-702-16). Also holds a longshot outright-winner book together (Mexico 3.5c, Portugal 6c, USA 2.65c, France 35c) - skipped as too-thin edge/low conviction for now. Spread Spain(-1.5) still a ~52c coin-flip, skipped." },
-    { "name": "suntori (#3 leaderboard)", "wallet": "0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "~$150k all-time pnl. Fed 'no change' play has moved further in our favor (77c entry, now 86.5c, still open, resolves 07-29). Rest per consensus entry above." },
-    { "name": "ferrariChampions2026", "wallet": "0xfe787d2da716d60e8acff57fb87eb13cd4d10319", "note": "Still holding BOTH sides of the Jodar/Busta Wimbledon match (active trading, not conviction). MLB entries show endDate already passed (May) with no resolution reflected in curPrice - likely a stale/cached position, not eligible regardless. Nothing new." }
+    { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Spain-Austria kickoff (19:00Z 07-02) still hasn't started per ESPN - all Spain/Austria plays unresolved, prices near entry. Added 3 fresh finds this run: Morocco ML Yes vs Canada (pm-702-17, w/ suntori), Portugal outright-winner Yes (pm-702-18, w/ mooseborzoi+suntori), Portugal-Croatia BTTS Yes (pm-702-19, w/ mooseborzoi+suntori). Also noticed mooseborzoi+suntori now show a fresh consensus on Messi golden-boot Yes at 44c, but both are too slipped off their own entries (30pp/8pp) to copy cleanly." },
+    { "name": "suntori (#3 leaderboard)", "wallet": "0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "~$150k all-time pnl. Fed 'no change' play unchanged (77c entry, still open, resolves 07-29). Very active today across the World Cup slate - source of 3 new plays this run alongside GoalLineGhost/mooseborzoi." },
+    { "name": "ferrariChampions2026", "wallet": "0xfe787d2da716d60e8acff57fb87eb13cd4d10319", "note": "Still holding stale MLB positions (endDate passed, cached prices) - not eligible. No fresh eSports/tennis conviction this run." }
   ]
 }
