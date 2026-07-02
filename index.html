@@ -44,6 +44,20 @@
   .stat:before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(240,192,90,.6),rgba(240,192,90,0))}
   .stat .k{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.07em;font-weight:700}
   .stat .v{font-size:26px;font-weight:800;margin-top:4px;letter-spacing:-.02em;font-variant-numeric:tabular-nums} .stat .x{font-size:12px;color:var(--dim);margin-top:2px}
+  .pcard{background:linear-gradient(180deg,#18150e,#110f0a);border:1px solid var(--line);border-radius:16px;margin-bottom:12px;overflow:hidden}
+  .pcard .pchead{display:flex;align-items:center;gap:8px;padding:11px 14px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .pcard .pchead .mu{font-weight:700;font-size:14px}
+  .pcard .pchead .mkt{font-size:11px;color:var(--dim);margin-left:auto;font-variant-numeric:tabular-nums}
+  .prow{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.04);min-height:44px}
+  .prow:last-child{border-bottom:0}
+  .prow .pav{width:30px;height:30px;border-radius:50%;background:#241f14;color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex:0 0 30px}
+  .prow .pnm{min-width:0}
+  .prow .pnm b{font-size:13.5px;font-weight:650;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
+  .prow .pnm span{font-size:11.5px;color:var(--dim)}
+  .prow .pnums{margin-left:auto;display:flex;gap:14px;text-align:right;font-variant-numeric:tabular-nums;flex:0 0 auto}
+  .prow .pn .v{font-size:15px;font-weight:750;display:block}
+  .prow .pn .d{font-size:10.5px;display:block;color:var(--dim)}
+  .pcard .pcfoot{padding:8px 14px;font-size:11.5px;color:var(--dim);background:rgba(240,192,90,.04)}
   .pos{color:var(--win)} .neg{color:var(--loss)}
   .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px 16px;margin-top:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
   .ph{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
@@ -151,8 +165,8 @@
     <div class="grid g4" id="propsTallies"></div>
     <p class="seclabel">Calibration &mdash; predicted vs actual</p>
     <div class="panel" id="calibChart" style="margin-top:0"></div>
-    <p class="seclabel">Current leans <span class="meta" id="propsMeta" style="font-weight:400;text-transform:none"></span></p>
-    <div class="card" id="propsLeans" style="padding:2px 16px"></div>
+    <p class="seclabel">Model board <span class="meta" id="propsMeta" style="font-weight:400;text-transform:none"></span></p>
+    <div id="propsCards"></div>
     <p class="seclabel">Model notes</p>
     <div class="panel learn" id="propsNotes" style="margin-top:0"></div>
   </div>
@@ -5579,20 +5593,39 @@
       var o=t[k]; if(!o)return;
       var rec=(o.w||0)+'-'+(o.l||0)+(o.p?'-'+o.p:'');
       var clv=(o.clvAvg!=null?((o.clvAvg>=0?'+':'')+(+o.clvAvg).toFixed(2)+' CLV'):'calibrating');
-      stat+='<div class="stat"><div class="k">'+esc(labels[k])+'</div><div class="v" style="font-size:20px">'+(o.n?esc(rec):'—')+'</div><div class="x">'+(o.n?esc(clv):'no settled yet')+'</div></div>';
+      stat+='<div class="stat"><div class="k">'+esc(labels[k])+'</div><div class="v" style="font-size:20px">'+(o.n?esc(rec):'\u2014')+'</div><div class="x">'+(o.n?esc(clv):'no settled yet')+'</div></div>';
     });
     $('propsTallies').innerHTML=stat||'<div class="empty">No markets tracked yet.</div>';
     var leans=Array.isArray(L.leans)?L.leans:[];
-    var lh='';
-    leans.forEach(function(p){
-      var play=p.play||p.lean||p.pick||((p.market||'')+' '+(p.side||p.bet||''));
-      lh+='<div class="row"><span class="dot fire"></span><span class="pr"><b style="font-weight:600">'+esc(play)+'</b>'+(p.odds?' <span class="od">'+esc(p.odds)+'</span>':'')+((p.matchup||p.game)?'<div style="font-size:12px;color:var(--dim)">'+esc(p.matchup||p.game)+'</div>':'')+'</span>'+(p.edge?'<span class="gr paper">'+esc(p.edge)+'</span>':'<span class="gr paper">lean</span>')+'</div>';
+    var by={}; var order=[];
+    leans.forEach(function(p){var k=p.matchup||p.game||'Other';if(!by[k]){by[k]=[];order.push(k);}by[k].push(p);});
+    var ch='';
+    order.forEach(function(mu){
+      var rows=by[mu];
+      ch+='<div class="pcard"><div class="pchead"><span class="mu">'+esc(mu)+'</span><span class="gr paper">PAPER</span><span class="mkt">'+esc(rows[0].date||'')+'</span></div>';
+      rows.forEach(function(p){
+        var name=p.player||p.play||'';
+        var sub=(p.player&&p.play&&p.play!==p.player)?p.play:(p.type||'');
+        if(p.line!=null&&p.line!=='')sub+=(sub?' \u00b7 ':'')+'line '+p.line;
+        var ini=(String(name).match(/\b[A-Za-z]/g)||[]).slice(0,2).join('').toUpperCase();
+        var mp=parseFloat(p.modelProb), ip=parseFloat(p.impliedProb);
+        if(mp>1)mp/=100; if(ip>1)ip/=100;
+        var edge=(isFinite(mp)&&isFinite(ip))?(mp-ip)*100:parseFloat(p.edgePts);
+        var res=normRes(p.result);
+        var chip=res==='W'?'<span class="gr win">W</span>':res==='L'?'<span class="gr loss">L</span>':res==='V'?'<span class="gr none">void</span>':'<span class="gr paper">'+esc(p.book||'lean')+'</span>';
+        var nums='';
+        if(isFinite(mp))nums+='<span class="pn"><span class="v">'+(mp*100).toFixed(0)+'%</span><span class="d">our model</span></span>';
+        if(p.entryOdds!=null&&p.entryOdds!=='')nums+='<span class="pn"><span class="v">'+esc(p.entryOdds)+'</span><span class="d '+(isFinite(edge)?(edge>=0?'pos':'neg'):'')+'">'+(isFinite(edge)?((edge>=0?'+':'')+(+edge).toFixed(1)+' pts vs price'):'price')+'</span></span>';
+        ch+='<div class="prow"><span class="pav">'+esc(ini||'\u2014')+'</span><span class="pnm"><b>'+esc(name)+'</b><span>'+esc(sub)+'</span></span><span class="pnums">'+nums+'</span>'+chip+'</div>';
+      });
+      var foot=rows[0]&&rows[0].note?String(rows[0].note).slice(0,180):'Model % vs market price \u2014 green = our number beats the odds. Paper only; graduates to the real card when CLV proves out.';
+      ch+='<div class="pcfoot">'+esc(foot)+'</div></div>';
     });
-    $('propsLeans').innerHTML=lh||'<div class="empty">No prop leans right now — the model only fires on a real edge.</div>';
+    if($('propsCards'))$('propsCards').innerHTML=ch||'<div class="empty">No modeled props right now \u2014 the lab only boards a real edge.</div>';
     var notes=Array.isArray(L.notes_no_lean)?L.notes_no_lean:(L.notes?[].concat(L.notes):[]);
     var nh=''; notes.slice(0,4).forEach(function(n){nh+='<div class="r">'+esc(String(n).slice(0,280))+'</div>';});
     $('propsNotes').innerHTML=nh||'<div class="empty">No notes this run.</div>';
-    if($('propsMeta'))$('propsMeta').textContent=L.updated?('· '+L.updated):'';
+    if($('propsMeta'))$('propsMeta').textContent=L.updated?('\u00b7 '+L.updated):'';
   }
 
 
