@@ -6,10 +6,10 @@
     "stakeUnits": 1,
     "unitNote": "1 unit = $5. You COPY THE SIDE AND PRICE, not the dollar amount. The trader bets their whole bankroll (often $10k-$200k); you stake a flat 1 unit. traderSize = the copied wallet's position size, shown only for context.",
     "started": "2026-06-29",
-    "updated": "2026-07-02 17:50 ET",
+    "updated": "2026-07-02 18:50 ET",
     "rules": "Curated slate: copy consensus (2+ top wallets) OR high-conviction positions from the strongest wallets, still copyable near entry. VERIFY sports matchups + dates against the real league schedule before logging (skip stale/old markets). Skip coin-flips and late entries. Grade on CLV-style edge, not just W/L."
   },
-  "record": { "open": 22, "won": 13, "lost": 3, "unitsPnl": 5.8525 },
+  "record": { "open": 22, "won": 14, "lost": 3, "unitsPnl": 7.0997 },
   "plays": [
     {
       "id": "pm-20260629-01",
@@ -726,9 +726,10 @@
       "traderAvgEntry": 0.44,
       "slippageVsTrader": 0.005,
       "resolves": "2026-07-02",
-      "status": "open",
-      "result": null,
-      "note": "anon's third pre-game MLB position of the day - Rockies ML at 44.5c, 0.5c above their 44c entry. Verified real matchup+date via MLB statsapi (Marlins @ Rockies, Pre-Game, 2026-07-02T19:10Z). Note: same fixture type as pm-20260701-02 (Rockies backed vs Marlins the day before, which won) - different game, no dependency between the two."
+      "status": "settled",
+      "result": "W",
+      "resultUnits": 1.2472,
+      "note": "WON. Marlins 4, Rockies 14 (Final, MLB statsapi) - Rockies routed Miami. anon's clean pre-game entry (44.5c) held; anon position curPrice 1.0. Second straight Rockies-vs-Marlins ML win off anon (pm-20260701-02 also W) - different games, no dependency."
     },
     {
       "id": "pm-20260702-23",
@@ -748,13 +749,32 @@
       "status": "open",
       "result": null,
       "note": "anon's fourth MLB position of the day - Over 7.5 at 49.5c, tight to their 48.56c entry. Verified real matchup+date via MLB statsapi (Tigers @ Rangers, Pre-Game, today). anon also held a second total line on the same game (O/U 8.5 Over, avg 40.7c) - skipped as a correlated duplicate of this same-game total exposure, only the tighter-slippage 7.5 line logged."
+    },
+    {
+      "id": "pm-20260702-24",
+      "loggedAt": "2026-07-02",
+      "market": "Chicago White Sox vs. Cleveland Guardians: O/U 8.5",
+      "link": "https://polymarket.com/event/mlb-cws-cle-2026-07-02",
+      "side": "Over",
+      "entryPrice": 0.455,
+      "stakeUnits": 1,
+      "toWinUnits": 1.1978,
+      "traderSize": 16621,
+      "copiedFrom": ["anon"],
+      "consensus": 1,
+      "traderAvgEntry": 0.5,
+      "slippageVsTrader": -0.045,
+      "resolves": "2026-07-02",
+      "status": "open",
+      "result": null,
+      "note": "anon's fifth MLB position of the day - Over 8.5 at 45.5c, a BETTER price than anon's 50c avg (slippage -4.5pp in our favor). Verified real matchup+date via MLB statsapi (White Sox @ Guardians, In Progress, today, 0-0 at log time). Single-wallet anon (pinned MLB intraday specialist) high-conviction copy; $16.6k position size."
     }
   ],
   "watchWallets": [
-    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. Reds@Brewers Brewers ML SETTLED LOSS this run (Reds 7, Brewers 2 Final). Marlins@Rockies Rockies ML TRENDING WIN (Rockies up 12-4, In Progress, curPrice 0.995) - not settling yet, waiting for confirmed Final next run. New: Tigers@Rangers O/U 7.5 Over logged this run (Pre-Game); a second total line on the same game (O/U 8.5 Over) skipped as correlated duplicate." },
+    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. Marlins@Rockies Rockies ML SETTLED WIN this run (Marlins 4, Rockies 14 Final, curPrice 1.0). Still OPEN: Tigers@Rangers O/U 7.5 Over (Pre-Game, game not started at 18:50 ET). NEW this run: White Sox@Guardians O/U 8.5 Over (pm-20260702-24) - copied at 45.5c, better than anon's 50c avg; game In Progress 0-0 at log. anon's Tigers-Rangers O/U 8.5 Over still skipped as correlated dup of the logged 7.5 line." },
     { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book unchanged, all still unresolved (endDate 07-20). Argentina reach-final No now trending AGAINST us hard - curPrice down to 60.5c from 74.65c entry (still correctly skipped, too slipped to copy). France-No fade (pm-20260629-08) also still trending against (curPrice ~45.5c vs 63.7c entry). Nothing settled this run." },
     { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "Argentina No World Cup winner position unchanged (81.65c). Also now holding Portugal/Croatia O/U 2.5 Under (47.87c, pre-game) - same market/side as our already-logged GoalLineGhost+suntori consensus play (pm-20260702-14), so this is a third-wallet confirmation, not a new play." },
-    { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Spain-Austria FINAL 3-0 Spain - ML Yes (pm-20260702-11) and Team-to-Advance Spain (pm-20260702-12) both SETTLED WIN this run, confirmed via ESPN scoreboard (Full Time). Portugal-Croatia and Switzerland-Algeria both still Scheduled/0-0, haven't kicked off yet (game times later tonight/tomorrow) - no new settles there." },
+    { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Portugal-Croatia (O/U 2.5 Under + BTTS Yes both OPEN/logged) kicking off ~19:00 ET this run - no settle yet. NEW consensus SKIPPED to avoid over-concentrating a fixture already carrying two logged plays: glg+sun both hold Portugal-Croatia ML 'Portugal No' (Croatia/draw) at 42.6c (zero slippage) and multiple correlated Portugal-Croatia totals (O/U 1.5 Over 79c, 3.5 Under, 5.5 Under). Argentina-CaboVerde (07-03) and Switzerland-Algeria (07-03) consensus already logged. All other WC consensus finds this run were already-logged markets." },
     { "name": "suntori (#3 leaderboard)", "wallet": "0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "~$275k all-time pnl per latest leaderboard pull. Fed 'no change' play unchanged (77c entry, still open, resolves 07-29)." },
     { "name": "ferrariChampions2026", "wallet": "0xfe787d2da716d60e8acff57fb87eb13cd4d10319", "note": "Still holding Marlins@Rockies Rockies (avg 37.55c) same side as anon's copied pick - not added as a separate play (would double-count the same game/side). No other new eligible finds this run." },
     { "name": "leaderboard scan", "wallet": "n/a", "note": "New #1 all-time pnl wallet appeared: WhatARobbery (~$1.1M) - not yet vetted/pinned, worth a positions check on a future run. Also new to the top-20: hot2trot, Sassy-Bucket, surfandturf, shutitfatty, Jokerxing7, diooson, Zzzz87, purplegatto, Kch-Temp, palegrit, shijiebeifacai - unexplored this run, deprioritized in favor of settling the existing open book." }
