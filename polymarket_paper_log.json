@@ -9,12 +9,7 @@
     "updated": "2026-07-02",
     "rules": "Curated slate: copy consensus (2+ top wallets) OR high-conviction positions from the strongest wallets, still copyable near entry. VERIFY sports matchups + dates against the real league schedule before logging (skip stale/old markets). Skip coin-flips and late entries. Grade on CLV-style edge, not just W/L."
   },
-  "record": {
-    "open": 6,
-    "won": 9,
-    "lost": 2,
-    "unitsPnl": 5.13
-  },
+  "record": { "open": 17, "won": 9, "lost": 2, "unitsPnl": 5.13 },
   "plays": [
     {
       "id": "pm-20260629-01",
@@ -26,14 +21,10 @@
       "stakeUnits": 1,
       "toWinUnits": 0.2,
       "traderSize": 14000,
-      "copiedFrom": [
-        "ferrariChampions2026",
-        "needheal",
-        "0xF201A1...e527e"
-      ],
+      "copiedFrom": ["ferrariChampions2026", "needheal", "0xF201A1...e527e"],
       "consensus": 3,
       "traderAvgEntry": 0.835,
-      "slippageVsTrader": 0,
+      "slippageVsTrader": 0.0,
       "resolves": "2026-06-29",
       "status": "settled",
       "result": "W",
@@ -50,10 +41,7 @@
       "stakeUnits": 1,
       "toWinUnits": 1.74,
       "traderSize": 12000,
-      "copiedFrom": [
-        "needheal",
-        "0xF201A1...e527e"
-      ],
+      "copiedFrom": ["needheal", "0xF201A1...e527e"],
       "consensus": 2,
       "traderAvgEntry": 0.35,
       "slippageVsTrader": 0.015,
@@ -73,9 +61,7 @@
       "stakeUnits": 1,
       "toWinUnits": 0.48,
       "traderSize": 5800,
-      "copiedFrom": [
-        "needheal"
-      ],
+      "copiedFrom": ["needheal"],
       "consensus": 1,
       "traderAvgEntry": 0.68,
       "slippageVsTrader": -0.005,
@@ -95,9 +81,7 @@
       "stakeUnits": 1,
       "toWinUnits": 0.27,
       "traderSize": 198000,
-      "copiedFrom": [
-        "S-Works"
-      ],
+      "copiedFrom": ["S-Works"],
       "consensus": 1,
       "traderAvgEntry": 0.88,
       "slippageVsTrader": -0.09,
@@ -116,9 +100,7 @@
       "stakeUnits": 1,
       "toWinUnits": 0.07,
       "traderSize": 61000,
-      "copiedFrom": [
-        "S-Works"
-      ],
+      "copiedFrom": ["S-Works"],
       "consensus": 1,
       "traderAvgEntry": 0.934,
       "slippageVsTrader": 0.001,
@@ -137,9 +119,7 @@
       "stakeUnits": 1,
       "toWinUnits": 0.27,
       "traderSize": 88000,
-      "copiedFrom": [
-        "S-Works"
-      ],
+      "copiedFrom": ["S-Works"],
       "consensus": 1,
       "traderAvgEntry": 0.7545,
       "slippageVsTrader": 0.031,
@@ -158,9 +138,7 @@
       "stakeUnits": 1,
       "toWinUnits": 0.57,
       "traderSize": 48000,
-      "copiedFrom": [
-        "S-Works"
-      ],
+      "copiedFrom": ["S-Works"],
       "consensus": 1,
       "traderAvgEntry": 0.6374,
       "slippageVsTrader": -0.002,
@@ -179,9 +157,7 @@
       "stakeUnits": 1,
       "toWinUnits": 0.48,
       "traderSize": 6008,
-      "copiedFrom": [
-        "ferrariChampions2026"
-      ],
+      "copiedFrom": ["ferrariChampions2026"],
       "consensus": 1,
       "traderAvgEntry": 0.685,
       "slippageVsTrader": -0.01,
@@ -201,9 +177,7 @@
       "stakeUnits": 1,
       "toWinUnits": 0.23,
       "traderSize": 8579,
-      "copiedFrom": [
-        "ferrariChampions2026"
-      ],
+      "copiedFrom": ["ferrariChampions2026"],
       "consensus": 1,
       "traderAvgEntry": 0.824,
       "slippageVsTrader": -0.009,
@@ -223,18 +197,15 @@
       "stakeUnits": 1,
       "toWinUnits": 0.835,
       "traderSize": 27782,
-      "copiedFrom": [
-        "anon",
-        "ferrariChampions2026"
-      ],
+      "copiedFrom": ["anon", "ferrariChampions2026"],
       "consensus": 2,
       "traderAvgEntry": 0.5699,
       "slippageVsTrader": -0.025,
       "resolves": "2026-07-01",
       "status": "settled",
       "result": "L",
-      "note": "LOST. Astros lost to Twins 3-8 (Final, MLB statsapi). anon's live in-game entry (54.5c) didn't hold - Houston lost outright. Consensus with ferrari (stale 39c entry) didn't help; the game just went the other way.",
-      "resultUnits": -1
+      "resultUnits": -1,
+      "note": "LOST. Astros lost to Twins 3-8 (Final, MLB statsapi). anon's live in-game entry (54.5c) didn't hold - Houston lost outright. Consensus with ferrari (stale 39c entry) didn't help; the game just went the other way."
     },
     {
       "id": "pm-20260701-02",
@@ -246,17 +217,15 @@
       "stakeUnits": 1,
       "toWinUnits": 1.299,
       "traderSize": 20515,
-      "copiedFrom": [
-        "anon"
-      ],
+      "copiedFrom": ["anon"],
       "consensus": 1,
       "traderAvgEntry": 0.42,
       "slippageVsTrader": 0.015,
       "resolves": "2026-07-01",
       "status": "settled",
       "result": "W",
-      "note": "WON. Rockies beat Marlins 6-3 (Final, MLB statsapi). anon's clean pre-first-pitch entry (43.5c) paid off - cleanest-window copy from this run's cohort delivered the best MLB result.",
-      "resultUnits": 1.299
+      "resultUnits": 1.299,
+      "note": "WON. Rockies beat Marlins 6-3 (Final, MLB statsapi). anon's clean pre-first-pitch entry (43.5c) paid off - cleanest-window copy from this run's cohort delivered the best MLB result."
     },
     {
       "id": "pm-20260701-03",
@@ -268,17 +237,15 @@
       "stakeUnits": 1,
       "toWinUnits": 1.151,
       "traderSize": 7892,
-      "copiedFrom": [
-        "anon"
-      ],
+      "copiedFrom": ["anon"],
       "consensus": 1,
       "traderAvgEntry": 0.4591,
       "slippageVsTrader": 0.006,
       "resolves": "2026-07-01",
       "status": "settled",
       "result": "W",
-      "note": "WON. Dodgers 1, Athletics 7 = 8 total runs, comfortably under 10.5 (Final, MLB statsapi). anon's Pre-Game entry (45.9c) was the tightest-slippage copy of the day and it hit.",
-      "resultUnits": 1.151
+      "resultUnits": 1.151,
+      "note": "WON. Dodgers 1, Athletics 7 = 8 total runs, comfortably under 10.5 (Final, MLB statsapi). anon's Pre-Game entry (45.9c) was the tightest-slippage copy of the day and it hit."
     },
     {
       "id": "pm-20260701-04",
@@ -290,18 +257,15 @@
       "stakeUnits": 1,
       "toWinUnits": 1.151,
       "traderSize": 18986,
-      "copiedFrom": [
-        "needheal",
-        "ferrariChampions2026"
-      ],
+      "copiedFrom": ["needheal", "ferrariChampions2026"],
       "consensus": 2,
       "traderAvgEntry": 0.4372,
       "slippageVsTrader": 0.0278,
       "resolves": "2026-07-02",
       "status": "settled",
       "result": "W",
-      "note": "WON. Confirmed via gamma-api (event fifwc-usa-bih-2026-07-01-more-markets, market 'O/U 2.5' closed, Under outcomePrice=1). Consensus needheal+ferrari held through a 1-0 halftime score and the game finished Under 2.5 total goals.",
-      "resultUnits": 1.151
+      "resultUnits": 1.151,
+      "note": "WON. Confirmed via gamma-api (event fifwc-usa-bih-2026-07-01-more-markets, market 'O/U 2.5' closed, Under outcomePrice=1). Consensus needheal+ferrari held through a 1-0 halftime score and the game finished Under 2.5 total goals."
     },
     {
       "id": "pm-20260701-05",
@@ -313,18 +277,15 @@
       "stakeUnits": 1,
       "toWinUnits": 1.041,
       "traderSize": 97000,
-      "copiedFrom": [
-        "anon",
-        "S-Works"
-      ],
+      "copiedFrom": ["anon", "S-Works"],
       "consensus": 2,
       "traderAvgEntry": 0.555,
       "slippageVsTrader": -0.065,
       "resolves": "2026-07-01",
       "status": "settled",
       "result": "L",
-      "note": "LOST. Reds 2, Brewers 4 (Final) = 6 total runs, well under 8.5. anon+S-Works consensus at 49c didn't cash - the mid-game run environment cooled off after entry instead of continuing. First MLB totals loss for the lab; still too small a sample to read into the anon totals signal specifically.",
-      "resultUnits": -1
+      "resultUnits": -1,
+      "note": "LOST. Reds 2, Brewers 4 (Final) = 6 total runs, well under 8.5. anon+S-Works consensus at 49c didn't cash - the mid-game run environment cooled off after entry instead of continuing. First MLB totals loss for the lab; still too small a sample to read into the anon totals signal specifically."
     },
     {
       "id": "pm-20260701-06",
@@ -336,18 +297,15 @@
       "stakeUnits": 1,
       "toWinUnits": 0.399,
       "traderSize": 250000,
-      "copiedFrom": [
-        "GoalLineGhost",
-        "mooseborzoi"
-      ],
+      "copiedFrom": ["GoalLineGhost", "mooseborzoi"],
       "consensus": 2,
       "traderAvgEntry": 0.7409,
       "slippageVsTrader": -0.026,
       "resolves": "2026-07-01",
       "status": "settled",
       "result": "W",
-      "note": "WON. Confirmed via gamma-api (event fifwc-usa-bih-2026-07-01, market 'Will United States win on 2026-07-01?' closed, Yes outcomePrice=1). First settled result for the newly-surfaced GoalLineGhost+mooseborzoi pair - clean consensus win on debut.",
-      "resultUnits": 0.399
+      "resultUnits": 0.399,
+      "note": "WON. Confirmed via gamma-api (event fifwc-usa-bih-2026-07-01, market 'Will United States win on 2026-07-01?' closed, Yes outcomePrice=1). First settled result for the newly-surfaced GoalLineGhost+mooseborzoi pair - clean consensus win on debut."
     },
     {
       "id": "pm-20260702-01",
@@ -359,10 +317,7 @@
       "stakeUnits": 1,
       "toWinUnits": 0.183,
       "traderSize": 24988,
-      "copiedFrom": [
-        "GoalLineGhost",
-        "mooseborzoi"
-      ],
+      "copiedFrom": ["GoalLineGhost", "mooseborzoi"],
       "consensus": 2,
       "traderAvgEntry": 0.84,
       "slippageVsTrader": 0.005,
@@ -381,10 +336,7 @@
       "stakeUnits": 1,
       "toWinUnits": 0.272,
       "traderSize": 4095,
-      "copiedFrom": [
-        "GoalLineGhost",
-        "mooseborzoi"
-      ],
+      "copiedFrom": ["GoalLineGhost", "mooseborzoi"],
       "consensus": 2,
       "traderAvgEntry": 0.7707,
       "slippageVsTrader": 0.0155,
@@ -393,32 +345,223 @@
       "result": null,
       "note": "CONSENSUS: GoalLineGhost + mooseborzoi both hold Over 1.5 total goals on Austria-Spain. Verified real fixture via ESPN World Cup scoreboard: 'Austria at Spain', Scheduled 2026-07-02T19:00Z - copied pre-game. Smaller positions ($2.3k/$4.1k) than this pair's usual size, first totals market copied from them."
     }
+    ,
+    {
+      "id": "pm-20260702-03",
+      "loggedAt": "2026-07-02",
+      "market": "Will USA reach the 2026 FIFA World Cup final?",
+      "link": "https://polymarket.com/event/world-cup-nation-to-reach-final",
+      "side": "No",
+      "entryPrice": 0.9225,
+      "stakeUnits": 1,
+      "toWinUnits": 0.084,
+      "traderSize": 29701,
+      "copiedFrom": ["S-Works"],
+      "consensus": 1,
+      "traderAvgEntry": 0.9301,
+      "slippageVsTrader": -0.0076,
+      "resolves": "2026-07-20",
+      "status": "open",
+      "result": null,
+      "note": "New addition to S-Works' favorite-fade book (same eventSlug as the already-open Mexico/France No fades). USA No at 92.25c, essentially at their 93.01c entry. High hit-rate, tiny payout (0.084u) style."
+    },
+    {
+      "id": "pm-20260702-04",
+      "loggedAt": "2026-07-02",
+      "market": "Will Colombia reach the 2026 FIFA World Cup final?",
+      "link": "https://polymarket.com/event/world-cup-nation-to-reach-final",
+      "side": "No",
+      "entryPrice": 0.9095,
+      "stakeUnits": 1,
+      "toWinUnits": 0.0995,
+      "traderSize": 20211,
+      "copiedFrom": ["S-Works"],
+      "consensus": 1,
+      "traderAvgEntry": 0.937,
+      "slippageVsTrader": -0.0275,
+      "resolves": "2026-07-20",
+      "status": "open",
+      "result": null,
+      "note": "S-Works fade on Colombia reaching the final ($20.2k). Copied at 90.95c, ~3c below their 93.7c entry - better price than the sharp got."
+    },
+    {
+      "id": "pm-20260702-05",
+      "loggedAt": "2026-07-02",
+      "market": "Will Norway reach the 2026 FIFA World Cup final?",
+      "link": "https://polymarket.com/event/world-cup-nation-to-reach-final",
+      "side": "No",
+      "entryPrice": 0.945,
+      "stakeUnits": 1,
+      "toWinUnits": 0.0582,
+      "traderSize": 14979,
+      "copiedFrom": ["S-Works"],
+      "consensus": 1,
+      "traderAvgEntry": 0.9183,
+      "slippageVsTrader": 0.0267,
+      "resolves": "2026-07-20",
+      "status": "open",
+      "result": null,
+      "note": "S-Works fade on Norway reaching the final ($15.0k). Copied at 94.5c, ~2.7c above their 91.83c entry - still within tolerance. Smallest payout of this batch (0.058u)."
+    },
+    {
+      "id": "pm-20260702-06",
+      "loggedAt": "2026-07-02",
+      "market": "Will Morocco reach the 2026 FIFA World Cup final?",
+      "link": "https://polymarket.com/event/world-cup-nation-to-reach-final",
+      "side": "No",
+      "entryPrice": 0.922,
+      "stakeUnits": 1,
+      "toWinUnits": 0.0846,
+      "traderSize": 13033,
+      "copiedFrom": ["S-Works"],
+      "consensus": 1,
+      "traderAvgEntry": 0.9313,
+      "slippageVsTrader": -0.0093,
+      "resolves": "2026-07-20",
+      "status": "open",
+      "result": null,
+      "note": "S-Works fade on Morocco reaching the final ($13.0k). Copied at 92.2c, ~0.9c below their 93.13c entry - clean price, same favorite-fade thesis as the rest of the book."
+    },
+    {
+      "id": "pm-20260702-07",
+      "loggedAt": "2026-07-02",
+      "market": "Will Brazil reach the 2026 FIFA World Cup final?",
+      "link": "https://polymarket.com/event/world-cup-nation-to-reach-final",
+      "side": "No",
+      "entryPrice": 0.82,
+      "stakeUnits": 1,
+      "toWinUnits": 0.2195,
+      "traderSize": 2938,
+      "copiedFrom": ["S-Works"],
+      "consensus": 1,
+      "traderAvgEntry": 0.8464,
+      "slippageVsTrader": -0.0264,
+      "resolves": "2026-07-20",
+      "status": "open",
+      "result": null,
+      "note": "S-Works fade on Brazil reaching the final - smaller conviction size ($2.9k) than the book's usual $10k-$200k positions but same fade logic and a clean price (2.6c below their entry)."
+    },
+    {
+      "id": "pm-20260702-08",
+      "loggedAt": "2026-07-02",
+      "market": "Will England reach the 2026 FIFA World Cup final?",
+      "link": "https://polymarket.com/event/world-cup-nation-to-reach-final",
+      "side": "No",
+      "entryPrice": 0.795,
+      "stakeUnits": 1,
+      "toWinUnits": 0.2579,
+      "traderSize": 5807,
+      "copiedFrom": ["S-Works"],
+      "consensus": 1,
+      "traderAvgEntry": 0.7542,
+      "slippageVsTrader": 0.0408,
+      "resolves": "2026-07-20",
+      "status": "open",
+      "result": null,
+      "note": "S-Works fade on England reaching the final ($5.8k). Copied at 79.5c, ~4.1c above their 75.42c entry - the price has drifted against the fade some (market warming to England) but still within the tolerance seen elsewhere in this book (e.g. Mbappe's 3.1c at entry time)."
+    },
+    {
+      "id": "pm-20260702-09",
+      "loggedAt": "2026-07-02",
+      "market": "Will Spain reach the 2026 FIFA World Cup final?",
+      "link": "https://polymarket.com/event/world-cup-nation-to-reach-final",
+      "side": "No",
+      "entryPrice": 0.785,
+      "stakeUnits": 1,
+      "toWinUnits": 0.274,
+      "traderSize": 5446,
+      "copiedFrom": ["S-Works"],
+      "consensus": 1,
+      "traderAvgEntry": 0.7426,
+      "slippageVsTrader": 0.0424,
+      "resolves": "2026-07-20",
+      "status": "open",
+      "result": null,
+      "note": "S-Works fade on Spain reaching the final ($5.4k). Copied at 78.5c, ~4.2c above their 74.26c entry - right at the edge of the tolerance band used elsewhere in this book (England's 4.1c was accepted). Skipped from the same run: Argentina reach-final No (curPrice 60.5c vs their 74.65c entry, -14.2pp - too slipped), Portugal No (+8.4pp slipped), Belgium No (only $448 position - too small), Cape Verde/Croatia No (curPrice >96c - past the integrity gate)."
+    },
+    {
+      "id": "pm-20260702-10",
+      "loggedAt": "2026-07-02",
+      "market": "Will there be no change in Fed interest rates after the July 2026 meeting?",
+      "link": "https://polymarket.com/event/fed-decision-in-july-181",
+      "side": "Yes (no change)",
+      "entryPrice": 0.805,
+      "stakeUnits": 1,
+      "toWinUnits": 0.2422,
+      "traderSize": 82392.8794,
+      "copiedFrom": ["suntori"],
+      "consensus": 1,
+      "traderAvgEntry": 0.7696,
+      "slippageVsTrader": 0.0354,
+      "resolves": "2026-07-29",
+      "status": "open",
+      "result": null,
+      "note": "First econ-category play for the lab. suntori (#3 leaderboard, ~$160k all-time pnl) holds $82.4k on 'no change' at the July FOMC meeting, entered at 77c and now marked 80.5c. Single-wallet, no consensus confirm, but a strong wallet and a mainstream rate-hold consensus trade (not a longshot). Slippage +3.5pp is within the tolerance band used elsewhere in the book. New diversification test outside sports/eSports/World Cup."
+    },
+    {
+      "id": "pm-20260702-11",
+      "loggedAt": "2026-07-02",
+      "market": "Will Spain win on 2026-07-02? (vs. Austria, moneyline)",
+      "link": "https://polymarket.com/event/fifwc-esp-aut-2026-07-02",
+      "side": "Spain (Yes)",
+      "entryPrice": 0.7487,
+      "stakeUnits": 1,
+      "toWinUnits": 0.3355,
+      "traderSize": 98028.284,
+      "copiedFrom": ["suntori", "GoalLineGhost"],
+      "consensus": 2,
+      "traderAvgEntry": 0.74725,
+      "slippageVsTrader": 0.00145,
+      "resolves": "2026-07-02",
+      "status": "open",
+      "result": null,
+      "note": "NEW consensus find: suntori ($98k) and GoalLineGhost ($21.5k) both hold Spain ML Yes at essentially the same price (74.7-74.75c entries vs 74.87c current) - clean, near-zero slippage. Fixture verified via ESPN World Cup scoreboard (Austria at Spain, 2026-07-02T19:00Z). Same-day resolution."
+    },
+    {
+      "id": "pm-20260702-12",
+      "loggedAt": "2026-07-02",
+      "market": "Spain vs. Austria: Team to Advance",
+      "link": "https://polymarket.com/event/fifwc-esp-aut-2026-07-02-more-markets",
+      "side": "Spain",
+      "entryPrice": 0.8812,
+      "stakeUnits": 1,
+      "toWinUnits": 0.1348,
+      "traderSize": 27050.2845,
+      "copiedFrom": ["suntori", "mooseborzoi"],
+      "consensus": 2,
+      "traderAvgEntry": 0.87305,
+      "slippageVsTrader": 0.00815,
+      "resolves": "2026-07-02",
+      "status": "open",
+      "result": null,
+      "note": "Consensus (suntori + mooseborzoi, ~$27k each) on Spain to advance out of the group, clean entry (~0.8pp above their avg). Same match/fixture as pm-20260702-11 and the earlier-logged O/U 1.5 Over - three correlated Spain-Austria data points from today's slate."
+    },
+    {
+      "id": "pm-20260702-13",
+      "loggedAt": "2026-07-02",
+      "market": "Will Spain win the 2026 FIFA World Cup?",
+      "link": "https://polymarket.com/event/world-cup-winner",
+      "side": "Spain (Yes)",
+      "entryPrice": 0.1005,
+      "stakeUnits": 1,
+      "toWinUnits": 8.9502,
+      "traderSize": 90152.9762,
+      "copiedFrom": ["suntori", "mooseborzoi"],
+      "consensus": 2,
+      "traderAvgEntry": 0.1438,
+      "slippageVsTrader": -0.0433,
+      "resolves": "2026-07-20",
+      "status": "open",
+      "result": null,
+      "note": "Longshot outright-winner consensus: suntori ($57.7k) + mooseborzoi ($90.2k) both hold Spain Yes to win the whole tournament, and current price (10.05c) is actually BELOW both their entries (14.3c/14.5c) - a better price than either sharp got. High payout (8.95u) / low hit-rate style, diversification test alongside S-Works' opposite (fade-the-field) book on the same World Cup event."
+    }
   ],
   "watchWallets": [
-    {
-      "name": "anon (MLB intraday specialist)",
-      "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1",
-      "note": "PINNED. Flat except 2 leftover positions from yesterday's slate (LAD/OAK Under 10.5 & 11.5, both already-decided at 94-95c since the game finished 1-7 - not new plays, already logged/settled). No MLB games live at scan time (~12am ET) - true to its flat-overnight profile. Re-check once today's slate starts."
-    },
-    {
-      "name": "ferrariChampions2026",
-      "wallet": "0xfe787d2da716d60e8acff57fb87eb13cd4d10319",
-      "note": "Astros ML consensus position closed - settled LOSS alongside anon. Still holding BOTH sides of the Jodar/Busta and Nakashima/Struff Wimbledon matches (active trading, not conviction - keep skipping). No new plays this run."
-    },
-    {
-      "name": "S-Works",
-      "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1",
-      "note": "World Cup favorite-fade book (Argentina/Mexico/France/Mbappe No) still open, drifting with the tournament. CIN/MIL Over 8.5 consensus position closed - settled LOSS. New this run: joined mooseborzoi on Messi-to-be-top-scorer Yes at 44c, but S-Works' own avg entry there is a stale 1.25c (a huge, ancient move) - NOT a fresh signal, skipped as noise rather than a real consensus entry."
-    },
-    {
-      "name": "needheal",
-      "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739",
-      "note": "Down to a single live position (Argentina No, already covered via S-Works). Everything else in its book is resolved/expired at 0. No live eSports slate this run."
-    },
-    {
-      "name": "GoalLineGhost + mooseborzoi",
-      "wallet": "0x0346afae2603313d2bbee96b628536c8cbe352a5 / 0x84cfffc3f16dcc353094de30d4a45226eccd2f63",
-      "note": "Both now heavily loaded into upcoming World Cup Round-of-32 fixtures (Morocco, Argentina/Cabo Verde, Switzerland, France, Paraguay, Norway, Spain/Austria, Portugal/Croatia, Colombia/Ghana) - a broad diversified in-play book, similar live-trading style to anon but for soccer. USA moneyline consensus play settled WON this run (first track record for the pair: 1-0). Two new fresh consensus entries copied (Argentina ML, Spain/Austria Over 1.5); skipped a Spain -1.5 spread consensus at 49.1c as a coin-flip."
-    }
+    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. Flat again this run (0 positions above threshold) - true to its flat-outside-live-game-windows profile. Re-check once today's MLB slate is live." },
+    { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book, all 13 open fades still unresolved (4-96c range). Mbappe No golden-boot fade has drifted hardest: curPrice down to 61.5c vs their 78.5c entry (market now thinks Mbappe MORE likely to top-score) - bigger move than France No's earlier drift to 46.5c. Nothing resolved yet; both worth watching for a real settle next run." },
+    { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "Argentina No World Cup winner position unchanged (81.65c), still the same consensus as S-Works backing pm-20260629-05. Rest of book stale/resolved to $0. No live eSports slate this run." },
+    { "name": "GoalLineGhost + mooseborzoi + suntori (Spain/Austria slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Cross-wallet consensus found this run: suntori+GoalLineGhost both on Spain ML Yes (~74.8c, copied as pm-20260702-11), suntori+mooseborzoi on Spain-to-Advance (~88c, pm-20260702-12) and on Spain-to-win-World-Cup-outright (~10c, pm-20260702-13, priced even better than their entries). GoalLineGhost appears to have exited the O/U1.5 Over leg (only mooseborzoi still shows it). Spread Spain(-1.5) consensus skipped as a ~51c coin-flip. Argentina ML vs Cabo Verde still open/unresolved (84.5c)." },
+    { "name": "suntori (#3 leaderboard)", "wallet": "0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "~$160k all-time pnl. Holds our Fed 'no change' play plus a big World Cup longshot-winner book (Argentina/Spain/Portugal/England/France Yes at 6-35c) alongside mooseborzoi - see consensus entry above. France Yes and Messi-golden-boot Yes still too slipped (10-13pp) to copy." },
+    { "name": "ferrariChampions2026", "wallet": "0xfe787d2da716d60e8acff57fb87eb13cd4d10319", "note": "Still holding BOTH sides of the Jodar/Busta Wimbledon match (active trading, not conviction). MLB entries show endDate already passed (May) with no resolution reflected in curPrice - likely a stale/cached position, not eligible regardless. Nothing new." }
   ]
 }
