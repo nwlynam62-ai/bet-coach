@@ -1,5 +1,5 @@
 {
-  "account": "83703435",
+  "account": "****3435",
   "name": "10k Bankroll Blitz",
   "phase": "Phase 1",
   "startingBankroll": 10000,
@@ -8,19 +8,64 @@
   "maxDDpct": 0.1,
   "balance": 10251.69,
   "available": 10151.69,
-  "peak": 10760.00,
-  "ddLimit": 1076.00,
+  "peak": 10760.0,
+  "ddLimit": 1076.0,
   "ddUntilLimit": 567.69,
   "graded": 38,
   "openPicks": 1,
   "openStake": 100,
   "stakeUnit": 100,
-  "updated": "6:48 PM ET Jun 28 (acct 83703435 back on dashboard, Funded/Phase 1)",
+  "updated": "6:48 PM ET Jun 28 (acct ****3435 back on dashboard, Funded/Phase 1)",
   "picks": [
-    { "date": "Jun 28", "sel": "Under 5.5 (Total Runs) OAK@LAA", "odds": -176, "stake": 500, "res": "W", "payout": 784.09, "profit": 284.09, "id": "2153134" },
-    { "date": "Jun 28", "sel": "Kansas City Royals ML vs CWS", "odds": 114, "stake": 100, "res": "W", "payout": 214.00, "profit": 114.00, "id": "2152775" },
-    { "date": "Jun 28", "sel": "Oakland Athletics ML @ LAA", "odds": -112, "stake": 100, "res": "L", "payout": 0, "profit": -100.00, "id": "2152743" },
-    { "date": "Jun 28", "sel": "Milwaukee Brewers ML vs CHC", "odds": -169, "stake": 200, "res": "L", "payout": 0, "profit": -200.00, "id": "2152740" },
-    { "date": "Jun 28", "sel": "Samsung Lions ML vs KT (KBO)", "odds": 110, "stake": 176, "res": "W", "payout": 369.60, "profit": 193.60, "id": "2152202" }
+    {
+      "date": "Jun 28",
+      "sel": "Under 5.5 (Total Runs) OAK@LAA",
+      "odds": -176,
+      "stake": 500,
+      "res": "W",
+      "payout": 784.09,
+      "profit": 284.09,
+      "id": "2153134"
+    },
+    {
+      "date": "Jun 28",
+      "sel": "Kansas City Royals ML vs CWS",
+      "odds": 114,
+      "stake": 100,
+      "res": "W",
+      "payout": 214.0,
+      "profit": 114.0,
+      "id": "2152775"
+    },
+    {
+      "date": "Jun 28",
+      "sel": "Oakland Athletics ML @ LAA",
+      "odds": -112,
+      "stake": 100,
+      "res": "L",
+      "payout": 0,
+      "profit": -100.0,
+      "id": "2152743"
+    },
+    {
+      "date": "Jun 28",
+      "sel": "Milwaukee Brewers ML vs CHC",
+      "odds": -169,
+      "stake": 200,
+      "res": "L",
+      "payout": 0,
+      "profit": -200.0,
+      "id": "2152740"
+    },
+    {
+      "date": "Jun 28",
+      "sel": "Samsung Lions ML vs KT (KBO)",
+      "odds": 110,
+      "stake": 176,
+      "res": "W",
+      "payout": 369.6,
+      "profit": 193.6,
+      "id": "2152202"
+    }
   ]
 }
