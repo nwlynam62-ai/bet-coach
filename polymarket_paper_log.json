@@ -9,7 +9,7 @@
     "updated": "2026-07-02",
     "rules": "Curated slate: copy consensus (2+ top wallets) OR high-conviction positions from the strongest wallets, still copyable near entry. VERIFY sports matchups + dates against the real league schedule before logging (skip stale/old markets). Skip coin-flips and late entries. Grade on CLV-style edge, not just W/L."
   },
-  "record": { "open": 25, "won": 9, "lost": 2, "unitsPnl": 5.13 },
+  "record": { "open": 26, "won": 9, "lost": 2, "unitsPnl": 5.13 },
   "plays": [
     {
       "id": "pm-20260629-01",
@@ -705,10 +705,29 @@
       "status": "open",
       "result": null,
       "note": "anon's second new position this run - Under 10.5 at 50.5c, 0.5c above their 50c entry. Verified real matchup+date via MLB statsapi (Pirates @ Phillies, Pre-Game, 2026-07-02T16:35Z). Clean pre-game totals copy, near-zero slippage."
+    },
+    {
+      "id": "pm-20260702-22",
+      "loggedAt": "2026-07-02",
+      "market": "Miami Marlins vs. Colorado Rockies",
+      "link": "https://polymarket.com/event/mlb-mia-col-2026-07-02",
+      "side": "Colorado Rockies",
+      "entryPrice": 0.445,
+      "stakeUnits": 1,
+      "toWinUnits": 1.2472,
+      "traderSize": 8303.713,
+      "copiedFrom": ["anon"],
+      "consensus": 1,
+      "traderAvgEntry": 0.44,
+      "slippageVsTrader": 0.005,
+      "resolves": "2026-07-02",
+      "status": "open",
+      "result": null,
+      "note": "anon's third pre-game MLB position of the day - Rockies ML at 44.5c, 0.5c above their 44c entry. Verified real matchup+date via MLB statsapi (Marlins @ Rockies, Pre-Game, 2026-07-02T19:10Z). Note: same fixture type as pm-20260701-02 (Rockies backed vs Marlins the day before, which won) - different game, no dependency between the two."
     }
   ],
   "watchWallets": [
-    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. Active again - 2 fresh pre-game positions for today's 07-02 MLB slate (Reds@Brewers ML Brewers, Pirates@Phillies Under 10.5), both logged this run as pm-20260702-20/21." },
+    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. Active across today's 07-02 MLB slate - 3 positions total: Reds@Brewers ML Brewers (still open, 65.5c), Pirates@Phillies Under 10.5 (in-progress, drifted to 77.5c - Under looking live but unsettled), and new Marlins@Rockies ML Rockies (44.5c, logged pm-20260702-22)." },
     { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book unchanged, still all unresolved. New Neymar-No-goals position seen (78c vs 61c entry, ~17pp slipped) - too far off entry to copy, skipped. Nothing settled this run." },
     { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "Argentina No World Cup winner position unchanged (81.65c), still the same consensus as S-Works backing pm-20260629-05. Rest of book stale/resolved to $0. No live eSports slate this run." },
     { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Spain-Austria (19:00Z) and Portugal-Croatia (23:00Z) still hadn't kicked off as of this run (11:47a ET). New this run: mooseborzoi+suntori consensus on two Spain-Austria exact-score longshots (2-0 Yes ~15.5c, 2-1 Yes ~10.5c) - skipped as over-correlated with the 3 Spain-Austria plays already logged today, not genuine diversification. GoalLineGhost solo on Portugal-Croatia draw-No (74.1c) - single-wallet, skipped (no consensus)." },
