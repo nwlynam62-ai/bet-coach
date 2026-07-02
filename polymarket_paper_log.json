@@ -6,10 +6,10 @@
     "stakeUnits": 1,
     "unitNote": "1 unit = $5. You COPY THE SIDE AND PRICE, not the dollar amount. The trader bets their whole bankroll (often $10k-$200k); you stake a flat 1 unit. traderSize = the copied wallet's position size, shown only for context.",
     "started": "2026-06-29",
-    "updated": "2026-07-02",
+    "updated": "2026-07-02 16:47 ET",
     "rules": "Curated slate: copy consensus (2+ top wallets) OR high-conviction positions from the strongest wallets, still copyable near entry. VERIFY sports matchups + dates against the real league schedule before logging (skip stale/old markets). Skip coin-flips and late entries. Grade on CLV-style edge, not just W/L."
   },
-  "record": { "open": 25, "won": 10, "lost": 2, "unitsPnl": 6.1102 },
+  "record": { "open": 24, "won": 11, "lost": 2, "unitsPnl": 6.3822 },
   "plays": [
     {
       "id": "pm-20260629-01",
@@ -341,9 +341,10 @@
       "traderAvgEntry": 0.7707,
       "slippageVsTrader": 0.0155,
       "resolves": "2026-07-02",
-      "status": "open",
-      "result": null,
-      "note": "CONSENSUS: GoalLineGhost + mooseborzoi both hold Over 1.5 total goals on Austria-Spain. Verified real fixture via ESPN World Cup scoreboard: 'Austria at Spain', Scheduled 2026-07-02T19:00Z - copied pre-game. Smaller positions ($2.3k/$4.1k) than this pair's usual size, first totals market copied from them."
+      "status": "settled",
+      "result": "W",
+      "resultUnits": 0.272,
+      "note": "WON. Spain 2, Austria 0 (2nd Half, live) - Over 1.5 is mathematically locked in with 2 goals already on the board regardless of final whistle; Polymarket curPrice 0.9987 across all copied wallets confirms. Settled on irreversible goal count even though the gamma-api market wasn't yet marked closed at settle time. CONSENSUS: GoalLineGhost + mooseborzoi both hold Over 1.5 total goals on Austria-Spain, copied pre-game at 78.6c."
     },
     {
       "id": "pm-20260702-03",
@@ -728,11 +729,11 @@
     }
   ],
   "watchWallets": [
-    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. Pirates@Phillies Under 10.5 SETTLED WIN this run (7 total runs). Two still open and both currently trending against our side mid-game: Reds@Brewers ML Brewers (Reds led 5-2, curPrice slid to 12.5c) and Marlins@Rockies ML Rockies (Marlins led 2-1, curPrice slid to 35.5c) - both unsettled, games still in progress as of 3:47p ET." },
-    { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book unchanged, still all unresolved. New Neymar-No-goals position seen (78c vs 61c entry, ~17pp slipped) - too far off entry to copy, skipped. Nothing settled this run." },
-    { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "Argentina No World Cup winner position unchanged (81.65c), still the same consensus as S-Works backing pm-20260629-05. Rest of book stale/resolved to $0. No live eSports slate this run." },
-    { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Spain-Austria kicked off (~3p ET) and is live, trending toward our side on all 3 held markets (ML Yes curPrice 87.4c, O/U 1.5 Over 86.6c, Team-to-Advance Spain 95.1c) but none confirmed settled yet. Portugal-Croatia (23:00Z/7p ET) still hadn't kicked off. New this run: mooseborzoi+suntori consensus on 3 Spain-Austria exact-score longshots (2-0/2-1/3-0 Yes, 11.5-23c) - skipped as over-correlated with the 3 Spain-Austria plays already logged; mooseborzoi+suntori also now hold Mbappe golden-boot YES (39.5c) which mirrors/opposes our existing S-Works Mbappe-No fade - skipped as a contradictory duplicate, not diversification." },
-    { "name": "suntori (#3 leaderboard)", "wallet": "0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "~$150k all-time pnl. Fed 'no change' play unchanged (77c entry, still open, resolves 07-29). Very active today across the World Cup slate - source of 3 new plays this run alongside GoalLineGhost/mooseborzoi." },
-    { "name": "ferrariChampions2026", "wallet": "0xfe787d2da716d60e8acff57fb87eb13cd4d10319", "note": "Still holding stale MLB positions (endDate passed, cached prices) - not eligible. No fresh eSports/tennis conviction this run." }
+    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. Only 2 positions now (today's slate down to these): Reds@Brewers ML Brewers TRENDING LOSS (Reds up 7-2, In Progress, curPrice 0.45c) - not settling yet, waiting for confirmed Final next run. Marlins@Rockies ML Rockies TRENDING WIN (Rockies up 5-4, In Progress, curPrice 56.5c, up from 44.5c entry)." },
+    { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book unchanged, all still unresolved (endDate 07-20). France-No fade (pm-20260629-08) now trending AGAINST us - curPrice fell to 44.5c from 63.7c entry, market thinks France more likely to reach final. Spain-No fade (pm-20260702-09) also softening slightly (76.5c vs 78.5c entry) given Spain's dominant 2-0 showing tonight. Nothing settled this run." },
+    { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "Argentina No World Cup winner position unchanged (81.65c). New fresh Spain(-1.5) spread entry seen (avg 48.7c) but skipped - single-wallet, entered mid-game after Spain already 2-0, too late to be a real edge." },
+    { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Spain-Austria live in 2nd Half, Spain leads 2-0. O/U 1.5 Over SETTLED WIN this run (goal count locked in). ML Yes (98.9c) and Team-to-Advance Spain (99.9c) both trending near-certain W but gamma-api markets not yet closed - deferred to next run for confirmed settle. Portugal-Croatia and Switzerland-Algeria both still Scheduled, haven't kicked off. Skipped again: mooseborzoi+suntori exact-score 2-0 consensus (correlated dup of already-logged Spain-Austria exposure) and Mbappe-Yes consensus (contradicts our existing S-Works Mbappe-No fade)." },
+    { "name": "suntori (#3 leaderboard)", "wallet": "0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "~$150k all-time pnl. Fed 'no change' play unchanged (77c entry, still open, resolves 07-29)." },
+    { "name": "ferrariChampions2026", "wallet": "0xfe787d2da716d60e8acff57fb87eb13cd4d10319", "note": "Also holding Marlins@Rockies Rockies (avg 36.6c) same side as anon's copied pick - not added as a separate play (would double-count the same game/side). Stale Rays/Red Sox position (endDate passed) confirmed not eligible. Fresh Spain O/U 2.5 Under entry seen but skipped - overlaps existing Spain-Austria exposure and entered after the game was already 2-0 live." }
   ]
 }
