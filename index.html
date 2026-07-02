@@ -174,7 +174,7 @@
   <div class="view" id="creator">
     <div id="creatorLock"><div class="panel lockwrap"><h3 style="margin:0 0 4px">Private</h3><p class="sub" style="margin:0 0 12px">Enter PIN to view your real-money challenge + fantasy.</p><input id="pinInput" class="pininp" type="password" inputmode="numeric" placeholder="••" autocomplete="off"><button class="fbtn" id="pinBtn" style="margin-top:12px;width:100%">Unlock</button><div id="pinMsg" style="color:var(--loss);font-size:12px;margin-top:8px;height:14px"></div></div></div>
     <div id="creatorBody" style="display:none">
-      <p class="sub">PlayVo 10k Bankroll Blitz — real money, walled off from the public record.</p>
+      <p class="sub">PlayVo 10k Bankroll Blitz — archived (challenge closed Jul 1, 2026). Real-money history, walled off from the public record.</p>
       <div class="grid g4" id="pvStats"></div>
       <div class="panel"><div class="ph"><h3>Progress &amp; drawdown</h3><span class="meta" id="pvMeta"></span></div><div id="pvBars"></div></div>
       <p class="seclabel">Recent challenge picks</p>
@@ -5437,14 +5437,18 @@
     if(!$('dFired'))return;
     var today=DATA.date;
     var ps=(DATA.picks||[]).filter(function(p){return p.date===today;});
+    var qs=(DATA.picks||[]).filter(function(p){return String(p.date||'')>String(today||'')&&/^pending$/i.test(String(p.result||'pending'));});
     var h='';
     ps.forEach(function(p){
       var r=String(p.result||'').toUpperCase();
       var rlabel=r==='W'?'<span class="gr win">W</span>':r==='L'?'<span class="gr loss">L</span>':r==='P'?'<span class="gr none">push</span>':'<span class="gr paper">live</span>';
       h+='<div class="row" style="padding:10px 0"><span class="dot fire"></span><span class="pr"><b style="font-weight:600">'+esc(p.play||'')+'</b>'+(p.odds?' <span class="od">'+esc(p.odds)+'</span>':'')+'<div style="font-size:12px;color:var(--dim)">'+esc(p.matchup||'')+(p.grade?' · grade '+esc(p.grade):'')+'</div></span>'+rlabel+'</div>';
     });
-    $('dFired').innerHTML=h||'<div class="empty">No plays fired today yet.</div>';
-    if($('firedMeta'))$('firedMeta').textContent=ps.length+(ps.length===1?' play':' plays');
+    qs.forEach(function(p){
+      h+='<div class="row" style="padding:10px 0"><span class="dot watch"></span><span class="pr"><b style="font-weight:600">'+esc(p.play||'')+'</b>'+(p.odds?' <span class="od">'+esc(p.odds)+'</span>':'')+'<div style="font-size:12px;color:var(--dim)">'+esc(p.matchup||'')+' · fires '+esc(p.date||'tomorrow')+(p.grade?' · grade '+esc(p.grade):'')+'</div></span><span class="gr paper">queued</span></div>';
+    });
+    $('dFired').innerHTML=h||'<div class="empty">No plays fired today yet — picks fire 30–120 min before first pitch.</div>';
+    if($('firedMeta'))$('firedMeta').textContent=ps.length+(ps.length===1?' play':' plays')+(qs.length?(' · '+qs.length+' queued'):'');
   }
 
   function renderLearn(){
@@ -5489,19 +5493,22 @@
     var today=DATA.date;
     var games=(DATA.games||[]).filter(function(g){return g.date===today;});
     games.sort(function(a,b){return (a.rank||99)-(b.rank||99);});
-    var leagues=[]; games.forEach(function(g){if(g.sport&&leagues.indexOf(g.sport)<0)leagues.push(g.sport);});
-    if($('boardSub'))$('boardSub').textContent="Today's slate — "+games.length+' games, every play we like.';
+    var ahead=(DATA.games||[]).filter(function(g){return String(g.date||'')>String(today||'');});
+    ahead.sort(function(a,b){return String(a.date||'').localeCompare(String(b.date||''))||(a.rank||99)-(b.rank||99);});
+    var leagues=[]; games.concat(ahead).forEach(function(g){if(g.sport&&leagues.indexOf(g.sport)<0)leagues.push(g.sport);});
+    if($('boardSub'))$('boardSub').textContent="Today's slate — "+games.length+' games, every play we like.'+(ahead.length?(' Plus '+ahead.length+' early games for tomorrow below.'):'');
     var fh='<span class="lg on" data-lg="all">All</span>';
     leagues.forEach(function(l){fh+='<span class="lg" data-lg="'+esc(l)+'">'+esc(l)+'</span>';});
     $('lgFilter').innerHTML=fh;
     var html='';
-    games.forEach(function(g){
+    function cardFor(g,isAhead){
       var pa=String(g.matchup||'').split(/\s*@\s*/);
       var away=g.away||pa[0]||'', home=g.home||pa[1]||'';
       var dec=String(g.decision||'').toUpperCase();
       var isPass=/^pass/i.test(String(g.play||''));
-      var isFinal=/FINAL/.test(dec)||g.status==='final';
-      var pill = /FIR/.test(dec)?'<span class="pill v">fired</span>': /QUEUE/.test(dec)?'<span class="pill v">queued</span>': isFinal?'<span class="pill n">final</span>': (g.play&&!isPass)?'<span class="pill v">play</span>':'<span class="pill n">pass</span>';
+      var isLive=String(g.status||'').toLowerCase()==='live';
+      var isFinal=!isLive&&(/FINAL/.test(dec)||g.status==='final');
+      var pill = /FIR/.test(dec)?'<span class="pill v">fired</span>': /QUEUE/.test(dec)?'<span class="pill v">queued</span>': isLive?'<span class="pill v">live</span>': isFinal?'<span class="pill n">final</span>': (g.play&&!isPass)?'<span class="pill v">play</span>':'<span class="pill n">pass</span>';
       var body='';
       if(g.take)body+='<div class="ln"><b>Read</b>'+esc(g.take)+'</div>';
       if(g.mlTake&&g.mlTake!==g.take)body+='<div class="ln"><b>Moneyline</b>'+esc(g.mlTake)+'</div>';
@@ -5533,13 +5540,19 @@
       }else if(g.play){
         playBar='<div class="gplay pass">'+esc(g.play)+(g.grade?' · grade '+esc(g.grade):'')+'</div>';
       }
-      html+='<div class="card game" data-lg="'+esc(g.sport)+'">'+
+      return '<div class="card game" data-lg="'+esc(g.sport)+'">'+
         '<div class="ghead">'+
-          '<div class="gtop"><span class="lgtag">'+esc(g.sport||'')+'</span><span class="gtime">'+esc(isFinal&&g.finalScore?('FINAL · '+g.finalScore):(g.time||''))+'</span>'+pill+'<span class="chev">▾</span></div>'+
+          '<div class="gtop"><span class="lgtag">'+esc(g.sport||'')+'</span><span class="gtime">'+esc(isFinal&&g.finalScore?('FINAL · '+g.finalScore):((isAhead&&g.date?(g.date+' · '):'')+(g.time||'')))+'</span>'+pill+'<span class="chev">▾</span></div>'+
           '<div class="gmain">'+teamsHtml+'</div>'+meta+playBar+
         '</div>'+
         '<div class="gbody">'+body+'</div></div>';
-    });
+    }
+    games.forEach(function(g){html+=cardFor(g,false);});
+    if(ahead.length){
+      var alg=[];ahead.forEach(function(g){if(g.sport&&alg.indexOf(g.sport)<0)alg.push(g.sport);});
+      html+='<p class="seclabel" style="margin:18px 2px 10px">Tomorrow early — '+esc(alg.join(' / '))+' (research-ahead)</p>';
+      ahead.forEach(function(g){html+=cardFor(g,true);});
+    }
     $('boardList').innerHTML=html||'<div class="empty">No games on the board yet today.</div>';
     bindBoard();
   }
@@ -5588,13 +5601,15 @@
     if(!$('propsTallies'))return;
     var L=DATA.propsLab||{}; var t=L.tallies||{};
     var labels={totals:'Totals',teamTotals:'Team totals',hr:'Home runs',k:'Strikeouts',hits:'Hits',tb:'Total bases',rbi:'RBI',runs:'Runs',outs:'Outs',nrfi:'1st inning (NRFI)'};
-    var stat='';
+    var stat=''; var quiet=[];
     Object.keys(labels).forEach(function(k){
       var o=t[k]; if(!o)return;
+      if(!o.n){quiet.push(labels[k]);return;}
       var rec=(o.w||0)+'-'+(o.l||0)+(o.p?'-'+o.p:'');
       var clv=(o.clvAvg!=null?((o.clvAvg>=0?'+':'')+(+o.clvAvg).toFixed(2)+' CLV'):'calibrating');
-      stat+='<div class="stat"><div class="k">'+esc(labels[k])+'</div><div class="v" style="font-size:20px">'+(o.n?esc(rec):'\u2014')+'</div><div class="x">'+(o.n?esc(clv):'no settled yet')+'</div></div>';
+      stat+='<div class="stat"><div class="k">'+esc(labels[k])+'</div><div class="v" style="font-size:20px">'+esc(rec)+'</div><div class="x">'+esc(clv)+'</div></div>';
     });
+    if(quiet.length)stat+='<div class="stat" style="grid-column:1/-1"><div class="k">Awaiting first settle</div><div class="x" style="margin-top:4px">'+esc(quiet.join(', '))+'</div></div>';
     $('propsTallies').innerHTML=stat||'<div class="empty">No markets tracked yet.</div>';
     var leans=Array.isArray(L.leans)?L.leans:[];
     var by={}; var order=[];
@@ -5668,11 +5683,15 @@
   function renderNews(){
     var hl=Array.isArray(DATA.headlines)?DATA.headlines:[];
     if(!hl.length){$('newsList').innerHTML='<div class="empty">No headlines posted.</div>';return;}
-    var html='<div class="card" style="padding:2px 16px">';
+    var html='';
+    if(DATA.headlinesUpdated)html+='<p class="sub" style="margin:0 0 10px">Updated '+esc(DATA.headlinesUpdated)+'</p>';
+    html+='<div class="card" style="padding:2px 16px">';
     hl.forEach(function(it){
       var title=it.title||it.headline||it.text||String(it);
       var src=it.source||it.src||''; var note=it.note||it.impact||'';
-      html+='<div class="row" style="display:block;padding:13px 0"><div style="font-weight:600;font-size:14.5px;line-height:1.35">'+esc(title)+'</div>'+(note?'<div class="why">'+esc(note)+'</div>':'')+(src?'<div class="clv" style="margin-top:4px">'+esc(src)+'</div>':'')+'</div>';
+      var ts=it.timestamp||it.time||it.date||'';
+      var ml=src+(ts?((src?' · ':'')+ts):'');
+      html+='<div class="row" style="display:block;padding:13px 0"><div style="font-weight:600;font-size:14.5px;line-height:1.35">'+esc(title)+'</div>'+(note?'<div class="why">'+esc(note)+'</div>':'')+(ml?'<div class="clv" style="margin-top:4px">'+esc(ml)+'</div>':'')+'</div>';
     });
     html+='</div>';
     $('newsList').innerHTML=html;
