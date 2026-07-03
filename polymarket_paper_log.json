@@ -6,10 +6,10 @@
     "stakeUnits": 1,
     "unitNote": "1 unit = $5. You COPY THE SIDE AND PRICE, not the dollar amount. The trader bets their whole bankroll (often $10k-$200k); you stake a flat 1 unit. traderSize = the copied wallet's position size, shown only for context.",
     "started": "2026-06-29",
-    "updated": "2026-07-03 15:55 ET",
+    "updated": "2026-07-03 16:55 ET",
     "rules": "Curated slate: copy consensus (2+ top wallets) OR high-conviction positions from the strongest wallets, still copyable near entry. VERIFY sports matchups + dates against the real league schedule before logging (skip stale/old markets). Skip coin-flips and late entries. Grade on CLV-style edge, not just W/L."
   },
-  "record": { "open": 20, "won": 18, "lost": 5, "unitsPnl": 9.1458 },
+  "record": { "open": 20, "won": 19, "lost": 5, "unitsPnl": 9.6496 },
   "plays": [
     {
       "id": "pm-20260629-01",
@@ -612,9 +612,10 @@
       "traderAvgEntry": 0.669,
       "slippageVsTrader": -0.004,
       "resolves": "2026-07-03",
-      "status": "open",
-      "result": null,
-      "note": "NEW consensus: GoalLineGhost ($3.9k) + suntori ($14.3k) both hold Under 2.5 total goals, tight entry (0.4c below avg). Fixture verified via ESPN World Cup scoreboard: 'Egypt at Australia', Scheduled 2026-07-03T18:00Z - clean pre-game entry."
+      "status": "settled",
+      "result": "W",
+      "resultUnits": 0.5038,
+      "note": "WON. Egypt at Australia finished regulation 1-1 (2 total goals) and went to extra time / penalties (ESPN status 'AET-pens', AUS 1 EGY 1). Polymarket soccer totals settle on regulation, so Under 2.5 is locked at 2 goals regardless of the shootout; gamma-api O/U 2.5 Under=0.9995, O/U 1.5 Over=0.9995, BTTS Yes=0.9995 all confirm exactly 2 regulation goals. Third-wallet confirmation: ferrariChampions2026 also held Under 2.5 (avg 0.6371, cur 0.9995). GoalLineGhost+suntori consensus copied pre-game at 66.5c held."
     },
     {
       "id": "pm-20260702-17",
@@ -850,15 +851,34 @@
       "status": "open",
       "result": null,
       "note": "anon's second live-slate position: Twins@Yankees, Yankees ML at 66.5c (+1.5c above his 65c avg, within tolerance). Matchup + state verified via MLB statsapi (Minnesota Twins @ New York Yankees, status 'Pre-Game', 0-0) - clean pre-game entry. MUCH smaller conviction than the STL/CHC Under ($3.7k vs $99.4k) so weighted accordingly in reading anon's signal, but a legitimate clean single-wallet copy of a favorite (not a coin-flip). Non-correlated with the STL/CHC play (different game)."
+    },
+    {
+      "id": "pm-20260703-04",
+      "loggedAt": "2026-07-03",
+      "market": "Pittsburgh Pirates vs. Washington Nationals: O/U 9.5",
+      "link": "https://polymarket.com/event/mlb-pit-wsh-2026-07-03",
+      "side": "Over",
+      "entryPrice": 0.535,
+      "stakeUnits": 1,
+      "toWinUnits": 0.8692,
+      "traderSize": 9301,
+      "copiedFrom": ["anon"],
+      "consensus": 1,
+      "traderAvgEntry": 0.53,
+      "slippageVsTrader": 0.005,
+      "resolves": "2026-07-03",
+      "status": "open",
+      "result": null,
+      "note": "anon's third live-slate position added this run: Pirates@Nationals Over 9.5 ($9.3k, avg 53c, cur 53.5c). Copied at 53.5c, +0.5c above his avg (tight). Matchup + state verified via MLB statsapi (Pittsburgh Pirates @ Washington Nationals, status 'Pre-Game', 0-0, dated 2026-07-03) - clean pre-first-pitch entry. Single-wallet (no consensus confirm from ferrari or S-Works), but anon is the strongest MLB copy source. Note the STL/CHC total is a rare anon-vs-S-Works standoff (anon Under $132k vs S-Works Over $78k) - context only, no change to the copied anon Under."
     }
   ],
   "watchWallets": [
-    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. LIVE at 15:55 ET - re-loaded for today's MLB slate after being flat this morning. Two open positions, both copied PRE-GAME this run: Cardinals@Cubs Under 10.5 ($99.4k, flagship, pm-20260703-02) and Twins@Yankees Yankees ML ($3.7k, pm-20260703-03). Confirms the intraday pattern: clears overnight, loads once first pitches approach mid-afternoon ET. Both games verified 0-0 pre-game on MLB statsapi." },
+    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. LIVE at 16:55 ET - three open MLB positions today, all copied PRE-GAME: Cardinals@Cubs Under 10.5 (now $132k, flagship, pm-20260703-02, In Progress 2nd inning 3-0 STL, Under still live), Twins@Yankees Yankees ML ($3.7k, pm-20260703-03, still Pre-Game), and NEW this run Pirates@Nationals Over 9.5 ($9.3k, pm-20260703-04, Pre-Game). Confirms the intraday pattern: clears overnight, loads as first pitches approach mid-afternoon ET. On STL/CHC the total is a rare anon(Under)-vs-S-Works(Over) standoff." },
     { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book unchanged, all still unresolved (endDate 07-20). Argentina reach-final No now trending AGAINST us hard - curPrice down to 60.5c from 74.65c entry (still correctly skipped, too slipped to copy). France-No fade (pm-20260629-08) also still trending against (curPrice ~45.5c vs 63.7c entry). Nothing settled this run." },
     { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "Argentina No World Cup winner position unchanged (81.65c). Also now holding Portugal/Croatia O/U 2.5 Under (47.87c, pre-game) - same market/side as our already-logged GoalLineGhost+suntori consensus play (pm-20260702-14), so this is a third-wallet confirmation, not a new play." },
-    { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Switzerland-Algeria (07-02 slate/07-03 UTC) FINAL: Switzerland ML Yes SETTLED W this run (pm-20260702-15, +1.089u). NEW play added this run: Mexico ML Yes vs England 07-05 (pm-20260703-01, glg+moose consensus, 30.5c). Still open & unchanged: Argentina-CaboVerde ML (07-03), Australia-Egypt O/U 2.5 Under (07-03, kickoff 18:00Z not yet started), Morocco-Canada ML (07-04). Skipped as correlated with already-logged plays: Argentina spread/O.U, Australia-Egypt win-No/draw-No/O.U 1.5." },
+    { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Australia-Egypt O/U 2.5 Under SETTLED W this run (pm-20260702-16, +0.5038u; regulation 1-1, went to penalties). Still open & unchanged: Argentina-CapeVerde ML (07-03, kickoff 6:00 PM EDT - not started at 16:55), Morocco-Canada ML (07-04, pm-20260702-17), Mexico ML vs England (07-05, pm-20260703-01). No new eligible consensus finds this run." },
     { "name": "suntori (#3 leaderboard)", "wallet": "0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "~$275k all-time pnl per latest leaderboard pull. Fed 'no change' play unchanged (77c entry, still open, resolves 07-29)." },
     { "name": "ferrariChampions2026", "wallet": "0xfe787d2da716d60e8acff57fb87eb13cd4d10319", "note": "Still holding Marlins@Rockies Rockies (avg 37.55c) same side as anon's copied pick - not added as a separate play (would double-count the same game/side). No other new eligible finds this run." },
-    { "name": "leaderboard scan", "wallet": "n/a", "note": "New #1 all-time pnl wallet appeared: WhatARobbery (~$1.1M) - not yet vetted/pinned, worth a positions check on a future run. Also new to the top-20: hot2trot, Sassy-Bucket, surfandturf, shutitfatty, Jokerxing7, diooson, Zzzz87, purplegatto, Kch-Temp, palegrit, shijiebeifacai - unexplored this run, deprioritized in favor of settling the existing open book." }
+    { "name": "leaderboard scan", "wallet": "n/a", "note": "All-time pnl leaderboard reshuffled (window=all fluctuates): coldsway now #1 (~$2.06M), then CandleHammerDrums (~$579k), rabbitfoot1 (~$554k), WhatARobbery (~$371k), Kch-Temp, Crystiano. mooseborzoi (~$283k) + suntori (~$205k) still top-12 and already tracked. coldsway/CandleHammerDrums/rabbitfoot1 unvetted - worth a positions check on a future run; deprioritized this run in favor of settling the open book." }
   ]
 }
