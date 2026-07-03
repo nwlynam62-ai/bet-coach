@@ -158,6 +158,7 @@
   .lup td.pl .o{display:inline-block;width:15px;color:var(--dim);font-weight:700;font-size:11px}
   .lup td.pl .ps{color:var(--dim);font-weight:500;font-size:10.5px;margin-left:4px}
   .lup .hotv{color:#0e7d47;font-weight:800} .lup .warmv{color:#0b8f86;font-weight:700} .lup .coldv{color:var(--dim)}
+  .lup .bolt{color:#e8930c;font-size:11px;letter-spacing:-2px;margin-left:4px;text-shadow:0 0 4px rgba(232,147,12,.35)}
   .lup .fireic{font-size:10px}
 </style>
 </head>
@@ -546,7 +547,9 @@
       if(!rows||!rows.length)return '';
       var t='<h5>'+esc(team)+' \u2014 projected lineup</h5><table><tr><th class="pl">BATTER</th><th>HR%</th><th>HIT%</th><th>TB</th></tr>';
       rows.forEach(function(b){
-        t+='<tr><td class="pl"><span class="o">'+esc(b.o||'')+'</span>'+esc(b.name||'')+(b.pos?'<span class="ps">'+esc(b.pos)+'</span>':'')+'</td>'+
+        var nb=b.bolt!=null?Math.max(0,Math.min(3,Math.round(+b.bolt||0))):(+b.hrPct>=22?3:+b.hrPct>=18?2:+b.hrPct>=15?1:0);
+        var boltHtml=nb?'<span class="bolt" title="HR conviction '+nb+'/3">'+'\u26a1'.repeat(nb)+'</span>':'';
+        t+='<tr><td class="pl"><span class="o">'+esc(b.o||'')+'</span>'+esc(b.name||'')+(b.pos?'<span class="ps">'+esc(b.pos)+'</span>':'')+boltHtml+'</td>'+
           pctCell(b.hrPct,18,10)+pctCell(b.hitPct,70,55)+
           '<td>'+(b.tb!=null&&isFinite(+b.tb)?(+b.tb).toFixed(1):'\u2014')+'</td></tr>';
       });
