@@ -6,10 +6,10 @@
     "stakeUnits": 1,
     "unitNote": "1 unit = $5. You COPY THE SIDE AND PRICE, not the dollar amount. The trader bets their whole bankroll (often $10k-$200k); you stake a flat 1 unit. traderSize = the copied wallet's position size, shown only for context.",
     "started": "2026-06-29",
-    "updated": "2026-07-03 16:55 ET",
+    "updated": "2026-07-03 18:50 ET",
     "rules": "Curated slate: copy consensus (2+ top wallets) OR high-conviction positions from the strongest wallets, still copyable near entry. VERIFY sports matchups + dates against the real league schedule before logging (skip stale/old markets). Skip coin-flips and late entries. Grade on CLV-style edge, not just W/L."
   },
-  "record": { "open": 20, "won": 19, "lost": 5, "unitsPnl": 9.6496 },
+  "record": { "open": 21, "won": 19, "lost": 6, "unitsPnl": 8.6496 },
   "plays": [
     {
       "id": "pm-20260629-01",
@@ -829,9 +829,10 @@
       "traderAvgEntry": 0.4879,
       "slippageVsTrader": -0.0029,
       "resolves": "2026-07-03",
-      "status": "open",
-      "result": null,
-      "note": "anon (#1 wallet, MLB intraday specialist) re-loaded for the live slate after being flat at 10:50 ET. This is his flagship of the run: a $99.4k position on Cardinals@Cubs Under 10.5. Copied PRE-GAME at 48.5c, fractionally BELOW his 48.79c avg (favorable slippage). Matchup + state verified via MLB statsapi (St. Louis Cardinals @ Chicago Cubs, status 'Warmup', 0-0 top 1st) - clean pre-first-pitch entry. Single-wallet (no consensus confirm), but anon is the strongest MLB copy source and the conviction size is the largest of anything he holds today."
+      "status": "settled",
+      "result": "L",
+      "resultUnits": -1,
+      "note": "LOST. Cardinals routed the Cubs - 17-1 St. Louis while still In Progress (MLB statsapi), so Under 10.5 is mathematically dead (18+ runs, can't decrease); anon's Under position dropped off his live positions list (closed ~$0). anon's largest conviction of the run ($99.4k/$132k) and cleanest pre-game entry (48.5c, favorable slippage) still blew up - a blowout is a blowout regardless of who's on the other side. This was the rare anon(Under)-vs-S-Works(Over) standoff; S-Works' Over side won it. Fourth anon single-wallet loss overall, and the costliest reminder that conviction size does not predict one game."
     },
     {
       "id": "pm-20260703-03",
@@ -870,10 +871,48 @@
       "status": "open",
       "result": null,
       "note": "anon's third live-slate position added this run: Pirates@Nationals Over 9.5 ($9.3k, avg 53c, cur 53.5c). Copied at 53.5c, +0.5c above his avg (tight). Matchup + state verified via MLB statsapi (Pittsburgh Pirates @ Washington Nationals, status 'Pre-Game', 0-0, dated 2026-07-03) - clean pre-first-pitch entry. Single-wallet (no consensus confirm from ferrari or S-Works), but anon is the strongest MLB copy source. Note the STL/CHC total is a rare anon-vs-S-Works standoff (anon Under $132k vs S-Works Over $78k) - context only, no change to the copied anon Under."
+    },
+    {
+      "id": "pm-20260703-05",
+      "loggedAt": "2026-07-03",
+      "market": "Chicago White Sox vs. Cleveland Guardians: O/U 8.5",
+      "link": "https://polymarket.com/event/mlb-cws-cle-2026-07-03",
+      "side": "Over",
+      "entryPrice": 0.465,
+      "stakeUnits": 1,
+      "toWinUnits": 1.1505,
+      "traderSize": 93098,
+      "copiedFrom": ["anon"],
+      "consensus": 1,
+      "traderAvgEntry": 0.46,
+      "slippageVsTrader": 0.005,
+      "resolves": "2026-07-03",
+      "status": "open",
+      "result": null,
+      "note": "anon's NEW flagship after the STL/CHC Under blew up: a $93.1k position on White Sox@Guardians Over 8.5. Copied PRE-GAME at 46.5c (+0.5c vs his 46c avg, tight). Matchup + state verified via MLB statsapi (Chicago White Sox @ Cleveland Guardians, status 'Warmup', 0-0, dated 2026-07-03) - clean pre-first-pitch entry. Single-wallet anon, his largest live position now. NOTE: different game from pm-20260702-24 (also CWS@CLE O/U 8.5 Over, settled W) - that was 07-02, this is 07-03, no dependency."
+    },
+    {
+      "id": "pm-20260703-06",
+      "loggedAt": "2026-07-03",
+      "market": "Toronto Blue Jays vs. Seattle Mariners",
+      "link": "https://polymarket.com/event/mlb-tor-sea-2026-07-03",
+      "side": "Seattle Mariners",
+      "entryPrice": 0.455,
+      "stakeUnits": 1,
+      "toWinUnits": 1.1978,
+      "traderSize": 41651,
+      "copiedFrom": ["anon"],
+      "consensus": 1,
+      "traderAvgEntry": 0.45,
+      "slippageVsTrader": 0.005,
+      "resolves": "2026-07-03",
+      "status": "open",
+      "result": null,
+      "note": "anon's second-largest live position: Seattle Mariners ML vs Toronto ($41.7k, avg 45c, cur 45.5c). Copied PRE-GAME at 45.5c (+0.5c vs avg, tight). Matchup + date verified via MLB statsapi teamId query (Toronto Blue Jays @ Seattle Mariners, status 'Pre-Game', officialDate 2026-07-03) - the position's metadata endDate (07-11) is series-level, but the game itself is today and copyable pre-first-pitch. Single-wallet anon, near-coin-flip home dog/pick'em priced favorite side."
     }
   ],
   "watchWallets": [
-    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. LIVE at 16:55 ET - three open MLB positions today, all copied PRE-GAME: Cardinals@Cubs Under 10.5 (now $132k, flagship, pm-20260703-02, In Progress 2nd inning 3-0 STL, Under still live), Twins@Yankees Yankees ML ($3.7k, pm-20260703-03, still Pre-Game), and NEW this run Pirates@Nationals Over 9.5 ($9.3k, pm-20260703-04, Pre-Game). Confirms the intraday pattern: clears overnight, loads as first pitches approach mid-afternoon ET. On STL/CHC the total is a rare anon(Under)-vs-S-Works(Over) standoff." },
+    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. LIVE at 18:50 ET - flagship Cardinals@Cubs Under 10.5 (pm-20260703-02) LOST this run (STL routed CHC 17-1, Under dead, position dropped off). He rotated into two big new positions (both logged): White Sox@Guardians Over 8.5 $93.1k (pm-20260703-05, new flagship, Warmup) and Seattle Mariners ML vs Toronto $41.7k (pm-20260703-06, Pre-Game). Still open from earlier: Twins@Yankees Yankees ML ($3.7k, pm-20260703-03, Warmup), Pirates@Nationals Over 9.5 ($9.1k, pm-20260703-04, In Progress 0-0). Intraday pattern holds: clears overnight, loads through the afternoon. S-Works won the STL/CHC Over side of their standoff." },
     { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book unchanged, all still unresolved (endDate 07-20). Argentina reach-final No now trending AGAINST us hard - curPrice down to 60.5c from 74.65c entry (still correctly skipped, too slipped to copy). France-No fade (pm-20260629-08) also still trending against (curPrice ~45.5c vs 63.7c entry). Nothing settled this run." },
     { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "Argentina No World Cup winner position unchanged (81.65c). Also now holding Portugal/Croatia O/U 2.5 Under (47.87c, pre-game) - same market/side as our already-logged GoalLineGhost+suntori consensus play (pm-20260702-14), so this is a third-wallet confirmation, not a new play." },
     { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Australia-Egypt O/U 2.5 Under SETTLED W this run (pm-20260702-16, +0.5038u; regulation 1-1, went to penalties). Still open & unchanged: Argentina-CapeVerde ML (07-03, kickoff 6:00 PM EDT - not started at 16:55), Morocco-Canada ML (07-04, pm-20260702-17), Mexico ML vs England (07-05, pm-20260703-01). No new eligible consensus finds this run." },
