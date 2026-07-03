@@ -543,16 +543,27 @@
     // slate-wide bolt ranking: only the very top HR spots get bolts (worker `bolt` field overrides)
     (function(){
       var pool=[];
-      lus.forEach(function(g){[].concat(g.awayLineup||[],g.homeLineup||[]).forEach(function(b){b._b=0;if(b.bolt==null&&isFinite(+b.hrPct))pool.push(b);});});
+      lus.forEach(function(g){[].concat(g.awayLineup||[],g.homeLineup||[]).forEach(function(b){
+        b._b=(b.bolt!=null)?Math.max(0,Math.min(3,Math.round(+b.bolt||0))):null;
+        if(b._b===null&&isFinite(+b.hrPct))pool.push(b);
+      });});
       pool.sort(function(a,b){return (+b.hrPct)-(+a.hrPct);});
       // owner bets these: default max 2 bolted per slate; expand to 4 only on a HR-rich night (5+ elite spots)
       var elite=pool.filter(function(b){return +b.hrPct>=20;}).length;
       var cap=elite>=5?4:2;
       pool.forEach(function(b,i){
+        b._b=0;
         if(i>=cap)return;
         if(i===0&&+b.hrPct>=21)b._b=3;
         else if(+b.hrPct>=19)b._b=2;
         else if(i===0&&+b.hrPct>=18)b._b=1;
+      });
+      // guarantee: every game shows its single best HR spot with at least 1 bolt
+      lus.forEach(function(g){
+        var all=[].concat(g.awayLineup||[],g.homeLineup||[]).filter(function(b){return isFinite(+b.hrPct);});
+        if(!all.length)return;
+        var any=all.some(function(b){return (b._b||0)>0;});
+        if(!any){var top=all.reduce(function(m,b){return +b.hrPct>+m.hrPct?b:m;});top._b=1;}
       });
     })();
     var lh='';
@@ -562,7 +573,7 @@
       if(!rows||!rows.length)return '';
       var t='<h5>'+esc(team)+' \u2014 projected lineup</h5><table><tr><th class="pl">BATTER</th><th>HR%</th><th>HIT%</th><th>TB</th></tr>';
       rows.forEach(function(b){
-        var nb=b.bolt!=null?Math.max(0,Math.min(3,Math.round(+b.bolt||0))):(b._b||0);
+        var nb=b._b||0;
         var boltHtml=nb?'<span class="bolt" title="HR conviction '+nb+'/3">'+'\u26a1'.repeat(nb)+'</span>':'';
         t+='<tr><td class="pl"><span class="o">'+esc(b.o||'')+'</span>'+esc(b.name||'')+(b.pos?'<span class="ps">'+esc(b.pos)+'</span>':'')+boltHtml+'</td>'+
           pctCell(b.hrPct,18,10)+pctCell(b.hitPct,70,55)+
