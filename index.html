@@ -338,7 +338,7 @@
     }
     var wl=(Array.isArray(DATA.watchlist)?DATA.watchlist:[]).filter(_leanLive);
     var rh='';
-    wl.slice(0,5).forEach(function(w){
+    wl.slice(0,12).forEach(function(w){
       var play=w.play||w.matchup||(w.note?String(w.note).replace(/^(FIRE|RADAR|PROMOTED)\b[^.]*\.\s*/i,'').slice(0,90):'lean');
       rh+='<div class="row" style="padding:9px 0"><span class="dot watch"></span><span class="pr">'+esc(play)+(w.odds?' <span class="od">'+esc(w.odds)+'</span>':'')+'</span>'+(w.grade?'<span class="gr '+gradeCls(w.grade)+'">'+esc(w.grade)+'</span>':'')+'</div>';
     });
