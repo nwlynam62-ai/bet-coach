@@ -6,10 +6,10 @@
     "stakeUnits": 1,
     "unitNote": "1 unit = $5. You COPY THE SIDE AND PRICE, not the dollar amount. The trader bets their whole bankroll (often $10k-$200k); you stake a flat 1 unit. traderSize = the copied wallet's position size, shown only for context.",
     "started": "2026-06-29",
-    "updated": "2026-07-03 18:50 ET",
+    "updated": "2026-07-03 20:50 ET",
     "rules": "Curated slate: copy consensus (2+ top wallets) OR high-conviction positions from the strongest wallets, still copyable near entry. VERIFY sports matchups + dates against the real league schedule before logging (skip stale/old markets). Skip coin-flips and late entries. Grade on CLV-style edge, not just W/L."
   },
-  "record": { "open": 21, "won": 19, "lost": 6, "unitsPnl": 8.6496 },
+  "record": { "open": 21, "won": 19, "lost": 7, "unitsPnl": 7.6496 },
   "plays": [
     {
       "id": "pm-20260629-01",
@@ -322,9 +322,10 @@
       "traderAvgEntry": 0.84,
       "slippageVsTrader": 0.005,
       "resolves": "2026-07-03",
-      "status": "open",
-      "result": null,
-      "note": "CONSENSUS: GoalLineGhost ($25k) and mooseborzoi ($23k) both entered Argentina ML at the same 84c this run - a genuinely fresh consensus entry (both avg entries basically match current price, unlike the stale Messi golden-boot position seen from the same pair). Verified real fixture via ESPN World Cup scoreboard for 2026-07-03: 'Cape Verde at Argentina'. Round-of-32 favorite, low payout (0.183u) but clean entry with no slippage."
+      "status": "settled",
+      "result": "L",
+      "resultUnits": -1,
+      "note": "LOST (on regulation). Argentina beat Cabo Verde 3-2 but ONLY After Extra Time (ESPN: 'Final Score - After Extra Time', ARG 3 CPV 2) - regulation was a draw. Polymarket 'Will Argentina win on 2026-07-03?' settles on 90-min regulation, which was a draw (gamma-api: Argentina-win Yes=0.0005/No=0.9995, draw Yes=0.9995). So the copied Argentina-Yes ML lost even though Argentina advanced. Same regulation-settlement precedent as Australia-Egypt (pm-20260702-16, went to pens). CLV lesson: a knockout favorite can win the tie and still lose the daily-moneyline market."
     },
     {
       "id": "pm-20260702-02",
@@ -909,13 +910,32 @@
       "status": "open",
       "result": null,
       "note": "anon's second-largest live position: Seattle Mariners ML vs Toronto ($41.7k, avg 45c, cur 45.5c). Copied PRE-GAME at 45.5c (+0.5c vs avg, tight). Matchup + date verified via MLB statsapi teamId query (Toronto Blue Jays @ Seattle Mariners, status 'Pre-Game', officialDate 2026-07-03) - the position's metadata endDate (07-11) is series-level, but the game itself is today and copyable pre-first-pitch. Single-wallet anon, near-coin-flip home dog/pick'em priced favorite side."
+    },
+    {
+      "id": "pm-20260703-07",
+      "loggedAt": "2026-07-03",
+      "market": "Will Colombia win on 2026-07-03? (vs. Ghana, moneyline)",
+      "link": "https://polymarket.com/event/fifwc-col-gha-2026-07-03",
+      "side": "Colombia (Yes)",
+      "entryPrice": 0.685,
+      "stakeUnits": 1,
+      "toWinUnits": 0.4599,
+      "traderSize": 20549,
+      "copiedFrom": ["GoalLineGhost"],
+      "consensus": 1,
+      "traderAvgEntry": 0.68,
+      "slippageVsTrader": 0.005,
+      "resolves": "2026-07-03",
+      "status": "open",
+      "result": null,
+      "note": "Single-wallet high-conviction copy from GoalLineGhost, whose whole Colombia-Ghana book leans Colombia (draw=No $83.3k, Ghana-win=No $26.4k, Colombia-win=Yes $20.5k). Copied the cleanest directional line, Colombia ML Yes, PRE-GAME at 68.5c (+0.5c vs his 68c avg, tight). Fixture verified via ESPN World Cup scoreboard: 'Ghana at Colombia', Scheduled 2026-07-03 9:30 PM EDT. No moose/suntori confirm (single-wallet, not consensus), but GLG is a strong WC wallet and the entry is clean. Round-of-32 favorite, 0.46u payout. Skipped as correlated same-game: draw-No (lower payout, same thesis), O/U 2.5 (GLG splits Over+Under, no clean signal)."
     }
   ],
   "watchWallets": [
-    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. LIVE at 18:50 ET - flagship Cardinals@Cubs Under 10.5 (pm-20260703-02) LOST this run (STL routed CHC 17-1, Under dead, position dropped off). He rotated into two big new positions (both logged): White Sox@Guardians Over 8.5 $93.1k (pm-20260703-05, new flagship, Warmup) and Seattle Mariners ML vs Toronto $41.7k (pm-20260703-06, Pre-Game). Still open from earlier: Twins@Yankees Yankees ML ($3.7k, pm-20260703-03, Warmup), Pirates@Nationals Over 9.5 ($9.1k, pm-20260703-04, In Progress 0-0). Intraday pattern holds: clears overnight, loads through the afternoon. S-Works won the STL/CHC Over side of their standoff." },
+    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. LIVE at 20:50 ET, 4 logged MLB plays all still in-progress (none settled this run): White Sox@Guardians Over 8.5 $93.5k (pm-20260703-05, cur 0.43, drifting against), Seattle Mariners ML vs Toronto $42.4k (pm-20260703-06, cur 0.455), Pirates@Nationals Over 9.5 (pm-20260703-04, cur 0.375, drifting hard against), Twins@Yankees Yankees ML (pm-20260703-03, cur 0.695, trending FOR). New tiny position seen this run: Boston@LAA O/U 7.5 Over but only ~$294 (below the copy-size floor - SKIPPED). Intraday pattern holds; check these for settles on the 12:40 AM sweep." },
     { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book unchanged, all still unresolved (endDate 07-20). Argentina reach-final No now trending AGAINST us hard - curPrice down to 60.5c from 74.65c entry (still correctly skipped, too slipped to copy). France-No fade (pm-20260629-08) also still trending against (curPrice ~45.5c vs 63.7c entry). Nothing settled this run." },
     { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "Argentina No World Cup winner position unchanged (81.65c). Also now holding Portugal/Croatia O/U 2.5 Under (47.87c, pre-game) - same market/side as our already-logged GoalLineGhost+suntori consensus play (pm-20260702-14), so this is a third-wallet confirmation, not a new play." },
-    { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Australia-Egypt O/U 2.5 Under SETTLED W this run (pm-20260702-16, +0.5038u; regulation 1-1, went to penalties). Still open & unchanged: Argentina-CapeVerde ML (07-03, kickoff 6:00 PM EDT - not started at 16:55), Morocco-Canada ML (07-04, pm-20260702-17), Mexico ML vs England (07-05, pm-20260703-01). No new eligible consensus finds this run." },
+    { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Argentina-CaboVerde ML SETTLED L this run (pm-20260702-01, -1u): ARG won 3-2 AET but regulation was a draw, so the daily-moneyline lost. GLG has since flipped onto the Colombia-Ghana book (draw=No $83.3k, Colombia-win=Yes $20.5k) - added Colombia ML Yes as a single-wallet play (pm-20260703-07, 68.5c, 9:30 PM EDT game); no moose/suntori confirm on it. Still open: Morocco-Canada ML (07-04, pm-20260702-17), Mexico ML vs England (07-05, pm-20260703-01). Outright-winner longshots (Spain, Portugal) unchanged (07-20)." },
     { "name": "suntori (#3 leaderboard)", "wallet": "0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "~$275k all-time pnl per latest leaderboard pull. Fed 'no change' play unchanged (77c entry, still open, resolves 07-29)." },
     { "name": "ferrariChampions2026", "wallet": "0xfe787d2da716d60e8acff57fb87eb13cd4d10319", "note": "Still holding Marlins@Rockies Rockies (avg 37.55c) same side as anon's copied pick - not added as a separate play (would double-count the same game/side). No other new eligible finds this run." },
     { "name": "leaderboard scan", "wallet": "n/a", "note": "All-time pnl leaderboard reshuffled (window=all fluctuates): coldsway now #1 (~$2.06M), then CandleHammerDrums (~$579k), rabbitfoot1 (~$554k), WhatARobbery (~$371k), Kch-Temp, Crystiano. mooseborzoi (~$283k) + suntori (~$205k) still top-12 and already tracked. coldsway/CandleHammerDrums/rabbitfoot1 unvetted - worth a positions check on a future run; deprioritized this run in favor of settling the open book." }
