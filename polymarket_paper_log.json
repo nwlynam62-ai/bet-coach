@@ -6,10 +6,10 @@
     "stakeUnits": 1,
     "unitNote": "1 unit = $5. You COPY THE SIDE AND PRICE, not the dollar amount. The trader bets their whole bankroll (often $10k-$200k); you stake a flat 1 unit. traderSize = the copied wallet's position size, shown only for context.",
     "started": "2026-06-29",
-    "updated": "2026-07-04 15:47 ET",
+    "updated": "2026-07-04 16:47 ET",
     "rules": "Curated slate: copy consensus (2+ top wallets) OR high-conviction positions from the strongest wallets, still copyable near entry. VERIFY sports matchups + dates against the real league schedule before logging (skip stale/old markets). Skip coin-flips and late entries. Grade on CLV-style edge, not just W/L."
   },
-  "record": { "open": 17, "won": 23, "lost": 10, "unitsPnl": 7.3174 },
+  "record": { "open": 18, "won": 23, "lost": 10, "unitsPnl": 7.3174 },
   "plays": [
     {
       "id": "pm-20260629-01",
@@ -993,10 +993,29 @@
       "status": "open",
       "result": null,
       "note": "NEW consensus-2: GoalLineGhost ($9.2k, avg 35c) + suntori ($11.7k, avg 35.25c) both hold USA ML Yes as the round-of-16 underdog vs Belgium. Copied at 33.5c, ~1.6c BELOW their blended 35.1c entry (favorable slippage - better price than either sharp got). Fixture verified via ESPN World Cup scoreboard: 'Belgium at United States', state 'pre', 2026-07-07T00:00Z (07-06 evening ET). High-payout dog style (1.99u), non-correlated with any other open play. Note suntori separately holds Belgium team-to-advance - the daily-ML (regulation) and advance (incl. ET/pens) are different bets, so no contradiction."
+    },
+    {
+      "id": "pm-20260704-03",
+      "loggedAt": "2026-07-04",
+      "market": "Baltimore Orioles vs. Cincinnati Reds: O/U 9.5",
+      "link": "https://polymarket.com/event/mlb-bal-cin-2026-07-04",
+      "side": "Over",
+      "entryPrice": 0.475,
+      "stakeUnits": 1,
+      "toWinUnits": 1.1053,
+      "traderSize": 634.65,
+      "copiedFrom": ["anon"],
+      "consensus": 1,
+      "traderAvgEntry": 0.47,
+      "slippageVsTrader": 0.005,
+      "resolves": "2026-07-04",
+      "status": "open",
+      "result": null,
+      "note": "NEW single-wallet anon MLB play - his first copyable position of the 07-04 slate (flat at the 3:47 PM run). Orioles @ Reds Over 9.5, copied PRE-GAME at 47.5c (+0.5c vs his 47c avg entry). Fixture verified via MLB statsapi (BAL @ CIN, 2026-07-04, state Pre-Game). Small conviction ($635) but the clean-pre-game-entry anon pattern the lab tracks; resolves tonight."
     }
   ],
   "watchWallets": [
-    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. FLAT at 3:47 PM ET this run - positions API returned zero holdings above the $300 threshold, so no copyable anon MLB play mid-afternoon (anon typically loads in closer to/inside game windows). Nothing to settle from anon this run. Record in the lab ~8-6. Re-check on the evening sweep for the 07-04 late slate." },
+    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. Loaded in by 4:47 PM ET - now holds one copyable MLB position: Orioles @ Reds Over 9.5 (avg 47c, cur 47.5c, $635), logged this run as pm-20260704-03 (verified BAL@CIN Pre-Game via statsapi). This was his only holding above the $300 threshold. Re-check on the evening sweep for anon's larger late-slate loads and to settle the BAL-CIN Over." },
     { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book unchanged, all still unresolved (endDate 07-20). Argentina reach-final No still trending AGAINST us (correctly skipped, too slipped to copy). France-No fade (pm-20260629-08) also still trending against. Nothing settled this run." },
     { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "eSports/soccer specialist. No new copyable single-wallet conviction surfaced this run; its recent WC positions overlap markets already logged via the GLG/moose/suntori consensus." },
     { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Heavy on the 07-04 France-Paraguay match. NO new plays added this run - everything they hold is either already logged or correlated. Already open: France -1.5 spread (pm-20260704-01, kicks off 5 PM ET, not yet resolved), USA ML vs Belgium 07-06 (pm-20260704-02), Mexico ML vs England 07-05 (pm-20260703-01). SKIPS this run: France -2.5/-3.5 spreads + France ML Yes/No (all same match as the -1.5 we hold); France-Paraguay O/U 2.5 (wallets hold BOTH Over AND Under = liquidity/hedge, no genuine directional consensus); Norway-win dog 07-05 (2nd holder moose only $754, too thin for high-conviction). Outright longshots (Spain, Portugal Yes) unchanged (07-20)." },
