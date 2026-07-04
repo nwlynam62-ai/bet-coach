@@ -6,10 +6,10 @@
     "stakeUnits": 1,
     "unitNote": "1 unit = $5. You COPY THE SIDE AND PRICE, not the dollar amount. The trader bets their whole bankroll (often $10k-$200k); you stake a flat 1 unit. traderSize = the copied wallet's position size, shown only for context.",
     "started": "2026-06-29",
-    "updated": "2026-07-04 00:50 ET",
+    "updated": "2026-07-04 15:47 ET",
     "rules": "Curated slate: copy consensus (2+ top wallets) OR high-conviction positions from the strongest wallets, still copyable near entry. VERIFY sports matchups + dates against the real league schedule before logging (skip stale/old markets). Skip coin-flips and late entries. Grade on CLV-style edge, not just W/L."
   },
-  "record": { "open": 18, "won": 22, "lost": 10, "unitsPnl": 6.4825 },
+  "record": { "open": 17, "won": 23, "lost": 10, "unitsPnl": 7.3174 },
   "plays": [
     {
       "id": "pm-20260629-01",
@@ -633,9 +633,10 @@
       "traderAvgEntry": 0.5327,
       "slippageVsTrader": 0.0123,
       "resolves": "2026-07-04",
-      "status": "open",
-      "result": null,
-      "note": "NEW consensus: GoalLineGhost ($42.2k) + suntori ($4.5k) both hold Morocco ML Yes vs Canada, both tight to their own entries (2.2c and 0.3c slippage). Fixture verified via ESPN World Cup scoreboard: 'Morocco at Canada', Scheduled 2026-07-04T17:00Z."
+      "status": "settled",
+      "result": "W",
+      "resultUnits": 0.8349,
+      "note": "WON. Morocco beat Canada in regulation. Confirmed via gamma-api (event fifwc-can-mar-2026-07-04): Morocco-win Yes closed outcomePrice=1, draw market closed No=1, Canada-win closed No=1 - decisive regulation result, no AET/pens ambiguity. GoalLineGhost ($42.2k) + suntori ($4.5k) consensus copied pre-game at 54.5c held. Clean consensus-2 WC moneyline win."
     },
     {
       "id": "pm-20260702-18",
@@ -995,12 +996,11 @@
     }
   ],
   "watchWallets": [
-    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. FLAT overnight (12:50 AM sweep) as expected. The 12:40 AM sweep settled all 3 open anon 07-03 plays as LOSSES - White Sox@Guardians Over 8.5 (3-4=7 runs), Seattle Mariners ML (shut out 0-2), Boston@LAA Over 7.5 (5-2=7 runs) - the brace-for-3 trend flagged last run held. Only 2 dead positions remain on his list (both ~$0). No new copyable anon plays overnight; his live MLB book restarts with the 07-04 daytime slate. 3-loss night is a clean small-sample reminder that single-game variance swamps the clean-entry edge (anon now ~8-6 in the lab's copies)." },
-    { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book unchanged, all still unresolved (endDate 07-20). Argentina reach-final No now trending AGAINST us hard - curPrice down to 60.5c from 74.65c entry (still correctly skipped, too slipped to copy). France-No fade (pm-20260629-08) also still trending against (curPrice ~45.5c vs 63.7c entry). Nothing settled this run." },
-    { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "Argentina No World Cup winner position unchanged (81.65c). Also now holding Portugal/Croatia O/U 2.5 Under (47.87c, pre-game) - same market/side as our already-logged GoalLineGhost+suntori consensus play (pm-20260702-14), so this is a third-wallet confirmation, not a new play." },
-    { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Loaded up on the 07-04 knockout slate. TWO new consensus plays copied this run: France -1.5 spread vs Paraguay (pm-20260704-01, consensus-3 glg+moose+sun at 60.5c) and USA ML dog vs Belgium 07-06 (pm-20260704-02, consensus-2 glg+sun at 33.5c). Both fixtures ESPN-verified pre-game. Still open from prior runs: Morocco-Canada ML (07-04, pm-20260702-17), Mexico ML vs England (07-05, pm-20260703-01). Correlated same-run SKIPS: France ML Yes (82.5c, same match/direction as the -1.5 spread), Brazil-Norway (glg holds Brazil-win No while sun holds Brazil-win Yes - opposite sides, no consensus), Mexico-England O/U + halftime sub-markets (already hold Mexico ML). Outright-winner longshots (Spain, Portugal) unchanged (07-20)." },
-    { "name": "suntori (#3 leaderboard)", "wallet": "0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "~$275k all-time pnl per latest leaderboard pull. Fed 'no change' play unchanged (77c entry, still open, resolves 07-29)." },
-    { "name": "ferrariChampions2026", "wallet": "0xfe787d2da716d60e8acff57fb87eb13cd4d10319", "note": "Still holding Marlins@Rockies Rockies (avg 37.55c) same side as anon's copied pick - not added as a separate play (would double-count the same game/side). This run's new finds came from the GLG/moose/suntori WC cluster (France -1.5, USA ML)." },
-    { "name": "leaderboard scan", "wallet": "n/a", "note": "All-time pnl leaderboard reshuffled (window=all fluctuates): coldsway now #1 (~$2.06M), then CandleHammerDrums (~$579k), rabbitfoot1 (~$554k), WhatARobbery (~$371k), Kch-Temp, Crystiano. mooseborzoi (~$283k) + suntori (~$205k) still top-12 and already tracked. coldsway/CandleHammerDrums/rabbitfoot1 unvetted - worth a positions check on a future run; deprioritized this run in favor of settling the open book." }
+    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. FLAT at 3:47 PM ET this run - positions API returned zero holdings above the $300 threshold, so no copyable anon MLB play mid-afternoon (anon typically loads in closer to/inside game windows). Nothing to settle from anon this run. Record in the lab ~8-6. Re-check on the evening sweep for the 07-04 late slate." },
+    { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book unchanged, all still unresolved (endDate 07-20). Argentina reach-final No still trending AGAINST us (correctly skipped, too slipped to copy). France-No fade (pm-20260629-08) also still trending against. Nothing settled this run." },
+    { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "eSports/soccer specialist. No new copyable single-wallet conviction surfaced this run; its recent WC positions overlap markets already logged via the GLG/moose/suntori consensus." },
+    { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Heavy on the 07-04 France-Paraguay match. NO new plays added this run - everything they hold is either already logged or correlated. Already open: France -1.5 spread (pm-20260704-01, kicks off 5 PM ET, not yet resolved), USA ML vs Belgium 07-06 (pm-20260704-02), Mexico ML vs England 07-05 (pm-20260703-01). SKIPS this run: France -2.5/-3.5 spreads + France ML Yes/No (all same match as the -1.5 we hold); France-Paraguay O/U 2.5 (wallets hold BOTH Over AND Under = liquidity/hedge, no genuine directional consensus); Norway-win dog 07-05 (2nd holder moose only $754, too thin for high-conviction). Outright longshots (Spain, Portugal Yes) unchanged (07-20)." },
+    { "name": "suntori (#8 leaderboard)", "wallet": "0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "~$291k all-time pnl per this run's window=all pull (now #8). Fed 'no change' play unchanged (77c entry, still open, resolves 07-29). Also part of the WC consensus cluster above." },
+    { "name": "leaderboard scan", "wallet": "n/a", "note": "window=all leaderboard reshuffled again: WhatARobbery #1 (~$1.48M), swisstony (~$861k), muchobliged (~$677k), gud.hl (~$469k), CandleHammerDrums (~$430k), suntori #8 (~$291k, tracked). WhatARobbery/swisstony/muchobliged/gud.hl unvetted - worth a positions check on a future run; deprioritized this run (nothing new qualified, just the Morocco settle)." }
   ]
 }
