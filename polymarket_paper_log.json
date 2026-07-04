@@ -6,10 +6,10 @@
     "stakeUnits": 1,
     "unitNote": "1 unit = $5. You COPY THE SIDE AND PRICE, not the dollar amount. The trader bets their whole bankroll (often $10k-$200k); you stake a flat 1 unit. traderSize = the copied wallet's position size, shown only for context.",
     "started": "2026-06-29",
-    "updated": "2026-07-03 21:50 ET",
+    "updated": "2026-07-03 22:47 ET",
     "rules": "Curated slate: copy consensus (2+ top wallets) OR high-conviction positions from the strongest wallets, still copyable near entry. VERIFY sports matchups + dates against the real league schedule before logging (skip stale/old markets). Skip coin-flips and late entries. Grade on CLV-style edge, not just W/L."
   },
-  "record": { "open": 21, "won": 20, "lost": 7, "unitsPnl": 8.5188 },
+  "record": { "open": 20, "won": 21, "lost": 7, "unitsPnl": 9.0226 },
   "plays": [
     {
       "id": "pm-20260629-01",
@@ -850,9 +850,10 @@
       "traderAvgEntry": 0.65,
       "slippageVsTrader": 0.015,
       "resolves": "2026-07-03",
-      "status": "open",
-      "result": null,
-      "note": "anon's second live-slate position: Twins@Yankees, Yankees ML at 66.5c (+1.5c above his 65c avg, within tolerance). Matchup + state verified via MLB statsapi (Minnesota Twins @ New York Yankees, status 'Pre-Game', 0-0) - clean pre-game entry. MUCH smaller conviction than the STL/CHC Under ($3.7k vs $99.4k) so weighted accordingly in reading anon's signal, but a legitimate clean single-wallet copy of a favorite (not a coin-flip). Non-correlated with the STL/CHC play (different game)."
+      "status": "settled",
+      "result": "W",
+      "resultUnits": 0.5038,
+      "note": "WON. Yankees beat Twins 5-2 (Final, MLB statsapi); anon's Yankees ML position curPrice 0.9995 confirms. anon's second live-slate position, copied pre-game at 66.5c (+1.5c above his 65c avg). Small conviction ($3.7k) but a clean single-wallet favorite copy that cashed - the anon clean-pre-game-entry pattern held here even as his larger STL/CHC Under (pm-20260703-02) blew up the same slate."
     },
     {
       "id": "pm-20260703-04",
@@ -952,7 +953,7 @@
     }
   ],
   "watchWallets": [
-    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. LIVE at 21:50 ET. Pirates@Nationals Over 9.5 SETTLED W this run (pm-20260703-04, +0.8692u): PIT@WSH finished 5-9 = 14 runs, dropped off his positions list. Still open/in-progress: White Sox@Guardians Over 8.5 $97.8k (pm-20260703-05, cur 0.45, game Delayed 5th inning 3-1), Seattle Mariners ML vs Toronto $45.4k (pm-20260703-06, cur 0.455, west-coast game pending), Twins@Yankees Yankees ML (pm-20260703-03, cur 0.825 trending FOR, In Progress 6th 3-2 NYY). Boston@LAA Over 7.5 has SCALED from ~$294 to $36.7k - now ADDED as pm-20260703-08 (51.5c, game just starting 0-0). Check the 3 open plays for settles on the 12:40 AM sweep." },
+    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. LIVE at 22:47 ET. Twins@Yankees Yankees ML SETTLED W this run (pm-20260703-03, +0.5038u): NYY beat MIN 5-2 Final, anon position curPrice 0.9995. Still open/in-progress: White Sox@Guardians Over 8.5 (pm-20260703-05) now trending AGAINST - cur 0.22, game 3-1 CWS in 7th (only 4 runs, needs 5 more for Over), $47.8k; Boston@LAA Over 7.5 (pm-20260703-08) trending FOR - cur 0.61, BOS 4 LAA 0 = 4 runs in 4th, $43.4k; Seattle Mariners ML vs Toronto (pm-20260703-06) trending AGAINST - cur 0.225, TOR 2 SEA 0 in 3rd, $25.2k. No new unlogged anon positions this run (all 4 live positions already in the book). Check the 3 open plays for settles on the next run / 12:40 AM sweep." },
     { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book unchanged, all still unresolved (endDate 07-20). Argentina reach-final No now trending AGAINST us hard - curPrice down to 60.5c from 74.65c entry (still correctly skipped, too slipped to copy). France-No fade (pm-20260629-08) also still trending against (curPrice ~45.5c vs 63.7c entry). Nothing settled this run." },
     { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "Argentina No World Cup winner position unchanged (81.65c). Also now holding Portugal/Croatia O/U 2.5 Under (47.87c, pre-game) - same market/side as our already-logged GoalLineGhost+suntori consensus play (pm-20260702-14), so this is a third-wallet confirmation, not a new play." },
     { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "Argentina-CaboVerde ML SETTLED L this run (pm-20260702-01, -1u): ARG won 3-2 AET but regulation was a draw, so the daily-moneyline lost. GLG has since flipped onto the Colombia-Ghana book (draw=No $83.3k, Colombia-win=Yes $20.5k) - added Colombia ML Yes as a single-wallet play (pm-20260703-07, 68.5c, 9:30 PM EDT game); no moose/suntori confirm on it. Still open: Morocco-Canada ML (07-04, pm-20260702-17), Mexico ML vs England (07-05, pm-20260703-01). Outright-winner longshots (Spain, Portugal) unchanged (07-20)." },
