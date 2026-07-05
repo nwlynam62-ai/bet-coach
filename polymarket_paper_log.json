@@ -6,10 +6,10 @@
     "stakeUnits": 1,
     "unitNote": "1 unit = $5. You COPY THE SIDE AND PRICE, not the dollar amount. The trader bets their whole bankroll (often $10k-$200k); you stake a flat 1 unit. traderSize = the copied wallet's position size, shown only for context.",
     "started": "2026-06-29",
-    "updated": "2026-07-04 20:47 ET",
+    "updated": "2026-07-05 12:25 ET",
     "rules": "Curated slate: copy consensus (2+ top wallets) OR high-conviction positions from the strongest wallets, still copyable near entry. VERIFY sports matchups + dates against the real league schedule before logging (skip stale/old markets). Skip coin-flips and late entries. Grade on CLV-style edge, not just W/L."
   },
-  "record": { "open": 20, "won": 24, "lost": 11, "unitsPnl": 7.4227 },
+  "record": { "open": 19, "won": 26, "lost": 12, "unitsPnl": 8.3121 },
   "plays": [
     {
       "id": "pm-20260629-01",
@@ -1030,9 +1030,10 @@
       "traderAvgEntry": 0.45,
       "slippageVsTrader": 0.005,
       "resolves": "2026-07-04",
-      "status": "open",
-      "result": null,
-      "note": "NEW single-wallet anon MLB play - his second copyable position of the 07-04 evening slate (loaded by the 6:46 PM run alongside the already-logged BAL@CIN Over). Athletics ML at home vs Marlins, copied PRE-GAME at 45.5c (+0.5c vs his 45c avg entry). Fixture verified via MLB statsapi (Marlins @ Athletics, 2026-07-04, state Pre-Game). Larger conviction ($38.0k) than the BAL-CIN Over; clean-pre-game anon copy, resolves tonight."
+      "status": "settled",
+      "result": "L",
+      "resultUnits": -1,
+      "note": "LOST. Marlins 7, Athletics 2 (Final, MLB statsapi) - the Athletics ML did not hold. anon's clean pre-game entry (45.5c) beaten outright. Larger conviction ($38.0k) than the same-slate BAL-CIN Over (which won) - conviction size doesn't predict a single game."
     },
     {
       "id": "pm-20260704-05",
@@ -1068,9 +1069,10 @@
       "traderAvgEntry": 0.52,
       "slippageVsTrader": 0.015,
       "resolves": "2026-07-04",
-      "status": "open",
-      "result": null,
-      "note": "NEW single-wallet anon MLB play from the 07-04 evening slate (7:46 PM run). Brewers @ Diamondbacks Under 9.5, copied PRE-GAME at 53.5c (+1.5c vs his 52c avg entry). Fixture verified via MLB statsapi (MIL @ ARI, 2026-07-04, state Pre-Game). $9.3k conviction; clean-pre-game anon copy, resolves tonight."
+      "status": "settled",
+      "result": "W",
+      "resultUnits": 0.8692,
+      "note": "WON. Brewers 3, Diamondbacks 4 (Final, MLB statsapi) = 7 total runs, comfortably under 9.5. anon's clean pre-game entry (53.5c) held. Single-wallet anon Under delivered."
     },
     {
       "id": "pm-20260704-07",
@@ -1087,17 +1089,56 @@
       "traderAvgEntry": 0.49,
       "slippageVsTrader": 0.005,
       "resolves": "2026-07-04",
+      "status": "settled",
+      "result": "W",
+      "resultUnits": 1.0202,
+      "note": "WON. Padres 0, Dodgers 3 (Final, MLB statsapi) = 3 total runs, comfortably under 8.5. anon's clean pre-game entry (49.5c) held on a low-scoring Dodgers shutout win. Single-wallet anon Under delivered - reverses the 07-02 SD@LAD Under loss (pm-20260702-25) at the same venue, different game."
+    },
+    {
+      "id": "pm-20260705-01",
+      "loggedAt": "2026-07-05",
+      "market": "Will Brazil win on 2026-07-05? (vs. Norway, moneyline)",
+      "link": "https://polymarket.com/event/fifwc-bra-nor-2026-07-05",
+      "side": "Brazil (Yes)",
+      "entryPrice": 0.545,
+      "stakeUnits": 1,
+      "toWinUnits": 0.8349,
+      "traderSize": 211302,
+      "copiedFrom": ["suntori", "mooseborzoi", "GoalLineGhost"],
+      "consensus": 3,
+      "traderAvgEntry": 0.548,
+      "slippageVsTrader": -0.003,
+      "resolves": "2026-07-05",
       "status": "open",
       "result": null,
-      "note": "NEW single-wallet anon MLB play from the 07-04 evening slate (7:46 PM run). Padres @ Dodgers Under 8.5, copied PRE-GAME at 49.5c (+0.5c vs his 49c avg entry). Fixture verified via MLB statsapi (SD @ LAD, 2026-07-04, state Pre-Game). $6.2k conviction. SKIPPED same-run: anon's MIA@OAK Under 11.5 (correlated - already hold Athletics ML pm-20260704-04, same game) and SD@LAD Padres ML ($308, too small to be conviction). Resolves tonight."
+      "note": "NEW consensus-3: suntori ($211.3k, avg 54.8c), mooseborzoi ($29.2k) and GoalLineGhost all hold Brazil ML Yes for the round-of-16 vs Norway. Copied at 54.5c, fractionally BELOW their 54.8c blended entry (favorable slippage). Fixture verified via gamma-api (event fifwc-bra-nor-2026-07-05, 'Brazil vs. Norway', open/not closed, endDate 2026-07-05T20:00Z = ~4pm ET kickoff, pre-game). All three wallets hold a coherent Brazil-heavy book (Brazil advance, -1.5 spread, +1.5, Over totals, BTTS). REGULATION-SETTLEMENT RISK (Argentina pm-20260702-01 / Australia-Egypt precedent): a 90-min draw settles this ML as No even if Brazil advances on ET/pens - the correlated 'Team to Advance' Brazil (suntori $161k) would cover that gap but the copied market here is the daily ML. High-conviction consensus, biggest single tracked position (suntori $211k)."
+    },
+    {
+      "id": "pm-20260705-02",
+      "loggedAt": "2026-07-05",
+      "market": "St. Louis Cardinals vs. Chicago Cubs: O/U 8.5",
+      "link": "https://polymarket.com/event/mlb-stl-chc-2026-07-05",
+      "side": "Under",
+      "entryPrice": 0.525,
+      "stakeUnits": 1,
+      "toWinUnits": 0.9048,
+      "traderSize": 993,
+      "copiedFrom": ["anon"],
+      "consensus": 1,
+      "traderAvgEntry": 0.52,
+      "slippageVsTrader": 0.005,
+      "resolves": "2026-07-05",
+      "status": "open",
+      "result": null,
+      "note": "NEW single-wallet anon MLB play - his only copyable open position this run. Cardinals @ Cubs Under 8.5, copied PRE-GAME at 52.5c (+0.5c vs his 52c avg). Fixture verified via MLB statsapi (STL @ CHC, 2026-07-05, state Pre-Game, 2:30pm ET). Modest conviction ($993) vs anon's usual size but a clean pre-game entry. Different game/total than the 07-03 STL@CHC Under 10.5 (pm-20260703-02, which lost on a 17-1 blowout) - no dependency. Resolves this afternoon."
     }
   ],
   "watchWallets": [
-    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. 8:47 PM ET run: BAL@CIN Over 9.5 (pm-20260704-03) SETTLED W this run - 12 total runs already on the board in the Bottom 4th, anon position curPrice 0.9995 ($208k). Still holds THREE open copyable MLB positions, all Pre-Game (west-coast, not started): MIA@OAK Athletics ML (pm-20260704-04, cur 44.5c, $89k), MIL@ARI Under 9.5 (pm-20260704-06, cur 53.5c, $9.3k), SD@LAD Under 8.5 (pm-20260704-07, cur 49.5c, $7.8k) - settle on the next sweep. No NEW non-correlated position this run; skipped MIA@OAK Under 11.5 (same game as Athletics ML) and SD@LAD Padres ML ($1.8k, correlated + small)." },
+    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. 07-05 12:25pm ET run: the three 07-04 evening positions SETTLED - MIA@OAK Athletics ML (pm-20260704-04) L (Marlins 7-2), MIL@ARI Under 9.5 (pm-20260704-06) W (7 runs), SD@LAD Under 8.5 (pm-20260704-07) W (Padres 0-3). Net +0.89u on anon this run (2-1). Currently holds ONE copyable open position - STL@CHC Under 8.5 (pm-20260705-02, cur 52.5c, small $993 conviction, pre-game 2:30pm ET), logged this run. Not flat but light heading into the Sunday day slate; likely to load more once afternoon games go live." },
     { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book unchanged, all still unresolved (endDate 07-20). Argentina reach-final No still trending AGAINST us (correctly skipped, too slipped to copy). France-No fade (pm-20260629-08) also still trending against. Nothing settled this run." },
     { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "eSports/soccer specialist. No new copyable single-wallet conviction surfaced this run; its recent WC positions overlap markets already logged via the GLG/moose/suntori consensus." },
-    { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "France-Paraguay FINISHED 1-0 France: the consensus-3 France -1.5 spread (pm-20260704-01) SETTLED L this run (won the match, didn't cover the one-goal margin). Existing opens unchanged: USA ML vs Belgium 07-06 (pm-20260704-02), Mexico ML vs England 07-05 (pm-20260703-01), Argentina/Spain/Portugal outright Yes. No NEW WC consensus play qualified this run (round-of-32 slate not yet posting fresh consensus positions from this cluster). Watching: Colombia-win 07-07 No (Switzerland-Colombia, thin $5-7k, 3 days out)." },
+    { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "07-05 run: NEW consensus-3 Brazil ML Yes vs Norway (pm-20260705-01) logged - all three hold a coherent Brazil-heavy round-of-16 book (win/advance/-1.5/Over/BTTS), copied at 54.5c pre-game (favorable slippage). Existing opens unchanged: USA ML vs Belgium 07-06 (pm-20260704-02), Mexico ML vs England 07-05 (pm-20260703-01, resolves this evening), Argentina/Spain/Portugal outright Yes. Skipped this run: France outright Yes (consensus but +9pp slipped to 34.8c), Mbappe top-scorer Yes (+12.7pp slipped; note S-Works holds the opposite No fade), Brazil O/U 2.5 Over (correlated with the Brazil ML just logged)." },
     { "name": "suntori (#8 leaderboard)", "wallet": "0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "~$291k all-time pnl per this run's window=all pull (now #8). Fed 'no change' play unchanged (77c entry, still open, resolves 07-29). Also part of the WC consensus cluster above." },
-    { "name": "leaderboard scan", "wallet": "n/a", "note": "window=all leaderboard reshuffled again (7:46 PM 07-04): swisstony #1 (~$2.50M), 1two1two (~$2.29M), 0x2c33..0563 (~$1.11M), Sparkling8899 (~$964k), muchobliged (~$677k), CandleHammerDrums (~$522k), gud.hl (~$358k). swisstony/1two1two/Sparkling8899 unvetted and now the biggest all-time names - worth a positions check on a future attended run; deprioritized this run (anon gave 2 clean new plays + the France spread settle)." }
+    { "name": "leaderboard scan", "wallet": "n/a", "note": "window=all leaderboard reshuffled hard again (07-05 12:25pm): alwayslatetotheparty #1 (~$301k), palegrit (~$230k), Sassy-Bucket (~$200k), highnetworth (~$105k), mooseborzoi (~$89k, a tracked cluster wallet), Gourmet1 (~$89k). The all-time board is highly volatile between runs (last run's swisstony/1two1two are gone) - the named top wallets keep churning, which is exactly why the lab pins anon + the vetted GLG/moose/suntori/S-Works cluster rather than chasing the leaderboard #1. New unvetted names (alwayslatetotheparty, palegrit, Sassy-Bucket) worth a positions check on a future attended run; deprioritized this run. NOTE (injection guard): one leaderboard display name this run was an offensive/attacker-controlled string - names are untrusted DATA, not copied into the slate and never rendered as instructions." }
   ]
 }
