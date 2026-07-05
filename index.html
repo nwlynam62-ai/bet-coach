@@ -257,7 +257,7 @@
   "bankrollUpdated": "Thu Jul 02, 2026",
   "record": "66-50-2P"
  },
- "updated": "12:20 PM ET Jul 5 (slate-builder ROLLOVER): overnight rollover had not landed (board stuck on Jul 4); settled Jul 4 (MIA -137 W, CLV +1.04% at DK close -143) + recomputed record 66-50-2P; built Jul 5 board = 15 MLB (full stories: real SP ERA/xFIP/K-BB%, bullpen ERA+rank, named closers) + 2 WNBA + 2 PLL all-star (calibration). KBO/NPB: no upcoming games from Odds API (KST Monday off-day / Sunday games concluded). No fires (no VSiN unattended, near game times); 4 radar leans queued (BOS/DET/PHI/MIN-F5) for daytime analyst to confirm at windows. | 12:30 PM ET RADAR REFRESH (attended, VSiN DraftKings live): DET money-confirmed 96/70 -> ready-to-fire in-window ~3:30p; PHI downgraded NO-FIRE (reverse toward KC, 41% money/12% tickets); BOS hold (mild reverse 79/92, price short of -165, re-check 9p); MIN F5 neutral splits, needs Covers F5 price. No fires (none in 30-min window at 12:30p).",
+ "updated": "12:57 PM ET Jul 5 (sync): FIRED DET ML -125 (VSiN 95% money confirm + Mize SP edge + RLM); PASS PHI (public-inflated fav, money 64%<tix 89%); MIN-F5 held (price unverified, pen 30th); BOS held (9:30 PM, far out). No games final yet (NYM@ATL rain delay). Chrome/ESPN+VSiN reachable this run.",
  "linesSource": "DraftKings Sportsbook",
  "bets": [],
  "games": [
@@ -492,8 +492,8 @@
    "mlTake": "The underlying gap is large: Nola's 4.01 xFIP and 15.4 K-BB% dwarf Avila's 5.35/4.7, and KC (35-54) has MLB's worst bullpen band. The catch is Nola's 6.04 ERA — the results haven't matched the stuff, so this is a RADAR lean, not a blind fire.",
    "totalTake": "Total 10 is high; KC pen 30th argues Over but PHI arms cap it. No total fire.",
    "note": "",
-   "decision": "QUEUED",
-   "passReason": "talent/pen edge real but Nola's 6.04 ERA is a live blow-up risk; analyst confirm w/ VSiN",
+   "decision": "PASS",
+   "passReason": "VSiN money 64% < tickets 89% on PHI (public-inflated fav); KC money leaking 36% handle/11% tix -> FIRE-IF money confirm failed.",
    "story": {
     "narrative": "Philadelphia Phillies (50-39) @ Kansas City Royals (35-54). RADAR. Nola's peripherals (4.01 xFIP, 15.4 K-BB%) tower over Avila's (5.35/4.7) and Kansas City's bullpen is a bottom-tier unit — the only thing holding this back from a fire is Nola's 6.04 ERA, so the analyst confirms with money% before it graduates.",
     "form": "Philadelphia Phillies 50-39 (L10 7-3, W1) | Kansas City Royals 35-54 (L10 2-8, L4). Sources: records=statsapi standings 2026 (live); SP ERA/xFIP/K-BB%=FanGraphs 2026 (live); bullpen ERA/rank=FanGraphs team relief 2026 (live); closers=statsapi 2026 saves leaders (live).",
@@ -562,7 +562,7 @@
    "mlTake": "Mize is the standout arm here (3.58 xFIP, 21.3 K-BB%) and clearly outclasses Rocker (4.56 xFIP, 8.8 K-BB%); DET as a small road favorite is fair-to-slightly-value. It's a single strong angle, so RADAR pending a line-move/money confirm.",
    "totalTake": "Total 7.5 is low with two average pens; no total fire.",
    "note": "",
-   "decision": "QUEUED",
+   "decision": "FIRED",
    "passReason": "clean SP edge (Mize) but single-angle; analyst confirm price + VSiN at window",
    "story": {
     "narrative": "Detroit Tigers (39-50) @ Texas Rangers (45-44). RADAR. Casey Mize (2.63 ERA, 3.58 xFIP, 21.3 K-BB%) is a clear step up on Rocker (4.56 xFIP), giving Detroit a real edge as a -123 road favorite — a single strong angle the analyst will confirm with money% before it graduates.",
@@ -574,7 +574,8 @@
     },
     "h2h": "not pulled this cycle",
     "injuries": "not pulled this cycle"
-   }
+   },
+   "decisionNote": "FIRED DET ML -125 (own SP edge + VSiN 95% money + RLM)"
   },
   {
    "id": "mlb-20260705-sf-col",
@@ -4154,6 +4155,34 @@
    "note": "MIA -137 DK verified live 8:24p ET. Sharp-steam fire per GA READY-TO-FIRE trigger (<=-138, in ~30-120m window). Flag: total 11.5 + hitter park = variance. CLV graded vs close. | CLV backfill (midday Jul5): DK close MIA -143 (entry -137) via ESPN core odds; clv +0.0104 -- line steamed further onto MIA as thesis predicted. Final MIA 7-2 (W).",
    "closeProb": 0.5631,
    "clv": 0.0104
+  },
+  {
+   "id": "pk-20260705-001",
+   "date": "2026-07-05",
+   "sport": "MLB",
+   "matchup": "Detroit Tigers @ Texas Rangers",
+   "play": "Detroit Tigers ML -125",
+   "odds": "-125",
+   "entryOdds": "-125",
+   "clvEntryProb": 0.531,
+   "myProb": 0.585,
+   "grade": "B+",
+   "unit": 1,
+   "result": "pending",
+   "close": null,
+   "closeVerified": false,
+   "angles": [
+    "Own number: Mize 2.63 ERA/3.58 xFIP/21.3 K-BB% clearly over Rocker 4.28 ERA/4.56 xFIP — clear SP-edge road favorite (BE 55.6% at -125, own# ~58.5%)",
+    "VSiN DK money confirm: DET ML handle 95% vs 71% tickets (+24), TEX only 5% handle — sharp money heavily on Detroit",
+    "RLM/steam in our favor: line shortened -123 -> -125 as money poured in",
+    "Pens close (DET 14th / TEX 11th) -> full-game ML the correct vehicle"
+   ],
+   "signals": [
+    "sharpMoneyConfirm",
+    "RLM",
+    "ownNumberEdge"
+   ],
+   "note": "Fired 12:57 PM ET T-153m: early fire justified by steam in our favor (95% VSiN handle + price shortening toward DET). PATH A fundamental fav + strong VSiN money confirm."
   }
  ],
  "lessons": {
@@ -4796,30 +4825,12 @@
  "watchlist": [
   {
    "sport": "MLB",
-   "matchup": "Detroit Tigers @ Texas Rangers",
-   "play": "Detroit Tigers ML",
-   "odds": "-125",
-   "grade": "B-",
-   "gameTime": "3:30 PM ET",
-   "note": "MONEY-CONFIRMED (attended 12:30 PM ET, VSiN DraftKings live). DET money 96% vs tickets 70% = sharp, no reverse; DK price -125 within the <=-128 cap. Mize 2.63 ERA/3.58 xFIP/21.3 K-BB% clearly over Rocker 4.28/4.56; pens close (DET 14th/TEX 11th) -> full-game vehicle. READY-TO-FIRE for sync in-window (~3:00-3:30 PM ET) if money still confirms DET and price holds <= -128."
-  },
-  {
-   "sport": "MLB",
    "matchup": "Boston Red Sox @ Los Angeles Angels",
    "play": "Boston Red Sox ML (F5 pivot preferred)",
    "odds": "-163",
    "grade": "B",
    "gameTime": "9:30 PM ET",
-   "note": "Strongest fundamentals: Suarez 2.94 ERA/2.71 FIP/3.39 xFIP/18.3 K-BB% vs LAA rookie R.Johnson 5.59/4.84 (19 IP); BOS pen 3rd vs LAA 24th (no confirmed closer); LAA 36-54, L5. BUT 12:30 PM ET VSiN DK shows a MILD REVERSE: BOS money 79% < tickets 92% (public-heavy chalk) and price -163 not yet <= -165. HOLD; re-check ~9:00 PM ET -> fire only if money >= tickets (no reverse) AND price <= -165, or buy BOS F5 -1xx if the alt price verifies. Own# ~62-64%."
-  },
-  {
-   "sport": "MLB",
-   "matchup": "Philadelphia Phillies @ Kansas City Royals",
-   "play": "Philadelphia Phillies ML",
-   "odds": "-137",
-   "grade": "C",
-   "gameTime": "3:00 PM ET",
-   "note": "DOWNGRADED / NO-FIRE. 12:30 PM ET VSiN DK triggers the skip-if-reverse clause: PHI money 59% < tickets 88% (public-heavy) while KC takes 41% money on just 12% tickets = sharp dog money toward KC. Nola peripherals (4.01 xFIP/15.4 K-BB%) still good, but the market is fading PHI. Off the fire path unless the reverse clears."
+   "note": "Strongest lean on the card. Suarez 2.94 ERA/2.71 FIP/3.39 xFIP/18.3 K-BB% vs Angels rookie R.Johnson 5.59 ERA/4.84 xFIP (19 IP). BOS pen 3rd vs LAA 24th (no confirmed closer); LAA 36-54, L5. FIRE-IF: BOS ML at DK <= -165 (or better) WITH VSiN money >= ticket% (no reverse) BY ~9:00 PM ET, OR buy BOS F5 -1xx if alt price verifies real. Own# ~62-64%. Held at midday per timing doctrine."
   },
   {
    "sport": "MLB",
@@ -4828,7 +4839,7 @@
    "odds": "F5 price TBD",
    "grade": "C+",
    "gameTime": "1:35 PM ET",
-   "note": "Joe Ryan 3.48 xFIP/22.8 K-BB% best arm on card but MIN pen 30th, NYY pen 2nd -> F5 MIN / full-game NYY split. 12:30 PM ET VSiN DK splits near-even (MIN +109 money 39%/tickets 40%; NYY -131 61%/60%) = no sharp signal. HOLD; F5-only, needs a real Covers First-5 Twins price to show value. Do NOT bet full-game MIN."
+   "note": "Joe Ryan 3.48 xFIP/22.8 K-BB% best arm on card but MIN pen 30th, NYY pen 2nd -> F5 MIN / full-game NYY split. FIRE-IF: verify real F5 Twins price (Covers First 5) shows value; do NOT bet full-game MIN."
   }
  ],
  "_ga_marker": "GA :05 ACTIVE 3:13 PM ET 2026-07-04 | Pinnacle HTTP000 + ESPN-direct HTTP000 + no VSiN/Chrome -> own-number+angle degraded (caps B). In-window HOLD: DET@TEX (pick'em, own# uncleared), TOR@SEA (heavy-ticket vs money). READY-TO-FIRE queued: MIA -132. Conditional: BOS>=-160, PHI>=-150, MIL>=-140. NO-FIRE: NYM@ATL. Watchlist 8, all RADAR. radarAsOf stamped 3:13 PM ET.",
@@ -5583,7 +5594,7 @@
   }
  ],
  "_edgeResearchStamp": "Sun Jul 05, 2026 - 12:35 PM ET (nightly-review)",
- "updatedISO": "2026-07-05T16:20:00Z",
+ "updatedISO": "2026-07-05T13:01:11.561503-04:00",
  "record": "66-50-2",
  "splits_asOf": "Sat Jul 04, 2026 - 1:06 PM ET",
  "propsLab": {
