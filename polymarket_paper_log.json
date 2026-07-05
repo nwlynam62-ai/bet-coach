@@ -6,10 +6,10 @@
     "stakeUnits": 1,
     "unitNote": "1 unit = $5. You COPY THE SIDE AND PRICE, not the dollar amount. The trader bets their whole bankroll (often $10k-$200k); you stake a flat 1 unit. traderSize = the copied wallet's position size, shown only for context.",
     "started": "2026-06-29",
-    "updated": "2026-07-04 19:47 ET",
+    "updated": "2026-07-04 20:47 ET",
     "rules": "Curated slate: copy consensus (2+ top wallets) OR high-conviction positions from the strongest wallets, still copyable near entry. VERIFY sports matchups + dates against the real league schedule before logging (skip stale/old markets). Skip coin-flips and late entries. Grade on CLV-style edge, not just W/L."
   },
-  "record": { "open": 21, "won": 23, "lost": 11, "unitsPnl": 6.3174 },
+  "record": { "open": 20, "won": 24, "lost": 11, "unitsPnl": 7.4227 },
   "plays": [
     {
       "id": "pm-20260629-01",
@@ -1010,9 +1010,10 @@
       "traderAvgEntry": 0.47,
       "slippageVsTrader": 0.005,
       "resolves": "2026-07-04",
-      "status": "open",
-      "result": null,
-      "note": "NEW single-wallet anon MLB play - his first copyable position of the 07-04 slate (flat at the 3:47 PM run). Orioles @ Reds Over 9.5, copied PRE-GAME at 47.5c (+0.5c vs his 47c avg entry). Fixture verified via MLB statsapi (BAL @ CIN, 2026-07-04, state Pre-Game). Small conviction ($635) but the clean-pre-game-entry anon pattern the lab tracks; resolves tonight."
+      "status": "settled",
+      "result": "W",
+      "resultUnits": 1.1053,
+      "note": "WON. Orioles @ Reds reached 12 total runs (BAL 8, CIN 4) while In Progress in the Bottom 4th (MLB statsapi) - Over 9.5 is mathematically locked (12 > 9.5, runs can't decrease); anon's Over position curPrice 0.9995 (up-sized to $208k) confirms. anon's clean pre-game entry (47.5c) hit. Single-wallet anon Over delivered - a bounce-back after the 3-for-3 anon wipeout on the 07-03 late slate."
     },
     {
       "id": "pm-20260704-04",
@@ -1092,7 +1093,7 @@
     }
   ],
   "watchWallets": [
-    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. Very active on the 07-04 evening slate. As of the 7:46 PM ET run holds FOUR copyable MLB positions: (1) BAL@CIN Over 9.5 LIVE (game In Progress, cur 84c, up-sized to $175k) = pm-20260704-03 still open; (2) MIA@OAK Athletics ML (avg 45c, cur 45.5c, $45k) = pm-20260704-04 still open, Pre-Game; (3) NEW MIL@ARI Under 9.5 (avg 52c, cur 53.5c, $9.3k) = pm-20260704-06 added this run; (4) NEW SD@LAD Under 8.5 (avg 49c, cur 49.5c, $6.2k) = pm-20260704-07 added this run. All verified Pre-Game/In-Progress via statsapi, all resolve tonight - settle on the next sweep. Skipped: MIA@OAK Under 11.5 (same game as the Athletics ML) and a $308 Padres ML (too small)." },
+    { "name": "anon (MLB intraday specialist)", "wallet": "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1", "note": "PINNED. 8:47 PM ET run: BAL@CIN Over 9.5 (pm-20260704-03) SETTLED W this run - 12 total runs already on the board in the Bottom 4th, anon position curPrice 0.9995 ($208k). Still holds THREE open copyable MLB positions, all Pre-Game (west-coast, not started): MIA@OAK Athletics ML (pm-20260704-04, cur 44.5c, $89k), MIL@ARI Under 9.5 (pm-20260704-06, cur 53.5c, $9.3k), SD@LAD Under 8.5 (pm-20260704-07, cur 49.5c, $7.8k) - settle on the next sweep. No NEW non-correlated position this run; skipped MIA@OAK Under 11.5 (same game as Athletics ML) and SD@LAD Padres ML ($1.8k, correlated + small)." },
     { "name": "S-Works", "wallet": "0xee00ba338c59557141789b127927a55f5cc5cea1", "note": "World Cup favorite-fade book unchanged, all still unresolved (endDate 07-20). Argentina reach-final No still trending AGAINST us (correctly skipped, too slipped to copy). France-No fade (pm-20260629-08) also still trending against. Nothing settled this run." },
     { "name": "needheal", "wallet": "0x3af1ed6ea380092db15c20ffa1b35652b0cad739", "note": "eSports/soccer specialist. No new copyable single-wallet conviction surfaced this run; its recent WC positions overlap markets already logged via the GLG/moose/suntori consensus." },
     { "name": "GoalLineGhost + mooseborzoi + suntori (World Cup slate)", "wallet": "GoalLineGhost 0x0346afae2603313d2bbee96b628536c8cbe352a5 / mooseborzoi 0x84cfffc3f16dcc353094de30d4a45226eccd2f63 / suntori 0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6", "note": "France-Paraguay FINISHED 1-0 France: the consensus-3 France -1.5 spread (pm-20260704-01) SETTLED L this run (won the match, didn't cover the one-goal margin). Existing opens unchanged: USA ML vs Belgium 07-06 (pm-20260704-02), Mexico ML vs England 07-05 (pm-20260703-01), Argentina/Spain/Portugal outright Yes. No NEW WC consensus play qualified this run (round-of-32 slate not yet posting fresh consensus positions from this cluster). Watching: Colombia-win 07-07 No (Switzerland-Colombia, thin $5-7k, 3 days out)." },
